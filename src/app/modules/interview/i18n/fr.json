@@ -1,0 +1,195 @@
+{
+  "list": {
+    "title": "Entretiens",
+    "description": "Gérez tous vos entretiens programmés",
+    "columns": {
+      "candidate": "Candidat",
+      "jobOffer": "Poste",
+      "company": "Entreprise",
+      "scheduledAt": "Date & Heure",
+      "duration": "Durée",
+      "type": "Type",
+      "status": "Statut",
+      "meetUrl": "Lien de réunion",
+      "actions": "Actions"
+    },
+    "emptyTitle": "Aucun entretien programmé",
+    "emptySubtitle": "Programmez votre premier entretien",
+    "createLabel": "Programmer un entretien",
+    "searchPlaceholder": "Rechercher des entretiens...",
+    "actions": {
+      "join": "Rejoindre",
+      "cancel": "Annuler",
+      "view": "Voir les détails",
+      "edit": "Modifier",
+      "delete": "Supprimer"
+    }
+  },
+  "form": {
+    "interview": "Nouvel entretien",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "status": "Statut",
+    "allStatuses": "Tous les statuts",
+    "search": "Rechercher",
+    "reset": "Réinitialiser",
+    "searchPlaceholder": "Rechercher par candidat, recruteur...",
+    "scheduledAt": {
+      "label": "Date et heure prévues",
+      "placeholder": "Sélectionnez la date et l'heure de l'entretien"
+    },
+    "durationMin": {
+      "label": "Durée (minutes)",
+      "options": {
+        "15min": "15 minutes",
+        "30min": "30 minutes",
+        "45min": "45 minutes",
+        "1h": "1 heure",
+        "1h30": "1h30",
+        "2h": "2 heures"
+      }
+    },
+    "type": {
+      "label": "Type d'entretien",
+      "options": {
+        "googleMeet": "Google Meet",
+        "dailyVideoCall": "Appel vidéo intégré TryRecruiters",
+        "inPerson": "En présentiel"
+      }
+    },
+    "meetUrl": {
+      "label": "Lien Google Meet",
+      "placeholder": "https://meet.google.com/xxx-xxxx-xxx"
+    },
+    "location": {
+      "label": "Lieu de l'entretien",
+      "placeholder": "Adresse du rendez-vous"
+    },
+    "timezone": {
+      "label": "Fuseau horaire",
+      "options": {
+        "africaDouala": "Afrique/Douala (GMT+1)",
+        "europeParis": "Europe/Paris (GMT+1)",
+        "americaNewYork": "Amérique/New York (GMT-5)",
+        "asiaTokyo": "Asie/Tokyo (GMT+9)",
+        "utc": "UTC"
+      }
+    },
+    "notes": {
+      "label": "Notes",
+      "placeholder": "Ajoutez toute note pertinente concernant l'entretien"
+    }
+  },
+  "status": {
+    "SCHEDULED": "Programmé",
+    "RESCHEDULED": "Reprogrammé",
+    "COMPLETED": "Terminé",
+    "CANCELED": "Annulé"
+  },
+  "delete": {
+    "title": "Supprimer l'entretien",
+    "message": "Êtes-vous sûr de vouloir supprimer l'entretien avec {{name}} ?"
+  },
+  "errors": {
+    "scheduledAt": {
+      "required": "La date et l'heure de l'entretien sont obligatoires",
+      "pastDate": "La date de l'entretien ne peut pas être dans le passé"
+    },
+    "durationMin": {
+      "required": "La durée est obligatoire"
+    },
+    "meetUrl": {
+      "required": "Le lien de la réunion est obligatoire",
+      "invalid": "Veuillez saisir un lien Google Meet valide"
+    },
+    "timezone": {
+      "required": "Le fuseau horaire est obligatoire"
+    },
+    "type": {
+      "required": "Le type d'entretien est obligatoire"
+    },
+    "location": {
+      "required": "Le lieu de l'entretien est obligatoire"
+    },
+    "createInterview": "Une erreur est survenue lors de la création de l'entretien"
+  },
+  "respond": {
+    "title": "Confirmez-vous cet entretien ?",
+    "description": "Merci de confirmer ou décliner cette invitation.",
+    "confirm": "Confirmer",
+    "decline": "Décliner",
+    "messageLabel": "Message (optionnel)",
+    "messagePlaceholder": "Une précision à partager avec le recruteur...",
+    "conflict": "Le recruteur a modifié la date ou le lieu de cet entretien. Vérifiez les nouvelles informations ci-dessous avant de répondre à nouveau.",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "candidateResponse": {
+    "PENDING": "En attente de votre réponse",
+    "CONFIRMED": "Confirmé",
+    "DECLINED": "Décliné"
+  },
+  "history": {
+    "title": "Historique",
+    "empty": "Aucun historique pour le moment.",
+    "loading": "Chargement de l'historique..."
+  },
+  "cancel": {
+    "button": "Annuler l'entretien",
+    "confirmMessage": "Voulez-vous vraiment annuler cet entretien ? Le candidat sera prévenu par e-mail.",
+    "conflict": "Cet entretien a été modifié entre-temps. Les informations ont été rechargées, veuillez réessayer.",
+    "error": "Échec de l'annulation. Veuillez réessayer."
+  },
+  "edit": {
+    "button": "Modifier",
+    "title": "Modifier l'entretien",
+    "save": "Enregistrer",
+    "cancelButton": "Annuler",
+    "warning": "Changer la date ou le lieu réinitialise la réponse du candidat — il devra confirmer à nouveau.",
+    "error": "Échec de l'enregistrement. Veuillez réessayer."
+  },
+  "markCompleted": {
+    "button": "Marquer comme terminé",
+    "confirmMessage": "Marquer cet entretien comme terminé ?",
+    "error": "Échec de la mise à jour du statut. Veuillez réessayer."
+  },
+  "details": {
+    "title": "Détails de l'entretien",
+    "description": "Consultez les détails de l'entretien et les informations associées.",
+    "back": "Retour",
+    "header": "Détails de l'entretien",
+    "informationTitle": "Informations de l'entretien",
+    "applicationTitle": "Candidature",
+    "application": {
+      "idLabel": "ID de candidature",
+      "statusLabel": "Statut",
+      "submittedAtLabel": "Soumise le",
+      "messageLabel": "Message de motivation"
+    },
+    "candidateFallback": "Candidat",
+    "actions": {
+      "joinInterview": "Rejoindre l'entretien",
+      "accessLocked": "Confirmez votre présence ci-dessus pour accéder au lien ou au lieu de l'entretien."
+    },
+    "fields": {
+      "date": "Date et heure",
+      "status": "Statut",
+      "meetUrl": "Lien de réunion",
+      "duration": "Durée",
+      "notes": "Notes"
+    },
+    "errors": {
+      "notFound": "Détails de l'entretien non trouvés.",
+      "loadError": "Erreur lors du chargement des détails de l'entretien.",
+      "noIdFound": "Aucun identifiant d'entretien trouvé dans l'URL."
+    }
+  },
+  "notification": {
+    "interviewInvitation": {
+      "subject": "Invitation à un entretien – {{jobTitle}}",
+      "body": "Bonjour {{firstName}} {{lastName}},\nNous souhaitons programmer un entretien avec vous pour le poste {{jobTitle}}. Votre candidature, associée à votre CV {{resumeName}}, a retenu l'attention du recruteur.\nVeuillez confirmer votre disponibilité pour cet entretien afin que nous puissions fixer la date et l'heure."
+    }
+  },
+  "joinMeeting": "Rejoindre",
+  "perApplicationLimitReached": "Limite atteinte : {{current}}/{{max}} entretiens déjà programmés pour cette candidature.",
+  "scheduleButton": "Programmer un entretien"
+}

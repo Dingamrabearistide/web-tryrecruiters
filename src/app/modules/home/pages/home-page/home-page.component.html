@@ -1,0 +1,766 @@
+<div *transloco="let tCore">
+  <!-- Hero Section -->
+  <section class="hero-grid relative overflow-hidden text-white">
+    <div class="network absolute inset-0 opacity-70"></div>
+    <div
+      class="absolute left-[7%] top-24 size-28 rounded-full bg-blue/25 blur-3xl"
+    ></div>
+    <div
+      class="absolute right-[12%] bottom-20 size-36 rounded-full bg-coral/25 blur-3xl"
+    ></div>
+
+    <div
+      class="relative mx-auto flex min-h-[560px] max-w-[1240px] flex-col gap-6 px-5 py-16 lg:px-8"
+    >
+      <!-- Search form — full width across both columns -->
+      <!-- Badge -->
+      <!-- <div
+        class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/90"
+      >
+        <i class="fa-solid fa-wand-magic-sparkles text-coral"></i>
+        {{ tCore("home.hero.badge") }}
+      </div> -->
+
+      <form
+        [formGroup]="searchForm"
+        (ngSubmit)="searchJobs()"
+        class="w-full overflow-hidden rounded-[28px] bg-white p-2 shadow-soft lg:flex"
+      >
+        <label
+          class="flex min-h-14 flex-1 items-center gap-3 border-b border-slate-100 px-4 lg:border-b-0 lg:border-r"
+        >
+          <i class="fa-solid fa-magnifying-glass text-blue"></i>
+          <input
+            type="text"
+            formControlName="keyword"
+            [placeholder]="tCore('home.search.jobPlaceholder')"
+            autocomplete="off"
+            class="w-full border-0 text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+          />
+        </label>
+        <label class="flex min-h-14 flex-1 items-center gap-3 px-4">
+          <i class="fa-solid fa-location-dot text-blue"></i>
+          <input
+            type="text"
+            formControlName="location"
+            [placeholder]="tCore('home.search.locationPlaceholder')"
+            autocomplete="off"
+            class="w-full border-0 text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+          />
+        </label>
+        <button
+          type="submit"
+          [disabled]="isLoadingSearch"
+          class="mt-2 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-blue px-7 text-sm font-black text-white transition hover:bg-blue2 lg:mt-0 lg:w-auto disabled:opacity-60"
+        >
+          <app-loader
+            *ngIf="isLoadingSearch"
+            [showText]="false"
+          ></app-loader>
+          <ng-container *ngIf="!isLoadingSearch">
+            <i class="fa-solid fa-paper-plane"></i>
+            {{ tCore("home.search.searchButton") }}
+          </ng-container>
+        </button>
+      </form>
+
+      <!-- Popular suggestions — full width -->
+      <div class="flex flex-wrap gap-3 text-sm font-bold text-white/80">
+        <span class="text-white/55">{{ tCore("home.hero.popular") }}</span>
+        <a
+          href="#"
+          (click)="selectSuggestion($event, tCore('home.hero.popularWebDeveloper'))"
+          class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+          >{{ tCore("home.hero.popularWebDeveloper") }}</a
+        >
+        <a
+          href="#"
+          (click)="selectSuggestion($event, tCore('home.hero.popularCybersecurity'))"
+          class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+          >{{ tCore("home.hero.popularCybersecurity") }}</a
+        >
+        <a
+          href="#"
+          (click)="selectSuggestion($event, tCore('home.hero.popularData'))"
+          class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+          >{{ tCore("home.hero.popularData") }}</a
+        >
+      </div>
+
+      <!-- Two-column grid: title left, card right -->
+      <div class="grid flex-1 items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+      <div class="min-w-0">
+        <!-- Title -->
+        <h1
+          class="font-display text-5xl font-black leading-[.95] tracking-tight md:text-7xl"
+        >
+          {{ tCore("home.hero.title") }} {{ tCore("home.hero.titleLine2") }}
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="mt-6 max-w-2xl text-lg font-medium leading-8 text-white/78">
+          {{ tCore("home.hero.subtitle") }}
+        </p>
+      </div>
+
+      <!-- Matching score card (desktop) -->
+      <div class="relative hidden lg:block">
+        <div class="absolute -left-8 top-10 size-32 rounded-full bg-coral"></div>
+        <div class="absolute -right-6 bottom-12 size-40 rounded-full bg-blue"></div>
+        <div
+          class="relative rounded-[36px] border border-white/14 bg-white/10 p-5 shadow-soft backdrop-blur-xl"
+        >
+          <div class="rounded-[28px] bg-white p-5 text-slate-900 shadow-card">
+            <div class="flex items-center justify-between">
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-[.22em] text-blue"
+                >
+                  {{ tCore("home.hero.matchingScore") }}
+                </p>
+                <h3 class="mt-1 text-2xl font-black text-navy">
+                  {{ tCore("home.hero.opportunities") }}
+                </h3>
+              </div>
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-chart-simple text-xl"></i
+              ></span>
+            </div>
+            <div class="mt-6 space-y-4">
+              <article
+                class="rounded-3xl border border-slate-100 bg-slate-50 p-4"
+              >
+                <div class="flex items-start gap-4">
+                  <span
+                    class="grid size-12 shrink-0 place-items-center rounded-2xl bg-navy text-white"
+                    ><i class="fa-solid fa-shield-halved"></i
+                  ></span>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-black text-navy">
+                      AI Engineer — Fraud Detection
+                    </h4>
+                    <p class="mt-1 text-sm font-medium text-slate-500">
+                      NexarTrust Analytics &middot; Paris
+                    </p>
+                    <div
+                      class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"
+                    >
+                      <div class="h-full w-[88%] rounded-full bg-blue"></div>
+                    </div>
+                  </div>
+                  <span
+                    class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-600"
+                    >88%</span
+                  >
+                </div>
+              </article>
+              <article
+                class="rounded-3xl border border-slate-100 bg-slate-50 p-4"
+              >
+                <div class="flex items-start gap-4">
+                  <span
+                    class="grid size-12 shrink-0 place-items-center rounded-2xl bg-coral text-white"
+                    ><i class="fa-solid fa-code"></i
+                  ></span>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-black text-navy">Full-Stack Developer</h4>
+                    <p class="mt-1 text-sm font-medium text-slate-500">
+                      Super Test &middot; Remote
+                    </p>
+                    <div
+                      class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"
+                    >
+                      <div class="h-full w-[74%] rounded-full bg-coral"></div>
+                    </div>
+                  </div>
+                  <span
+                    class="rounded-full bg-orange-50 px-3 py-1 text-xs font-black text-orange-600"
+                    >74%</span
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div><!-- end two-column grid -->
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="bg-mist py-12">
+    <div
+      class="mx-auto grid max-w-[1240px] gap-5 px-5 md:grid-cols-3 lg:px-8"
+    >
+      <!-- Profile -->
+      <article
+        class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+      >
+        <div
+          class="mb-5 grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+        >
+          <i class="fa-solid fa-user-plus text-xl"></i>
+        </div>
+        <h2 class="text-xl font-black text-navy">
+          {{ tCore("home.quickActions.profileTitle") }}
+        </h2>
+        <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+          {{ tCore("home.quickActions.profileDescription") }}
+        </p>
+        <a
+          routerLink="/auth/register"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+          >{{ tCore("home.quickActions.profileLink") }}
+          <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </article>
+
+      <!-- CV -->
+      <article
+        class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+      >
+        <div
+          class="mb-5 grid size-14 place-items-center rounded-2xl bg-red-50 text-coral"
+        >
+          <i class="fa-solid fa-file-arrow-up text-xl"></i>
+        </div>
+        <h2 class="text-xl font-black text-navy">
+          {{ tCore("home.quickActions.cvTitle") }}
+        </h2>
+        <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+          {{ tCore("home.quickActions.cvDescription") }}
+        </p>
+        <a
+          routerLink="/auth/register"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+          >{{ tCore("home.quickActions.cvLink") }}
+          <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </article>
+
+      <!-- Verified recruiters -->
+      <article
+        class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+      >
+        <div
+          class="mb-5 grid size-14 place-items-center rounded-2xl bg-violet-50 text-ink"
+        >
+          <i class="fa-solid fa-building-user text-xl"></i>
+        </div>
+        <h2 class="text-xl font-black text-navy">
+          {{ tCore("home.quickActions.recruitersTitle") }}
+        </h2>
+        <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+          {{ tCore("home.quickActions.recruitersDescription") }}
+        </p>
+        <a
+          routerLink="/employers"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+          >{{ tCore("home.quickActions.recruitersLink") }}
+          <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Recent Jobs -->
+  <section id="jobs" class="bg-white py-16">
+    <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+      <div
+        class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+            {{ tCore("home.sections.recentJobsLabel") }}
+          </p>
+          <h2
+            class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+          >
+            {{ tCore("home.sections.latestOpportunities") }}
+          </h2>
+        </div>
+        <a
+          routerLink="/jobs"
+          class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+          >{{ tCore("home.viewAll") }} <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+
+      <!-- Loading state -->
+      <app-loader *ngIf="isLoading"></app-loader>
+
+      <!-- Empty state -->
+      <div *ngIf="!isLoading && !hasError && jobOffers.length === 0">
+        <div
+          class="rounded-[28px] border border-line bg-white p-12 text-center shadow-card"
+        >
+          <div class="mb-6">
+            <i class="fa-solid fa-briefcase text-slate-300 text-6xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-700 mb-2">
+            {{ tCore("home.noOffers.title") }}
+          </h3>
+          <p class="text-slate-500 max-w-md mx-auto">
+            {{ tCore("home.noOffers.description") }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Job cards grid -->
+      <div
+        *ngIf="!isLoading && jobOffers.length > 0"
+        class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      >
+        <article
+          *ngFor="let job of jobOffers.slice(0, 3)"
+          class="rounded-[28px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <span
+              class="grid size-16 place-items-center rounded-3xl bg-skysoft text-blue"
+              ><i class="fa-solid fa-cube text-2xl"></i
+            ></span>
+            <span
+              class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+              >New</span
+            >
+          </div>
+          <h3 class="mt-6 text-xl font-black text-navy">
+            {{ job.title }}
+          </h3>
+          <p class="mt-2 text-sm font-semibold text-slate-500">
+            {{ job.company.name || 'Company' }} &middot;
+            {{ job.contractType || 'Full-time' }}
+          </p>
+          <p
+            class="mt-4 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+            [innerHTML]="job.description"
+          ></p>
+          <div
+            class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-600"
+          >
+            <span *ngIf="job.location" class="rounded-full bg-slate-100 px-3 py-1.5"
+              ><i class="fa-solid fa-location-dot mr-1 text-blue"></i>
+              {{ job.location }}</span
+            >
+            <span *ngIf="job.contractType" class="rounded-full bg-slate-100 px-3 py-1.5"
+              ><i class="fa-solid fa-briefcase mr-1 text-blue"></i>
+              {{ job.contractType }}</span
+            >
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <button
+              class="rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white hover:bg-blue2"
+              (click)="applyNow(job.id)"
+            >
+              <i class="fa-solid fa-paper-plane mr-2"></i>Apply
+            </button>
+            <button
+              class="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-navy hover:bg-slate-200"
+              (click)="handleViewJobOffer(job)"
+            >
+              <i class="fa-solid fa-eye mr-2"></i>Details
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-Demand Roles -->
+  <section class="overflow-hidden bg-white py-12">
+    <div
+      class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 lg:grid-cols-2 lg:px-8"
+    >
+      <div>
+        <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+          {{ tCore("home.sections.inDemandLabel") }}
+        </p>
+        <h2
+          class="mt-3 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+        >
+          {{ tCore("home.sections.mostRequested") }}
+        </h2>
+        <div class="mt-8 space-y-4">
+          <a
+            routerLink="/jobs"
+            [queryParams]="{ keyword: tCore('home.inDemand.webMobileDeveloper') }"
+            class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-mobile-screen"></i
+              ></span>
+              <div>
+                <h3 class="font-black text-navy">
+                  {{ tCore("home.inDemand.webMobileDeveloper") }}
+                </h3>
+                <p class="text-sm font-medium text-slate-500">
+                  {{ tCore("home.inDemand.webMobileProjects") }}
+                </p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-blue"></i>
+          </a>
+          <a
+            routerLink="/jobs"
+            [queryParams]="{ keyword: tCore('home.inDemand.cybersecurityConsultant') }"
+            class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-red-50 text-coral"
+                ><i class="fa-solid fa-lock"></i
+              ></span>
+              <div>
+                <h3 class="font-black text-navy">
+                  {{ tCore("home.inDemand.cybersecurityConsultant") }}
+                </h3>
+                <p class="text-sm font-medium text-slate-500">
+                  {{ tCore("home.inDemand.cybersecurityOpportunities") }}
+                </p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-blue"></i>
+          </a>
+          <a
+            routerLink="/jobs"
+            [queryParams]="{ keyword: tCore('home.inDemand.networkSystemsTechnician') }"
+            class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-violet-50 text-ink"
+                ><i class="fa-solid fa-network-wired"></i
+              ></span>
+              <div>
+                <h3 class="font-black text-navy">
+                  {{ tCore("home.inDemand.networkSystemsTechnician") }}
+                </h3>
+                <p class="text-sm font-medium text-slate-500">
+                  {{ tCore("home.inDemand.networkSystemsOffers") }}
+                </p>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-blue"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Floating illustration cards -->
+      <div class="relative min-h-[420px]">
+        <div class="absolute inset-8 rounded-[44px] bg-skysoft"></div>
+        <div
+          class="absolute left-16 top-16 min-h-64 w-72 rounded-[36px] bg-white p-6 shadow-soft"
+        >
+          <div class="mb-5 flex items-center gap-3">
+            <span
+              class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+              ><i class="fa-solid fa-lightbulb"></i
+            ></span>
+            <div>
+              <p class="text-xs font-black uppercase tracking-widest text-blue">
+                {{ tCore("home.inDemand.smartAssistant") }}
+              </p>
+              <h3 class="font-black text-navy">{{ tCore("home.inDemand.smartMatching") }}</h3>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="h-3 w-full rounded-full bg-slate-100">
+              <div class="h-3 w-[92%] rounded-full bg-blue"></div>
+            </div>
+            <div class="h-3 w-full rounded-full bg-slate-100">
+              <div class="h-3 w-[76%] rounded-full bg-coral"></div>
+            </div>
+            <div class="h-3 w-full rounded-full bg-slate-100">
+              <div class="h-3 w-[64%] rounded-full bg-ink"></div>
+            </div>
+          </div>
+          <p class="mt-6 text-sm font-medium leading-6 text-slate-600">
+            {{ tCore("home.inDemand.smartMatchingDescription") }}
+          </p>
+        </div>
+        <div
+          class="absolute bottom-10 right-10 h-56 w-64 rounded-[36px] bg-navy p-6 text-white shadow-soft"
+        >
+          <i class="fa-solid fa-user-tie text-4xl text-blue"></i>
+          <h3 class="mt-6 text-2xl font-black">{{ tCore("home.inDemand.verifiedRecruiter") }}</h3>
+          <p class="mt-2 text-sm font-medium leading-6 text-white/70">
+            {{ tCore("home.inDemand.verifiedRecruiterDescription") }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="candidates" class="bg-mist py-16">
+    <div class="mx-auto max-w-[1040px] px-5 text-center lg:px-8">
+      <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+        {{ tCore("home.sections.process") }}
+      </p>
+      <h2
+        class="mt-3 font-display text-4xl font-black text-navy md:text-5xl"
+      >
+        {{ tCore("home.sections.howItWorks") }}
+      </h2>
+      <div class="mt-10 grid gap-5 md:grid-cols-4">
+        <article
+          *ngFor="let step of tryRecruiter"
+          class="rounded-[28px] bg-white p-7 shadow-card"
+        >
+          <span
+            class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+            ><i class="fa-solid text-xl" [ngClass]="step.icon"></i
+          ></span>
+          <h3 class="mt-5 font-black text-navy">{{ step.name }}</h3>
+          <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+            {{ step.description }}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+      <div class="mb-9 flex items-end justify-between">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+            {{ tCore("home.sections.explore") }}
+          </p>
+          <h2
+            class="mt-2 font-display text-4xl font-black text-navy md:text-5xl"
+          >
+            {{ tCore("home.sections.popularCategories") }}
+          </h2>
+        </div>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a
+          *ngFor="let category of popularCategories"
+          (click)="selectCategory(category.name)"
+          class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft cursor-pointer"
+        >
+          <i
+            class="fa-solid rounded-2xl bg-skysoft p-3 text-blue"
+            [ngClass]="category.icon"
+          ></i>
+          <h3 class="mt-4 font-black text-navy">{{ category.name }}</h3>
+          <p class="mt-1 text-sm font-medium text-slate-500">
+            {{ category.openPositions }}
+            {{ tCore("home.categories.openPositions") }}
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Companies -->
+  <section id="companies" class="bg-white pb-16">
+    <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+      <div class="mb-8 flex items-end justify-between">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+            {{ tCore("home.sections.employers") }}
+          </p>
+          <h2
+            class="mt-2 font-display text-4xl font-black text-navy md:text-5xl"
+          >
+            {{ tCore("home.sections.topCompanies") }}
+          </h2>
+        </div>
+        <a
+          routerLink="/employers"
+          class="hidden items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue sm:inline-flex"
+          >{{ tCore("home.viewAll") }} <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+
+      <!-- Empty state -->
+      <div
+        *ngIf="companies.length === 0"
+        class="flex flex-col items-center justify-center py-16 px-4"
+      >
+        <div class="text-center max-w-md">
+          <div class="mb-6">
+            <i class="fa-solid fa-building text-slate-300 text-6xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-700 mb-2">
+            {{ tCore("home.noCompanies.title") }}
+          </h3>
+          <p class="text-slate-500 mb-6">
+            {{ tCore("home.noCompanies.description") }}
+          </p>
+          <a
+            routerLink="/employers"
+            class="inline-flex items-center gap-2 rounded-2xl bg-blue px-6 py-3 text-sm font-black text-white hover:bg-blue2"
+          >
+            <i class="fa-solid fa-arrow-right"></i>
+            {{ tCore("home.noCompanies.browseAll") }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Company cards -->
+      <div
+        *ngIf="companies.length > 0"
+        class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+      >
+        <article
+          *ngFor="let company of companies.slice(0, 4); let i = index"
+          class="overflow-hidden rounded-[28px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+        >
+          <div
+            class="h-36 p-5"
+            [ngStyle]="{
+              'background': 'linear-gradient(135deg, ' + companyGradients[i % companyGradients.length].from + ', ' + companyGradients[i % companyGradients.length].to + ')'
+            }"
+          >
+            <span
+              class="grid size-16 place-items-center rounded-3xl bg-white text-navy"
+              ><i class="fa-solid fa-building text-2xl"></i
+            ></span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-black text-navy">{{ company.name }}</h3>
+            <p class="mt-2 line-clamp-1 text-sm font-medium text-slate-500" [innerHTML]="company.description || 'Company'">
+            </p>
+            <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+              <i class="fa-solid fa-location-dot mr-2 text-blue"></i
+              >{{ company.city }}, {{ company.country }}
+            </p>
+            <div class="mt-6 flex items-center justify-between">
+              <span
+                class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                >{{ (company.jobOffers?.length || 0) }} jobs</span
+              >
+              <button
+                class="rounded-xl bg-blue px-4 py-2 text-xs font-black text-white hover:bg-blue2"
+                (click)="handleViewCompany(company)"
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-mist py-16">
+    <div class="mx-auto max-w-[1240px] px-5 text-center lg:px-8">
+      <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+        {{ tCore("home.sections.clientReviews") }}
+      </p>
+      <h2
+        class="mt-3 font-display text-4xl font-black text-navy md:text-5xl"
+      >
+        {{ tCore("home.sections.testimonials") }}
+      </h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <article
+          *ngFor="let testimonial of visibleTestimonials"
+          class="rounded-[28px] bg-white p-7 text-left shadow-card"
+        >
+          <div class="text-yellow-400">
+            <i
+              *ngFor="let s of [1, 2, 3, 4, 5]; let j = index"
+              class="fa-solid fa-star"
+              [ngClass]="j < testimonial.stars ? 'text-yellow-400' : 'text-slate-300'"
+            ></i>
+          </div>
+          <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+            {{ testimonial.quote }}
+          </p>
+          <div class="mt-7 flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-full text-white font-black"
+              [ngClass]="{
+                'bg-blue': testimonial.borderColor === 'yellow',
+                'bg-coral': testimonial.borderColor === 'purple',
+                'bg-ink': testimonial.borderColor !== 'yellow' && testimonial.borderColor !== 'purple'
+              }"
+              >{{ testimonial.name.charAt(0) }}{{ testimonial.name.split(' ').pop()?.charAt(0) || '' }}</span
+            >
+            <div>
+              <h3 class="font-black text-navy">{{ testimonial.name }}</h3>
+              <p class="text-xs font-bold text-slate-500">
+                {{ testimonial.role }}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pagination dots -->
+      <div class="flex justify-center gap-2 mt-8">
+        <span
+          *ngFor="let dot of dots"
+          class="size-2.5 rounded-full cursor-pointer transition-colors"
+          [ngClass]="{
+            'bg-blue': dot === currentSlide,
+            'bg-slate-300': dot !== currentSlide
+          }"
+          (click)="goToSlide(dot)"
+        ></span>
+      </div>
+
+      <!-- Navigation arrows -->
+      <div class="flex justify-center gap-4 mt-6">
+        <button
+          class="grid size-10 place-items-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue"
+          (click)="prevSlide()"
+          [disabled]="currentSlide === 0"
+        >
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+        <button
+          class="grid size-10 place-items-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue"
+          (click)="nextSlide()"
+          [disabled]="currentSlide >= testimonials.length - testimonialsPerPage"
+        >
+          <i class="fa-solid fa-chevron-right text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-coral py-16">
+    <div
+      class="absolute -right-16 bottom-[-150px] size-[420px] rounded-full border-[78px] border-navy"
+    ></div>
+    <div
+      class="absolute left-[-120px] top-[-160px] size-[360px] rounded-full border-[70px] border-white/20"
+    ></div>
+    <div class="relative mx-auto max-w-[920px] px-5">
+      <div class="rounded-[36px] bg-white p-8 shadow-soft md:p-12">
+        <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+          <div class="min-w-0">
+            <h2
+              class="font-display text-4xl font-black leading-none text-navy md:text-5xl"
+            >
+              {{ tCore("home.cta.title") }}
+            </h2>
+            <p
+              class="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600"
+            >
+              {{ tCore("home.cta.subtitle") }}
+            </p>
+          </div>
+          <a
+            routerLink="/auth/register"
+            class="inline-flex items-center justify-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-black text-white hover:bg-ink"
+            >{{ tCore("home.cta.button") }}
+            <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

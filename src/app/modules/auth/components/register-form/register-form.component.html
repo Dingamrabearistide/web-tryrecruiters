@@ -1,0 +1,330 @@
+<form
+  *transloco="let t; read: 'auth'"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  class="w-full space-y-5"
+>
+  <!-- First Name & Last Name -->
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.firstName")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+      >
+        <i class="fa-solid fa-user text-blue"></i>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+          [placeholder]="t('register.form.firstName')"
+        />
+      </div>
+      <app-form-field-errors
+        fieldName="firstName"
+        [control]="control('firstName')"
+      ></app-form-field-errors>
+    </label>
+    <label class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.lastName")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+      >
+        <i class="fa-solid fa-user text-blue"></i>
+        <input
+          type="text"
+          formControlName="lastName"
+          class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+          [placeholder]="t('register.form.lastName')"
+        />
+      </div>
+      <app-form-field-errors
+        fieldName="lastName"
+        [control]="control('lastName')"
+      ></app-form-field-errors>
+    </label>
+  </div>
+
+  <!-- Email -->
+  <label class="block">
+    <span class="text-sm font-black text-navy">{{
+      t("register.form.email")
+    }}</span>
+    <div
+      class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+    >
+      <i class="fa-solid fa-envelope text-blue"></i>
+      <input
+        type="email"
+        formControlName="email"
+        class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+        placeholder="you@example.com"
+      />
+    </div>
+    <app-form-field-errors
+      fieldName="email"
+      [control]="control('email')"
+    ></app-form-field-errors>
+  </label>
+
+  <!-- Phone -->
+  <!-- A plain div, not a <label>: app-phone-input is a compound widget with
+       its own button + text input + dropdown, and nesting that inside a
+       native <label> lets the browser treat the button as the label's
+       implicit associated control — clicking the caption text or the
+       bordered box's empty space then forwards a synthetic click straight
+       to the toggle button, which is exactly what made the dropdown seem
+       to "not close" (one real click plus one forwarded click cancel out
+       and leave it open). Every other field here is a single plain
+       <input>, where that forwarding is harmless, so only this one needed
+       to change. -->
+  <div class="block">
+    <span class="text-sm font-black text-navy">{{
+      t("register.form.phone")
+    }}</span>
+    <div class="mt-2">
+      <app-phone-input
+        formControlName="phone"
+        defaultIso2="us"
+      ></app-phone-input>
+    </div>
+    <app-form-field-errors
+      fieldName="phone"
+      [control]="control('phone')"
+    ></app-form-field-errors>
+  </div>
+
+  <!-- Country, Region & City (recruiters only) -->
+  <div *ngIf="accountType === 'RECRUITER'" class="grid gap-5 sm:grid-cols-3">
+    <!-- Country -->
+    <div class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.country")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+      >
+        <i class="fa-solid fa-globe text-blue flex-shrink-0"></i>
+        <app-country-select
+          formControlName="country"
+          [placeholder]="t('register.form.country')"
+          class="w-full min-w-0 flex-1"
+        ></app-country-select>
+      </div>
+      <app-form-field-errors
+        fieldName="country"
+        [control]="control('country')"
+      ></app-form-field-errors>
+    </div>
+
+    <!-- Region / State -->
+    <div class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.region")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+        [class.opacity-50]="!form.get('country')?.value || loadingRegions"
+      >
+        <i class="fa-solid fa-map text-blue flex-shrink-0"></i>
+        <app-searchable-select
+          formControlName="region"
+          [options]="regions"
+          [placeholder]="t('register.form.region')"
+          [loading]="loadingRegions"
+          [loadingLabel]="t('register.form.loadingRegions')"
+          [disabled]="!form.get('country')?.value || loadingRegions"
+          class="w-full min-w-0 flex-1"
+        ></app-searchable-select>
+      </div>
+      <app-form-field-errors
+        fieldName="region"
+        [control]="control('region')"
+      ></app-form-field-errors>
+    </div>
+
+    <!-- City -->
+    <div class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.city")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+        [class.opacity-50]="!form.get('region')?.value || loadingCities"
+      >
+        <i class="fa-solid fa-location-dot text-blue flex-shrink-0"></i>
+        <app-searchable-select
+          formControlName="city"
+          [options]="cities"
+          [placeholder]="t('register.form.city')"
+          [loading]="loadingCities"
+          [loadingLabel]="t('register.form.loadingCities')"
+          [disabled]="!form.get('region')?.value || loadingCities"
+          class="w-full min-w-0 flex-1"
+        ></app-searchable-select>
+      </div>
+      <app-form-field-errors
+        fieldName="city"
+        [control]="control('city')"
+      ></app-form-field-errors>
+    </div>
+  </div>
+
+  <!-- Password & Confirm Password -->
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.password")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+      >
+        <i class="fa-solid fa-lock text-blue"></i>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+          [placeholder]="t('register.form.password')"
+        />
+        <button
+          type="button"
+          (click)="showPassword = !showPassword"
+          class="text-slate-400 transition hover:text-blue"
+          tabindex="-1"
+        >
+          <i
+            [class]="
+              showPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'
+            "
+          ></i>
+        </button>
+      </div>
+      <app-form-field-errors
+        fieldName="password"
+        [control]="form.get('password')"
+      ></app-form-field-errors>
+    </label>
+    <label class="block">
+      <span class="text-sm font-black text-navy">{{
+        t("register.form.confirmPassword")
+      }}</span>
+      <div
+        class="mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+      >
+        <i class="fa-solid fa-circle-check text-blue"></i>
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          formControlName="confirmPassword"
+          class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+          [placeholder]="t('register.form.confirmPassword')"
+        />
+        <button
+          type="button"
+          (click)="showConfirmPassword = !showConfirmPassword"
+          class="text-slate-400 transition hover:text-blue"
+          tabindex="-1"
+        >
+          <i
+            [class]="
+              showConfirmPassword
+                ? 'fa-regular fa-eye-slash'
+                : 'fa-regular fa-eye'
+            "
+          ></i>
+        </button>
+      </div>
+      <app-form-field-errors
+        fieldName="passwordConfirmation"
+        [control]="form.get('confirmPassword')"
+      ></app-form-field-errors>
+      <p
+        *ngIf="form.errors?.['mismatch'] && form.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        {{ t("register.form.errors.password.mismatch") }}
+      </p>
+    </label>
+  </div>
+
+  <!-- Terms -->
+  <label class="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
+    <input
+      type="checkbox"
+      formControlName="acceptTerms"
+      class="mt-1 size-4 accent-blue"
+    />
+    <div>
+      <span class="text-sm font-medium leading-6 text-slate-500">
+        {{ t("register.form.acceptText.part1") }}
+        <a
+          (click)="openTerms($event)"
+          class="font-black text-blue hover:text-blue2 cursor-pointer"
+          >{{ t("register.form.acceptText.link") }}</a
+        >.
+      </span>
+    </div>
+  </label>
+
+  <app-form-field-errors
+    fieldName="acceptTerms"
+    [control]="control('acceptTerms')"
+  ></app-form-field-errors>
+
+  <!-- Submit -->
+  <button
+    [disabled]="isLoading"
+    type="submit"
+    class="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue px-6 py-4 text-sm font-black text-white shadow-glow transition hover:bg-blue2 disabled:opacity-70 disabled:cursor-not-allowed"
+  >
+    <app-loader
+      *ngIf="isLoading"
+      [showText]="false"
+      class="text-white"
+    ></app-loader>
+    <span *ngIf="isLoading" class="ml-2">{{
+      t("register.form.buttons.loading")
+    }}</span>
+    <span *ngIf="!isLoading"
+      ><i class="fa-solid fa-user-plus"></i>
+      {{ t("register.form.buttons.submit") }}</span
+    >
+  </button>
+
+  <div class="w-full text-end text-sm leading-6 text-slate-500">
+    <!-- {{ t("forgot.title") }} -->
+    <a
+      routerLink="../forgot-password"
+      class="font-black text-blue hover:text-blue2 cursor-pointer"
+      >{{ t("forgot.title") }}</a
+    >
+  </div>
+
+  <!-- Divider -->
+  <div class="relative py-2 text-center">
+    <span class="absolute left-0 top-1/2 h-px w-full bg-line"></span>
+    <span
+      class="relative bg-white px-4 text-xs font-black uppercase tracking-widest text-slate-400"
+      >{{ t("register.or") }}</span
+    >
+  </div>
+
+  <!-- Google (placeholder — no actual Google OAuth yet) -->
+  <button
+    type="button"
+    class="flex w-full items-center justify-center gap-3 rounded-2xl border border-line bg-white px-6 py-3.5 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+  >
+    <i class="fa-brands fa-google text-lg"></i>
+    {{ t("register.continueWithGoogle") }}
+  </button>
+
+  <!-- Login link -->
+  <p class="text-center text-sm font-medium text-slate-500">
+    {{ t("register.alreadyHaveAccount") }}
+    <a routerLink="/auth/login" class="font-black text-blue hover:text-blue2">{{
+      t("register.signIn")
+    }}</a>
+  </p>
+</form>

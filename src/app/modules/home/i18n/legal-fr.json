@@ -1,0 +1,358 @@
+{
+  "privacyPolicy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "18 décembre 2025",
+    "introduction": "Bienvenue sur TRYRECRUITERS ! Votre confidentialité est importante pour nous. Cet accord de confidentialité (« Accord ») explique comment nous collectons, utilisons, divulguons et protégeons vos informations personnelles lorsque vous utilisez TRYRECRUITERS Web. En créant un compte et en utilisant l'application, vous acceptez d'être lié par les termes et conditions énoncés dans cet accord.",
+
+    "section1": {
+      "title": "1. Informations que nous collectons",
+      "subsection1": {
+        "title": "1.1 Informations que vous nous fournissez :",
+        "items": [
+          "Informations de compte : Lors de la création d'un compte, nous collectons votre nom, adresse e-mail, mot de passe, CV et autres informations nécessaires.",
+          "Informations de profil : Vous pouvez ajouter d'autres informations à votre profil, comme une photo de profil, un numéro de téléphone et d'autres détails.",
+          "Contenu : Toute information ou contenu que vous fournissez, téléchargez ou partagez via l'application, notamment les messages, les publications et les fichiers multimédias."
+        ]
+      },
+      "subsection2": {
+        "title": "1.2 Informations que nous collectons automatiquement :",
+        "items": [
+          "Informations sur l'appareil : Nous collectons des informations sur l'appareil que vous utilisez pour accéder à l'application, notamment les modèles de matériel, les systèmes d'exploitation et les identifiants d'appareil uniques.",
+          "Informations d'utilisation : Nous collectons des informations sur vos interactions avec l'application, telles que les heures d'accès, les pages consultées et les actions entreprises.",
+          "Informations de localisation : Nous pouvons collecter des informations sur votre localisation via votre adresse IP, GPS ou d'autres technologies de localisation si vous utilisez ces services."
+        ]
+      }
+    },
+
+    "section2": {
+      "title": "2. Comment nous utilisons vos informations",
+      "subsection1": {
+        "title": "2.1 Pour fournir et améliorer nos services :",
+        "items": [
+          "Créer et gérer votre compte.",
+          "Personnaliser votre expérience et fournir du contenu et des fonctionnalités adaptés à vos intérêts et profil.",
+          "Répondre à vos commentaires et questions et fournir un service client adapté."
+        ]
+      },
+      "subsection2": {
+        "title": "2.2 Pour la communication :",
+        "items": [
+          "Vous envoyer des avis techniques, des mises à jour, des alertes de sécurité et des messages d'assistance.",
+          "Vous fournir des informations sur les nouvelles fonctionnalités, les services et les promotions."
+        ]
+      },
+      "subsection3": {
+        "title": "2.3 Pour la sécurité et la prévention de la fraude :",
+        "items": [
+          "Surveiller et analyser l'utilisation et les activités pour assurer la sécurité de l'application.",
+          "Détecter, prévenir et traiter la fraude, les activités non autorisées et l'accès."
+        ]
+      },
+      "subsection4": {
+        "title": "2.4 Conformité légale :",
+        "items": [
+          "Respecter les obligations légales, appliquer nos accords et protéger les droits, les biens et la sécurité de TRYRECRUITERS, de nos utilisateurs et d'autres."
+        ]
+      }
+    },
+
+    "section3": {
+      "title": "3. Comment nous partageons vos informations",
+      "subsection1": {
+        "title": "3.1 Avec des fournisseurs de services :",
+        "description": "Nous pouvons partager vos informations avec des fournisseurs tiers, des consultants et d'autres prestataires de services qui ont besoin d'accès à vos informations pour effectuer du travail en notre nom."
+      },
+      "subsection2": {
+        "title": "3.2 Pour des raisons légales :",
+        "description": "Nous pouvons divulguer vos informations si la loi l'exige ou en réponse à une demande légale, comme une ordonnance du tribunal, une assignation à comparaître ou une enquête gouvernementale ou fiscale."
+      },
+      "subsection3": {
+        "title": "3.3 Transferts commerciaux :",
+        "description": "Nous pouvons partager ou transférer vos informations en lien avec, lors de négociations de, toute fusion, vente d'actifs d'entreprise, financement ou acquisition de tout ou partie de notre activité par une autre entreprise."
+      }
+    },
+
+    "section4": {
+      "title": "4. Vos droits et choix",
+      "subsection1": {
+        "title": "4.1 Accès et mise à jour :",
+        "description": "Vous pouvez accéder à vos informations personnelles et les mettre à jour via les paramètres de votre compte."
+      },
+      "subsection2": {
+        "title": "4.2 Supprimer le compte :",
+        "description": "Vous pouvez supprimer votre compte à tout moment, ce qui supprimera votre profil et les données associées de nos systèmes."
+      },
+      "subsection3": {
+        "title": "4.3 Se désabonner :",
+        "description": "Vous pouvez refuser de recevoir des communications promotionnelles en suivant les instructions de ces communications ou via les paramètres de votre compte."
+      }
+    },
+
+    "section5": {
+      "title": "5. Sécurité des données",
+      "description": "Nous mettons en œuvre diverses mesures de sécurité pour protéger vos informations personnelles contre l'accès, l'utilisation ou la divulgation non autorisés. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est 100% sécurisée et nous ne pouvons pas garantir une sécurité absolue."
+    },
+
+    "section6": {
+      "title": "6. Conservation des données",
+      "description": "Nous conservons vos informations personnelles aussi longtemps que nécessaire pour atteindre les objectifs décrits dans cet accord, sauf si une période de rétention plus longue est requise ou autorisée par la loi."
+    },
+
+    "section7": {
+      "title": "7. Confidentialité des enfants",
+      "description": "Notre application ne s'adresse pas aux enfants de moins de 18 ans. Nous ne collectons pas sciemment d'informations personnelles auprès des enfants de moins de 18 ans. Si nous découvrez que nous avons reçu par inadvertance des informations personnelles d'un utilisateur de moins de 18 ans, nous supprimerons ces informations de nos dossiers."
+    },
+
+    "section8": {
+      "title": "8. Modifications de cet accord de confidentialité",
+      "description": "Nous pouvons mettre à jour cet accord de confidentialité de temps à autre pour refléter les changements dans nos pratiques ou pour d'autres raisons opérationnelles, légales ou réglementaires. Nous vous informerons de tout changement important en affichant le nouvel accord de confidentialité sur l'application et en mettant à jour la « date d'entrée en vigueur » en haut de cet accord. Votre utilisation continue de l'application après tout changement à cet accord de confidentialité constitue votre acceptation de l'accord révisé."
+    },
+
+    "section9": {
+      "title": "9. Nous contacter",
+      "description": "Si vous avez des questions sur cet accord de confidentialité, veuillez nous contacter à info@tryrecruiters.com."
+    }
+  },
+
+  "userAgreement": {
+    "title": "Accord d'utilisation",
+    "lastUpdated": "15 décembre 2025",
+    "introduction": "Bienvenue sur TRYRECRUITERS ! Cet accord d'utilisation (« Accord ») régit votre utilisation de l'application Web TRYRECRUITERS (« Application Web »). En téléchargeant, en installant ou en utilisant l'application Web, vous acceptez ces termes.",
+
+    "section1": {
+      "title": "1. Introduction",
+      "subsection1": {
+        "title": "1.1 Contrat",
+        "description": "En utilisant notre application Web, vous acceptez tous ces termes. Votre utilisation de notre application Web est également soumise à notre politique de confidentialité et à notre politique relative aux cookies, qui couvrent la façon dont nous collectons, utilisons, partageons et stockons vos informations personnelles. En cliquant sur « S'inscrire », « Créer un compte » ou toute référence similaire, vous acceptez de conclure un contrat légalement contraignant avec TRYRECRUITERS. Si vous n'acceptez pas ce contrat (« Contrat » ou « Accord d'utilisation »), ne cliquez pas sur « S'inscrire » (ou toute référence similaire) et n'accédez ni n'utilisez nos services. Si vous souhaitez résilier ce contrat, vous pouvez le faire à tout moment en fermant votre compte et en cessant d'accéder à ou d'utiliser notre application Web."
+      },
+      "subsection2": {
+        "title": "1.2 Services",
+        "description": "Cet accord s'applique à l'application Web TRYRECRUITERS et à d'autres sites, applications Web, communications et services liés à TRYRECRUITERS qui indiquent qu'ils sont offerts en vertu de cet accord (« Services »), y compris la collecte de données pour ces services, tels que nos publicités et les modules « Postuler avec TRYRECRUITERS » et « Partager avec TRYRECRUITERS »."
+      },
+      "subsection3": {
+        "title": "1.3 Membres et visiteurs",
+        "description": "Lorsque vous vous inscrivez et rejoignez les services TRYRECRUITERS, vous devenez membre. Si vous choisissez de ne pas vous inscrire à nos services, vous pouvez accéder à certaines fonctionnalités en tant que « Visiteur »."
+      },
+      "subsection4": {
+        "title": "1.4 Modifications",
+        "description": "Nous pouvons apporter des modifications à l'accord. Nous pouvons modifier cet accord, notre politique de confidentialité et notre politique relative aux cookies de temps à autre. Si nous apportons des modifications importantes, nous vous en informerons via nos services ou par d'autres moyens pour vous donner l'occasion d'examiner les modifications avant qu'elles ne prennent effet. Nous convenons que les modifications ne peuvent pas être rétroactives. Si vous vous opposez à des modifications, vous pouvez fermer votre compte. Votre utilisation continue de nos services après que nous ayons publié ou envoyé un avis concernant les modifications à ces conditions signifie que vous acceptez les conditions mises à jour à partir de leur date d'entrée en vigueur et acceptez d'être lié par celles-ci."
+      },
+      "subsection5": {
+        "title": "1.5 Conduite interdite",
+        "description": "Vous acceptez de ne pas publier ou partager du contenu qui :",
+        "items": [
+          "Est obscène, pornographique, violent ou à caractère sexuellement explicite.",
+          "Harcèle, intimide ou promeut la haine.",
+          "Viole la confidentialité d'autres personnes, y compris le partage d'images intimes ou privées sans consentement.",
+          "Contient du langage ou du contenu inapproprié ou offensant.",
+          "Est généralement illégal."
+        ]
+      }
+    },
+
+    "section2": {
+      "title": "2. Acceptation des conditions et paiement",
+      "subsection1": {
+        "title": "2.1 Éligibilité au service",
+        "description": "Pour utiliser les services, vous devez avoir au moins 18 ans et accepter un seul compte TRYRECRUITERS à votre vrai nom. Créer des comptes avec des informations fausses viole ces conditions."
+      },
+      "subsection2": {
+        "title": "2.2 Votre compte",
+        "description": "Vous acceptez d'utiliser un mot de passe fort, de ne pas transférer votre compte et de respecter nos politiques. Vous êtes responsable de toutes les activités du compte. Votre compte vous appartient sauf s'il a été acheté par une autre partie."
+      },
+      "subsection3": {
+        "title": "2.3 Contenu et conduite",
+        "description": "Ne publiez pas de contenu sexuellement explicite, de harcèlement, de discours de haine, violant la confidentialité, offensant ou illégal."
+      },
+      "subsection4": {
+        "title": "2.4 Paiement",
+        "description": "Vous acceptez d'honorer vos obligations de paiement et comprenez que des frais/taxes peuvent s'appliquer. Le non-paiement peut entraîner l'interruption du service. Les abonnements se renouvellent automatiquement sauf s'ils sont annulés avant le renouvellement. Votre méthode de paiement peut être conservée pour les frais futurs. Les taxes sont calculées à partir des informations de facturation fournies à l'achat. Les factures sont disponibles dans les paramètres du compte."
+      },
+      "subsection5": {
+        "title": "2.5 Avis et messages",
+        "description": "Nous fournissons les avis via le service ou vos informations de contact enregistrées. Tenez vos informations de contact à jour pour ne pas manquer les avis importants."
+      },
+      "subsection6": {
+        "title": "2.6 Partage",
+        "description": "Les informations que vous partagez sont visibles par les autres. Nous respectons vos paramètres de confidentialité. Les candidatures à des emplois ne sont partagées qu'avec les employeurs par défaut. Nous pouvons supprimer du contenu sans avis."
+      }
+    },
+
+    "section3": {
+      "title": "3. Éligibilité",
+      "subsection1": {
+        "title": "3.1 Exigence d'âge minimum",
+        "description": "Vous devez avoir au moins 18 ans. Vous ne pouvez pas créer de comptes pour d'autres ou si vous avez moins de 18 ans. Les informations fausses violent nos conditions."
+      },
+      "subsection2": {
+        "title": "3.2 Capacité juridique",
+        "description": "Vous affirmez que vous avez la capacité juridique de conclure cet accord et que vous en comprenez les conditions."
+      },
+      "subsection3": {
+        "title": "3.3 Conformité aux lois",
+        "description": "Vous acceptez de respecter toutes les lois applicables concernant la conduite en ligne, le contenu, la confidentialité, la protection des données et la propriété intellectuelle."
+      }
+    },
+
+    "section4": {
+      "title": "4. Comptes utilisateur",
+      "subsection1": {
+        "title": "4.1 Inscription",
+        "description": "Fournissez des informations exactes, actuelles et complètes. Mettez à jour régulièrement les données d'inscription. Les informations fausses peuvent entraîner la suspension ou la résiliation du compte."
+      },
+      "subsection2": {
+        "title": "4.2 Sécurité du compte",
+        "description": "Gardez les mots de passe confidentiels. Informez-nous immédiatement de tout accès non autorisé. Fermez votre session après chaque session, surtout sur les appareils partagés."
+      },
+      "subsection3": {
+        "title": "4.3 Résiliation du compte",
+        "description": "Vous pouvez résilier votre compte à tout moment. Nous pouvons résilier pour violations, inactivité, fraude ou raisons légales. Certaines dispositions surviveront à la résiliation."
+      }
+    },
+
+    "section5": {
+      "title": "5. Confidentialité et données",
+      "subsection1": {
+        "title": "5.1 Collecte de données",
+        "description": "Nous collectons et utilisons les données personnelles selon notre politique de confidentialité. Votre utilisation constitue votre consentement à ce traitement des données."
+      },
+      "subsection2": {
+        "title": "5.2 Sécurité des données",
+        "description": "Nous mettons en œuvre des mesures de sécurité pour protéger vos données. Aucune méthode n'est 100% sécurisée ; nous ne pouvons pas garantir une sécurité absolue."
+      },
+      "subsection3": {
+        "title": "5.3 Services tiers",
+        "description": "Les liens tiers ne sont pas contrôlés par nous. Nous ne sommes pas responsables de leurs pratiques de confidentialité. Examinez leurs politiques avant de partager des informations."
+      }
+    },
+
+    "section6": {
+      "title": "6. Contenu",
+      "subsection1": {
+        "title": "6.1 Propriété",
+        "description": "Vous conservez la propriété du contenu mais nous accordez une licence mondiale, non exclusive, libre de redevances pour l'utiliser, le reproduire, le distribuer, le modifier et l'afficher."
+      },
+      "subsection2": {
+        "title": "6.2 Contenu interdit",
+        "description": "Ne publiez pas de contenu sexuellement explicite, de harcèlement, de discours de haine, violant la confidentialité, offensant ou illégal."
+      },
+      "subsection3": {
+        "title": "6.3 Suppression de contenu",
+        "description": "Nous pouvons supprimer le contenu qui viole les conditions et suspendre/résilier les comptes pour violations répétées ou raisons légales."
+      },
+      "subsection4": {
+        "title": "6.4 Responsabilité de l'utilisateur",
+        "description": "Vous êtes entièrement responsable de votre contenu. Vous acceptez de nous indemniser contre les réclamations liées à votre contenu."
+      }
+    },
+
+    "section7": {
+      "title": "7. Propriété intellectuelle",
+      "subsection1": {
+        "title": "7.1 Propriété",
+        "description": "Toute propriété intellectuelle de l'application est détenue par TRYRECRUITERS ou ses concédants, y compris les textes, graphiques, logos et logiciels."
+      },
+      "subsection2": {
+        "title": "7.2 Licence",
+        "description": "Nous accordons une licence limitée, non exclusive, non transférable pour un usage personnel et non commercial. Pas de modification, redistribution ou rétro-ingénierie. Pas de raclage automatique des données."
+      },
+      "subsection3": {
+        "title": "7.3 Contenu utilisateur",
+        "description": "Vous conservez la propriété du contenu mais nous accordez une licence mondiale pour l'utiliser, le reproduire, le modifier, le publier et l'afficher."
+      },
+      "subsection4": {
+        "title": "7.4 Contrefaçon",
+        "description": "Informez-nous immédiatement de toute contrefaçon. Nous enquêterons et prendrons des mesures appropriées, y compris la suppression du contenu ou la résiliation des contrevenants récidivistes."
+      },
+      "subsection5": {
+        "title": "7.5-7.7 Conditions IP supplémentaires",
+        "description": "Nous pouvons résilier votre licence à tout moment. Tous les droits non accordés sont réservés. Vous ne pouvez pas utiliser nos marques sans permission."
+      }
+    },
+
+    "section8": {
+      "title": "8. Résiliation",
+      "subsection1": {
+        "title": "8.1 Résiliation par vous",
+        "description": "Contactez le support client pour demander la résiliation. Il vous guidera dans le processus. Votre compte devient inaccessible ; les données sont supprimées selon notre politique de confidentialité."
+      },
+      "subsection2": {
+        "title": "8.2 Résiliation par nous",
+        "description": "Nous pouvons suspendre/résilier pour violations de l'accord, inactivité, fraude, conformité légale ou autres raisons, avec ou sans avis."
+      },
+      "subsection3": {
+        "title": "8.3 Processus",
+        "description": "Nous tenterons de vous notifier. La résiliation est immédiate. Les données sont traitées selon notre politique de confidentialité ; certaines peuvent être conservées pour des raisons légales."
+      },
+      "subsection4": {
+        "title": "8.4 Conséquences",
+        "description": "Vous perdez l'accès à tous les services. Les données sont supprimées ou anonymisées. Les obligations antérieures à la résiliation demeurent, y compris les frais dus."
+      },
+      "subsection5": {
+        "title": "8.5 Appels",
+        "description": "Appelez les décisions de résiliation en contactant le support. Nous examinerons et répondrons ; nous prenons la décision finale sur la réactivation."
+      },
+      "subsection6": {
+        "title": "8.6 Survivance",
+        "description": "La propriété intellectuelle, les limitations de responsabilité, l'indemnisation et la résolution des différends survivent à la résiliation."
+      }
+    },
+
+    "section9": {
+      "title": "9. Avertissements",
+      "subsection1": {
+        "title": "9.1 Aucune garantie",
+        "description": "L'application est fournie « en l'état » et « selon la disponibilité ». Nous ne donnons aucune garantie concernant les performances, la précision, la non-contrefaçon ou la fonctionnalité. Le contenu est fourni à titre informatif uniquement ; consultez toujours des professionnels."
+      },
+      "subsection2": {
+        "title": "9.2-9.3 Limitation de responsabilité",
+        "description": "Nous ne sommes pas responsables des dommages indirects, fortuits, spéciaux, consécutifs ou punitifs découlant de l'utilisation de l'application, du contenu, des tiers, de l'accès non autorisé, des liens ou des cas de force majeure. Certaines juridictions limitent ces exclusions."
+      },
+      "subsection3": {
+        "title": "9.4 Base de négociation",
+        "description": "Vous reconnaissez que ces avertissements répartissent équitablement les risques et sont essentiels pour nous fournir l'application."
+      }
+    },
+
+    "section10": {
+      "title": "10. Droit applicable et résolution des différends",
+      "subsection1": {
+        "title": "10.1-10.2 Droit et juridiction",
+        "description": "Cet accord est régi par les lois de [Votre pays/État]. Les différends sont résolus par les tribunaux compétents de [Votre pays/État]."
+      },
+      "subsection2": {
+        "title": "10.3 Conformité",
+        "description": "Vous respectez toutes les lois applicables locale, nationale et internationale concernant la conduite en ligne, la confidentialité, la protection des données et la propriété intellectuelle."
+      },
+      "subsection3": {
+        "title": "10.4 Résolution des différends",
+        "description": "Tentez une résolution informelle d'abord. Si elle échoue, les différends sont résolus par arbitrage contraignant selon les règles de [Votre pays/État]. L'arbitrage se tient dans la ville de résidence du demandeur."
+      },
+      "subsection4": {
+        "title": "10.5-10.6 Divisibilité et renonciation",
+        "description": "Les dispositions invalides sont modifiées pour devenir valides. Le non-exercice d'un droit ne le renonce pas sauf accord écrit de notre part."
+      }
+    },
+
+    "section11": {
+      "title": "11. Modifications de cet accord",
+      "subsection1": {
+        "title": "11.1-11.2 Modifications",
+        "description": "Nous pouvons modifier cet accord à tout moment. Les modifications prennent effet immédiatement. Nous vous notifions les modifications importantes. Examinez régulièrement pour les mises à jour."
+      },
+      "subsection2": {
+        "title": "11.3-11.5 Acceptation et responsabilité",
+        "description": "L'utilisation continue après les modifications signifie que vous acceptez les conditions révisées. Il est de votre responsabilité de rester informé. Chaque modification vous lie à partir de l'utilisation continue."
+      },
+      "subsection3": {
+        "title": "11.6 Résiliation en raison de modifications",
+        "description": "Si vous n'acceptez pas les modifications, résiliez en cessant l'utilisation et en supprimant votre compte. Les droits/obligations antérieurs à la résiliation demeurent."
+      }
+    },
+
+    "section12": {
+      "title": "12. Nous contacter",
+      "description": "Pour des questions, veuillez nous contacter à info@tryrecruiters.com. En utilisant l'application, vous reconnaissez que vous avez lu, compris et accepté d'être lié par cet accord."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div *transloco="let t; read: 'billings'">
+  <div class="p-6">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-700 flex items-center justify-center">
+        <i class="fa-solid fa-credit-card text-xl"></i>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-gray-900">{{ t("confirmTitle") }}</h2>
+        <p class="text-sm text-gray-500">{{ t("confirmDescription") }}</p>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-2xl border border-gray-100 bg-gray-50 p-5">
+      <div class="flex justify-between gap-4">
+        <span class="text-gray-500">{{ t("plan") }}</span>
+        <span class="font-semibold">{{ data.plan.name }}</span>
+      </div>
+      <div class="flex justify-between gap-4 mt-3">
+        <span class="text-gray-500">{{ t("verificationRequestsLabel") }}</span>
+        <span class="font-semibold">{{ data.credits }}</span>
+      </div>
+      <div class="flex justify-between gap-4 mt-3">
+        <span class="text-gray-500">{{ t("amount") }}</span>
+        <span class="font-bold text-lg">
+          {{ data.plan.price | number: "1.0-2" }} {{ data.plan.currency | uppercase }}
+        </span>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-500 mt-5">
+      {{ data.plan.isFree ? t("freeActivationInformation") : t("paymentRedirectionInformation") }}
+    </p>
+  </div>
+
+  <div class="px-6 py-4 border-t border-gray-100 flex justify-end gap-3">
+    <button type="button" class="px-5 py-2 rounded-lg border border-gray-300 text-gray-700" (click)="cancel()">
+      {{ t("cancel") }}
+    </button>
+    <button type="button" class="app-primary px-5 py-2" (click)="confirm()">
+      {{ data.plan.isFree ? t("activate") : t("continueToPayment") }}
+    </button>
+  </div>
+</div>

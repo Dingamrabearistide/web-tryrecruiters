@@ -1,0 +1,88 @@
+<div
+  *transloco="let t; read: 'billings'"
+  class="min-h-full bg-gray-50 py-8 px-4"
+>
+  <app-dashboard-header
+    [title]="t('subscriptionsList.title')"
+    [description]="t('subscriptionsList.description')"
+    [backText]="'common.back'"
+    backLink="../../"
+  ></app-dashboard-header>
+
+  <div class="bg-white rounded-xl border border-gray-100 p-4 mb-6">
+    <div class="grid md:grid-cols-4 gap-3">
+      <input
+        type="search"
+        [(ngModel)]="search"
+        [placeholder]="t('filters.search')"
+        class="border border-gray-200 rounded-lg px-3 py-2"
+        (keyup.enter)="applyFilters()"
+      />
+
+      <select
+        [(ngModel)]="statusFilter"
+        class="border border-gray-200 rounded-lg px-3 py-2"
+      >
+        <option value="">
+          {{ t("filters.allStatuses") }}
+        </option>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="INACTIVE">INACTIVE</option>
+        <option value="PENDING_PAYMENT">PENDING_PAYMENT</option>
+        <option value="EXPIRED">EXPIRED</option>
+        <option value="SUSPENDED">SUSPENDED</option>
+        <option value="CANCELED">CANCELED</option>
+      </select>
+
+      <button type="button" class="app-primary" (click)="applyFilters()">
+        {{ t("filters.apply") }}
+      </button>
+
+      <button
+        type="button"
+        class="border border-gray-200 rounded-lg px-4 py-2"
+        (click)="resetFilters()"
+      >
+        {{ t("filters.reset") }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+
+    <div class="text-center mt-5">
+      <button type="button" class="app-primary" (click)="loadItems()">
+        {{ t("retry") }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="cancellingId" class="mb-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+    {{ t("subscriptionsList.cancelling") }}
+  </div>
+
+  <div *ngIf="!isLoading && !hasError">
+    <app-billing-subscriptions-datatable
+      [items]="items"
+      [isLoading]="false"
+      [hasError]="false"
+      (cancel)="handleCancel($event)"
+    ></app-billing-subscriptions-datatable>
+
+    <div class="flex justify-end mt-4">
+      <app-generic-paginator
+        [currentPage]="page"
+        [totalPages]="totalPages"
+        [maxVisible]="5"
+        [totalItems]="totalItems"
+        [itemsPerPage]="limit"
+        (pageChange)="onPageChange($event)"
+      ></app-generic-paginator>
+    </div>
+  </div>
+</div>

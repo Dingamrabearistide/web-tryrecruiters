@@ -1,0 +1,352 @@
+<!-- Main Section -->
+<div class="flex flex-col w-full">
+  <div
+    class="flex flex-col justify-between items-start text-2xl font-bold text-secondary"
+  >
+    <div class="relative"></div>
+    <div class="">
+      <h1 class="text-2xl font-bold text-primary">Mes Favoris</h1>
+      <p class="text-gray-500 text-sm font-normal">
+        Here is an overview of your recent activity and the next steps to take.
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 py-8">
+    <!-- Filters -->
+    <div
+      class="flex flex-col md:flex-row flex-wrap gap-3 items-end mb-7 w-full justify-between"
+    >
+      <div class="flex w-full gap-3 md:max-w-[320px]">
+        <!-- Start date -->
+        <div class="flex flex-col w-full sm:w-1/2 lg:w-[320px]">
+          <label class="text-sm text-gray-700 mb-2 outline-none" for="startDate"
+            >Debut</label
+          >
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="startDate"
+            (change)="applyFilters()"
+            class="w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700"
+          />
+        </div>
+
+        <!-- End date -->
+        <div class="flex flex-col w-full max-w-[320px]">
+          <label class="text-sm text-gray-700 mb-2" for="endDate">Fin</label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="endDate"
+            (change)="applyFilters()"
+            class="border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm w-full md:w-auto text-gray-700"
+          />
+        </div>
+      </div>
+
+      <!-- Status select -->
+      <div class="w-full md:w-fit">
+        <div class="relative w-full md:max-w-[252px] min-w-[100px] h-[40px]">
+          <select
+            [(ngModel)]="selectedStatus"
+            (change)="applyFilters()"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm"
+          >
+            <option value="Tous">Tous</option>
+            <option value="Envoyée">Envoyée</option>
+            <option value="En attente">En attente</option>
+            <option value="Rejetée">Rejetée</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-grow gap-3 w-full md:w-fit h-[40px]">
+        <div class="relative flex-grow">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 py-2">
+            <i class="fas fa-search text-gray-400"></i>
+          </span>
+          <input
+            id="search"
+            type="text"
+            placeholder="Rechercher ..."
+            [(ngModel)]="searchTerm"
+            class="h-full border border-gray-300 w-full pl-10 pr-4 py-2 rounded-[5px] text-sm"
+          />
+        </div>
+        <button
+          (click)="applyFilters()"
+          class="bg-[#1D9BED] text-white w-fit h-full lg:w-auto px-8 py-2 rounded-[5px] text-sm shadow"
+        >
+          Rechercher
+        </button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-primary">
+          <tr>
+            <th>Poste</th>
+            <th>Entreprise</th>
+            <th>Date</th>
+            <th>Favori</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr
+            *ngFor="let favorite of getPaginatedFavorites()"
+            class="hover:bg-gray-50 transition-colors duration-150"
+          >
+            <td>{{ favorite.poste }}</td>
+            <td>{{ favorite.entreprise }}</td>
+            <td>{{ favorite.date }}</td>
+            <td>
+              <i
+                class="fa fa-bookmark border-info flex items-center justify-center bg-blue-100 text-[#1D9BED] px-3 py-1.5 rounded-md text-sm hover:bg-blue-200 shadow-sm transition cursor-pointer"
+                [ngClass]="{
+                  'fa-solid text-yellow-500 bg-yellow-100 border-yellow-500':
+                    favorite.isFavorite,
+                  'fa-regular text-[#1D9BED] bg-blue-100 border-info':
+                    !favorite.isFavorite
+                }"
+                (click)="openFavoriteModal(favorite)"
+                aria-label="Toggle favorite"
+              ></i>
+            </td>
+            <td>
+              <div class="flex gap-3">
+                <button
+                  (click)="openDetailsModal(favorite)"
+                  class="text-gray-500 hover:text-primary transition-colors duration-200 p-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  title="Voir les détails"
+                >
+                  <i class="fa fa-eye text-lg"></i>
+                </button>
+                <button
+                  (click)="openEditModal(favorite)"
+                  class="text-gray-500 hover:text-green-600 transition-colors duration-200 p-1 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  title="Modifier"
+                >
+                  <i class="fa fa-pencil text-lg"></i>
+                </button>
+                <button
+                  (click)="openDeleteModal(favorite)"
+                  class="text-gray-500 hover:text-red-600 transition-colors duration-200 p-1 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+                  title="Supprimer"
+                >
+                  <i class="fa fa-trash text-lg"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Empty state -->
+          <tr *ngIf="getPaginatedFavorites().length === 0">
+            <td colspan="5" class="px-6 py-8 text-center">
+              <div class="flex flex-col items-center">
+                <i class="fa fa-search text-gray-300 text-3xl mb-2"></i>
+                <p class="text-gray-500 font-medium">Aucun favori trouvé</p>
+                <p class="text-gray-400 text-sm mt-1">
+                  Essayez de modifier vos critères de recherche
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-10" *ngIf="totalPages > 1">
+      <nav aria-label="Page navigation">
+        <ul class="inline-flex items-center -gap-px h-8 text-sm">
+          <li>
+            <button
+              (click)="previousPage()"
+              [disabled]="currentPage === 1"
+              class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50"
+            >
+              <span class="sr-only">Previous</span>
+              <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 1 1 5l4 4"
+                />
+              </svg>
+            </button>
+          </li>
+          <ng-container *ngFor="let page of getPageNumbers()">
+            <li>
+              <button
+                (click)="goToPage(page)"
+                [ngClass]="
+                  page === currentPage
+                    ? 'z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 bg-blue-100 border border-blue-300 hover:bg-blue-100 hover:text-blue-700'
+                    : 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'
+                "
+              >
+                {{ page }}
+              </button>
+            </li>
+          </ng-container>
+          <li *ngIf="totalPages > 5">
+            <span
+              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300"
+              >...</span
+            >
+          </li>
+          <li>
+            <button
+              (click)="nextPage()"
+              [disabled]="currentPage === totalPages"
+              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50"
+            >
+              <span class="sr-only">Next</span>
+              <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+
+<!-- Details Modal -->
+
+<!-- Edit Modal -->
+<div
+  *ngIf="showEditModal && favoriteToEdit"
+  class="fixed inset-0 bg-black bg-opacity-60 z-[1000] flex items-center justify-center"
+  (click)="closeEditModal()"
+>
+  <div
+    class="bg-white w-[480px] rounded-lg shadow-xl p-6 gap-4 relative"
+    (click)="$event.stopPropagation()"
+  >
+    <h2 class="text-[#1D9BED] font-semibold text-lg mb-4">
+      Modifier le favori
+    </h2>
+    <form (ngSubmit)="saveEdit()">
+      <div class="grid grid-cols-1 gap-3">
+        <label class="text-sm font-medium"
+          >Poste
+          <input
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.poste"
+            name="poste"
+            required
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Entreprise
+          <input
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.entreprise"
+            name="entreprise"
+            required
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Date
+          <input
+            type="date"
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.date"
+            name="date"
+            required
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Statut
+          <select
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.statut"
+            name="statut"
+          >
+            <option value="Envoyée">Envoyée</option>
+            <option value="En attente">En attente</option>
+            <option value="Acceptée">Acceptée</option>
+            <option value="Rejetée">Rejetée</option>
+          </select>
+        </label>
+        <label class="text-sm font-medium"
+          >Lieu
+          <input
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.location"
+            name="location"
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Type de contrat
+          <input
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.contractType"
+            name="contractType"
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Niveau
+          <input
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.level"
+            name="level"
+          />
+        </label>
+        <label class="text-sm font-medium"
+          >Description
+          <textarea
+            class="w-full border rounded px-3 py-2 mt-1"
+            [(ngModel)]="favoriteToEdit.description"
+            name="description"
+          ></textarea>
+        </label>
+      </div>
+      <div class="flex justify-end gap-3 mt-6">
+        <button
+          type="button"
+          (click)="closeEditModal()"
+          class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 text-sm bg-[#1D9BED] text-white rounded hover:bg-[#02719a]"
+        >
+          Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

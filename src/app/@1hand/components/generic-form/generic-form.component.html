@@ -1,0 +1,523 @@
+<form
+  *transloco="let t; read: transationNamespace"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="generic-form w-full space-y-5"
+>
+  <ng-container *transloco="let tCore">
+    <ng-container *ngFor="let fieldset of fieldsets | keyvalue; trackBy: trackFieldset">
+      <div class="generic-form__grid grid grid-cols-12 gap-5">
+        <ng-container *ngFor="let field of fieldset.value; trackBy: trackField">
+          <div
+            [ngClass]="getFieldSizeClasses(field)"
+            class="generic-form__field flex flex-col"
+            [class]="'generic-form__field--' + field.type"
+          >
+            <label
+              *ngIf="field.type !== 'checkbox'"
+              class="generic-form__label block text-sm font-black text-navy"
+              [attr.for]="field.name"
+            >
+              {{ t(field.label) }}
+              <span
+                *ngIf="field.required"
+                class="generic-form__required ml-1 text-red-500"
+              >
+                *
+              </span>
+            </label>
+
+            <ng-container [ngSwitch]="field.type">
+              <label
+                *ngSwitchCase="'checkbox'"
+                class="generic-form__checkbox flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm font-medium text-slate-500"
+              >
+                <input
+                  type="checkbox"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  class="generic-form__checkbox-input mt-1 size-4 accent-blue"
+                />
+                <span>{{ t(field.label) }}</span>
+              </label>
+
+              <div
+                *ngSwitchCase="'string'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <input
+                  type="text"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                  [disabled]="!!field.disabled"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'url'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <input
+                  type="url"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                  [disabled]="!!field.disabled"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'password'"
+                class="generic-form__control-wrap relative mt-2"
+              >
+                <input
+                  [type]="isPasswordVisible(field.name) ? 'text' : 'password'"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                  [disabled]="!!field.disabled"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 pr-12 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+                <button
+                  type="button"
+                  (click)="togglePasswordVisibility(field.name)"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  [attr.aria-label]="isPasswordVisible(field.name) ? 'Hide password' : 'Show password'"
+                >
+                  <i
+                    class="fa"
+                    [ngClass]="isPasswordVisible(field.name) ? 'fa-eye-slash' : 'fa-eye'"
+                  ></i>
+                </button>
+              </div>
+
+              <div
+                *ngSwitchCase="'number'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <input
+                  type="number"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                  [disabled]="!!field.disabled"
+                  (keydown)="blockInvalidNumberKeys($event)"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'number-with-select'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <div
+                  class="generic-form__control flex h-13 w-full items-stretch rounded-2xl border border-line bg-white outline-none transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+                >
+                  <input
+                    type="number"
+                    [formControlName]="field.name"
+                    [id]="field.name"
+                    [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                    [disabled]="!!field.disabled"
+                    (keydown)="blockInvalidNumberKeys($event)"
+                    class="min-w-0 flex-1 rounded-l-2xl border-0 bg-transparent px-4 py-3 text-sm font-semibold text-slate-700 outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                  />
+                  <ng-container *ngIf="field.unitField as unitField">
+                    <div class="w-px flex-shrink-0 bg-line"></div>
+                    <div class="relative max-w-[45%] flex-shrink-0">
+                      <button
+                        type="button"
+                        (click)="toggleDropdown(unitField.name)"
+                        [disabled]="!!unitField.disabled"
+                        [class.text-red-500]="isFieldInvalid(unitField.name)"
+                        class="flex h-full w-full items-center gap-1 rounded-r-2xl bg-transparent py-3 pl-3 pr-8 text-sm font-semibold text-slate-700 outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <span class="truncate">
+                          {{
+                            getSelectedOptionLabel(unitField.name, unitField.options) ||
+                              (unitField.placeholder ? t(unitField.placeholder) : "")
+                          }}
+                        </span>
+                      </button>
+                      <i
+                        class="fa-solid fa-chevron-down pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 transition-transform duration-200"
+                        [class.rotate-180]="openDropdown === unitField.name"
+                      ></i>
+
+                      <div
+                        *ngIf="openDropdown === unitField.name"
+                        class="absolute right-0 top-full z-50 mt-1 max-h-56 w-72 max-w-[85vw] overflow-y-auto rounded-2xl border border-line bg-white py-1 shadow-card"
+                      >
+                        <div
+                          *ngFor="let option of unitField.options"
+                          (click)="selectOption(unitField.name, option.value)"
+                          class="cursor-pointer break-words px-3 py-2 text-sm font-semibold hover:bg-slate-50"
+                          [class.bg-blue-50]="form.get(unitField.name)?.value === option.value"
+                          [class.text-blue]="form.get(unitField.name)?.value === option.value"
+                          [class.text-slate-700]="form.get(unitField.name)?.value !== option.value"
+                        >
+                          {{ tryTranslate(option.label) }}
+                        </div>
+                        <div
+                          *ngIf="!unitField.options?.length"
+                          class="px-3 py-4 text-center text-sm text-slate-400"
+                        >
+                          {{ unitField.loading ? (tCore("general.loading") || "Chargement...") : (tCore("general.noOptions") || "No options") }}
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div
+                  *ngIf="field.unitField as unitField"
+                  class="generic-form__error mt-1 text-sm text-red-500"
+                >
+                  <ng-container *ngIf="isFieldInvalid(unitField.name)">
+                    {{ getTranslatedErrorMessage(unitField) }}
+                  </ng-container>
+                </div>
+              </div>
+
+              <div
+                *ngSwitchCase="'textarea'"
+                class="generic-form__control-wrap generic-form__control-wrap--textarea mt-2"
+              >
+                <textarea
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  rows="5"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                  [disabled]="!!field.disabled"
+                  class="generic-form__control min-h-40 w-full resize-y rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                ></textarea>
+              </div>
+
+              <ng-container *ngSwitchCase="'select'">
+                <div
+                  *ngIf="field.loading"
+                  class="generic-form__loading mt-2 rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-500"
+                >
+                  {{ tCore("general.loading") || "Chargement..." }}
+                </div>
+
+                <!-- Native multi-select: no current usage in the app, kept as-is
+                     since a custom dropdown would need a checkbox-list design. -->
+                <div
+                  *ngIf="!field.loading && field.multiple"
+                  class="generic-form__control-wrap relative mt-2"
+                >
+                  <select
+                    [formControlName]="field.name"
+                    [id]="field.name"
+                    multiple
+                    [disabled]="!!field.disabled"
+                    class="generic-form__control h-13 w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <option
+                      *ngFor="let option of field.options"
+                      [value]="option.value"
+                    >
+                      {{ tryTranslate(option.label) }}
+                    </option>
+                  </select>
+                </div>
+
+                <div
+                  *ngIf="!field.loading && !field.multiple"
+                  class="generic-form__control-wrap relative mt-2"
+                >
+                  <button
+                    type="button"
+                    [id]="field.name"
+                    (click)="toggleDropdown(field.name)"
+                    [disabled]="!!field.disabled"
+                    [class.border-red-500]="isFieldInvalid(field.name)"
+                    class="generic-form__control flex h-13 w-full items-center gap-2 rounded-2xl border border-line bg-white px-4 py-3 text-left text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <span class="min-w-0 flex-1 truncate" [class.text-slate-400]="!getSelectedOptionLabel(field.name, field.options)">
+                      {{
+                        getSelectedOptionLabel(field.name, field.options) ||
+                          (field.placeholder ? t(field.placeholder) : t(field.label))
+                      }}
+                    </span>
+                    <i
+                      class="fa-solid fa-chevron-down flex-shrink-0 text-xs text-slate-400 transition-transform duration-200"
+                      [class.rotate-180]="openDropdown === field.name"
+                    ></i>
+                  </button>
+
+                  <div
+                    *ngIf="openDropdown === field.name"
+                    class="absolute left-0 top-full z-50 mt-1 max-h-56 w-full max-w-[90vw] overflow-y-auto rounded-2xl border border-line bg-white py-1 shadow-card"
+                  >
+                    <div
+                      *ngIf="!field.required"
+                      (click)="selectOption(field.name, '')"
+                      class="cursor-pointer break-words px-4 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-50"
+                    >
+                      {{ field.placeholder ? t(field.placeholder) : t(field.label) }}
+                    </div>
+                    <div
+                      *ngFor="let option of field.options"
+                      (click)="selectOption(field.name, option.value)"
+                      class="cursor-pointer break-words px-4 py-2 text-sm font-semibold hover:bg-slate-50"
+                      [class.bg-blue-50]="form.get(field.name)?.value === option.value"
+                      [class.text-blue]="form.get(field.name)?.value === option.value"
+                      [class.text-slate-700]="form.get(field.name)?.value !== option.value"
+                    >
+                      {{ tryTranslate(option.label) }}
+                    </div>
+                    <div
+                      *ngIf="!field.options?.length"
+                      class="px-4 py-4 text-center text-sm text-slate-400"
+                    >
+                      {{ tCore("general.loading") || "Chargement..." }}
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- Country: searchable, shows the flag — self-loads its own
+                   list, no external wiring needed in the parent form. -->
+              <div
+                *ngSwitchCase="'country'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <app-country-select
+                  [formControl]="getFormControl(field.name)"
+                  [disabled]="!!field.disabled"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : t(field.label)"
+                ></app-country-select>
+              </div>
+
+              <!-- Searchable select for plain string options (region, city,
+                   ...): the parent form still loads/mutates field.options
+                   the same way it already does for the "select" type. -->
+              <div
+                *ngSwitchCase="'searchable-select'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <app-searchable-select
+                  [formControl]="getFormControl(field.name)"
+                  [disabled]="!!field.disabled"
+                  [loading]="!!field.loading"
+                  [options]="field.options"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : t(field.label)"
+                ></app-searchable-select>
+              </div>
+
+              <div
+                *ngSwitchCase="'date'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <input
+                  type="date"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [disabled]="!!field.disabled"
+                  [max]="field.maxDate"
+                  [min]="field.minDate"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'datetime'"
+                class="generic-form__control-wrap mt-2"
+              >
+                <input
+                  type="datetime-local"
+                  [formControlName]="field.name"
+                  [id]="field.name"
+                  [disabled]="!!field.disabled"
+                  class="generic-form__control h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'phone'"
+                class="generic-form__control-wrap generic-form__phone-wrap mt-2"
+              >
+                <app-phone-input
+                  [formControl]="getFormControl(field.name)"
+                  [disabled]="!!field.disabled"
+                  [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                ></app-phone-input>
+              </div>
+
+              <app-generic-autocomplete
+                *ngSwitchCase="'autocomplete'"
+                [formControl]="getFormControl(field.name)"
+                [items]="field.options || []"
+                [displayFn]="field.displayFn || defaultDisplayFn"
+                [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                [disabled]="!!field.disabled"
+                class="generic-form__autocomplete mt-2 block"
+              ></app-generic-autocomplete>
+
+              <div
+                *ngSwitchCase="'file'"
+                class="generic-form__upload mt-2 rounded-2xl border border-dashed border-line bg-white p-4"
+              >
+                <input
+                  type="file"
+                  [id]="field.name"
+                  [disabled]="!!field.disabled"
+                  (change)="onFileChange($event, field)"
+                  class="generic-form__file-input block w-full text-sm font-semibold text-slate-600 file:mr-4 file:rounded-xl file:border-0 file:bg-blue file:px-4 file:py-2 file:text-sm file:font-bold file:text-white hover:file:bg-blue2"
+                />
+              </div>
+
+              <div
+                *ngSwitchCase="'fileuploader'"
+                class="border border-gray-200 rounded-lg overflow-hidden"
+              >
+                <div *ngIf="getFilePreview(field)" class="bg-white">
+                  <div class="p-6 border-b border-gray-100">
+                    <div *ngIf="isImageFile(field)" class="mb-4">
+                      <app-image-preview
+                        class="w-full h-48 rounded-lg object-contain"
+                        [src]="getFilePreview(field) || null"
+                        alt="Preview"
+                      />
+                    </div>
+
+                    <div class="flex items-start justify-between gap-4">
+                      <div class="flex items-start gap-4 flex-1">
+                        <div class="flex-shrink-0">
+                          <i
+                            [ngClass]="
+                              isImageFile(field)
+                                ? 'fas fa-image text-blue-500'
+                                : 'fas fa-file text-red-500'
+                            "
+                            class="text-3xl"
+                          ></i>
+                        </div>
+
+                        <div class="flex-1">
+                          <p class="text-sm font-semibold text-gray-900">
+                            {{ getFileName(field) }}
+                          </p>
+                          <p class="text-xs text-gray-500 mt-1">
+                            {{ getFileType(field) }}
+                          </p>
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        (click)="removeFile(field)"
+                        class="flex-shrink-0 text-gray-400 hover:text-red-500 transition-colors"
+                        title="Remove file"
+                      >
+                        <i class="fas fa-trash-alt text-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 px-6 py-4 flex items-center gap-3">
+                    <i class="fas fa-edit text-primary"></i>
+
+                    <div class="flex-1">
+                      <p class="text-sm text-gray-600">
+                        {{ tCore("form.fileTypeLabel") }}:
+                        {{ getAcceptedTypesLabel(field) }}
+                      </p>
+                      <p class="text-sm text-gray-600">
+                        {{ tCore("form.fileSizeLabel") }}: 5MB
+                      </p>
+                    </div>
+
+                    <div class="bg-primary text-white rounded-full">
+                      <app-generic-file-upload-button
+                        [acceptedExtensions]="field.acceptedFileExtensions"
+                        (onChoose)="handleChoose($event, field)"
+                      ></app-generic-file-upload-button>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngIf="!getFilePreview(field)"
+                  class="bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 transition-colors p-8"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center text-center"
+                  >
+                    <div class="mb-4">
+                      <div class="inline-flex p-4 rounded-full bg-blue-100">
+                        <i
+                          class="fas fa-cloud-upload-alt text-3xl text-primary"
+                        ></i>
+                      </div>
+                    </div>
+
+                    <div class="mb-6">
+                      <p class="text-gray-700 font-medium mb-2">
+                        {{ tCore("general.upload") || "Upload your file" }}
+                      </p>
+                      <p class="text-sm text-gray-500 mb-4">
+                        {{ tCore("form.fileTypeLabel") }}:
+                        {{ getAcceptedTypesLabel(field) }}
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        {{ tCore("form.fileSizeLabel") }}: 5MB
+                      </p>
+                    </div>
+
+                    <div class="bg-primary text-white rounded-full">
+                      <app-generic-file-upload-button
+                        [acceptedExtensions]="field.acceptedFileExtensions"
+                        (onChoose)="handleChoose($event, field)"
+                      ></app-generic-file-upload-button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <app-generic-text-editor
+                *ngSwitchCase="'richtext'"
+                [formControl]="getFormControl(field.name)"
+                [placeholder]="field.placeholder ? t(field.placeholder) : ''"
+                [readOnly]="!!field.editorOptions?.readOnly"
+                [class.sticky-toolbar]="field.editorOptions?.toolbarSticky"
+                [style.--editor-min-height]="
+                  (field.editorOptions?.minHeight || 420) + 'px'
+                "
+                class="generic-form__richtext mt-2 block rounded-2xl border border-line bg-white"
+              ></app-generic-text-editor>
+
+              <div
+                *ngSwitchDefault
+                class="generic-form__error mt-1 text-sm text-red-500"
+              >
+                {{ tCore("formErrors.unknownFieldType") }}
+              </div>
+            </ng-container>
+
+            <div
+              *ngIf="isFieldInvalid(field.name)"
+              class="generic-form__error mt-1 text-sm text-red-500"
+            >
+              {{ getTranslatedErrorMessage(field) }}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <div class="generic-form__actions w-full" *ngIf="showActionButton">
+      <button
+        [disabled]="isLoading"
+        type="submit"
+        class="generic-form__submit app-primary2 w-full"
+      >
+        <span *ngIf="!isLoading">{{ tCore("general.save") }}</span>
+        <span *ngIf="isLoading">{{ tCore("general.loading") || "..." }}</span>
+      </button>
+    </div>
+  </ng-container>
+</form>

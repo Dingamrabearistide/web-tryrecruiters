@@ -1,0 +1,317 @@
+{
+  "list": {
+    "title": "Candidatures",
+    "description": "Gérer toutes les candidatures reçues",
+    "noApplications": "Aucune candidature trouvée",
+    "emptySubtitle": "Ajoutez votre première candidature",
+    "genericError": "Une erreur s'est produite lors du chargement",
+    "startCreating": "Commencez par créer votre première candidature",
+    "back": "précédent"
+  },
+  "form": {
+    "title": "Candidature",
+    "jobOffer": "Offre d'emploi",
+    "selectJobOffer": "Sélectionnez une offre d'emploi",
+    "allJobOffers": "Toutes les offres",
+    "search": "Rechercher",
+    "reset": "Réinitialiser",
+    "searchPlaceholder": "Titre, mots-clés...",
+    "description": "Description du poste",
+    "requirements": "Exigences",
+    "location": "Localisation",
+    "contractType": "Type de contrat",
+    "jobType": "Type d'emploi",
+    "jobLevel": "Niveau du poste",
+    "salary": "Salaire",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "allTypes": "Tous les types",
+    "tags": "Étiquettes",
+    "selectContractType": "Sélectionnez le type de contrat",
+    "selectJobType": "Sélectionnez le type d'emploi",
+    "selectJobLevel": "Sélectionnez le niveau du poste",
+    "candidate": "Candidat",
+    "selectCandidate": "Sélectionnez un candidat",
+    "resume": "CV",
+    "selectResume": "Sélectionnez un CV",
+    "status": "Statut",
+    "selectStatus": "Sélectionnez un statut",
+    "message": "Lettre de motivation",
+    "messagePlaceholder": "Saisissez votre lettre de motivation...",
+    "loading": "Chargement...",
+    "submit": "Enregistrer",
+    "cancel": "Annuler",
+    "errors": {
+      "required": "Ce champ est obligatoire",
+      "fields": {
+        "jobOfferId": {
+          "required": "L'offre d'emploi est obligatoire"
+        },
+        "candidateId": {
+          "required": "Le candidat est obligatoire"
+        },
+        "message": {
+          "maxlength": "Le message ne peut pas dépasser 1000 caractères"
+        }
+      }
+    }
+  },
+  "details": {
+    "title": "Détails de la candidature",
+    "candidateInfo": "Informations du candidat",
+    "interviews": "Entretien(s)",
+    "joinMeeting": "Rejoindre l'entretien",
+    "jobOffer": "Offre d'emploi",
+    "message": "Lettre de motivation",
+    "noMessage": "Aucun message fourni",
+    "resume": "CV",
+    "noResume": "Aucun CV fourni",
+    "noPhone": "Numéro de téléphone non fourni",
+    "submittedAt": "Date de candidature",
+    "status": "Statut",
+    "updateStatus": "Mettre à jour le statut",
+    "viewJobOffer": "Voir l'offre",
+    "downloadResume": "Télécharger le CV",
+    "label": "{{name}}"
+  },
+  "profile": {
+    "personalInfo": "Informations personnelles",
+    "about": "À propos",
+    "professionalExperience": "Expérience professionnelle",
+    "education": "Formation",
+    "skills": "Compétences",
+    "tools": "Outils",
+    "languages": "Langues",
+    "certifications": "Certifications",
+    "curriculum": "Curriculum Vitae",
+    "download": "Télécharger",
+    "viewProfile": "Voir le profil",
+    "profession": "Profession",
+    "professionNotSpecified": "Profession non renseignée",
+    "cityNotSpecified": "Ville non renseignée",
+    "phoneNotSpecified": "Téléphone non renseigné",
+    "noBio": "Aucune biographie renseignée",
+    "noExperience": "Aucune expérience professionnelle renseignée",
+    "noEducation": "Aucune formation renseignée",
+    "noSkills": "Aucune compétence renseignée",
+    "noTools": "Aucun outil renseigné",
+    "noLanguages": "Aucune langue renseignée",
+    "noCertifications": "Aucune certification renseignée",
+    "noResume": "Aucun CV téléchargé",
+    "gender": "Genre",
+    "genderNotSpecified": "Non renseigné",
+    "birthDate": "Date de naissance",
+    "birthDateNotSpecified": "Non renseignée",
+    "placeOfBirth": "Lieu de naissance",
+    "placeOfBirthNotSpecified": "Non renseigné",
+    "nationality": "Nationalité",
+    "nationalityNotSpecified": "Non renseignée",
+    "region": "Région",
+    "regionNotSpecified": "Non renseignée",
+    "memberSince": "Membre depuis",
+    "currently": "Actuellement",
+    "field": "Domaine",
+    "obtainedOn": "Obtenue le",
+    "organizationNotSpecified": "Organisation non renseignée",
+    "addedOn": "Ajouté le"
+  },
+  "history": {
+    "title": "Historique",
+    "empty": "Aucun historique pour le moment.",
+    "loading": "Chargement de l'historique..."
+  },
+  "status": {
+    "PENDING": "En attente",
+    "REVIEWED": "Examinée",
+    "ACCEPTED": "Acceptée",
+    "REJECTED": "Rejetée",
+    "CANCELED": "Annulée"
+  },
+  "actions": {
+    "title": "Actions",
+    "accept": "Accepter",
+    "reject": "Rejeter",
+    "review": "Examiner",
+    "create": "Ajouter une candidature",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "scheduleInterview": "Programmer un entretien",
+    "sendInvitation": "Envoyer l'invitation",
+    "cancel": "Annuler",
+    "withdraw": "Retirer ma candidature",
+    "withdrawConfirm": "Voulez-vous vraiment retirer votre candidature ? Cette action est définitive."
+  },
+  "columns": {
+    "candidate": "Candidat",
+    "jobOffer": "Offre d'emploi",
+    "company": "Entreprise",
+    "status": "Statut",
+    "submittedAt": "Date de candidature",
+    "resume": "CV",
+    "message": "Message",
+    "actions": "Actions"
+  },
+  "pagination": {
+    "showing": "Affichage de",
+    "to": "à",
+    "of": "sur",
+    "applications": "candidatures",
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "viewResume": "Voir le CV",
+  "noInterviews": "Aucun entretien programmé",
+  "scheduleInterviewToGetStarted": "Programmez un entretien pour commencer avec le candidat",
+  "to": "à",
+  "of": "sur",
+  "applications": "candidatures",
+  "previous": "Précédent",
+  "next": "Suivant",
+  "common": {
+    "view": "Voir",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "delete": {
+    "title": "Supprimer la candidature",
+    "message": "Êtes-vous sûr de vouloir supprimer cette candidature #{{id}} ?",
+    "confirm": "Supprimer",
+    "cancel": "Annuler"
+  },
+  "create": {
+    "success": {
+      "title": "Candidature créée avec succès",
+      "message": "La candidature \"#{{name}}\" a été créée avec succès."
+    }
+  },
+  "update": {
+    "success": {
+      "title": "Candidature mise à jour avec succès",
+      "message": "La candidature \"#{{name}}\" a été mise à jour avec succès."
+    }
+  },
+  "fields": {
+    "name": "Nom",
+    "email": "Email",
+    "profession": "Profession",
+    "status": "Statut",
+    "message": "Message",
+    "submittedAt": "Soumis le",
+    "jobTitle": "Titre du poste",
+    "company": "Entreprise",
+    "location": "Localisation",
+    "contractType": "Type de contrat",
+    "jobType": "Type d'emploi",
+    "salary": "Salaire",
+    "resumeName": "Nom du CV",
+    "resumeUrl": "URL du CV",
+    "application": "Candidature"
+  },
+  "contractType": {
+    "FULL_TIME": "Temps plein",
+    "PART_TIME": "Temps partiel",
+    "TEMPORARY": "Temporaire",
+    "FREELANCE": "Freelance",
+    "INTERNSHIP": "Stage",
+    "CONTRACT": "Contrat"
+  },
+  "jobType": {
+    "FULL_TIME": "Temps plein",
+    "PART_TIME": "Temps partiel",
+    "REMOTE": "Télétravail",
+    "ONSITE": "Sur site",
+    "HYBRID": "Hybride"
+  },
+  "interview": {
+    "title": "Programmer un entretien",
+    "description": "Entrez le lien Google Meet pour l'entretien avec {{candidateName}}. Une invitation sera envoyée au candidat.",
+    "meetLinkLabel": "Lien Google Meet",
+    "meetLinkPlaceholder": "https://meet.google.com/xxx-xxxx-xxx",
+    "meetLinkRequired": "Le lien Google Meet est obligatoire",
+    "meetLinkInvalid": "Veuillez entrer un lien Google Meet valide",
+    "meetLinkValid": "Lien valide ✓",
+    "infoTitle": "Information",
+    "infoDescription": "Le candidat recevra un email avec le lien de l'entretien et pourra l'ajouter à son calendrier.",
+    "sendInvitation": "Envoyer l'invitation",
+    "cancel": "Annuler",
+    "success": {
+      "title": "Entretien programmé",
+      "message": "L'invitation à l'entretien a été envoyée à {{candidateName}}."
+    },
+    "error": {
+      "title": "Erreur",
+      "message": "Une erreur s'est produite lors de l'envoi de l'invitation."
+    }
+  },
+  "apply": {
+    "title": "Postuler à l'offre",
+    "loading": "Chargement en cours...",
+    "errorTitle": "Erreur de chargement",
+    "backToOffers": "Retour aux offres",
+    "applyingFor": "Vous postulez pour",
+    "formTitle": "Votre candidature",
+    "formDescription": "Remplissez le formulaire ci-dessous pour soumettre votre candidature",
+    "tipsTitle": "Conseils pour votre candidature",
+    "tip1": "Assurez-vous que votre CV est à jour et pertinent pour le poste",
+    "tip2": "Rédigez une lettre de motivation personnalisée qui met en valeur vos compétences",
+    "tip3": "Relisez attentivement votre candidature avant de l'envoyer",
+    "tip4": "Soyez honnête et précis dans vos réponses",
+    "showMore": "Voir plus de détails",
+    "showLess": "Voir moins"
+  },
+  "loginRequired": {
+    "title": "Connexion requise",
+    "message": "Vous devez être connecté en tant que candidat pour postuler à une offre d'emploi."
+  },
+  "success": {
+    "subtitle": "Candidature envoyée",
+    "thankYou": "Merci !",
+    "loggedInMessage": "Votre candidature pour",
+    "guestMessage": "Votre candidature pour",
+    "at": "chez",
+    "sentSuccessfully": "a été envoyée avec succès.",
+    "email": "Email",
+    "status": "Statut",
+    "statusSubmitted": "Envoyée",
+    "confirmationEmail": "Un email de confirmation vous a été envoyé. Le recruteur vous contactera si votre profil est sélectionné.",
+    "browseJobs": "Voir plus d'offres",
+    "backToHome": "Retour à l'accueil",
+    "viewApplications": "Voir mes candidatures"
+  },
+  "error": {
+    "title": "Erreur"
+  },
+  "errors": {
+    "noJobOfferId": "Aucun identifiant d'offre d'emploi fourni",
+    "loadJobOfferFailed": "Échec du chargement de l'offre d'emploi",
+    "submitFailed": "Échec de l'envoi de la candidature. Veuillez réessayer.",
+    "createCandidateFailed": "Échec de la création du compte. Vérifiez que l'email n'est pas déjà utilisé.",
+    "offerExpired": "Cette offre a expiré et n'accepte plus de candidatures.",
+    "statusUpdateForbidden": "Vous n'êtes pas autorisé à effectuer ce changement de statut.",
+    "statusUpdateFailed": "Échec de la mise à jour du statut. Veuillez réessayer."
+  },
+  "guest": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Lettre de motivation (optionnel)",
+    "messagePlaceholder": "Parlez-nous de votre motivation et de vos compétences...",
+    "submit": "Envoyer ma candidature",
+    "firstNameRequired": "Le prénom est obligatoire (minimum 2 caractères)",
+    "lastNameRequired": "Le nom est obligatoire (minimum 2 caractères)",
+    "emailInvalid": "Veuillez entrer une adresse email valide",
+    "phoneRequired": "Le numéro de téléphone est obligatoire",
+    "hasAccount": "Vous avez déjà un compte ?",
+    "loginLink": "Connectez-vous"
+  },
+  "guestSuccess": {
+    "title": "Candidature envoyée !",
+    "message": "Votre candidature a été envoyée avec succès. Un compte a été créé avec l'email {{email}}. Vous recevrez un email pour activer votre compte et définir votre mot de passe.",
+    "backToJobs": "Retour aux offres"
+  },
+  "notProvided": "Non renseigné",
+  "yearsOfExperience": "années d'expérience"
+}

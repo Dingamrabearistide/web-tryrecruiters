@@ -1,0 +1,252 @@
+<div *transloco="let t; read: 'candidates'" class="md-wrapper mb-5">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header du profil -->
+    <div class="bg-white rounded-lg border border-gray-200 mb-5">
+      <div class="px-6 py-5">
+        <div class="flex flex-col lg:flex-row items-start gap-6">
+          <!-- Photo de profil -->
+          <div class="relative flex-shrink-0">
+            <app-loader *ngIf="isLoading"></app-loader>
+
+            <div class="w-32 h-32 overflow-hidden rounded-full bg-white border border-gray-200">
+              <ng-container *ngIf="!hasError && !isLoading">
+                <!-- Initials only — photo upload disabled -->
+                <div
+                  class="w-full h-full flex items-center justify-center text-white text-3xl font-bold select-none"
+                  [ngClass]="avatarColor"
+                >
+                  {{ initials }}
+                </div>
+                <!-- Photo display disabled
+                <img
+                  *ngIf="hasPhoto"
+                  [src]="getFullPhotoUrl(profile.photo)"
+                  [alt]="profile.firstName + ' ' + profile.lastName"
+                  class="w-full h-full object-contain"
+                  (error)="photoFailed = true"
+                />
+                -->
+              </ng-container>
+            </div>
+
+            <app-generic-error
+              *ngIf="hasError"
+              [message]="errorMessage"
+            ></app-generic-error>
+
+            <!-- Photo upload button - COMMENTED OUT -->
+            <!-- <span
+              class="absolute bottom-1 right-1 bg-primary text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-blue-700 cursor-pointer shadow-md transition-colors"
+            >
+              <app-generic-file-upload-button
+                (onChoose)="handleChoose($event)"
+              ></app-generic-file-upload-button>
+            </span> -->
+          </div>
+
+          <!-- Informations principales -->
+          <div class="flex-grow w-full">
+            <div
+              class="flex flex-col sm:flex-row justify-between items-start gap-4"
+            >
+              <div class="flex-grow">
+                <h1 class="text-2xl font-semibold text-gray-900">
+                  {{ profile.firstName }} {{ profile.lastName }}
+                </h1>
+                <p class="text-lg text-primary font-bold mt-1">
+                  {{
+                    profile.profession ||
+                      t("profilePage.personalInfo.professionNotSpecified")
+                  }}
+                </p>
+
+                <!-- Informations de contact -->
+                <div class="mt-4 space-y-2">
+                  <div
+                    *ngIf="profile.city || profile.region || profile.country"
+                    class="flex items-center gap-2 text-gray-700"
+                  >
+                    <i class="fa fa-map-marker-alt text-primary w-4"></i>
+                    <span>
+                      {{ profile.city || "" }}
+                      {{ profile.city && profile.region ? ", " : "" }}
+                      {{ profile.region || "" }}
+                      {{ (profile.city || profile.region) && profile.country ? ", " : "" }}
+                      {{ profile.country || "" }}
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-700">
+                    <i class="fa fa-envelope text-primary w-4"></i>
+                    <span class="truncate">{{ profile.email }}</span>
+                  </div>
+                  <!-- <div
+                    *ngIf="profile.phoneNumber"
+                    class="flex items-center gap-2 text-gray-700"
+                  >
+                    <i class="fa fa-phone text-primary w-4"></i>
+                    <span>{{ profile.phoneNumber }}</span>
+                  </div> -->
+                </div>
+              </div>
+
+              <!-- Bouton d'édition -->
+              <button
+                (click)="editPersonalInfo()"
+                class="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors flex-shrink-0"
+              >
+                <i class="fa fa-edit mr-2"></i>
+                {{ t("edit") || "Modifier" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informations détaillées -->
+    <div class="bg-white rounded-lg border border-gray-200 p-6">
+      <h3 class="text-xl font-semibold text-primary mb-5">
+        {{ t("profilePage.personalInfo.title") || "Informations personnelles" }}
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Prénom -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.firstName") || "Prénom" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.firstName || "--" }}
+          </p>
+        </div>
+
+        <!-- Nom -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.lastName") || "Nom" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.lastName || "--" }}
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.email") || "Email" }}
+          </label>
+          <p class="text-gray-900">{{ profile.email }}</p>
+        </div>
+
+        <!-- Téléphone -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.phoneNumber") || "Téléphone" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.phoneNumber || "--" }}
+          </p>
+        </div>
+
+        <!-- Genre -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.gender") || "Genre" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.gender || "--" }}
+          </p>
+        </div>
+
+        <!-- Date de naissance -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.birthDate") || "Date de naissance" }}
+          </label>
+          <p class="text-gray-900">
+            {{
+              profile.birthDate
+                ? (profile.birthDate | date: "dd/MM/yyyy")
+                : "--"
+            }}
+          </p>
+        </div>
+
+        <!-- Pays -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.country") || "Pays" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.country || "--" }}
+          </p>
+        </div>
+
+        <!-- Région -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.region") || "Région" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.region || "--" }}
+          </p>
+        </div>
+
+        <!-- Ville -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.city") || "Ville" }}
+          </label>
+          <p class="text-gray-900">
+            {{ profile.city || "--" }}
+          </p>
+        </div>
+
+        <!-- Profession -->
+        <div>
+          <label class="font-medium text-gray-500 block mb-1">
+            {{ t("profilePage.personalInfo.profession") || "Profession" }}
+          </label>
+          <p class="text-gray-900">
+            {{
+              profile.profession ||
+                t("profilePage.personalInfo.professionNotSpecified") ||
+                "Non renseigné"
+            }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Bio (si présente) -->
+      <div *ngIf="profile.bio" class="mt-6 pt-6 border-t border-gray-100">
+        <label class="font-medium text-gray-500 block mb-2">
+          {{ t("candidateDetails.biography") || "Biographie" }}
+        </label>
+        <p class="text-gray-700 leading-relaxed whitespace-pre-wrap">
+          {{ profile.bio }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de formulaire -->
+<ng-template #form>
+  <div class="w-full">
+    <app-generic-form
+      [defaultValues]="defaultValues"
+      [fieldConfigurations]="formConfig"
+      [isLoading]="isLoading"
+      [showActionButton]="false"
+      transationNamespace="candidates"
+      (formReady)="onFormReady($event)"
+      (submitForm)="onSubmit($event)"
+    />
+
+    <app-generic-error
+      *ngIf="hasError"
+      [message]="errorMessage"
+      class="mt-4"
+    ></app-generic-error>
+  </div>
+</ng-template>

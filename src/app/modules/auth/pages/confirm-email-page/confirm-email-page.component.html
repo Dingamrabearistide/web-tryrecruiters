@@ -1,0 +1,124 @@
+<div
+  *transloco="let t; read: 'auth'"
+  class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+>
+  <main
+    class="mx-auto grid min-h-[calc(100vh-80px)] w-full max-w-[1160px] items-center gap-8 px-4 py-8 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-12"
+  >
+    <!-- Left: Hero panel -->
+    <section
+      class="hero-gradient relative hidden overflow-hidden rounded-[38px] p-8 text-white shadow-soft lg:block"
+    >
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative flex min-h-[560px] flex-col justify-between">
+        <div>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-blue"
+          >
+            <i class="fa-solid fa-envelope-circle-check"></i>
+            {{ t("confirmEmail.badge") }}
+          </span>
+          <h1
+            class="mt-8 font-display text-6xl font-black leading-none tracking-tight"
+          >
+            {{ t("confirmEmail.heroTitle") }}
+          </h1>
+          <p
+            class="mt-5 max-w-md text-base font-medium leading-8 text-white/75"
+          >
+            {{ t("confirmEmail.heroDescription") }}
+          </p>
+        </div>
+
+        <div
+          class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <div>
+              <p class="font-black">{{ t("confirmEmail.cardTitle") }}</p>
+              <p class="mt-1 text-sm font-medium text-white/65">
+                {{ t("confirmEmail.cardDesc") }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Status panel -->
+    <section
+      class="mx-auto w-full max-w-xl rounded-[34px] border border-line bg-white p-5 shadow-card sm:p-6 md:p-8 lg:max-w-none"
+    >
+      <!-- Loading state -->
+      <div *ngIf="isLoading" class="flex flex-col items-center gap-6 py-12">
+        <div
+          class="grid size-20 place-items-center rounded-full bg-blue/10 text-blue"
+        >
+          <i class="fa-solid fa-spinner fa-spin text-3xl"></i>
+        </div>
+        <p class="text-center text-base font-medium text-slate-500">
+          {{ t("confirmEmail.verifying") }}
+        </p>
+      </div>
+
+      <!-- Success state -->
+      <div *ngIf="isSuccess" class="flex flex-col items-center gap-6 py-8">
+        <div
+          class="grid size-20 place-items-center rounded-full bg-green-100 text-green-600"
+        >
+          <i class="fa-solid fa-circle-check text-4xl"></i>
+        </div>
+        <div class="text-center">
+          <p
+            class="font-display text-3xl font-black leading-none text-navy md:text-4xl"
+          >
+            {{ t("confirmEmail.successTitle") }}
+          </p>
+          <p class="mt-3 text-base font-medium leading-6 text-slate-500">
+            {{ t("confirmEmail.successMessage") }}
+          </p>
+        </div>
+        <button
+          (click)="goToLogin()"
+          class="inline-flex items-center gap-2 rounded-full bg-blue px-8 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i>
+          {{ t("confirmEmail.loginButton") }}
+        </button>
+      </div>
+
+      <!-- Error state -->
+      <div *ngIf="hasError" class="flex flex-col items-center gap-6 py-8">
+        <div
+          class="grid size-20 place-items-center rounded-full bg-red-100 text-red-600"
+        >
+          <i class="fa-solid fa-circle-xmark text-4xl"></i>
+        </div>
+        <div class="text-center">
+          <p
+            class="font-display text-3xl font-black leading-none text-navy md:text-4xl"
+          >
+            {{ t("confirmEmail.errorTitle") }}
+          </p>
+          <p class="mt-3 text-base font-medium leading-6 text-slate-500">
+            {{ errorMessage }}
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-3 sm:flex-row">
+          <button
+            (click)="goToLogin()"
+            class="inline-flex items-center gap-2 rounded-full bg-blue px-8 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+          >
+            <i class="fa-solid fa-right-to-bracket"></i>
+            {{ t("confirmEmail.loginButton") }}
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

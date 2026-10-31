@@ -1,0 +1,109 @@
+<div class="bg-white w-full shadow overflow-x-auto">
+  <table
+    *ngIf="!isLoading && !hasError && items.length > 0"
+    class="w-full max-w-full table-auto divide-y divide-gray-200 text-sm"
+  >
+    <!-- <thead class="bg-gradient-to-r from-primary to-blue-600 text-white">
+      <tr>
+        <th
+          *ngFor="let column of columns"
+          [style.width]="column.width || 'auto'"
+          [ngClass]="{
+            'text-left': column.align !== 'center',
+            'text-center': column.align === 'center'
+          }"
+          class="px-4 sm:px-6 py-3 font-bold uppercase tracking-wider whitespace-nowrap"
+        >
+          {{ column.label }}
+        </th>
+      </tr>
+    </thead> -->
+
+    <thead class="bg-gray-50">
+      <tr>
+        <th
+          *ngFor="let column of columns"
+          [style.width]="column.width || 'auto'"
+          [ngClass]="{
+            'text-left': column.align !== 'center',
+            'text-center': column.align === 'center',
+            'cursor-pointer select-none hover:text-gray-900': column.sortable
+          }"
+          class="px-4 py-3 text-left font-semibold text-gray-600"
+          (click)="onHeaderClick(column)"
+        >
+          {{ column.label | transloco }}
+          <i
+            *ngIf="column.sortable"
+            class="fas ml-1"
+            [ngClass]="{
+              'fa-sort text-gray-300': sortKey !== column.key,
+              'fa-sort-up': sortKey === column.key && sortDirection === 'asc',
+              'fa-sort-down': sortKey === column.key && sortDirection === 'desc'
+            }"
+          ></i>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-white divide-y divide-gray-100">
+      <tr
+        *ngFor="let item of items"
+        class="hover:bg-gray-50 transition duration-150"
+      >
+        <td
+          *ngFor="let column of columns"
+          [style.width]="column.width || 'auto'"
+          [ngClass]="{
+            'text-left': column.align !== 'center',
+            'text-center': column.align === 'center'
+          }"
+          class="px-4 py-2 align-middle whitespace-nowrap"
+        >
+          <app-generic-datatable-cell
+            [item]="item"
+            [column]="column"
+            [injector]="createInjector(column, item)"
+            [currentStatus]="currentStatus"
+            [processingJobIds]="processingJobIds"
+            [enableRecruiterPlanActions]="enableRecruiterPlanActions"
+            (view)="view.emit($event)"
+            (edit)="update.emit($event)"
+            (delete)="delete.emit($event)"
+            (approve)="approve.emit($event)"
+            (reject)="reject.emit($event)"
+            (revoke)="revoke.emit($event)"
+            (republish)="republish.emit($event)"
+            (submit)="submit.emit($event)"
+            (assignUnlimited)="assignUnlimited.emit($event)"
+            (deactivatePlans)="deactivatePlans.emit($event)"
+          ></app-generic-datatable-cell>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Empty state -->
+  <div
+    *ngIf="!isLoading && !hasError && items.length === 0"
+    class="w-full py-12 px-4 text-center"
+  >
+    <div class="flex flex-col items-center gap-4">
+      <div
+        class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center"
+      >
+        <i [class]="emptyIcon + ' text-primary text-2xl'"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-gray-900">{{ emptyTitle }}</h3>
+      <p class="text-gray-600">{{ emptySubtitle }}</p>
+      <!-- <span
+        *ngIf="showCreateButton"
+        class="text-white px-6 py-2 rounded-lg font-semibold shadow-md transition duration-200 flex items-center gap-2"
+        (click)="create.emit()"
+      >
+        <i class="fas fa-plus"></i>
+        {{ createLabel }}
+      </span> -->
+    </div>
+  </div>
+</div>

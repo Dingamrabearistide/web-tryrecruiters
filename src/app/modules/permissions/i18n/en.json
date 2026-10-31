@@ -1,0 +1,63 @@
+{
+  "list": {
+    "title": "Permissions",
+    "description": "Manage permissions and access controls"
+  },
+  "create": {
+    "title": "Create Permission",
+    "description": "Define a new permission for platform resources"
+  },
+  "update": {
+    "title": "Edit Permission",
+    "description": "Modify the permission settings"
+  },
+  "details": {
+    "title": "Permission Details",
+    "description": "View permission configuration"
+  },
+  "form": {
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "resource": "Resource",
+    "allResources": "All Resources",
+    "action": "Action",
+    "allActions": "All Actions",
+    "search": "Search",
+    "searchPlaceholder": "Search permissions...",
+    "resetFilters": "Reset Filters",
+    "reset": "Reset"
+  },
+  "resources": {
+    "USERS": "Users",
+    "ROLES": "Roles",
+    "PERMISSIONS": "Permissions",
+    "COMPANIES": "Companies",
+    "JOB_OFFERS": "Job Offers",
+    "APPLICATIONS": "Applications",
+    "INTERVIEWS": "Interviews",
+    "CANDIDATES": "Candidates",
+    "RESUME": "Resumes",
+    "DASHBOARD": "Dashboard",
+    "RECRUITERS": "Recruiters",
+    "JOB_CATEGORIES": "Job Categories",
+    "PLATFORM_SETTINGS": "Platform Settings",
+    "REPORTS": "Reports",
+    "LOGS": "Logs",
+    "FILES": "Files"
+  },
+  "actions": {
+    "CREATE": "Create",
+    "READ": "Read",
+    "UPDATE": "Update",
+    "DELETE": "Delete",
+    "LIST": "List",
+    "MANAGE": "Manage",
+    "PUBLISH": "Publish",
+    "APPROVE": "Approve",
+    "create": "Create Permission",
+    "update": "Update",
+    "edit": "Edit",
+    "back": "Back",
+    "cancel": "Cancel"
+  }
+}

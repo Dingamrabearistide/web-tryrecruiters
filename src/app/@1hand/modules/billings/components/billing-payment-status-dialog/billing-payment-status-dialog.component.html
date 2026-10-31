@@ -1,0 +1,30 @@
+<div *transloco="let t; read: 'billings'">
+  <h2 mat-dialog-title>{{ t("paymentsList.statusDialog.title") }}</h2>
+
+  <mat-dialog-content class="!px-6 !py-4">
+    <p class="text-sm text-gray-500 mb-4">
+      {{ t("paymentsList.statusDialog.description", { paymentId: data.payment.orderId || data.payment.id }) }}
+    </p>
+
+    <label for="payment-status" class="block text-sm font-medium text-gray-700 mb-2">
+      {{ t("paymentsList.statusDialog.status") }}
+    </label>
+
+    <select id="payment-status" [(ngModel)]="selectedStatus" class="w-full border border-gray-200 rounded-lg px-3 py-2">
+      <option *ngFor="let status of statuses" [ngValue]="status">{{ status }}</option>
+    </select>
+
+    <p *ngIf="selectedStatus === 'PAID'" class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+      {{ t("paymentsList.statusDialog.paidWarning") }}
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button type="button" class="px-4 py-2 rounded-lg border border-gray-200" (click)="cancel()">
+      {{ t("cancel") }}
+    </button>
+    <button type="button" class="app-primary px-4 py-2" (click)="confirm()">
+      {{ t("paymentsList.statusDialog.confirm") }}
+    </button>
+  </mat-dialog-actions>
+</div>

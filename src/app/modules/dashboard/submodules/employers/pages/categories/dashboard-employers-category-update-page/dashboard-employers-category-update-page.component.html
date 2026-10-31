@@ -1,0 +1,21 @@
+<div *transloco="let t; read: 'categories'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("common.previous") }}
+  </button>
+
+  <h1 class="text-3xl font-bold text-primary mb-4">
+    {{ item ? t("form.titleUpdate") : t("form.titleCreate") }}
+  </h1>
+
+  <app-categories-form
+    [item]="item"
+    [isLoading]="isLoading"
+    (onSubmit)="handleSubmit($event)"
+  ></app-categories-form>
+
+  <!-- <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error> -->
+</div>

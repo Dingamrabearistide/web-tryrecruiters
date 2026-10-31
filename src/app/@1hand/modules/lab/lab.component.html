@@ -1,0 +1,40 @@
+<div class="p-16">
+  <h1 class="text-gray-800 text-4xl mb-8">1Hand Lab</h1>
+
+  <main class="flex flex-col gap-4">
+    <app-generic-datatable-lab></app-generic-datatable-lab>
+
+    <app-generic-file-manager
+      [files]="files"
+      [selectedFile]="selectedFile"
+      [choosedFile]="choosedFile"
+      [uploading]="uploading"
+      [uploadProgress]="uploadProgress"
+      [uploadError]="uploadError"
+      [uploadedById]="currentUserId"
+      [activeTab]="activeTab"
+      [allowedTypes]="['image/jpeg', 'image/png', 'application/pdf']"
+      [maxSizeMB]="5"
+      (load)="onLoadFiles()"
+      (startUpload)="onStartUpload($event)"
+      (tabChange)="activeTab = $event"
+      (select)="selectedFile = $event"
+      (clear)="selectedFile = null"
+      (insert)="onInsert()"
+      (close)="onClose()"
+    ></app-generic-file-manager>
+
+    <form [formGroup]="form" class="gap-4">
+      <label class="block text-sm font-medium">Contenu</label>
+      <app-generic-text-editor
+        formControlName="content"
+        (valueChange)="onEditorChange($event)"
+      >
+      </app-generic-text-editor>
+
+      <button class="px-4 py-2 rounded-xl bg-blue-600 text-white">
+        Enregistrer
+      </button>
+    </form>
+  </main>
+</div>

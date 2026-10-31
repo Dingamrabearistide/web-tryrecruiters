@@ -1,0 +1,307 @@
+{
+  "welcome": "Bienvenue",
+  "loading": "Chargement...",
+  "genericVerifyTitle": "Succès",
+  "genericVerifyMessage": "Opération réussie. Cliquez sur OK pour continuer.",
+  "layout": {
+    "sloganTitle": "Une carrière réussie commence\npar une excellente candidature.",
+    "sloganDescription": "Créez votre profil et connectez-vous aux bonnes opportunités en quelques étapes."
+  },
+  "form": {
+    "options": {
+      "yes": "Oui",
+      "no": "Non"
+    }
+  },
+  "login": {
+    "title": "Connexion",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+    "accountNotConfirmed": "Compte non confirmé ?",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "submitButton": "Connexion",
+    "verifyTitle": "Vérification d'identité requise",
+    "verifyMessage": "Pour des raisons de sécurité, veuillez vérifier votre identité en saisissant le code envoyé à votre méthode préférée.",
+    "verifySuccessTitle": "Identité vérifiée",
+    "verifySuccessMessage": "Votre identité a été vérifiée avec succès. Vous allez être redirigé vers votre tableau de bord.",
+    "badge": "Connexion",
+    "heroTitle": "Bon Retour",
+    "heroDescription": "Connectez-vous à votre compte TryRecruiters pour accéder à votre tableau de bord, gérer vos candidatures et entrer en contact avec les meilleurs talents.",
+    "securityCardTitle": "Accès Sécurisé",
+    "securityCardDesc": "Vos données sont protégées par un chiffrement et des protocoles de sécurité de niveau entreprise.",
+    "quickCardTitle": "Rapide & Simple",
+    "quickCardDesc": "Connectez-vous avec vos identifiants ou utilisez Google pour un accès en un clic.",
+    "sectionLabel": "Connexion",
+    "sectionDescription": "Entrez vos identifiants pour accéder à votre compte"
+  },
+  "register": {
+    "title": "Créer votre compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se connecter",
+    "candidate": "Candidat",
+    "employer": "Employeur",
+    "agree": "J'accepte les",
+    "terms": "conditions générales",
+    "verifyTitle": "Inscription terminée",
+    "verifyMessage": "Votre compte a été créé. Cliquez sur OK pour aller au dashboard.",
+    "registration": "Inscription",
+    "chooseAccountType": "Choisissez votre type de compte et remplissez vos informations.",
+    "or": "ou",
+    "continueWithGoogle": "Continuer avec Google",
+    "createAccount": "Créer un compte",
+    "joinTryRecruiters": "Rejoignez TryRecruiters",
+    "joinDescription": "Créez un compte en tant que candidat pour postuler aux offres, ou en tant qu'employeur pour publier des offres d'emploi et gérer les candidatures.",
+    "candidateAccount": "Compte candidat",
+    "candidateAccountDesc": "Postulez plus rapidement et gérez vos candidatures.",
+    "employerAccount": "Compte employeur",
+    "employerAccountDesc": "Publiez des offres et recrutez des candidats qualifiés.",
+    "accountCreatedTitle": "Compte créé avec succès",
+    "accountCreatedMessage": "Votre compte a été créé. Pour l'activer, veuillez vérifier votre email et suivre le lien de confirmation que nous vous avons envoyé. Si vous ne trouvez pas l'email, vérifiez votre dossier spam ou courrier indésirable.",
+    "form": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Numéro de téléphone",
+      "country": "Pays",
+      "city": "Ville",
+      "loadingCities": "Chargement des villes...",
+      "region": "Région / État",
+      "loadingRegions": "Chargement des régions...",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "acceptText": {
+        "part1": "J'accepte les",
+        "link": "conditions générales"
+      },
+      "buttons": {
+        "submit": "S'inscrire",
+        "loading": "Inscription en cours..."
+      },
+      "errors": {
+        "firstName": {
+          "required": "Le prénom est requis.",
+          "tooShort": "Le prénom est trop court.",
+          "invalid": "Prénom invalide."
+        },
+        "lastName": {
+          "required": "Le nom est requis.",
+          "tooShort": "Le nom est trop court.",
+          "invalid": "Nom invalide."
+        },
+        "email": {
+          "required": "L'email est requis.",
+          "invalid": "Adresse email invalide."
+        },
+        "phone": {
+          "required": "Le numéro de téléphone est requis.",
+          "invalid": "Numéro de téléphone invalide."
+        },
+        "country": {
+          "required": "Le pays est requis.",
+          "invalid": "Pays invalide."
+        },
+        "city": {
+          "required": "La ville est requise.",
+          "invalid": "Ville invalide."
+        },
+        "password": {
+          "required": "Le mot de passe est requis.",
+          "tooShort": "Le mot de passe doit contenir au moins 8 caractères.",
+          "mismatch": "Les mots de passe ne correspondent pas."
+        },
+        "confirmPassword": {
+          "required": "La confirmation du mot de passe est requise.",
+          "invalid": "Confirmation invalide."
+        }
+      }
+    }
+  },
+  "confirm": {
+    "titleHeaderEmail": "Confirmez votre adresse e-mail",
+    "titleHeaderPhone": "Confirmez votre numéro de téléphone",
+    "back": "Retour",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Créer un compte",
+    "instructionsEmail": "Nous avons envoyé un code de confirmation à votre e-mail :",
+    "instructionsWhatsapp": "Nous avons envoyé un code de confirmation à votre numéro WhatsApp :",
+    "checkInbox": "Veuillez consulter votre boîte de réception et entrer le code ci-dessous.",
+    "notReceived": "Vous n'avez pas reçu le code ?",
+    "checkSpam": "Vérifiez votre dossier spam ou courrier indésirable.",
+    "resendIn": "Vous pourrez renvoyer le code dans",
+    "resendCode": "Renvoyer le code",
+    "contactSupport": "Contacter le support",
+    "verifyTitle": "Compte confirmé",
+    "verifyMessage": "Votre compte a été vérifié. Cliquez sur OK pour vous connecter.",
+    "resendTitle": "Code renvoyé",
+    "resendMessage": "Un nouveau code de confirmation a été envoyé. Veuillez vérifier vos messages.",
+    "error": "Une erreur s'est produite lors de l'envoi du code."
+  },
+  "confirmAccount": {
+    "codeLabel": "Code de confirmation",
+    "codePlaceholder": "Entrez le code à 6 chiffres",
+    "submitButton": "Confirmer mon compte",
+    "invalidCode": "Veuillez entrer un code valide à 6 chiffres"
+  },
+  "confirmEmail": {
+    "badge": "Confirmation d'email",
+    "heroTitle": "Vérifiez votre adresse e-mail",
+    "heroDescription": "Nous confirmons votre adresse e-mail afin de sécuriser votre compte et de vous donner accès à la plateforme.",
+    "cardTitle": "Compte sécurisé",
+    "cardDesc": "Votre adresse e-mail est vérifiée pour protéger votre compte.",
+    "verifying": "Vérification en cours…",
+    "successTitle": "E-mail confirmé",
+    "successMessage": "Votre adresse e-mail a été confirmée avec succès. Vous pouvez maintenant vous connecter avec vos identifiants.",
+    "errorTitle": "Échec de la confirmation",
+    "loginButton": "Se connecter",
+    "missingParams": "Lien de confirmation invalide. Veuillez réessayer depuis l'email reçu."
+  },
+  "forgot": {
+    "title": "Mot de passe oublié ?",
+    "back": "Retour",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Créer un compte",
+    "verifyTitle": "Vérifiez votre email",
+    "verifyMessage": "Un lien a été envoyé à votre adresse email. Cliquez sur OK pour réinitialiser votre mot de passe. Si vous ne trouvez pas l'email, vérifiez votre dossier spam ou courrier indésirable."
+  },
+  "forgotPassword": {
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+    "submitButton": "Réinitialiser mon mot de passe",
+    "badge": "Aide mot de passe",
+    "heroTitle": "Réinitialisez votre mot de passe",
+    "heroDescription": "Entrez votre adresse e-mail et nous vous enverrons un lien sécurisé pour créer un nouveau mot de passe.",
+    "inboxCardTitle": "Consultez votre boîte",
+    "inboxCardDesc": "Le lien de réinitialisation est envoyé à l'adresse e-mail de votre compte.",
+    "sectionLabel": "Mot de passe oublié",
+    "sectionTitle": "Récupérer l'accès",
+    "sectionDescription": "Entrez l'e-mail lié à votre compte. Nous vous enverrons les instructions pour réinitialiser votre mot de passe.",
+    "successTitle": "Lien de réinitialisation envoyé",
+    "successDescription": "Veuillez consulter votre boîte de réception et suivre le lien pour créer un nouveau mot de passe.",
+    "sendLink": "Envoyer le lien",
+    "loading": "Envoi en cours...",
+    "infoText": "Si vous ne recevez pas l'e-mail, vérifiez votre dossier spam ou réessayez avec une autre adresse e-mail.",
+    "backToLogin": "Retour à la connexion",
+    "noAccount": "Pas de compte ?",
+    "register": "Créer un compte"
+  },
+  "resetPassword": {
+    "title": "Réinitialisation du mot de passe",
+    "backTo": "Retour à",
+    "signIn": "Connexion",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Inscrivez-vous",
+    "instructions": "Veuillez saisir le code de vérification que vous avez reçu ainsi que votre nouveau mot de passe.",
+    "codeLabel": "Code de vérification",
+    "codePlaceholder": "Entrez le code reçu",
+    "passwordLabel": "Nouveau mot de passe",
+    "passwordPlaceholder": "Entrez votre nouveau mot de passe",
+    "confirmPasswordLabel": "Confirmer le nouveau mot de passe",
+    "confirmPasswordPlaceholder": "Confirmez le nouveau mot de passe",
+    "submitButton": "Réinitialiser le mot de passe",
+    "loading": "Réinitialisation...",
+    "badge": "Réinitialisation sécurisée",
+    "heroTitle": "Créez un nouveau mot de passe",
+    "heroDescription": "Choisissez un mot de passe robuste pour sécuriser votre compte TryRecruiters et continuer en toute sécurité.",
+    "cardTitle": "Exigences du mot de passe",
+    "cardDesc": "Utilisez au moins 8 caractères avec une lettre majuscule et un chiffre.",
+    "sectionLabel": "Réinitialiser le mot de passe",
+    "sectionTitle": "Définir un nouveau mot de passe",
+    "sectionDescription": "Entrez et confirmez votre nouveau mot de passe ci-dessous.",
+    "backToLogin": "Retour à la connexion",
+    "requestNewLink": "Demander un nouveau lien",
+    "rulesTitle": "Règles du mot de passe",
+    "ruleLength": "Au moins 8 caractères",
+    "ruleUppercase": "Une lettre majuscule",
+    "ruleNumber": "Un chiffre",
+    "ruleMatch": "Les mots de passe correspondent",
+    "errors": {
+      "mismatch": "Les mots de passe ne correspondent pas."
+    },
+    "passwordResetedTitle": "Réinitialisation réussie",
+    "passwordResetedMessage": "Votre mot de passe a été réinitialisé avec succès. Cliquez sur OK pour vous connecter avec vos nouvelles informations."
+  },
+  "otp": {
+    "badge": "Vérification",
+    "sectionLabel": "Double authentification",
+    "heroTitle": "Confirmez votre identité",
+    "heroDescription": "Entrez le code à 6 chiffres envoyé sur votre appareil pour accéder à votre compte.",
+    "secureCardTitle": "Accès sécurisé",
+    "secureCardDesc": "La double authentification protège votre compte contre les accès non autorisés.",
+    "expiryCardTitle": "Code temporaire",
+    "expiryCardDesc": "Votre code expire après quelques minutes. Demandez-en un nouveau si nécessaire.",
+    "codeLabel": "Code de vérification",
+    "codePlaceholder": "Entrez le code à 6 chiffres",
+    "submitButton": "Vérifier",
+    "title": "Authentification à deux facteurs",
+    "backToLogin": "Retour à la connexion",
+    "instructions": "Veuillez entrer le code de vérification à 6 chiffres envoyé sur votre appareil.",
+    "codeSentTitle": "Code de vérification envoyé",
+    "codeSentMessage": "Un code de vérification a été envoyé sur votre {{channel}}. Veuillez vérifier vos messages et saisir le code. Si vous ne le trouvez pas, vérifiez votre dossier spam ou courrier indésirable.",
+    "resendLabel": "Vous n'avez pas reçu le code ?"
+  },
+  "sendCode": {
+    "title": "Choisissez une méthode d'envoi",
+    "badge": "Vérification",
+    "sectionLabel": "Vérification",
+    "heroTitle": "Sécurisez votre compte",
+    "heroDescription": "Choisissez comment recevoir votre code de vérification pour confirmer votre identité.",
+    "secureCardTitle": "Vérification sécurisée",
+    "secureCardDesc": "Votre code expire après quelques minutes pour votre sécurité.",
+    "instantCardTitle": "Livraison instantanée",
+    "instantCardDesc": "Recevez votre code en quelques secondes via le canal de votre choix.",
+    "chooseMethod": "Où souhaitez-vous recevoir le code ?",
+    "instruction": "Sélectionnez l'une des options ci-dessous pour recevoir votre code de vérification.",
+    "sendViaEmail": "Envoyer par email",
+    "emailDesc": "Recevez le code dans votre boîte mail",
+    "sendViaWhatsapp": "Envoyer via WhatsApp",
+    "whatsappDesc": "Recevez le code via WhatsApp",
+    "sendViaSms": "Envoyer par SMS",
+    "smsDesc": "Recevez le code par SMS",
+    "sendingEmail": "Envoi du code à votre adresse email...",
+    "sendingWhatsapp": "Envoi du code via WhatsApp...",
+    "sendingSms": "Envoi du code par SMS...",
+    "checkSpam": "Si vous ne recevez pas le code, vérifiez votre dossier spam ou courrier indésirable."
+  },
+  "errors": {
+    "genericError": "Une erreur s'est produite. Veuillez réessayer.",
+    "loadingRequest": "Une erreur s'est produite lors du chargement de la requête.",
+    "noPhoneOrEmail": "Aucun email ou numéro de téléphone fourni.",
+    "noContext": "Aucun contexte : valider OTP | confirmer le compte",
+    "invalidCode": "Code invalide. Veuillez réessayer.",
+    "noPhoneOrEmailProvided": "Aucun téléphone ou email fourni.",
+    "unsupported2FAContext": "Contexte 2FA non pris en charge : {{context}}",
+    "sessionExpired": "Session expirée. Veuillez vous reconnecter."
+  },
+  "profile": {
+    "title": "Mon profil",
+    "saveButton": "Enregistrer les modifications",
+    "cancelButton": "Annuler",
+    "editButton": "Modifier le profil",
+    "viewButton": "Voir le profil",
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Numéro de téléphone",
+      "country": "Pays",
+      "city": "Ville",
+      "profession": "Profession",
+      "placeOfBirth": "Lieu de naissance",
+      "nationality": "Nationalité",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
+    },
+    "messages": {
+      "profileUpdated": "Profil mis à jour avec succès.",
+      "passwordChanged": "Mot de passe changé avec succès.",
+      "error": "Une erreur s'est produite lors de la mise à jour du profil."
+    }
+  }
+}

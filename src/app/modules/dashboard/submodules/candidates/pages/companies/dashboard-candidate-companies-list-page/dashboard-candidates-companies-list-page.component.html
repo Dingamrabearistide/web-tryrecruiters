@@ -1,0 +1,76 @@
+<!-- MAIN START -->
+<div *transloco="let t; read: 'companies'" class="flex-1 flex flex-col">
+  <div class="flex flex-col w-full">
+    <!-- Filter Section -->
+    <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+      <div class="flex w-full justify-between items-center">
+        <div>
+          <h1 class="text-3xl pb-2 font-bold text-primary">
+            {{ t("list.title") }}
+          </h1>
+          <p class="text-gray-600 text-sm font-normal">
+            {{ t("list.description") }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="w-full app-container-inner">
+      <app-top-filters (filterChange)="onFiltersChanged($event)">
+      </app-top-filters>
+    </div> -->
+
+    <div
+      class="p-0 app-container-inner w-full mb-10 mx-auto gap-6 bg-white min-h-screen text-sm text-gray-700"
+    >
+      <!-- Filtres -->
+      <div class="w-full lg:col-span-3">
+        <!-- <app-side-filters></app-side-filters> -->
+      </div>
+
+      <div *transloco="let tCore" class="lg:col-span-12">
+        <app-loader *ngIf="isLoading"></app-loader>
+
+        <div *ngIf="!isLoading && hasError" class="w-full">
+          <app-generic-error
+            *ngIf="hasError"
+            [message]="errorMessage"
+          ></app-generic-error>
+        </div>
+
+        <div *ngIf="!isLoading && !hasError">
+          <div class="flex justify-end mb-4">
+            <app-generic-paginator
+              (pageChange)="onPageChange($event)"
+              [currentPage]="page"
+              [maxVisible]="5"
+              [totalPages]="totalPages"
+              [totalPages]="totalPages"
+            ></app-generic-paginator>
+          </div>
+
+          <div>
+            <div *ngIf="items.length === 0">{{ tCore("noItems") }}</div>
+
+            <div *ngIf="items.length > 0">
+              <app-companies-list
+                [items]="items"
+                (onView)="handleView($event)"
+              ></app-companies-list>
+
+              <div class="flex justify-end">
+                <app-generic-paginator
+                  (pageChange)="onPageChange($event)"
+                  [currentPage]="page"
+                  [maxVisible]="5"
+                  [totalPages]="totalPages"
+                ></app-generic-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MAIN END -->

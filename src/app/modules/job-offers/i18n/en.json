@@ -1,0 +1,421 @@
+{
+  "joboffers": {
+    "contractType": {
+      "FULL_TIME": "Full-time",
+      "PART_TIME": "Part-time",
+      "TEMPORARY": "Temporary",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Internship",
+      "CONTRACT": "Contract"
+    },
+    "contractTypes": {
+      "FULL_TIME": "Full-time",
+      "PART_TIME": "Part-time",
+      "TEMPORARY": "Temporary",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Internship",
+      "CONTRACT": "Contract"
+    },
+    "jobType": {
+      "FULL_TIME": "Full-time",
+      "PART_TIME": "Part-time",
+      "REMOTE": "Remote",
+      "ONSITE": "On-site",
+      "HYBRID": "Hybrid"
+    },
+    "jobLevel": {
+      "JUNIOR": "Junior",
+      "MID": "Mid-level",
+      "SENIOR": "Senior",
+      "LEAD": "Lead",
+      "ENTRY_LEVEL": "Entry Level",
+      "MID_LEVEL": "Mid Level",
+      "EXPERT_LEVEL": "Expert Level"
+    },
+    "educationLevel": {
+      "HIGH_SCHOOL": "High School",
+      "INTERMEDIATE": "Intermediate",
+      "GRADUATION": "Graduation",
+      "BACHELOR_DEGREE": "Bachelor's Degree",
+      "MASTER_DEGREE": "Master's Degree"
+    },
+    "columns": {
+      "jobLevel": "Job Level"
+    },
+    "jobDetails": {
+      "jobLevel": "Job Level"
+    }
+  },
+  "item": {
+    "details": "Details"
+  },
+  "test": "Hello world!",
+  "add_to_favorites": "Add to favorites",
+  "verified": "Verified",
+  "unknown_company": "Unknown company",
+  "not_specified": "Not specified",
+  "unknown_education": "Unknown education level",
+  "undefined_level": "Undefined level",
+  "experience": "{{count}} year{{count > 1 ? 's' : ''}} of experience",
+  "salary": "{{amount}}",
+  "published_on": "Published on {{date}}",
+  "expires_on": "Expires on {{date}}",
+  "created_on": "Created on {{date}}",
+  "applications_received": "{{count}} applications received",
+  "apply_now": "Apply now",
+  "createTitle": "Create a job offer",
+  "saveDraft": "Save as draft",
+  "submitDraft": "Submit for publication",
+  "submitDraftConfirm": "Submit this offer for moderation? It will consume a credit from your plan.",
+  "submitDraftSuccess": "Offer submitted for moderation.",
+  "submitDraftError": "Failed to submit. Please try again.",
+  "favorite": {
+    "list": {
+      "title": "Favorite Offers",
+      "description": "Manage and view all your  Favorite job offers in one place.",
+      "noCompanies": "No  Favorite job offers found.",
+      "startCreating": "Start by put your first job offer in favorite"
+    }
+  },
+  "expired": {
+    "title": "This offer has expired.",
+    "message": "Applications are no longer accepted for this position."
+  },
+  "republish": {
+    "title": "Republish offer",
+    "message": "You are about to republish \"{{title}}\". The offer will be set back to ACTIVE.",
+    "expiresAtLabel": "New expiry date (optional)",
+    "expiresAtHint": "Leave empty to extend by 30 days from today.",
+    "confirm": "Republish",
+    "errorTitle": "Republish failed"
+  },
+  "apply": {
+    "title": "Apply for this position",
+    "message": "Cover letter",
+    "messagePlaceholder": "Explain why you are interested in this position and what you can bring to the company...",
+    "resume": "Resume",
+    "submit": "Send my application"
+  },
+  "jobDetails": {
+    "title": "Job Detail",
+    "home": "Home",
+    "jobList": "Job List",
+    "jobDetail": "Job Detail",
+    "apply": "Apply",
+    "applyNow": "Apply now",
+    "expiresOn": "Expires on:",
+    "description": "Description",
+    "jobLevel": "Job Level",
+    "notes": "Notes",
+    "tags": "Tags",
+    "jobOverview": "Job Overview",
+    "publishedOn": "Published on:",
+    "salary": "Salary:",
+    "educationLevel": "Education Level:",
+    "location": "Location:",
+    "jobType": "Job Type:",
+    "experience": "Experience:",
+    "company": "Company:",
+    "companyOverview": "Company Overview",
+    "sector": "Sector",
+    "size": "Size",
+    "organization": "Organization",
+    "foundedIn": "Founded in",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "website": "Website",
+    "moreOffers": "More offers",
+    "addToFavorites": "Add to favorites",
+    "addToFavoritesConfirm": "Are you sure you want to add \"{{title}}\" to your favorites?",
+    "removeFromFavorites": "Remove from favorites",
+    "removeFromFavoritesConfirm": "Are you sure you want to remove \"{{title}}\" from your favorites?",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "applyFor": "Apply for {{title}}",
+    "applyFormDescription": "Please fill out the form below to apply for this job offer.",
+    "applicationFormPlaceholder": "Application form to be implemented here",
+    "sendApplication": "Send application"
+  },
+  "create": {
+    "success": {
+      "title": "Job offer created successfully",
+      "message": "The job offer \"{{name}}\" was successfully created."
+    }
+  },
+  "delete": {
+    "success": {
+      "title": "Suppression réussie",
+      "message": "L’offre d’emploi « {{name}} » a été supprimée avec succès."
+    },
+    "error": {
+      "title": "Deletion Failed",
+      "message": "An error occurred while deleting the job offer \"{{name}}\". Please try again later."
+    }
+  },
+  "form": {
+    "isPublished": "Published",
+    "expiresAt": "Expires At",
+    "experienceYears": "Experience Years",
+    "educationLevel": "Education Level",
+    "jobOffer": "Job Offer",
+    "search": "Search",
+    "reset": "Reset",
+    "createJob": "Create Job Offer",
+    "updateJob": "Update Job Offer",
+    "searchPlaceholder": "Title, keywords...",
+    "title": "Job Title",
+    "description": "Job Description",
+    "requirements": "Requirements",
+    "location": "Location",
+    "country": "Country",
+    "region": "Region",
+    "city": "City",
+    "contractType": "Contract Type",
+    "jobType": "Job Type",
+    "jobLevel": "Job Level",
+    "salary": "Salary",
+    "salaryCurrency": "Currency",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "tags": "Tags",
+    "selectContractType": "Select Contract Type",
+    "selectJobType": "Select Job Type",
+    "selectJobLevel": "Select Job Level",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "addTag": "Add Tag",
+    "allTypes": "All types",
+    "allCompanies": "All companies",
+    "company": "Company",
+    "selectCompany": "Select Company",
+    "categoryId": "Category",
+    "createdAt": "Creation Date",
+    "expiredAt": "Expiration Date",
+    "tagPatternError": "Tags can only contain letters, numbers, hyphens, underscores, and spaces.",
+    "tagMinLengthError": "Tag must be at least 2 characters long.",
+    "tagMaxLengthError": "Tag cannot be more than 20 characters long.",
+    "removeTag": "Remove Tag",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "errors": {
+      "fields": {
+        "title": {
+          "required": "Title is required.",
+          "minlength": "Title is too short.",
+          "maxlength": "Title is too long."
+        },
+        "description": {
+          "required": "Description is required.",
+          "minlength": "Description is too short."
+        },
+        "location": {
+          "required": "Location is required.",
+          "maxlength": "Location is too long."
+        },
+        "country": {
+          "required": "Country is required."
+        },
+        "city": {
+          "required": "City is required."
+        },
+        "contractType": {
+          "required": "Contract type is required."
+        },
+        "jobType": {
+          "required": "Job type is required."
+        },
+        "salary": {
+          "required": "Salary is required.",
+          "min": "Salary must be at least 0."
+        },
+        "salaryCurrency": {
+          "required": "Currency is required when a salary is provided."
+        },
+        "experienceYears": {
+          "required": "Experience is required.",
+          "min": "Experience must be a positive number.",
+          "max": "Experience cannot exceed 50 years."
+        },
+        "educationLevel": {
+          "required": "Education level is required."
+        },
+        "jobLevel": {
+          "required": "Job level is required."
+        },
+        "expiresAt": {
+          "required": "Expiration date is required."
+        },
+        "isPublished": {
+          "required": "Please specify whether the job is published."
+        },
+        "company": {
+          "required": "Please select a company."
+        }
+      }
+    }
+  },
+  "data": {
+    "industries": {
+      "TECHNOLOGIES": "Technologies",
+      "FINANCE": "Finance",
+      "HEALTH": "Health",
+      "EDUCATION": "Education",
+      "COMMERCE": "Commerce",
+      "SERVICES": "Services",
+      "MANUFACTURING": "Manufacturing",
+      "OTHER": "Other"
+    },
+    "companySizes": {
+      "1_10_EMPLOYEES": "1-10 employees",
+      "11_50_EMPLOYEES": "11-50 employees",
+      "51_200_EMPLOYEES": "51-200 employees",
+      "201_500_EMPLOYEES": "201-500 employees",
+      "501_1000_EMPLOYEES": "501-1000 employees",
+      "1000_PLUS_EMPLOYEES": "1000+ employees"
+    },
+    "organizationTypes": {
+      "STARTUP": "Startup",
+      "SME": "SME",
+      "LARGE_ENTERPRISE": "Large Enterprise",
+      "NGO": "NGO",
+      "GOVERNMENT": "Government",
+      "OTHER": "Other"
+    }
+  },
+  "contractType": {
+    "FULL_TIME": "Full-time",
+    "PART_TIME": "Part-time",
+    "TEMPORARY": "Temporary",
+    "FREELANCE": "Freelance",
+    "INTERNSHIP": "Internship",
+    "CONTRACT": "Contract"
+  },
+  "jobType": {
+    "FULL_TIME": "Full-time",
+    "PART_TIME": "Part-time",
+    "REMOTE": "Remote",
+    "ONSITE": "On-site",
+    "HYBRID": "Hybrid"
+  },
+  "jobLevel": {
+    "JUNIOR": "Junior",
+    "MID": "Mid-level",
+    "SENIOR": "Senior",
+    "LEAD": "Lead",
+    "ENTRY_LEVEL": "Entry Level",
+    "MID_LEVEL": "Mid Level",
+    "EXPERT_LEVEL": "Expert Level"
+  },
+  "educationLevel": {
+    "HIGH_SCHOOL": "High School",
+    "INTERMEDIATE": "Intermediate",
+    "GRADUATION": "Graduation",
+    "BACHELOR_DEGREE": "Bachelor’s Degree",
+    "MASTER_DEGREE": "Master’s Degree"
+  },
+  "columns": {
+    "title": "Job Title",
+    "location": "Location",
+    "contractType": "Contract Type",
+    "jobType": "Job Type",
+    "salary": "Salary",
+    "experience": "Experience",
+    "educationLevel": "Education Level",
+    "jobLevel": "Job Level",
+    "publishedAt": "Published On",
+    "expiresAt": "Expires On",
+    "status": "Status",
+    "createdAt": "Creation Date",
+    "expiredAt": "Expired At",
+    "actions": "Actions"
+  },
+  "status": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "PENDING": "Pending",
+    "EXPIRED": "Expired",
+    "DRAFT": "Draft"
+  },
+  "list": {
+    "title": "Job Offers",
+    "description": "Manage and view all your job offers in one place.",
+    "noCompanies": "No job offers found.",
+    "startCreating": "Start by creating your first job offer",
+    "createJob": "Create Job Offer",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "contractType": "Contract Type",
+    "allTypes": "All Types",
+    "noData": "No job offers available.",
+    "searchButton": "Search",
+    "noJobsFound": "No Jobs found",
+    "createFirstJob": "Start by creating your first Job",
+    "deleteConfirmTitle": "Delete Job Offer",
+    "deleteConfirmMessage": "Do you really want to delete this job offer?",
+    "deleteConfirmButton": "Delete",
+    "deleteCancelButton": "Cancel",
+    "back": "previous",
+    "noJobIdFound": "No Job ID found in URL.",
+    "jobDetailsNotFound": "Job details not found.",
+    "errorLoadingJobDetails": "Error loading job details.",
+    "confirmDeleteJob": "Are you sure you want to delete this job offer?",
+    "errorDeletingJob": "Error deleting job offer.",
+    "createPageTitle": "Create Job offer",
+    "genericError": "An unexpected error occurred."
+  },
+  "dialog": {
+    "operationSuccess": "The operation was done successfully",
+    "noDescriptionAvailable": "No description available.",
+    "location": "Location",
+    "contractType": "Contract Type",
+    "jobType": "Job Type",
+    "jobLevel": "Job Level",
+    "salary": "Salary",
+    "close": "Close",
+    "success": "Success",
+    "no_description": "No description available.",
+    "industry": "Industry",
+    "type": "Type",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website"
+  },
+  "details": {
+    "title": "Job offer details",
+    "noCompanyInfo": "No company information available.",
+    "expire": "Expiration date",
+    "noExpireDate": "Expiration date unavailable",
+    "organizationType": "Organization type",
+    "companySize": "Company size",
+    "phone": "Phone number",
+    "email": "Email address",
+    "website": "Website",
+    "more": "Learn more",
+    "posted": "Posted date",
+    "expireIn": "Expiration date",
+    "salary": "Salary",
+    "education": "Education level",
+    "location": "Location",
+    "jobType": "Job type",
+    "experience": "Required experience"
+  },
+  "banner": {
+    "jobs": "Job Details",
+    "subtitle": "Find the perfect opportunity for your career"
+  },
+  "company": {
+    "name": "Company Name"
+  },
+  "job": {
+    "title": "Job Title",
+    "description": "Job Description",
+    "responsibilities": [
+      "Responsibility 1",
+      "Responsibility 2",
+      "Responsibility 3"
+    ]
+  }
+}

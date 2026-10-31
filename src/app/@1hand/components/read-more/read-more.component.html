@@ -1,0 +1,14 @@
+<div *transloco="let t; read: 'general'">
+  <div [innerHTML]="isTruncated ? truncatedText : text"></div>
+  <div #plain [innerHTML]="text" class="hidden" aria-hidden="true"></div>
+  <button
+    *ngIf="(plain?.textContent?.length ?? 0) > maxLength"
+    (click)="toggleView()"
+  >
+    {{
+      isTruncated
+        ? t("show_more") || "Lire la suite"
+        : t("show_less") || "Lire moins"
+    }}
+  </button>
+</div>

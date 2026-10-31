@@ -1,0 +1,50 @@
+<div
+  class="relative h-[100vh] sidebar-responsive overflow-auto bg-white md:pt-0 bg-center bg-cover border-r border-gray-300"
+  *transloco="let t; read: namespace"
+>
+  <!-- Bouton fermer (mobile) -->
+  <div
+    (click)="closeSidebar()"
+    class="cursor-pointer md:hidden z-50 absolute text-primary top-[35px] right-[25px] text-2xl"
+  >
+    <i class="fa fa-times text-primary"></i>
+  </div>
+
+  <!-- Logo -->
+  <div
+    [routerLink]="disableLogoLink ? null : '/'"
+    [ngClass]="{ 'cursor-pointer md:hover:bg-superextralight/50': !disableLogoLink }"
+    class="flex items-center justify-center border-2 border-l-3 border-t-0 border-primary w-full py-4 px-3"
+  >
+    <img
+      src="/images/logo-text.png"
+      class="w-[55%] max-w-[160px] h-auto"
+      alt="tryrecruiters logo"
+    />
+  </div>
+
+  <!-- Menu -->
+  <ul class="flex flex-col gap-1 py-0">
+    <li *ngFor="let item of menuItems" (click)="onItemClick()">
+      <a
+        [id]="item.id"
+        [routerLink]="item.href"
+        class="inline-flex items-center w-full px-14 md:px-5 py-2"
+        [ngClass]="{
+          'sidebar-active-menu text-secondary': isActive(item),
+          'hover:bg-extralight/50 text-app-gray': !isActive(item),
+        }"
+      >
+        <label class="flex items-center cursor-pointer w-full gap-2">
+          <span class="flex justify-center items-center w-5">
+            <span *ngIf="item.svg; else fontIcon" [innerHTML]="item.svg"></span>
+            <ng-template #fontIcon>
+              <i class="{{ item.icon }} text-lg"></i>
+            </ng-template>
+          </span>
+          <span class="menuText text-md">{{ t(item.label) }}</span>
+        </label>
+      </a>
+    </li>
+  </ul>
+</div>

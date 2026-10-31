@@ -1,0 +1,579 @@
+{
+  "welcome": "Bienvenue",
+  "loading": "Chargement...",
+  "back": "Retour",
+
+  "genericVerifyTitle": "Succès",
+  "genericVerifyMessage": "Opération réussie. Cliquez sur OK pour continuer.",
+
+  "layout": {
+    "sloganTitle": "Une carrière réussie commence\npar une excellente candidature.",
+    "sloganDescription": "Créez votre profil et connectez-vous aux bonnes opportunités en quelques étapes."
+  },
+
+  "login": {
+    "title": "Connexion",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "submitButton": "Connexion",
+
+    "verifyTitle": "Vérification d'identité requise",
+    "verifyMessage": "Pour des raisons de sécurité, veuillez vérifier votre identité en saisissant le code envoyé à votre méthode préférée.",
+
+    "verifySuccessTitle": "Identité vérifiée",
+    "verifySuccessMessage": "Votre identité a été vérifiée avec succès. Vous allez être redirigé vers votre tableau de bord."
+  },
+
+  "register": {
+    "title": "Créer votre compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se connecter",
+    "candidate": "Candidat",
+    "employer": "Employeur",
+    "agree": "J'accepte les",
+    "terms": "conditions générales",
+
+    "verifyTitle": "Inscription terminée",
+    "verifyMessage": "Votre compte a été créé. Cliquez sur OK pour aller à la page de connexion.",
+
+    "accountCreatedTitle": "Compte créé avec succès",
+    "accountCreatedMessage": "Votre compte a été créé. Pour l’activer, veuillez vérifier votre email et suivre le lien de confirmation que nous vous avons envoyé.",
+
+    "form": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Numéro de téléphone",
+      "country": "Pays",
+      "city": "Ville",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "buttons": {
+        "submit": "S'inscrire",
+        "loading": "Inscription en cours..."
+      },
+      "errors": {
+        "firstName": {
+          "required": "Le prénom est requis.",
+          "tooShort": "Le prénom est trop court.",
+          "invalid": "Prénom invalide."
+        },
+        "lastName": {
+          "required": "Le nom est requis.",
+          "tooShort": "Le nom est trop court.",
+          "invalid": "Nom invalide."
+        },
+        "email": {
+          "required": "L'email est requis.",
+          "invalid": "Adresse email invalide."
+        },
+        "phone": {
+          "required": "Le numéro de téléphone est requis.",
+          "invalid": "Numéro de téléphone invalide."
+        },
+        "country": {
+          "required": "Le pays est requis.",
+          "invalid": "Pays invalide."
+        },
+        "city": {
+          "required": "La ville est requise.",
+          "invalid": "Ville invalide."
+        },
+        "password": {
+          "required": "Le mot de passe est requis.",
+          "tooShort": "Le mot de passe doit contenir au moins 8 caractères.",
+          "mismatch": "Les mots de passe ne correspondent pas."
+        },
+        "confirmPassword": {
+          "required": "La confirmation du mot de passe est requise.",
+          "invalid": "Confirmation invalide."
+        }
+      }
+    }
+  },
+
+  "confirm": {
+    "titleHeaderEmail": "Confirmez votre adresse e-mail",
+    "back": "Retour",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Créer un compte",
+    "instructionsEmail": "Nous avons envoyé un code de confirmation à votre e-mail :",
+    "checkInbox": "Veuillez consulter votre boîte de réception et entrer le code ci-dessous.",
+    "notReceived": "Vous n'avez pas reçu le code ?",
+    "checkSpam": "Vérifiez votre dossier spam ou courrier indésirable.",
+
+    "verifyTitle": "Compte confirmé",
+    "verifyMessage": "Votre compte a été vérifié. Cliquez sur OK pour vous connecter."
+  },
+  "confirmAccount": {
+    "codeLabel": "Code de confirmation",
+    "codePlaceholder": "Entrez le code à 6 chiffres",
+    "submitButton": "Confirmer mon compte"
+  },
+
+  "forgot": {
+    "title": "Mot de passe oublié ?",
+    "back": "Retour",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Créer un compte",
+
+    "verifyTitle": "Vérifiez votre email",
+    "verifyMessage": "Un lien a été envoyé à votre adresse email. Cliquez sur OK pour réinitialiser votre mot de passe."
+  },
+  "forgotPassword": {
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+    "submitButton": "Réinitialiser mon mot de passe"
+  },
+
+  "resetPassword": {
+    "title": "Réinitialisation du mot de passe",
+    "backTo": "Retour à",
+    "signIn": "Connexion",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "register": "Inscrivez-vous",
+    "instructions": "Veuillez saisir le code de vérification que vous avez reçu ainsi que votre nouveau mot de passe.",
+    "codeLabel": "Code de vérification",
+    "codePlaceholder": "Entrez le code reçu",
+    "passwordLabel": "Nouveau mot de passe",
+    "passwordPlaceholder": "Entrez votre nouveau mot de passe",
+    "confirmPasswordLabel": "Confirmer le mot de passe",
+    "confirmPasswordPlaceholder": "Répétez votre mot de passe",
+    "submitButton": "Réinitialiser le mot de passe",
+
+    "passwordResetedTitle": "Réinitialisation réussie",
+    "passwordResetedMessage": "Votre mot de passe a été réinitialisé avec succès. Cliquez sur OK pour vous connecter avec vos nouvelles informations."
+  },
+
+  "otp": {
+    "codeLabel": "Code de vérification",
+    "codePlaceholder": "Entrez le code à 6 chiffres",
+    "submitButton": "Vérifier",
+    "title": "Authentification à deux facteurs",
+    "backToLogin": "Retour à la connexion",
+    "instructions": "Veuillez entrer le code de vérification à 6 chiffres envoyé sur votre appareil.",
+
+    "codeSentTitle": "Code de vérification envoyé",
+    "codeSentMessage": "Un code de vérification a été envoyé sur votre {{channel}}. Veuillez vérifier vos messages et saisir le code."
+  },
+
+  "sendCode": {
+    "title": "Choisissez une méthode d'envoi",
+    "chooseMethod": "Où souhaitez-vous recevoir le code ?",
+    "instruction": "Sélectionnez l'une des options ci-dessous pour recevoir votre code de vérification.",
+    "sendViaEmail": "Envoyer par email",
+    "sendViaWhatsapp": "Envoyer via WhatsApp",
+    "sendViaSms": "Envoyer par SMS",
+    "sendingEmail": "Envoi du code à votre adresse email...",
+    "sendingWhatsapp": "Envoi du code via WhatsApp...",
+    "sendingSms": "Envoi du code par SMS..."
+  },
+
+  "privacyPolicy": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour :",
+    "introduction": "Chez TryRecruiters, nous nous engageons à protéger votre vie privée et à vous offrir une expérience positive sur notre plateforme. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et sauvegardons vos informations lorsque vous utilisez notre site web et nos services.",
+    "description": "Consultez l'intégralité de la politique de confidentialité et téléchargez le PDF pour une lecture hors ligne.",
+    "viewPdf": "Ouvrir le PDF dans un nouvel onglet",
+
+    "sections": {
+      "informationWeCollect": {
+        "title": "1. Informations que nous collectons",
+        "description": "Nous collectons les informations que vous nous fournissez directement et les informations collectées automatiquement :",
+        "items": [
+          "Informations d'identification personnelle (nom, email, numéro de téléphone, localisation)",
+          "Informations professionnelles (titre de poste, entreprise, expérience, CV)",
+          "Informations de profil (antécédents professionnels, compétences, certifications)",
+          "Données de communication (messages, commentaires, demandes d'assistance)",
+          "Informations de paiement (traitées de manière sécurisée via PayPal)",
+          "Données d'appareil et d'utilisation (adresse IP, type de navigateur, pages visitées, temps passé)"
+        ]
+      },
+      "howWeUseInformation": {
+        "title": "2. Comment nous utilisons vos informations",
+        "description": "Nous utilisons les informations collectées pour :",
+        "items": [
+          "Fournir et améliorer nos services",
+          "Mettre en correspondance les candidats avec les opportunités d'emploi",
+          "Traiter les paiements et gérer les abonnements",
+          "Envoyer des communications (newsletters, mises à jour, notifications)",
+          "Analyser les modèles d'utilisation et les performances du site",
+          "Respecter les obligations légales",
+          "Prévenir la fraude et assurer la sécurité"
+        ]
+      },
+      "informationSharing": {
+        "title": "3. Partage des informations",
+        "description": "Nous pouvons partager vos informations avec :",
+        "items": [
+          "Les prestataires de services et les partenaires nécessaires pour exploiter notre plateforme",
+          "Les employeurs et les recruteurs (pour le matching emploi, avec votre consentement)",
+          "Les autorités légales si la loi l'exige",
+          "Les partenaires commerciaux en cas de fusion ou d'acquisition"
+        ]
+      },
+      "dataSecurity": {
+        "title": "4. Sécurité des données",
+        "description": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet n'est 100% sécurisée."
+      },
+      "dataRetention": {
+        "title": "5. Conservation des données",
+        "description": "Nous conservons vos informations personnelles aussi longtemps que nécessaire pour fournir nos services et accomplir les objectifs énoncés dans cette politique. Vous pouvez demander la suppression de votre compte et des données associées à tout moment."
+      },
+      "yourRights": {
+        "title": "6. Vos droits",
+        "description": "Selon votre localisation, vous pouvez avoir les droits suivants :",
+        "items": [
+          "Droit d'accès à vos données personnelles",
+          "Droit de corriger les données inexactes",
+          "Droit à l'oubli (droit à l'effacement)",
+          "Droit de limiter le traitement",
+          "Droit à la portabilité des données",
+          "Droit de s'opposer au traitement"
+        ]
+      },
+      "cookies": {
+        "title": "7. Cookies et suivi",
+        "description": "Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience, mémoriser vos préférences et analyser l'utilisation du site. Vous pouvez gérer les préférences de cookies via les paramètres de votre navigateur."
+      },
+      "thirdPartyLinks": {
+        "title": "8. Liens tiers",
+        "description": "Notre plateforme peut contenir des liens vers des sites web tiers. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites externes. Veuillez consulter leurs politiques de confidentialité avant de fournir des informations."
+      },
+      "childrenPrivacy": {
+        "title": "9. Confidentialité des enfants",
+        "description": "Nos services ne s'adressent pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès des enfants. Si nous découvrons que nous avons collecté des informations auprès d'un enfant de moins de 13 ans, nous les supprimerons immédiatement."
+      },
+      "changes": {
+        "title": "10. Modifications de cette politique",
+        "description": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons des modifications importantes par email ou en affichant la politique mise à jour sur notre site web. L'utilisation continue de nos services constitue l'acceptation de la politique révisée."
+      },
+      "contact": {
+        "title": "11. Nous contacter",
+        "description": "Si vous avez des questions sur cette politique de confidentialité ou sur nos pratiques de confidentialité, veuillez nous contacter à :",
+        "email": "Email : support@tryrecruiters.com",
+        "address": "Adresse : 6391 Elgin St. Celina, Delaware 10299, New York, États-Unis d'Amérique",
+        "phone": "Téléphone : (319) 555-0115"
+      }
+    }
+  },
+
+  "terms": {
+    "badge": "Documents légaux",
+    "title": "Conditions générales & Confidentialité",
+    "lastUpdated": "Dernière mise à jour",
+    "lastUpdatedDate": "15 décembre 2025",
+    "backHome": "Retour à l'accueil",
+    "intro": "En utilisant TRYRECRUITERS, vous acceptez les présentes conditions. Veuillez les lire attentivement. Ce document comprend notre Accord de Confidentialité et notre Accord Utilisateur.",
+    "acceptanceNote": "En cliquant sur « S'inscrire », « Créer un compte » ou toute formulation similaire, vous reconnaissez avoir lu, compris et accepté d'être lié par l'intégralité de cet accord.",
+    "createAccount": "Créer un compte",
+
+    "toc": {
+      "title": "Table des matières",
+      "privacyIntro": "Introduction",
+      "privacyCollect": "Informations collectées",
+      "privacyUse": "Utilisation des données",
+      "privacyShare": "Partage des données",
+      "privacyRights": "Vos droits et choix",
+      "privacySecurity": "Sécurité des données",
+      "privacyRetention": "Conservation des données",
+      "privacyChildren": "Confidentialité des enfants",
+      "privacyChanges": "Modifications de l'accord",
+      "privacyContact": "Nous contacter",
+      "agreementIntro": "Introduction",
+      "agreementAcceptance": "Acceptation des conditions",
+      "agreementEligibility": "Éligibilité",
+      "agreementAccounts": "Comptes utilisateurs",
+      "agreementMisc": "Confidentialité, contenu & PI",
+      "agreementTermination": "Résiliation",
+      "agreementLaw": "Droit applicable",
+      "agreementModifications": "Modifications",
+      "agreementContact": "Nous contacter"
+    },
+
+    "privacy": {
+      "heading": "Accord de Confidentialité",
+      "s1": { "title": "Introduction", "body": "Bienvenue sur TRYRECRUITERS ! Votre vie privée est importante pour nous. Cet accord explique comment nous collectons, utilisons, divulguons et protégeons vos informations personnelles lorsque vous utilisez l'application. En créant un compte et en utilisant l'application, vous acceptez d'être lié par les termes et conditions de cet accord." },
+      "s2": {
+        "title": "Informations que nous collectons",
+        "sub1": {
+          "title": "Informations que vous nous fournissez",
+          "items": [
+            "Informations de compte : nom, email, mot de passe, CV et autres informations nécessaires.",
+            "Informations de profil : photo de profil, numéro de téléphone et autres détails optionnels.",
+            "Contenu : messages, publications et fichiers multimédias partagés via l'application."
+          ]
+        },
+        "sub2": {
+          "title": "Informations collectées automatiquement",
+          "items": [
+            "Informations sur l'appareil : modèles matériels, systèmes d'exploitation, identifiants uniques.",
+            "Informations d'utilisation : heures d'accès, pages consultées, actions effectuées.",
+            "Informations de localisation : via adresse IP, GPS ou autres technologies de localisation."
+          ]
+        }
+      },
+      "s3": {
+        "title": "Comment nous utilisons vos informations",
+        "sub1": {
+          "title": "Pour fournir et améliorer nos services",
+          "items": [
+            "Créer et gérer votre compte.",
+            "Personnaliser votre expérience et fournir du contenu adapté à vos intérêts.",
+            "Répondre à vos questions et fournir un service client adapté."
+          ]
+        },
+        "sub2": {
+          "title": "Pour la communication",
+          "items": [
+            "Envoyer des notifications techniques, des mises à jour, des alertes de sécurité.",
+            "Vous informer des nouvelles fonctionnalités, services et promotions."
+          ]
+        },
+        "sub3": {
+          "title": "Pour la sécurité et la prévention de la fraude",
+          "items": [
+            "Surveiller et analyser les usages pour assurer la sécurité de l'application.",
+            "Détecter, prévenir et résoudre les fraudes et activités non autorisées."
+          ]
+        },
+        "sub4": { "title": "Conformité légale", "body": "Respecter nos obligations légales, faire respecter nos accords et protéger les droits, les biens et la sécurité de TRYRECRUITERS, de nos utilisateurs et d'autres personnes." }
+      },
+      "s4": {
+        "title": "Comment nous partageons vos informations",
+        "sub1": { "title": "Avec les prestataires de services", "body": "Nous pouvons partager vos informations avec des prestataires tiers qui ont besoin d'y accéder pour effectuer des travaux en notre nom." },
+        "sub2": { "title": "Pour des raisons légales", "body": "Nous pouvons divulguer vos informations si la loi l'exige ou en réponse à une demande légale telle qu'une ordonnance du tribunal, une assignation à comparaître ou une enquête gouvernementale." },
+        "sub3": { "title": "Transferts commerciaux", "body": "Nous pouvons partager ou transférer vos informations dans le cadre d'une fusion, vente d'actifs, financement ou acquisition de tout ou partie de notre activité." }
+      },
+      "s5": {
+        "title": "Vos droits et choix",
+        "sub1": { "title": "Accès et mise à jour", "body": "Vous pouvez accéder à vos informations personnelles et les mettre à jour via les paramètres de votre compte." },
+        "sub2": { "title": "Suppression du compte", "body": "Vous pouvez supprimer votre compte à tout moment, ce qui supprimera votre profil et les données associées de nos systèmes." },
+        "sub3": { "title": "Désabonnement", "body": "Vous pouvez vous désinscrire des communications promotionnelles en suivant les instructions dans ces communications ou via les paramètres de votre compte." }
+      },
+      "s6": { "title": "Sécurité des données", "body": "Nous mettons en œuvre diverses mesures de sécurité pour protéger vos informations personnelles contre tout accès, utilisation ou divulgation non autorisés. Cependant, aucune méthode de transmission sur Internet n'est sécurisée à 100 %, et nous ne pouvons garantir une sécurité absolue." },
+      "s7": { "title": "Conservation des données", "body": "Nous conservons vos informations personnelles aussi longtemps que nécessaire pour atteindre les objectifs décrits dans cet accord, à moins qu'une période de conservation plus longue ne soit requise ou permise par la loi." },
+      "s8": { "title": "Confidentialité des enfants", "body": "Notre application n'est pas destinée aux enfants de moins de 18 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 18 ans. Si nous apprenons que nous avons reçu par inadvertance des informations personnelles d'un utilisateur de moins de 18 ans, nous supprimerons ces informations de nos dossiers." },
+      "s9": { "title": "Modifications de cet accord", "body": "Nous pouvons mettre à jour cet accord de temps à autre. Nous vous informerons de tout changement significatif en publiant le nouvel accord sur l'application et en mettant à jour la « Date d'entrée en vigueur ». Votre utilisation continue de l'application après toute modification constitue votre acceptation de l'accord révisé." },
+      "s10": { "title": "Nous contacter", "body": "Si vous avez des questions sur cet accord, veuillez nous contacter à " }
+    },
+
+    "agreement": {
+      "heading": "Accord Utilisateur",
+      "lastUpdated": "Dernière mise à jour",
+      "lastUpdatedDate": "15 décembre 2025",
+      "s1": {
+        "title": "Introduction",
+        "body": "Bienvenue sur TRYRECRUITERS ! Cet accord régit votre utilisation de l'application Web TRYRECRUITERS.",
+        "sub1": { "title": "Contrat", "body": "En utilisant notre application Web, vous acceptez toutes ces conditions. Votre utilisation est également soumise à notre Politique de Confidentialité. En cliquant sur « S'inscrire », vous acceptez de conclure un contrat juridiquement contraignant avec TRYRECRUITERS." },
+        "sub2": { "title": "Services", "body": "Cet accord s'applique à l'application Web TRYRECRUITERS et aux autres sites, applications, communications et services connexes proposés dans le cadre de cet accord." },
+        "sub3": { "title": "Membres et visiteurs", "body": "Lorsque vous vous inscrivez et rejoignez TRYRECRUITERS, vous devenez membre. Si vous choisissez de ne pas vous inscrire, vous pouvez accéder à certaines fonctionnalités en tant que « Visiteur »." },
+        "sub4": { "title": "Modifications", "body": "Nous pouvons modifier cet accord de temps à autre. Si nous apportons des modifications importantes, nous vous en informerons. Votre utilisation continue des services après publication des modifications constitue votre acceptation des conditions mises à jour." },
+        "sub5": {
+          "title": "Conduite interdite",
+          "intro": "Vous acceptez de ne pas publier ou partager du contenu qui :",
+          "items": [
+            "Est obscène, pornographique, violent ou à caractère sexuel explicite.",
+            "Harcèle, intimide ou promeut le discours de haine.",
+            "Viole la vie privée d'autrui, notamment en partageant des images intimes sans consentement.",
+            "Contient un langage ou du contenu inapproprié ou offensant.",
+            "Est généralement illégal."
+          ]
+        }
+      },
+      "s2": {
+        "title": "Acceptation des conditions",
+        "body": "En accédant à ou en utilisant l'application Web, vous acceptez de vous conformer à cet accord et à toutes les lois applicables.",
+        "sub1": { "title": "Éligibilité au service", "body": "Pour utiliser les Services, vous devez avoir l'âge minimum requis (18 ans), ne posséder qu'un seul compte TRYRECRUITERS sous votre vrai nom, et ne pas avoir été restreint par TRYRECRUITERS dans l'utilisation des Services." },
+        "sub2": { "title": "Votre compte", "body": "Vous acceptez d'utiliser un mot de passe fort, de le garder confidentiel, de ne pas transférer une partie de votre compte et de respecter nos règles d'utilisation. Vous êtes responsable de tout ce qui se passe via votre compte." },
+        "sub3": {
+          "title": "Contenu et conduite",
+          "intro": "Vous acceptez de ne pas publier ou partager du contenu qui :",
+          "items": [
+            "Est sexuellement explicite, obscène ou pornographique.",
+            "Harcèle, intimide ou promeut le discours de haine.",
+            "Viole la vie privée d'autrui.",
+            "Contient un langage ou du contenu inapproprié ou offensant.",
+            "Encourage ou facilite toute activité illégale."
+          ]
+        },
+        "sub4": { "title": "Paiement", "body": "Vous honorerez vos obligations de paiement et acceptez que nous stockions vos informations de paiement. Vous comprenez que des frais et taxes peuvent s'ajouter à nos prix. Les remboursements sont soumis à notre politique." },
+        "sub5": { "title": "Avis et messages", "body": "Vous acceptez que nous vous fournissions des avis et messages via nos sites Web et les informations de contact que vous avez fournies. Si vos coordonnées sont obsolètes, vous pourriez manquer des avis importants." },
+        "sub6": { "title": "Partage", "body": "Lorsque vous partagez des informations sur nos Services, d'autres personnes peuvent les voir, les copier et les utiliser. Nos Services permettent la messagerie et le partage d'informations de diverses manières." }
+      },
+      "s3": {
+        "title": "Éligibilité",
+        "body": "Vous devez avoir au moins 18 ans pour utiliser l'application Web.",
+        "sub1": {
+          "title": "Exigence d'âge minimum",
+          "items": [
+            "Vous devez avoir l'âge minimum ou plus, soit au moins 18 ans.",
+            "Vous ne créerez pas de compte pour quelqu'un d'autre que vous-même.",
+            "Vous n'êtes pas déjà restreint par TRYRECRUITERS dans l'utilisation des services."
+          ]
+        },
+        "sub2": { "title": "Capacité juridique", "body": "En accédant à l'application, vous affirmez avoir la capacité juridique pour conclure cet accord et ne pas être interdit d'utiliser l'application en vertu des lois applicables." },
+        "sub3": { "title": "Conformité aux lois", "body": "Vous acceptez de respecter toutes les lois et réglementations applicables lors de l'utilisation de l'application, notamment les lois relatives à la conduite en ligne, la confidentialité, la protection des données et la propriété intellectuelle." }
+      },
+      "s4": {
+        "title": "Comptes utilisateurs",
+        "sub1": { "title": "Inscription", "body": "Pour utiliser certaines fonctionnalités, vous devez créer un compte. Vous acceptez de fournir des informations exactes, actuelles et complètes, et de les maintenir à jour. La création d'un compte avec de fausses informations est une violation de nos conditions." },
+        "sub2": { "title": "Sécurité du compte", "body": "Vous êtes responsable de la confidentialité de vos identifiants et de toutes les activités qui se déroulent sous votre compte. Vous devez notifier immédiatement TRYRECRUITERS de toute utilisation non autorisée de votre compte." },
+        "sub3": { "title": "Résiliation du compte", "body": "Vous pouvez résilier votre compte à tout moment. TRYRECRUITERS se réserve le droit de résilier ou de suspendre votre compte sans préavis ni responsabilité pour toute raison, y compris une violation de cet accord." }
+      },
+      "s5to8": {
+        "title": "Confidentialité, Contenu, Propriété intellectuelle & Limitations",
+        "body": "Nous collectons et utilisons vos données personnelles conformément à notre Politique de Confidentialité. Vous conservez la propriété du contenu que vous publiez. Toute la propriété intellectuelle de l'application appartient à TRYRECRUITERS. L'application est fournie « telle quelle » sans garantie d'aucune sorte. TRYRECRUITERS ne peut être tenu responsable des dommages indirects, accessoires, spéciaux ou consécutifs découlant de votre utilisation de l'application."
+      },
+      "s10": {
+        "title": "Résiliation",
+        "sub1": { "title": "Résiliation par vous", "body": "Vous avez le droit de résilier votre compte à tout moment en contactant notre équipe d'assistance clientèle et en demandant la résiliation du compte. Après la résiliation, votre accès sera révoqué et vos données personnelles seront supprimées conformément à notre Politique de Confidentialité." },
+        "sub2": { "title": "Résiliation par nous", "body": "TRYRECRUITERS se réserve le droit de suspendre ou de résilier votre compte en cas de violation de l'accord, d'inactivité prolongée, de fraude ou d'abus suspectés, ou de conformité légale requise." },
+        "sub6": { "title": "Survie", "body": "Certaines dispositions de cet accord survivront à la résiliation, notamment les dispositions relatives à la propriété intellectuelle, aux limitations de responsabilité, à l'indemnisation et à la résolution des litiges." }
+      },
+      "s12": {
+        "title": "Droit applicable",
+        "body": "Cet accord est régi et interprété conformément aux lois applicables. Tout litige découlant de cet accord sera résolu par arbitrage contraignant. En cas de litige, vous acceptez d'abord de tenter une résolution informelle en contactant TRYRECRUITERS à info@tryrecruiters.com."
+      },
+      "s13": {
+        "title": "Modifications de cet accord",
+        "body": "TRYRECRUITERS se réserve le droit de modifier ou de mettre à jour cet accord à tout moment. Les modifications prennent effet immédiatement après leur publication. Votre utilisation continue de l'application après les modifications constitue votre acceptation de l'accord révisé."
+      },
+      "s14": { "title": "Nous contacter", "body": "Si vous avez des questions sur cet accord, veuillez nous contacter à " }
+    }
+  },
+
+  "categories": {
+    "list": {
+      "design": "Design",
+      "programming": "Programmation",
+      "digitalMarketing": "Marketing digital",
+      "video": "Vidéo",
+      "animation": "Animation"
+    }
+  },
+
+  "candidates": {
+    "hero": {
+      "badge": "Vivier de talents",
+      "title": "Trouver des talents",
+      "subtitle": "Parcourez notre vivier de candidats qualifiés et trouvez le profil idéal pour votre équipe.",
+      "activeCandidates": "Candidats actifs",
+      "openToWork": "Ouverts aux opportunités",
+      "verifiedProfiles": "Profils vérifiés"
+    },
+    "filters": {
+      "searchPlaceholder": "Rechercher par nom, compétence…",
+      "allLevels": "Tous les niveaux",
+      "reset": "Réinitialiser"
+    },
+    "results": {
+      "talentPool": "Vivier de talents",
+      "candidatesFound": "candidats trouvés"
+    },
+    "sort": {
+      "match": "Meilleure correspondance",
+      "experience": "Expérience",
+      "recent": "Plus récent",
+      "name": "Nom"
+    },
+    "card": {
+      "verified": "Vérifié",
+      "yearsExp": "ans d'exp.",
+      "viewProfile": "Voir le profil",
+      "profile": "Profil"
+    },
+    "empty": {
+      "title": "Aucun candidat trouvé",
+      "description": "Essayez d'ajuster vos filtres ou termes de recherche pour trouver des candidats.",
+      "reset": "Réinitialiser les filtres"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "sur",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "time": {
+      "today": "Aujourd'hui",
+      "yesterday": "Hier",
+      "daysAgo": "jours",
+      "monthsAgo": "mois"
+    }
+  },
+
+  "cards": {
+    "candidate": {
+      "title": "Trouvez votre prochaine opportunité",
+      "description": "Connectez-vous avec les meilleurs employeurs et décrochez l'emploi de vos rêves"
+    },
+    "employer": {
+      "title": "Recruter du talent",
+      "description": "Trouvez les meilleurs candidats pour votre entreprise"
+    }
+  },
+
+  "contact": {
+    "badge": "Contactez-nous",
+    "title": "Discutons de votre projet",
+    "subtitle": "Une question, une suggestion ou besoin d'aide ? Notre équipe vous répond rapidement.",
+    "info": {
+      "emailLabel": "Écrivez-nous",
+      "addressLabel": "Notre adresse",
+      "hoursLabel": "Horaires",
+      "hoursValue": "Lun. - Ven. : 9h00 - 18h00",
+      "followUs": "Suivez-nous"
+    },
+    "formTitle": "Envoyez-nous un message",
+    "formSubtitle": "Remplissez le formulaire ci-dessous, votre client de messagerie s'ouvrira avec votre message prêt à envoyer.",
+    "form": {
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "vous@email.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Objet de votre message",
+      "message": "Message",
+      "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "sentConfirmation": "Votre message a bien été envoyé. Notre équipe vous répondra rapidement.",
+      "errorMessage": "Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous écrire directement à {{email}}.",
+      "errors": {
+        "nameRequired": "Le nom est requis",
+        "emailRequired": "Un email valide est requis",
+        "subjectRequired": "Le sujet est requis",
+        "messageRequired": "Le message est requis"
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Questions Fréquemment Posées",
+      "description": "Trouvez rapidement des réponses aux questions les plus courantes sur nos services et processus",
+      "q1": "Comment puis-je créer un compte ?",
+      "a1": "Pour créer un compte, cliquez sur le bouton \"S'inscrire\" en haut de la page. Choisissez votre type de compte (Candidat ou Recruteur) et remplissez le formulaire avec vos informations. Vous recevrez un email de confirmation pour activer votre compte.",
+      "q2": "Quels sont les délais de réponse ?",
+      "a2": "Notre équipe s'engage à répondre à toutes les demandes dans un délai de 24 à 48 heures ouvrables. Pour les questions urgentes, n'hésitez pas à nous contacter par téléphone.",
+      "q3": "Comment publier une offre d'emploi ?",
+      "a3": "Après avoir créé un compte recruteur, connectez-vous à votre espace et cliquez sur \"Publier une offre\". Remplissez les détails du poste, définissez vos critères et publiez. Votre offre sera visible immédiatement après validation.",
+      "q4": "Les services sont-ils gratuits ?",
+      "a4": "L'inscription et la consultation des offres sont entièrement gratuites pour les candidats. Pour les recruteurs, nous proposons plusieurs formules adaptées à vos besoins. Contactez-nous pour plus de détails sur nos tarifs.",
+      "q5": "Comment modifier mes informations de profil ?",
+      "a5": "Connectez-vous à votre compte et accédez à votre espace personnel. Cliquez sur \"Mon profil\" puis sur \"Modifier\". Vous pouvez mettre à jour vos informations personnelles, votre CV, et vos préférences à tout moment.",
+      "q6": "Que faire si j'ai oublié mon mot de passe ?",
+      "a6": "Sur la page de connexion, cliquez sur \"Mot de passe oublié ?\". Entrez votre adresse email et vous recevrez un lien pour réinitialiser votre mot de passe. Le lien est valable pendant 24 heures.",
+      "notFound": "Vous ne trouvez pas votre réponse ?",
+      "contactUs": "Notre équipe est là pour vous aider. N'hésitez pas à nous contacter.",
+      "contactButton": "Nous Contacter"
+    }
+  }
+}

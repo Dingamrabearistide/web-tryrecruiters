@@ -1,0 +1,236 @@
+<div
+  class="tr-custom-call"
+  [class.tr-custom-call--side-open]="isSidePanelOpen"
+  [class.tr-custom-call--side-closed]="!isSidePanelOpen"
+  *transloco="let t; read: 'videoCall'"
+>
+  <div *ngIf="isLoading" class="tr-call-overlay">
+    <div class="tr-loader"></div>
+    <p>{{ t('connecting') }}...</p>
+  </div>
+
+  <div *ngIf="error && !isLoading" class="tr-call-overlay tr-call-overlay--error">
+    <div class="tr-error-content">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>{{ t('errorTitle') }}</h3>
+      <p>{{ t(error) }}</p>
+      <button type="button" class="tr-retry-button" (click)="retry()">
+        {{ t('retry') }}
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isLoading && !error">
+    <section class="tr-stage" [class.tr-stage--screen-share]="hasScreenShare">
+      <ng-container *ngIf="hasScreenShare; else tiledLayout">
+        <article class="tr-main-tile preview-grid" *ngIf="mainParticipant as participant">
+          <button
+            type="button"
+            class="tr-fullscreen-button"
+            [title]="t('fullscreen')"
+            (click)="toggleFullscreen()"
+          >
+            <i class="fas fa-expand"></i>
+          </button>
+
+          <video
+            *ngIf="participant.screenStream || participant.videoStream; else mainAvatar"
+            class="tr-video"
+            autoplay
+            playsinline
+            [muted]="participant.local"
+            [srcObject]="participant.screenStream || participant.videoStream"
+            [class.tr-video--mirror]="participant.local && !participant.screenStream"
+          ></video>
+
+          <ng-template #mainAvatar>
+            <div class="tr-avatar-main">
+              <span>
+                <i class="fas" [ngClass]="participant.local ? 'fa-user' : 'fa-user-tie'"></i>
+              </span>
+              <strong>{{ participant.name }}</strong>
+              <small>{{ t('cameraOff') }}</small>
+            </div>
+          </ng-template>
+
+          <div class="tr-participant-chip">
+            <i class="fas" [ngClass]="participant.isMicOn ? 'fa-microphone' : 'fa-microphone-slash'"></i>
+            <span>{{ participant.name }}{{ participant.local ? ' (' + t('you') + ')' : '' }}</span>
+          </div>
+        </article>
+
+        <div class="tr-small-tiles" *ngIf="displayParticipants.length">
+          <article
+            class="tr-small-tile"
+            *ngFor="let participant of displayParticipants; trackBy: trackByParticipantId"
+          >
+            <video
+              *ngIf="participant.videoStream; else smallAvatar"
+              class="tr-video"
+              autoplay
+              playsinline
+              [muted]="participant.local"
+              [srcObject]="participant.videoStream"
+              [class.tr-video--mirror]="participant.local"
+            ></video>
+
+            <ng-template #smallAvatar>
+              <span class="tr-avatar-small">
+                <i class="fas" [ngClass]="participant.local ? 'fa-user' : 'fa-user-tie'"></i>
+              </span>
+            </ng-template>
+
+            <div class="tr-participant-chip tr-participant-chip--small">
+              <i class="fas" [ngClass]="participant.isMicOn ? 'fa-microphone' : 'fa-microphone-slash'"></i>
+              <span>{{ participant.name }}{{ participant.local ? ' (' + t('you') + ')' : '' }}</span>
+            </div>
+          </article>
+        </div>
+      </ng-container>
+
+      <ng-template #tiledLayout>
+        <div class="tr-grid-tiles" [class.tr-grid-tiles--single]="tiledParticipants.length === 1">
+          <article
+            class="tr-grid-tile preview-grid"
+            *ngFor="let participant of tiledParticipants; trackBy: trackByParticipantId"
+          >
+            <button
+              type="button"
+              class="tr-fullscreen-button"
+              [title]="t('fullscreen')"
+              (click)="toggleFullscreen()"
+              *ngIf="tiledParticipants.length === 1"
+            >
+              <i class="fas fa-expand"></i>
+            </button>
+
+            <video
+              *ngIf="participant.videoStream; else gridAvatar"
+              class="tr-video"
+              autoplay
+              playsinline
+              [muted]="participant.local"
+              [srcObject]="participant.videoStream"
+              [class.tr-video--mirror]="participant.local"
+            ></video>
+
+            <ng-template #gridAvatar>
+              <div class="tr-avatar-main">
+                <span>
+                  <i class="fas" [ngClass]="participant.local ? 'fa-user' : 'fa-user-tie'"></i>
+                </span>
+                <strong>{{ participant.name }}</strong>
+                <small>{{ t('cameraOff') }}</small>
+              </div>
+            </ng-template>
+
+            <div class="tr-participant-chip">
+              <i class="fas" [ngClass]="participant.isMicOn ? 'fa-microphone' : 'fa-microphone-slash'"></i>
+              <span>{{ participant.name }}{{ participant.local ? ' (' + t('you') + ')' : '' }}</span>
+            </div>
+          </article>
+        </div>
+      </ng-template>
+    </section>
+
+    <aside class="tr-side-panel" *ngIf="isSidePanelOpen">
+      <div class="tr-side-panel__header">
+        <div>
+          <h2>{{ activeSidebarTab === 'people' ? t('people') : t('messages') }}</h2>
+          <p *ngIf="activeSidebarTab === 'people'">
+            {{ participantCount }} {{ participantCount > 1 ? t('inCallPlural') : t('inCall') }}
+          </p>
+          <p *ngIf="activeSidebarTab === 'chat'">
+            {{ messages.length }} {{ messages.length > 1 ? t('messagesCountPlural') : t('messagesCount') }}
+          </p>
+        </div>
+        <button type="button" [attr.aria-label]="t('close')" (click)="closeSidePanel()">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="tr-side-tabs" role="tablist">
+        <button
+          type="button"
+          role="tab"
+          [class.tr-side-tab--active]="activeSidebarTab === 'people'"
+          (click)="setSidebarTab('people')"
+        >
+          <i class="fas fa-users"></i>
+          {{ t('people') }}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          [class.tr-side-tab--active]="activeSidebarTab === 'chat'"
+          (click)="setSidebarTab('chat')"
+        >
+          <i class="fas fa-message"></i>
+          {{ t('messages') }}
+        </button>
+      </div>
+
+      <div class="tr-people-list" *ngIf="activeSidebarTab === 'people'">
+        <div
+          class="tr-person"
+          [class.tr-person--active]="participant.local"
+          *ngFor="let participant of participants; trackBy: trackByParticipantId"
+        >
+          <span>
+            <i class="fas" [ngClass]="participant.local ? 'fa-user' : 'fa-user-tie'"></i>
+          </span>
+          <div>
+            <strong>{{ participant.name }}{{ participant.local ? ' (' + t('you') + ')' : '' }}</strong>
+            <small>
+              {{ participant.isMicOn ? t('microphoneOn') : t('muted') }} ·
+              {{ participant.isCameraOn ? t('cameraOn') : t('cameraOff') }}
+            </small>
+          </div>
+          <i class="fas" [ngClass]="participant.isMicOn ? 'fa-microphone' : 'fa-microphone-slash'"></i>
+        </div>
+      </div>
+
+      <div class="tr-chat-panel" *ngIf="activeSidebarTab === 'chat'">
+        <div class="tr-message-list" *ngIf="messages.length; else emptyMessages">
+          <div
+            class="tr-message"
+            [class.tr-message--local]="message.local"
+            *ngFor="let message of messages; trackBy: trackByMessageId"
+          >
+            <div class="tr-message__meta">
+              <strong>{{ message.local ? t('you') : message.senderName }}</strong>
+              <span>{{ message.timestamp | date: 'shortTime' }}</span>
+            </div>
+            <p>{{ message.text }}</p>
+          </div>
+        </div>
+
+        <ng-template #emptyMessages>
+          <div class="tr-empty-chat">
+            <i class="fas fa-message"></i>
+            <p>{{ t('noMessages') }}</p>
+          </div>
+        </ng-template>
+
+        <form class="tr-chat-form" (ngSubmit)="sendMessage()">
+          <input
+            type="text"
+            name="chatMessage"
+            [(ngModel)]="chatMessage"
+            [placeholder]="t('typeMessage')"
+            autocomplete="off"
+          />
+          <button type="submit" [disabled]="!chatMessage.trim()" [title]="t('send')">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <audio
+      *ngFor="let participant of remoteParticipants; trackBy: trackByParticipantId"
+      autoplay
+      [srcObject]="participant.audioStream"
+    ></audio>
+  </ng-container>
+</div>

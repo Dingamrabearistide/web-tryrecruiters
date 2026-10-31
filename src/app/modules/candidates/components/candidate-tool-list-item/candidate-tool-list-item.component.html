@@ -1,0 +1,193 @@
+<div *transloco="let t; read: 'candidates'" class="relative group">
+  <!-- Élément de liste compact -->
+  <div
+    class="flex items-center justify-between gap-2 px-3 py-2 rounded-md border border-gray-200 bg-white hover:border-primary hover:shadow-sm transition-all duration-200 cursor-pointer"
+  >
+    <div class="flex items-center gap-3 min-w-0 flex-1">
+      <i class="fa fa-check-circle text-primary text-base flex-shrink-0"></i>
+      <span
+        class="font-medium leading-snug text-gray-800 min-w-0 break-all overflow-hidden"
+      >
+        {{ item.name }}</span
+      >
+    </div>
+
+    <span
+      *ngIf="item.level"
+      class="text-xs px-2 py-1 rounded-full font-medium flex-shrink-0"
+      [ngClass]="getSkillLevelColor(item.level)"
+    >
+      {{ getSkillLevelLabel(item.level) }}
+    </span>
+  </div>
+
+  <!-- Popup au survol -->
+  <div
+    class="absolute left-0 top-full mt-2 w-full max-w-sm bg-white rounded-lg shadow-xl border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out z-50 pointer-events-none"
+  >
+    <!-- Flèche pointant vers l'élément -->
+    <div
+      class="absolute -top-2 left-8 w-4 h-4 bg-white border-l border-t border-gray-200 transform rotate-45"
+    ></div>
+
+    <!-- Contenu de la popup -->
+    <div class="space-y-3">
+      <!-- En-tête avec compétence -->
+      <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+        <div
+          class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+        >
+          <i class="fa fa-lightbulb text-primary text-lg"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <h4
+            class="font-medium leading-snug text-gray-800 min-w-0 break-all overflow-hidden"
+          >
+            {{ item.name }}
+          </h4>
+          <p class="text-xs text-gray-500">
+            {{ t("profilePage.skills.competence") || "Compétence" }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Niveau détaillé -->
+      <div class="space-y-2" *ngIf="item.level">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium text-gray-700">{{
+            t("profilePage.skills.level") || "Niveau de maîtrise"
+          }}</span>
+          <span
+            class="px-3 py-1.5 rounded-full text-sm font-medium"
+            [ngClass]="getSkillLevelColor(item.level)"
+          >
+            {{ getSkillLevelLabel(item.level) }}
+          </span>
+        </div>
+
+        <!-- Barre de progression visuelle -->
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500 ease-out"
+            [ngClass]="{
+              'bg-blue-600 w-full': item.level === 'EXPERT',
+              'bg-green-600 w-4/5': item.level === 'ADVANCED',
+              'bg-yellow-600 w-3/5': item.level === 'INTERMEDIATE',
+              'bg-orange-600 w-2/5': item.level === 'BEGINNER',
+            }"
+          ></div>
+        </div>
+
+        <!-- Description du niveau -->
+        <p class="text-xs text-gray-600 leading-relaxed mt-2">
+          <ng-container [ngSwitch]="item.level">
+            <span *ngSwitchCase="'EXPERT'">{{
+              t("profilePage.skills.expertDescription") ||
+                "Expertise reconnue avec plusieurs années d'expérience"
+            }}</span>
+            <span *ngSwitchCase="'ADVANCED'">{{
+              t("profilePage.skills.advancedDescription") ||
+                "Maîtrise avancée avec autonomie complète"
+            }}</span>
+            <span *ngSwitchCase="'INTERMEDIATE'">{{
+              t("profilePage.skills.intermediateDescription") ||
+                "Compétence intermédiaire avec supervision occasionnelle"
+            }}</span>
+            <span *ngSwitchCase="'BEGINNER'">{{
+              t("profilePage.skills.beginnerDescription") ||
+                "Connaissances de base avec besoin d'accompagnement"
+            }}</span>
+            <span *ngSwitchCase="'NOVICE'">{{
+              t("profilePage.skills.noviceDescription") ||
+                "Notions élémentaires, en cours d'apprentissage"
+            }}</span>
+          </ng-container>
+        </p>
+      </div>
+
+      <!-- Années d'expérience (si disponible) -->
+      <!-- <div class="pt-2 border-t border-gray-100" *ngIf="item.yearsOfExperience">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-gray-700 flex items-center gap-2">
+            <i class="fa fa-calendar-alt text-primary"></i>
+            {{ t('profilePage.skills.experience') || 'Expérience' }}
+          </span>
+          <span class="text-sm font-semibold text-gray-900">
+            {{ item.yearsOfExperience }} {{ item.yearsOfExperience > 1 ? (t('profilePage.skills.years') || 'ans') : (t('profilePage.skills.year') || 'an') }}
+          </span>
+        </div>
+      </div> -->
+
+      <!-- Catégorie (si disponible)
+      <div class="pt-2 border-t border-gray-100" *ngIf="item.category">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-gray-700 flex items-center gap-2">
+            <i class="fa fa-tag text-primary"></i>
+            {{ t('profilePage.skills.category') || 'Catégorie' }}
+          </span>
+          <span class="text-xs px-2 py-1 rounded-md bg-gray-100 text-gray-700 font-medium">
+            {{ item.category }}
+          </span>
+        </div>
+      </div> -->
+
+      <!-- Projets ou certifications liés (si disponible) -->
+      <!-- <div class="pt-2 border-t border-gray-100 space-y-2" *ngIf="item.projects || item.certifications">
+        <div *ngIf="item.projects?.length > 0">
+          <span class="text-xs font-medium text-gray-700 flex items-center gap-2 mb-1.5">
+            <i class="fa fa-folder text-primary"></i>
+            {{ t('profilePage.skills.relatedProjects') || 'Projets liés' }}
+          </span>
+          <div class="flex flex-wrap gap-1">
+            <span 
+              *ngFor="let project of item.projects.slice(0, 3)"
+              class="text-xs px-2 py-0.5 rounded bg-blue-50 text-blue-700"
+            >
+              {{ project }}
+            </span>
+            <span 
+              *ngIf="item.projects.length > 3"
+              class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-600"
+            >
+              +{{ item.projects.length - 3 }}
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="item.certifications?.length > 0">
+          <span class="text-xs font-medium text-gray-700 flex items-center gap-2 mb-1.5">
+            <i class="fa fa-certificate text-primary"></i>
+            {{ t('profilePage.skills.certifications') || 'Certifications' }}
+          </span>
+          <div class="flex flex-wrap gap-1">
+            <span 
+              *ngFor="let cert of item.certifications.slice(0, 2)"
+              class="text-xs px-2 py-0.5 rounded bg-green-50 text-green-700"
+            >
+              {{ cert }}
+            </span>
+            <span 
+              *ngIf="item.certifications.length > 2"
+              class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-600"
+            >
+              +{{ item.certifications.length - 2 }}
+            </span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Dernière utilisation (si disponible) -->
+      <!-- <div class="pt-2 border-t border-gray-100" *ngIf="item.lastUsed">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-gray-700 flex items-center gap-2">
+            <i class="fa fa-clock text-primary"></i>
+            {{ t('profilePage.skills.lastUsed') || 'Dernière utilisation' }}
+          </span>
+          <span class="text-xs text-gray-600">
+            {{ item.lastUsed }}
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

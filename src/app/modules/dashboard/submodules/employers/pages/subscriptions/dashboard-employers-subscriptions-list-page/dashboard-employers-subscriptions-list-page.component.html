@@ -1,0 +1,50 @@
+<!-- This page is superseded by the billings module (/billings/plans). Content preserved below. -->
+
+<!-- <div class="relative">
+  <app-pricing-plan
+    [plans]="plans"
+    [currentPlanId]="currentSubscription?.planId || null"
+    [loading]="loading"
+    (paymentSuccess)="onSelectPlan($event.planId)"
+    (paymentError)="onSelectPlan($event.planId)"
+    (selectPlan)="onSelectPlan($event)"
+  />
+
+  <div
+    *ngIf="processingPlanId"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  >
+    <div class="bg-white rounded-xl p-8 shadow-2xl">
+      <div class="flex flex-col items-center gap-4">
+        <div
+          class="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"
+        ></div>
+        <p class="text-lg text-gray-700 font-medium">Traitement en cours...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="paymentSuccessMessage"
+  class="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg"
+>
+  <div class="flex items-center gap-3">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <p>{{ paymentSuccessMessage }}</p>
+  </div>
+</div>
+
+<div
+  *ngIf="paymentErrorMessage"
+  class="fixed top-4 right-4 z-50 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg"
+>
+  <div class="flex items-center gap-3">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+    <p>{{ paymentErrorMessage }}</p>
+  </div>
+</div> -->

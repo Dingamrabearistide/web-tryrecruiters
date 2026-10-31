@@ -1,0 +1,76 @@
+{
+  "test": "Bonjour",
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "companies": "Entreprises",
+    "jobsoffers": "Offres d'emploi",
+    "applications": "Candidatures",
+    "categories": "Catégories",
+    "profile": "Profils",
+    "mySubscription": "Mon abonnement",
+    "subscriptionPlans": "Plans d'abonnement",
+    "payements": "Paiements",
+    "parametres": "Paramètres",
+    "resumes": "CV",
+    "interviews": "Interviews"
+  },
+  "general": {
+    "loading": "Chargement...",
+    "view": "Voir",
+    "timeAgo": "il y a {{time}}"
+  },
+  "subscriptions": {
+    "loadingSubscription": "Chargement de l'abonnement...",
+    "creditsRemaining": "crédits restants",
+    "hideBanner": "Masquer",
+    "viewPlans": "Voir/améliorer les forfaits",
+    "choosePlan": "Choisir un forfait",
+    "limitReachedTitle": "Limite atteinte",
+    "unlimited": "Illimité",
+    "companies": "entreprises",
+    "companiesRemaining": "entreprises restantes",
+    "applications": "candidatures",
+    "interviews": "entretiens",
+    "interviewsRemaining": "entretiens restants",
+    "plans": {
+      "subscribe": "Souscrire",
+      "activate": "Activer",
+      "FREE": { "title": "Plan Basic Gratuit" },
+      "BASIC": { "title": "Plan Basic" },
+      "PREMIUM": { "title": "Plan Premium" },
+      "ENTERPRISE": { "title": "Plan Enterprise Illimité" }
+    },
+    "back": "Retour",
+    "backToPlans": "Retour aux plans",
+    "payment": {
+      "finalizeTitle": "Finalisez votre abonnement",
+      "loading": "Chargement du plan...",
+      "errorTitle": "Erreur",
+      "summary": "Résumé",
+      "days": "jours",
+      "permanent": "permanent",
+      "includes": "Ce qui est inclus :",
+      "unlimitedActiveOffers": "Offres d'emploi actives illimitées",
+      "activeOffers": "offres d'emploi actives",
+      "cvDatabaseAccess": "Accès à la CVthèque",
+      "dataExport": "Export de données",
+      "analytics": "Analytics avancés",
+      "prioritySupport": "Support prioritaire",
+      "title": "Paiement",
+      "freePlan": "Plan gratuit",
+      "freePlanActivating": "Ce plan est gratuit. Il sera activé automatiquement.",
+      "paypalSecure": "Paiement 100% sécurisé via PayPal. Vous serez redirigé vers PayPal pour finaliser le paiement.",
+      "processing": "Traitement en cours..."
+    },
+    "features": {
+      "unlimitedJobOffers": "Offres d'emploi illimitées",
+      "activeJobOffers": "{{count}} offres d'emploi actives",
+      "cvDatabase": "Accès à la CVthèque",
+      "exportData": "Export de données",
+      "analytics": "Analytics et statistiques",
+      "prioritySupport": "Support prioritaire",
+      "featuredOffers": "Offres en vedette",
+      "customBranding": "Personnalisation de la marque"
+    }
+  }
+}

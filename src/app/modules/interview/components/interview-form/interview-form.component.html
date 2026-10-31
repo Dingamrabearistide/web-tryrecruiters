@@ -1,0 +1,144 @@
+<div *transloco="let t; read: 'interviews'">
+  <form #interviewForm="ngForm" (ngSubmit)="handleSubmit(interviewForm.value)" class="space-y-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div [ngClass]="{'md:col-span-2': selectedInterviewType !== InterviewType.GOOGLE_MEET}">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          {{ t('form.type.label') }} <span class="text-red-500">*</span>
+        </label>
+        <select
+          name="type"
+          [(ngModel)]="selectedInterviewType"
+          required
+          style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+        >
+          <option [ngValue]="InterviewType.GOOGLE_MEET">{{ t('form.type.options.googleMeet') }}</option>
+          <option [ngValue]="InterviewType.DAILY_VIDEO_CALL">{{ t('form.type.options.dailyVideoCall') }}</option>
+          <option [ngValue]="InterviewType.IN_PERSON">{{ t('form.type.options.inPerson') }}</option>
+        </select>
+      </div>
+
+      <div *ngIf="selectedInterviewType === InterviewType.GOOGLE_MEET">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          {{ t('form.meetUrl.label') }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          inputmode="url"
+          name="meetUrl"
+          ngModel
+          required
+          placeholder="https://meet.google.com/xxx-xxxx-xxx"
+          pattern="^https:\/\/meet\.google\.com\/[a-z0-9]{3}-[a-z0-9]{4}-[a-z0-9]{3}$"
+          style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+        />
+        <div class="mt-2 text-xs text-red-600" *ngIf="interviewForm.controls['meetUrl']?.invalid && (interviewForm.submitted || interviewForm.controls['meetUrl']?.touched)">
+          <div *ngIf="interviewForm.controls['meetUrl']?.errors?.['required']">{{ t('errors.meetUrl.required') }}</div>
+          <div *ngIf="interviewForm.controls['meetUrl']?.errors?.['pattern']">{{ t('errors.meetUrl.invalid') }}</div>
+        </div>
+        <p class="mt-2 text-xs text-amber-600 flex items-center gap-1">
+          <i class="fas fa-info-circle"></i>
+          {{ t('form.meetUrl.helpText') }}
+        </p>
+      </div>
+
+      <div *ngIf="selectedInterviewType === InterviewType.IN_PERSON" class="md:col-span-2">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          {{ t('form.location.label') }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="location"
+          ngModel
+          required
+          #locationCtrl="ngModel"
+          [placeholder]="t('form.location.placeholder')"
+          style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+        />
+        <div class="mt-2 text-xs text-red-600" *ngIf="locationCtrl.invalid && (interviewForm.submitted || locationCtrl.touched)">
+          {{ t('errors.location.required') }}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          {{ t('form.scheduledAt.label') }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="datetime-local"
+          name="scheduledAt"
+          ngModel
+          required
+          [min]="minScheduledAt"
+          (ngModelChange)="onScheduledAtChange($event)"
+          #scheduledAtCtrl="ngModel"
+          style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+        />
+        <div class="mt-2 text-xs text-red-600" *ngIf="(scheduledAtCtrl.invalid || scheduledAtPastError) && (interviewForm.submitted || scheduledAtCtrl.touched)">
+          <div *ngIf="scheduledAtCtrl.errors?.['required']">{{ t('errors.scheduledAt.required') }}</div>
+          <div *ngIf="!scheduledAtCtrl.errors?.['required'] && scheduledAtPastError">{{ t('errors.scheduledAt.pastDate') }}</div>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          {{ t('form.durationMin.label') }} <span class="text-red-500">*</span>
+        </label>
+        <select
+          name="durationMin"
+          [ngModel]="60"
+          required
+          style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+        >
+          <option [value]="15">{{ t('form.durationMin.options.15min') }}</option>
+          <option [value]="30">{{ t('form.durationMin.options.30min') }}</option>
+          <option [value]="45">{{ t('form.durationMin.options.45min') }}</option>
+          <option [value]="60">{{ t('form.durationMin.options.1h') }}</option>
+          <option [value]="90">{{ t('form.durationMin.options.1h30') }}</option>
+          <option [value]="120">{{ t('form.durationMin.options.2h') }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <label class="block text-sm font-medium text-gray-700 mb-2">
+        {{ t('form.timezone.label') }} <span class="text-red-500">*</span>
+      </label>
+      <select
+        name="timezone"
+        [ngModel]="userTimezone"
+        required
+        style="border: 1px solid #ccc; border-radius: 4px; padding: 0.5rem; width: 100%;"
+      >
+        <option value="Africa/Dakar">{{ t('form.timezone.options.africaDakar') }}</option>
+        <option value="Africa/Abidjan">{{ t('form.timezone.options.africaAbidjan') }}</option>
+        <option value="Africa/Douala">{{ t('form.timezone.options.africaDouala') }}</option>
+        <option value="Africa/Casablanca">{{ t('form.timezone.options.africaCasablanca') }}</option>
+        <option value="Europe/Paris">{{ t('form.timezone.options.europeParis') }}</option>
+        <option value="Europe/London">{{ t('form.timezone.options.europeLondon') }}</option>
+        <option value="America/New_York">{{ t('form.timezone.options.americaNewYork') }}</option>
+        <option value="America/Los_Angeles">{{ t('form.timezone.options.americaLosAngeles') }}</option>
+        <option value="Asia/Tokyo">{{ t('form.timezone.options.asiaTokyo') }}</option>
+        <option value="Asia/Dubai">{{ t('form.timezone.options.asiaDubai') }}</option>
+        <option value="UTC">{{ t('form.timezone.options.utc') }}</option>
+      </select>
+    </div>
+
+    <div class="w-full">
+      <label class="block text-sm font-medium text-gray-700 mb-2">
+        {{ t('form.notes.label') }}
+      </label>
+      <textarea
+        name="notes"
+        [(ngModel)]="defaultMessage"
+        rows="5"
+        class="w-full min-h-[200px] px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-y"
+        style="border: 1px solid #ccc; border-radius: 4px;"
+        [placeholder]="t('form.notes.placeholder')"
+      ></textarea>
+    </div>
+
+  </form>
+</div>

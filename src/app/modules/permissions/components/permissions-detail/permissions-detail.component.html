@@ -1,0 +1,126 @@
+<div class="w-full" *transloco="let t; read: 'permissions'">
+  <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="hasError" class="w-full">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <div *ngIf="!isLoading && !hasError && item" class="space-y-6">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <div class="flex items-start justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">{{ item.name }}</h2>
+          <p class="text-gray-600" *ngIf="item.description">
+            {{ item.description }}
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            *ngIf="item.archived"
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+          >
+            <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+            {{ t("status.archived") }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Permission Details -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        {{ t("details.permissionInfo") }}
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Resource -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            {{ t("form.resource") }}
+          </label>
+          <div class="flex items-center">
+            <span
+              [class]="
+                'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ' +
+                getResourceBadgeConfig(item.resource).bgColor +
+                ' ' +
+                getResourceBadgeConfig(item.resource).textColor
+              "
+            >
+              <span
+                [class]="
+                  'w-2 h-2 rounded-full mr-2 ' +
+                  getResourceBadgeConfig(item.resource).dotColor
+                "
+              ></span>
+              {{ getResourceBadgeConfig(item.resource).label }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Action -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            {{ t("form.action") }}
+          </label>
+          <div class="flex items-center">
+            <span
+              [class]="
+                'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ' +
+                getActionBadgeConfig(item.action).bgColor +
+                ' ' +
+                getActionBadgeConfig(item.action).textColor
+              "
+            >
+              <span
+                [class]="
+                  'w-2 h-2 rounded-full mr-2 ' +
+                  getActionBadgeConfig(item.action).dotColor
+                "
+              ></span>
+              {{ getActionBadgeConfig(item.action).label }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metadata -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        {{ t("details.metadata") }}
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Created At -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            {{ t("details.createdAt") }}
+          </label>
+          <p class="text-gray-900">
+            {{ item.createdAt | date : "dd/MM/yyyy HH:mm" }}
+          </p>
+        </div>
+
+        <!-- Updated At -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            {{ t("details.updatedAt") }}
+          </label>
+          <p class="text-gray-900">
+            {{ item.updatedAt | date : "dd/MM/yyyy HH:mm" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div *ngIf="item.notes" class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        {{ t("form.notes") }}
+      </h3>
+      <p class="text-gray-700 whitespace-pre-wrap">{{ item.notes }}</p>
+    </div>
+  </div>
+</div>

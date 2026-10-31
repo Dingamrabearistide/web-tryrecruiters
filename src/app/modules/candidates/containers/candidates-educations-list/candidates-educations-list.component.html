@@ -1,0 +1,181 @@
+<div
+  *transloco="let t; read: 'candidates'"
+  class="bg-white rounded-lg border border-gray-200 p-6 mb-5"
+>
+  <div class="flex justify-between items-center mb-5">
+    <h3 class="text-xl font-semibold text-primary">
+      {{ t("profilePage.educations.title") || "Formation" }}
+    </h3>
+    <div class="flex items-center gap-3">
+      <!-- <div class="relative">
+        <button
+          type="button"
+          class="px-3 py-1 border rounded bg-white text-sm flex items-center gap-2"
+          (click)="$event.stopPropagation(); toggleFiltersDropdown($event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="showFiltersDropdown"
+          title="{{ t('candidateDetails.filters') || 'Filters' }}"
+        >
+          <i class="fa fa-filter"></i>
+          <span class="hidden sm:inline">{{
+            t("candidateDetails.filters") || "Filters"
+          }}</span>
+        </button>
+
+        <div
+          *ngIf="showFiltersDropdown"
+          class="absolute right-0 mt-2 w-56 sm:w-48 bg-white border rounded shadow z-50 p-3"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="text-sm mb-2 font-medium">
+            {{ t("candidateDetails.sort") || "Sort" }}
+          </div>
+          <div class="flex flex-col gap-2">
+            <button
+              class="text-left px-2 py-1 hover:bg-gray-100 rounded"
+              (click)="sortOrder = 'desc'; closeFiltersDropdown()"
+            >
+              {{ t("candidateDetails.showRecentFirst") || "Recent → Old" }}
+            </button>
+            <button
+              class="text-left px-2 py-1 hover:bg-gray-100 rounded"
+              (click)="sortOrder = 'asc'; closeFiltersDropdown()"
+            >
+              {{ t("candidateDetails.showOldFirst") || "Old → Recent" }}
+            </button>
+          </div>
+
+          <div class="border-t mt-3 pt-2 flex justify-between items-center">
+            <button
+              class="text-sm text-gray-600"
+              (click)="resetFilters(); closeFiltersDropdown()"
+            >
+              {{ t("general.reset") || "Reset" }}
+            </button>
+            <button
+              class="text-sm text-primary font-medium"
+              (click)="closeFiltersDropdown()"
+            >
+              {{ t("general.close") || "Close" }}
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+      <button
+        (click)="addItem()"
+        class="inline-flex items-center justify-center w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors"
+      >
+        <i class="fa fa-plus text-sm sm:mr-2"></i>
+        <span class="hidden sm:inline">{{ t("profilePage.educations.addEducation") || "Ajouter" }}</span>
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="(profile?.educations || []).length > 0; else noItem">
+    <div class="space-y-4">
+      <div
+        *ngFor="
+          let item of showAll
+            ? displayedEducations
+            : (displayedEducations | slice: 0 : 3)
+        "
+        class="border border-gray-200 rounded-lg p-4 relative hover:border-primary transition-colors"
+      >
+        <div class="pr-16">
+          <app-candidate-education-list-item
+            [item]="item"
+          ></app-candidate-education-list-item>
+        </div>
+
+        <div class="absolute right-4 top-4 flex gap-3 text-gray-400">
+          <span
+            (click)="updateItem(item)"
+            class="cursor-pointer hover:text-primary transition-colors"
+          >
+            <i class="fa fa-edit text-lg"></i>
+          </span>
+
+          <app-generic-delete-item-button
+            [item]="item"
+            [service]="service"
+            [moduleName]="moduleName"
+            methodName="deleteInfos"
+            [extractId]="getItemId"
+            [buildPayload]="buildDeletePayload"
+            [extractLabel]="getItemLabel"
+            (onDone)="handleDone()"
+          ></app-generic-delete-item-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="(profile?.educations?.length || 0) > 3"
+      class="mt-4 text-center"
+    >
+      <button
+        (click)="toggleShowAll()"
+        class="text-primary text-sm font-medium hover:underline"
+      >
+        {{
+          showAll
+            ? t("candidateDetails.showLess") || "Voir moins"
+            : t("candidateDetails.showMore") || "Voir plus"
+        }}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #noItem>
+    <div class="w-full py-12 px-4 text-center">
+      <div class="flex flex-col items-center gap-4">
+        <div
+          class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center"
+        >
+          <i class="fa fa-graduation-cap text-3xl text-primary"></i>
+        </div>
+        <h4 class="text-lg font-semibold text-gray-900">
+          {{ t("profilePage.educations.noEducation") || "Aucune formation" }}
+        </h4>
+        <p class="text-sm text-gray-600">
+          {{
+            t("profilePage.educations.addYourFirstEducation") ||
+              "Ajoutez votre première formation"
+          }}
+        </p>
+        <button
+          (click)="addItem()"
+          class="inline-flex items-center px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors mt-2"
+          [attr.aria-label]="t('profilePage.educations.addFirstEducation')"
+        >
+          <i class="fa fa-plus text-sm mr-2"></i>
+          <span>{{
+            t("profilePage.educations.addFirstEducation") ||
+              "Ajouter une formation"
+          }}</span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #form>
+  <div class="w-full">
+    <app-generic-form
+      [defaultValues]="defaultValues"
+      [fieldConfigurations]="formConfig"
+      [isLoading]="isLoading"
+      [showActionButton]="false"
+      transationNamespace="candidates"
+      (formReady)="onFormReady($event)"
+      (submitForm)="onSubmit($event)"
+    />
+
+    <app-generic-error
+      *ngIf="hasError"
+      [message]="errorMessage"
+      class="mt-4"
+    ></app-generic-error>
+  </div>
+</ng-template>

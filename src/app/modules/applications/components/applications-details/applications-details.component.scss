@@ -1,0 +1,220 @@
+// Status badges
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &.status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+
+  &.status-reviewed {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+  }
+
+  &.status-accepted {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #86efac;
+  }
+
+  &.status-rejected {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+  }
+
+  &.status-canceled {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+  }
+}
+
+// Button styles
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #2563eb;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #374151;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+.btn-outline-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #86efac;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #065f46;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f0fdf4;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #10b981, 0 0 0 4px rgba(16, 185, 129, 0.1);
+  }
+}
+
+.btn-outline-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fca5a5;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #991b1b;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #fef2f2;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ef4444, 0 0 0 4px rgba(239, 68, 68, 0.1);
+  }
+}
+
+.btn-outline-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #93c5fd;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #1e40af;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #eff6ff;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+// Avatar gradient animation
+.bg-gradient-to-br {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Timeline styles
+.timeline-item {
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 32px;
+    bottom: -16px;
+    width: 2px;
+    background: linear-gradient(to bottom, #e5e7eb, transparent);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline-success,
+  .btn-outline-danger,
+  .btn-outline-primary {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+// Focus states for accessibility
+button:focus,
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+// Print styles
+@media print {
+  .bg-gradient-to-r {
+    background: #1e40af !important;
+    color: white !important;
+  }
+}

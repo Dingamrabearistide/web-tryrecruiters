@@ -1,0 +1,85 @@
+<div
+  *transloco="let t; read: 'billings'"
+  class="min-h-full bg-gray-50 py-8 px-4"
+>
+  <app-dashboard-header
+    [title]="t('paymentsList.title')"
+    [description]="t('paymentsList.description')"
+    [backText]="'common.back'"
+    backLink="../../"
+  ></app-dashboard-header>
+
+  <div class="bg-white rounded-xl border border-gray-100 p-4 mb-6">
+    <div class="grid md:grid-cols-4 gap-3">
+      <input
+        type="search"
+        [(ngModel)]="search"
+        [placeholder]="t('filters.search')"
+        class="border border-gray-200 rounded-lg px-3 py-2"
+        (keyup.enter)="applyFilters()"
+      />
+
+      <select
+        [(ngModel)]="statusFilter"
+        class="border border-gray-200 rounded-lg px-3 py-2"
+      >
+        <option value="">
+          {{ t("filters.allStatuses") }}
+        </option>
+        <option value="PENDING">PENDING</option>
+        <option value="PAID">PAID</option>
+        <option value="FAILED">FAILED</option>
+      </select>
+
+      <button type="button" class="app-primary" (click)="applyFilters()">
+        {{ t("filters.apply") }}
+      </button>
+
+      <button
+        type="button"
+        class="border border-gray-200 rounded-lg px-4 py-2"
+        (click)="resetFilters()"
+      >
+        {{ t("filters.reset") }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+
+    <div class="text-center mt-5">
+      <button type="button" class="app-primary" (click)="loadItems()">
+        {{ t("retry") }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="updatingId" class="mb-4 rounded-lg bg-blue-50 p-3 text-sm text-blue-800">
+    {{ t("paymentsList.updating") }}
+  </div>
+
+  <div *ngIf="!isLoading && !hasError">
+    <app-billing-payments-datatable
+      [items]="items"
+      [isLoading]="false"
+      [hasError]="false"
+      (statusChange)="handleStatusChange($event)"
+    ></app-billing-payments-datatable>
+
+    <div class="flex justify-end mt-4">
+      <app-generic-paginator
+        [currentPage]="page"
+        [totalPages]="totalPages"
+        [maxVisible]="5"
+        [totalItems]="totalItems"
+        [itemsPerPage]="limit"
+        (pageChange)="onPageChange($event)"
+      ></app-generic-paginator>
+    </div>
+  </div>
+</div>

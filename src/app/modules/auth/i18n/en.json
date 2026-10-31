@@ -1,0 +1,307 @@
+{
+  "welcome": "Welcome",
+  "loading": "Loading...",
+  "genericVerifyTitle": "Success",
+  "genericVerifyMessage": "Operation completed. Click OK to continue.",
+  "layout": {
+    "sloganTitle": "A successful career starts\nwith a great application.",
+    "sloganDescription": "Build your profile and connect with the right opportunities in just a few steps."
+  },
+  "form": {
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "login": {
+    "title": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Register",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "accountNotConfirmed": "Account not confirmed?",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Login",
+    "verifyTitle": "Identity Verification Required",
+    "verifyMessage": "For security reasons, please verify your identity by entering the code sent to your preferred method.",
+    "verifySuccessTitle": "Identity Verified",
+    "verifySuccessMessage": "Your identity has been successfully verified. You are now being redirected to your dashboard.",
+    "badge": "Sign In",
+    "heroTitle": "Welcome Back",
+    "heroDescription": "Log in to your TryRecruiters account to access your dashboard, manage your applications, and connect with top talent.",
+    "securityCardTitle": "Secure Access",
+    "securityCardDesc": "Your data is protected with enterprise-grade encryption and security protocols.",
+    "quickCardTitle": "Quick & Easy",
+    "quickCardDesc": "Sign in with your credentials or use Google for one-click access.",
+    "sectionLabel": "Sign In",
+    "sectionDescription": "Enter your credentials to access your account"
+  },
+  "register": {
+    "title": "Create your account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "candidate": "Candidate",
+    "employer": "Employer",
+    "agree": "I agree to the",
+    "terms": "Terms and Conditions",
+    "registration": "Registration",
+    "chooseAccountType": "Choose your account type and fill in your information.",
+    "or": "or",
+    "continueWithGoogle": "Continue with Google",
+    "createAccount": "Create account",
+    "joinTryRecruiters": "Join TryRecruiters",
+    "joinDescription": "Create an account as a candidate to apply for jobs, or as an employer to publish job offers and manage applications.",
+    "candidateAccount": "Candidate account",
+    "candidateAccountDesc": "Apply faster and manage your applications.",
+    "employerAccount": "Employer account",
+    "employerAccountDesc": "Post jobs and recruit qualified candidates.",
+    "accountCreatedTitle": "Account Created Successfully",
+    "accountCreatedMessage": "Your account has been created. To activate it, please check your email and follow the confirmation link we sent you. If you don't find the email, check your spam or junk folder.",
+    "verifyTitle": "Registration Complete",
+    "verifyMessage": "Your account has been created. Click OK to go to the dashboard.",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "country": "Country",
+      "city": "City",
+      "loadingCities": "Loading cities...",
+      "region": "Region / State",
+      "loadingRegions": "Loading regions...",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "acceptText": {
+        "part1": "I accept the",
+        "link": "terms and conditions"
+      },
+      "buttons": {
+        "submit": "Register",
+        "loading": "Registering..."
+      },
+      "errors": {
+        "firstName": {
+          "required": "First name is required.",
+          "tooShort": "First name is too short.",
+          "invalid": "Invalid first name."
+        },
+        "lastName": {
+          "required": "Last name is required.",
+          "tooShort": "Last name is too short.",
+          "invalid": "Invalid last name."
+        },
+        "email": {
+          "required": "Email is required.",
+          "invalid": "Invalid email address."
+        },
+        "phone": {
+          "required": "Phone number is required.",
+          "invalid": "Invalid phone number."
+        },
+        "country": {
+          "required": "Country is required.",
+          "invalid": "Invalid country."
+        },
+        "city": {
+          "required": "City is required.",
+          "invalid": "Invalid city name."
+        },
+        "password": {
+          "required": "Password is required.",
+          "tooShort": "Password must be at least 8 characters.",
+          "mismatch": "Passwords do not match."
+        },
+        "confirmPassword": {
+          "required": "Password confirmation is required.",
+          "invalid": "Invalid confirmation."
+        }
+      }
+    }
+  },
+  "confirm": {
+    "titleHeaderEmail": "Confirm Your Email Address",
+    "titleHeaderPhone": "Confirm Your Phone Number",
+    "back": "Back",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "instructionsEmail": "We sent a confirmation code to your email:",
+    "instructionsWhatsapp": "We sent a confirmation code to your WhatsApp number:",
+    "checkInbox": "Please check your inbox and enter the code below.",
+    "notReceived": "Didn't receive the code?",
+    "checkSpam": "Check your spam or junk folder.",
+    "resendIn": "You can resend the code in",
+    "resendCode": "Resend Code",
+    "contactSupport": "Contact Support",
+    "verifyTitle": "Account Confirmed",
+    "verifyMessage": "Your account has been verified. Click OK to log in.",
+    "resendTitle": "Code Resent",
+    "resendMessage": "A new confirmation code has been sent. Please check your messages.",
+    "error": "An error occurred while sending the code."
+  },
+  "confirmAccount": {
+    "codeLabel": "Confirmation Code",
+    "codePlaceholder": "Enter the 6-digit code",
+    "submitButton": "Confirm My Account",
+    "invalidCode": "Please enter a valid 6-digit code"
+  },
+  "confirmEmail": {
+    "badge": "Email Confirmation",
+    "heroTitle": "Verify your email address",
+    "heroDescription": "We are confirming your email address to secure your account and grant you access to the platform.",
+    "cardTitle": "Secured Account",
+    "cardDesc": "Your email address is verified to protect your account.",
+    "verifying": "Verifying…",
+    "successTitle": "Email Confirmed",
+    "successMessage": "Your email address has been successfully confirmed. You can now log in with your credentials.",
+    "errorTitle": "Confirmation Failed",
+    "loginButton": "Log In",
+    "missingParams": "Invalid confirmation link. Please try again from the email you received."
+  },
+  "forgot": {
+    "title": "Forgot Your Password?",
+    "back": "Back",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "verifyTitle": "Check Your Email",
+    "verifyMessage": "A link has been sent to your email. Click OK to reset your password. If you don't find the email, check your spam or junk folder."
+  },
+  "forgotPassword": {
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "submitButton": "Reset My Password",
+    "badge": "Password help",
+    "heroTitle": "Reset your password",
+    "heroDescription": "Enter your email address and we will send you a secure link to create a new password.",
+    "inboxCardTitle": "Check your inbox",
+    "inboxCardDesc": "The reset link is sent to your account email address.",
+    "sectionLabel": "Forgot password",
+    "sectionTitle": "Recover access",
+    "sectionDescription": "Enter the email linked to your account. We will send you instructions to reset your password.",
+    "successTitle": "Reset link sent",
+    "successDescription": "Please check your inbox and follow the link to create a new password.",
+    "sendLink": "Send reset link",
+    "loading": "Sending...",
+    "infoText": "If you do not receive the email, check your spam folder or try again with another email address.",
+    "backToLogin": "Back to login",
+    "noAccount": "No account?",
+    "register": "Register"
+  },
+  "resetPassword": {
+    "title": "Reset Your Password",
+    "backTo": "Back to",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "instructions": "Please enter the verification code you received along with your new password.",
+    "codeLabel": "Verification Code",
+    "codePlaceholder": "Enter the code you received",
+    "passwordLabel": "New password",
+    "passwordPlaceholder": "Enter new password",
+    "confirmPasswordLabel": "Confirm new password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "submitButton": "Reset password",
+    "loading": "Resetting...",
+    "badge": "Secure reset",
+    "heroTitle": "Create a new password",
+    "heroDescription": "Choose a strong password to secure your TryRecruiters account and continue safely.",
+    "cardTitle": "Password requirements",
+    "cardDesc": "Use at least 8 characters with one uppercase letter and one number.",
+    "sectionLabel": "Reset password",
+    "sectionTitle": "Set new password",
+    "sectionDescription": "Enter and confirm your new password below.",
+    "backToLogin": "Back to login",
+    "requestNewLink": "Request a new link",
+    "rulesTitle": "Password rules",
+    "ruleLength": "At least 8 characters",
+    "ruleUppercase": "One uppercase letter",
+    "ruleNumber": "One number",
+    "ruleMatch": "Passwords match",
+    "errors": {
+      "mismatch": "Passwords do not match."
+    },
+    "passwordResetedTitle": "Password Reset Successful",
+    "passwordResetedMessage": "Your password has been successfully reset. Click OK to log in with your new credentials."
+  },
+  "otp": {
+    "badge": "Verification",
+    "sectionLabel": "Two-Factor Auth",
+    "heroTitle": "Confirm your identity",
+    "heroDescription": "Enter the 6-digit code sent to your device to access your account.",
+    "secureCardTitle": "Secure access",
+    "secureCardDesc": "Two-factor authentication protects your account from unauthorized access.",
+    "expiryCardTitle": "Temporary code",
+    "expiryCardDesc": "Your code expires after a few minutes. Request a new one if needed.",
+    "codeLabel": "Verification Code",
+    "codePlaceholder": "Enter the 6-digit code",
+    "submitButton": "Verify",
+    "title": "Two-Factor Authentication",
+    "backToLogin": "Back to Sign In",
+    "instructions": "Please enter the 6-digit verification code sent to your device.",
+    "codeSentTitle": "Verification Code Sent",
+    "codeSentMessage": "A verification code has been sent to your {{channel}}. Please check your messages and enter the code. If you don't find it, check your spam or junk folder.",
+    "resendLabel": "Didn't receive the code?"
+  },
+  "sendCode": {
+    "title": "Choose a delivery method",
+    "badge": "Verification",
+    "sectionLabel": "Verification",
+    "heroTitle": "Secure your account",
+    "heroDescription": "Choose how to receive your verification code to confirm your identity.",
+    "secureCardTitle": "Secure verification",
+    "secureCardDesc": "Your code expires after a few minutes for your security.",
+    "instantCardTitle": "Instant delivery",
+    "instantCardDesc": "Receive your code in seconds via your chosen channel.",
+    "chooseMethod": "Where should we send the code?",
+    "instruction": "Select one of the options below to receive your verification code.",
+    "sendViaEmail": "Send via Email",
+    "emailDesc": "Receive the code in your inbox",
+    "sendViaWhatsapp": "Send via WhatsApp",
+    "whatsappDesc": "Receive the code via WhatsApp",
+    "sendViaSms": "Send via SMS",
+    "smsDesc": "Receive the code by SMS",
+    "sendingEmail": "Sending code to your email...",
+    "sendingWhatsapp": "Sending code via WhatsApp...",
+    "sendingSms": "Sending code via SMS...",
+    "checkSpam": "If you don't receive the code, check your spam or junk folder."
+  },
+  "errors": {
+    "genericError": "An error occurred. Please try again.",
+    "loadingRequest": "An error occurred while loading request.",
+    "noPhoneOrEmail": "No email or phone number provided.",
+    "noContext": "No context: validate OTP | confirm account",
+    "invalidCode": "Invalid code. Please try again.",
+    "noPhoneOrEmailProvided": "No phone or email provided.",
+    "unsupported2FAContext": "Unsupported 2FA context: {{context}}",
+    "sessionExpired": "Session expired. Please log in again."
+  },
+  "profile": {
+    "title": "Profile",
+    "saveButton": "Save Changes",
+    "cancelButton": "Cancel",
+    "editButton": "Edit",
+    "viewButton": "View",
+    "deleteButton": "Delete",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "country": "Country",
+      "city": "City",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "profession": "Profession",
+      "placeOfBirth": "Place of birth",
+      "nationality": "Nationality"
+    },
+    "messages": {
+      "profileUpdated": "Profile updated successfully.",
+      "errorUpdatingProfile": "Error updating profile. Please try again."
+    }
+  }
+}

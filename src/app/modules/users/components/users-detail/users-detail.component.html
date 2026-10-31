@@ -1,0 +1,336 @@
+<div class="mt-6 sm:mt-10" *transloco="let t; read: 'users'">
+  <div
+    class="bg-white pb-7 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 md:gap-6"
+  >
+    <div class="flex items-center flex-col sm:flex-row gap-4 w-full sm:w-auto">
+      <div class="flex items-center gap-4">
+        <img
+          [src]="profileImage"
+          [alt]="fullName"
+          class="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+        />
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold text-gray-700">
+            {{ fullName }}
+            <i
+              *ngIf="item.emailConfirmed"
+              class="fa fa-check-circle text-green-500 ml-2"
+              [title]="t('emailVerified')"
+            ></i>
+          </h2>
+          <p class="text-gray-500" *ngIf="userRoleLabel">{{ userRoleLabel }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto"
+      *ngIf="displayActions"
+    >
+      <div class="flex flex-col sm:flex-row gap-3 items-center">
+        <!-- Edit button hidden: route edit/:id not yet available in admin dashboard
+        <button
+          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+          (click)="editUser()"
+        >
+          <i class="fas fa-edit mr-2"></i>
+          {{ t("actions.edit") }}
+        </button>
+        -->
+
+        <button
+          *ngIf="isActive"
+          class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors"
+          (click)="deactivateUser()"
+        >
+          <i class="fas fa-pause mr-2"></i>
+          {{ t("actions.deactivate") }}
+        </button>
+
+        <button
+          *ngIf="!isActive"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors"
+          (click)="activateUser()"
+        >
+          <i class="fas fa-play mr-2"></i>
+          {{ t("actions.activate") }}
+        </button>
+
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
+          (click)="deleteUser()"
+        >
+          <i class="fas fa-trash mr-2 !text-white"></i>
+          {{ t("actions.delete") }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 py-4 lg:px-0 my-8">
+    <!-- Partie gauche -->
+    <div class="lg:col-span-2">
+      <!-- Informations personnelles -->
+      <div class="bg-white border border-gray-200 rounded-lg p-6 mb-5">
+        <h3 class="text-lg font-semibold mb-4">
+          {{ t("details.personalInfo") }}
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-user text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.fullName") }}
+              </p>
+              <span class="font-normal">{{ fullName }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.email") }}
+              </p>
+              <span class="font-normal">{{ item.email || "--" }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-phone text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.phone") }}
+              </p>
+              <span class="font-normal">{{
+                item.phoneNumber || item.phone || "--"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-venus-mars text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.gender") }}
+              </p>
+              <span class="font-normal">{{ genderLabel || "--" }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-birthday-cake text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.birthDate") }}
+              </p>
+              <span class="font-normal">{{
+                item.birthDate ? formatDate(item.birthDate) : "--"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.address") }}
+              </p>
+              <span class="font-normal">{{ formatAddress() }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informations de compte -->
+      <div class="bg-white border border-gray-200 rounded-lg p-6 mb-5">
+        <h3 class="text-lg font-semibold mb-4">
+          {{ t("details.accountInfo") }}
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.createdAt") }}
+              </p>
+              <span class="font-normal">{{
+                item.createdAt ? formatDate(item.createdAt) : "N/A"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3" *ngIf="item.lastLogin">
+            <i class="fa-solid fa-clock text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.lastLogin") }}
+              </p>
+              <span class="font-normal">{{ formatDate(item.lastLogin) }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-shield text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.emailConfirmed") }}
+              </p>
+              <span
+                class="font-normal"
+                [ngClass]="
+                  item.emailConfirmed ? 'text-green-600' : 'text-red-600'
+                "
+              >
+                {{
+                  item.emailConfirmed
+                    ? t("status.confirmed")
+                    : t("status.notConfirmed")
+                }}
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-3"
+            *ngIf="item.failedLoginAttempts !== undefined"
+          >
+            <i class="fa-solid fa-exclamation-triangle text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500 text-sm">
+                {{ t("fields.failedAttempts") }}
+              </p>
+              <span class="font-normal">{{ item.failedLoginAttempts }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="bg-white border border-gray-200 rounded-lg p-6">
+        <h3 class="text-lg font-semibold mb-4">
+          {{ t("details.notes") }}
+        </h3>
+
+        <ng-container *ngIf="item.notes; else noNotes">
+          <p class="text-gray-700">{{ item.notes }}</p>
+        </ng-container>
+
+        <ng-template #noNotes>
+          <div class="w-full py-8 px-4 text-center">
+            <div class="flex flex-col items-center gap-3">
+              <div
+                class="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center"
+              >
+                <i class="fa fa-sticky-note text-2xl text-gray-400"></i>
+              </div>
+              <p class="text-sm text-gray-500">
+                {{ t("details.noNotes") || "Aucune note disponible" }}
+              </p>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Partie droite -->
+    <div class="lg:col-span-1">
+      <!-- Aperçu du statut -->
+      <div class="bg-white border border-gray-200 rounded-lg p-6 mb-5">
+        <h3 class="text-md font-semibold mb-4">
+          {{ t("details.statusOverview") }}
+        </h3>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600">{{ t("fields.status") }}</span>
+            <span
+              class="px-3 py-1 rounded-full text-sm font-medium"
+              [ngClass]="{
+                'bg-green-100 text-green-800': isActive,
+                'bg-red-100 text-red-800': !isActive,
+              }"
+            >
+              {{
+                statusLabel ||
+                  (isActive ? t("status.active") : t("status.inactive"))
+              }}
+            </span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600">{{ t("fields.role") }}</span>
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+            >
+              {{ userRoleLabel }}
+            </span>
+          </div>
+
+          <div
+            class="flex items-center justify-between"
+            *ngIf="item.emailConfirmed !== undefined"
+          >
+            <span class="text-gray-600">{{ t("fields.verified") }}</span>
+            <span
+              class="px-3 py-1 rounded-full text-sm font-medium"
+              [ngClass]="{
+                'bg-green-100 text-green-800': item.emailConfirmed,
+                'bg-yellow-100 text-yellow-800': !item.emailConfirmed,
+              }"
+            >
+              {{
+                item.emailConfirmed ? t("status.verified") : t("status.pending")
+              }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informations de l'entreprise -->
+      <div class="bg-white border border-gray-200 rounded-lg p-6">
+        <h3 class="text-md font-semibold mb-4">
+          {{ t("details.companyInfo") }}
+        </h3>
+
+        <ng-container *ngIf="item.company; else noCompany">
+          <div class="space-y-3">
+            <div>
+              <p class="text-sm text-gray-500">{{ t("fields.companyName") }}</p>
+              <p class="font-medium">{{ item.company.name || "--" }}</p>
+            </div>
+
+            <div>
+              <p class="text-sm text-gray-500">{{ t("fields.catchPhrase") }}</p>
+              <p class="text-sm text-gray-700">
+                {{ item.company.catchPhrase || "--" }}
+              </p>
+            </div>
+
+            <div>
+              <p class="text-sm text-gray-500">{{ t("fields.business") }}</p>
+              <p class="text-sm text-gray-700">{{ item.company.bs || "--" }}</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #noCompany>
+          <div class="w-full py-8 px-4 text-center">
+            <div class="flex flex-col items-center gap-3">
+              <div
+                class="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center"
+              >
+                <i class="fa fa-building text-2xl text-gray-400"></i>
+              </div>
+              <p class="text-sm text-gray-500">
+                {{ t("details.noCompany") || "Aucune entreprise associée" }}
+              </p>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

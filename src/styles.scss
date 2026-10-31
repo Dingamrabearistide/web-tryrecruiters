@@ -1,0 +1,531 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "quill/dist/quill.snow.css";
+
+@theme {
+  --color-primary: #1d9bed;
+  --color-secondary: #026fb8;
+  --color-light: #bde5ff;
+  --color-extralight: #a8ddff;
+  --color-error: #f06363;
+  --color-app-green: #80db69;
+  --color-app-gray: #5e6670; // #707070;
+  --color-app-red: #ff5173;
+  --color-superextralight: #caebff;
+
+  /* New TryRecruiters design system */
+  --color-navy: #07152f;
+  --color-ink: #241449;
+  --color-blue: #149df2;
+  --color-blue2: #0b79d0;
+  --color-skysoft: #eaf6ff;
+  --color-coral: #ff5148;
+  --color-mist: #f5f7fb;
+  --color-line: #e6ecf4;
+
+  --shadow-soft: 0 18px 45px rgba(7, 21, 47, 0.1);
+  --shadow-card: 0 10px 28px rgba(15, 23, 42, 0.08);
+  --shadow-glow: none;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    "Roboto Condensed", Inter, ui-sans-serif, system-ui, sans-serif;
+
+  /* Animations from job filter template */
+  --animate-detailsIn: detailsIn 0.32s ease-out both;
+  --animate-fadeUp: fadeUp 0.22s ease-out both;
+
+  --bg-custom-gradient: linear-gradient(
+    90deg,
+    #000000 100%,
+    rgba(59, 59, 59, 0.654902) 56.16%,
+    rgba(123, 119, 119, 0) 0%
+  );
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+body:has(.tr-call-page--meeting) marquee {
+  display: none !important;
+}
+
+@keyframes detailsIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    max-height: 900px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// input:focus,
+// select:focus {
+//   outline: none !important;
+//   /* border: none !important; */
+// }
+.navbar-width {
+  width: calc(100% - 250px);
+}
+
+.sidebar-active-menu {
+  @apply bg-light border-l-[3px] border-primary
+w-full;
+}
+
+@media (max-width: 768px) {
+  .navbar-width {
+    width: 100vw;
+  }
+
+  /* .sidebar-responsive {
+    top: 80px;
+  } */
+}
+
+#search {
+  padding-left: 2.5rem;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  height: 100%;
+  color: red;
+  // font-size: 24px;
+}
+
+.cdk-global-scrollblock {
+  position: initial !important;
+  overflow-y: scroll !important;
+  /* Prevent the body from scrolling but allow dialog content to scroll */
+  top: 0 !important;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* --font-sborderans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, sans-serif;
+  @apply text-gray-600;
+  /* Safety net: CSS Grid items default to min-width: auto, so unbreakable
+     content in a flexible ("1fr") column can force the grid — and the whole
+     page — wider than the viewport instead of shrinking. That's most
+     visible at heavy browser zoom-out, where it shows up as a page that
+     stops filling the window and leaves blank space on one side. */
+  overflow-x: hidden;
+}
+
+/***
+GENERIC STYLES
+****/
+
+/* --- GLOBAL STYLES POUR LES BOUTONS ET FORMULAIRES --- */
+
+@layer base {
+  .app-container {
+    @apply px-16;
+  }
+
+  .app-container-inner {
+    @apply max-w-[1800px];
+  }
+
+  // button {
+  //   @apply min-w-[70px] cursor-pointer px-4 py-2 rounded-sm font-medium text-gray-500 bg-gray-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm;
+  // }
+
+  // button.app-primary {
+  //   background-color: #1d9bed;
+  //   color: white;
+  //   @apply px-4 py-1.5;
+  // }
+
+  // button.app-primary:hover {
+  //   background-color: #1d9bed;
+  // }
+
+  // button.app-danger {
+  //   @apply bg-red-400 text-white;
+  //   color: #fff;
+  // }
+
+  // button.app-danger:hover {
+  //   @apply bg-red-600;
+  // }
+
+  // button:disabled {
+  //   color: #171717;
+  //   background-color: #e4e4e4;
+  // }
+
+  // button:disabled:hover {
+  //   color: #171717;
+  //   background-color: #e4e4e4;
+  // }
+
+  .alert-error {
+    @apply text-red-500 text-sm italic;
+  }
+
+  /**
+  GENERIC FORM
+  **/
+  // select {
+  //   height: fit-content !important;
+  // }
+
+  // input[type="text"],
+  // input[type="email"],
+  // input[type="password"],
+  // input[type="number"],
+  // input[type="search"],
+  // input[type="tel"],
+  // input[type="url"],
+  // input[type="date"],
+  // input[type="datetime-local"],
+  // input[type="month"],
+  // input[type="time"],
+  // input[type="week"],
+  // input[type="file"],
+  // select,
+  // textarea {
+  //   @apply w-full h-10 px-4 py-2 border border-gray-300 rounded-md bg-white text-lg transition duration-150 outline-[#33a5f1];
+  //   border-color: #ccc;
+  //   @apply border border-gray-300 outline-none rounded-[5px] px-4 py-2 w-full md:w-auto text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all;
+  // }
+
+  // input::placeholder {
+  //   @apply text-gray-400 text-sm;
+  // }
+
+  // input:focus,
+  // select:focus,
+  // textarea:focus {
+
+  //   @apply outline-2 outline-[#33a5f1];
+  // }
+
+  // input:disabled,
+  // select:disabled,
+  // textarea:disabled {
+  //   @apply bg-gray-100 text-gray-500 cursor-not-allowed;
+  // }
+
+  // textarea {
+  //   @apply resize-y min-h-[100px];
+  // }
+
+  /***
+  DATATABLE
+  **/
+
+  // thead th {
+  //   // @apply bg-blue-400! text-white;
+  // }
+}
+
+.app-primary {
+  background-color: #1d9bed;
+  color: white;
+  // padding: 0.375rem 1rem; /* py-1.5 px-4 */
+  border-radius: 0.25rem;
+  // font-size: 0.875rem; /* text-sm */
+  // font-weight: 500; /* font-medium */
+  // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.15s ease-in-out;
+}
+
+.app-success {
+  background-color: #55ca63;
+  color: white;
+}
+
+// button:hover {
+//   opacity: 0.8;
+// }
+
+.bg-primary {
+  background-color: #1d9bed;
+}
+
+.text-primary {
+  color: #1d9bed;
+}
+
+.app-primary:hover {
+  background-color: #1d9bed;
+}
+
+.text-btn {
+  color: white;
+}
+
+.icon-btn {
+  color: white;
+}
+
+.text-white-flex {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* gap-1 */
+}
+
+/* Bouton avec icône - style universel */
+// .app-primary {
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem; /* gap-2 */
+//   background-color: #1d9bed;
+//   color: #1d9bed;
+//   padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+//   border-radius: 0.375rem; /* rounded-md */
+//   font-size: 0.875rem; /* text-sm */
+//   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+//   transition: all 0.15s ease-in-out;
+//   border: none;
+//   cursor: pointer;
+// }
+.btn-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 */
+  background-color: #f01f10;
+  color: #f01f10;
+  padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 */
+  background-color: #b9b9b9;
+  color: #b9b9b9;
+  padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-profile:hover {
+  background-color: #dbeafe; /* hover:bg-blue-200 */
+}
+
+/* Style pour le texte à l'intérieur */
+.btn-profile .btn-text {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Style pour l'icône */
+.btn-profile .btn-icon {
+  color: white;
+  font-size: 0.875rem;
+}
+table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+table thead tr {
+  @apply bg-[#1d9bed];
+}
+table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wide;
+}
+table tbody tr:hover {
+  @apply bg-gray-100;
+}
+table td {
+  @apply px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900;
+}
+
+.fa-pencil,
+.fa-pencil-alt,
+.fa-eye-alt {
+  @apply text-[#1d9bed];
+}
+.fa-trash,
+.fa-trash-alt {
+  @apply text-[#f01f10];
+}
+
+.app-badge {
+  @apply px-3 py-1 rounded-full text-sm font-semibold ring-1 inline-flex items-center rounded-full font-medium ring-1 ring-inset select-none bg-gray-50 text-gray-500 ring-gray-100
+           dark:bg-gray-500/10 dark:text-gray-300 dark:ring-gray-400/30;
+}
+
+.app-badge--primary {
+  /* bleu */
+  @apply bg-blue-100 text-blue-600 ring-blue-200
+           dark:bg-blue-600/10 dark:text-blue-400 dark:ring-blue-500/30;
+}
+
+.app-badge--success {
+  /* vert */
+  @apply bg-green-50 text-green-500 ring-green-100
+           dark:bg-green-500/10 dark:text-green-300 dark:ring-green-400/30;
+}
+
+.app-badge--danger {
+  /* rouge */
+  @apply bg-red-50 text-red-500 ring-red-100
+           dark:bg-red-500/10 dark:text-red-300 dark:ring-red-400/30;
+}
+
+.app-primary {
+  @apply min-w-[100px] cursor-pointer  rounded-2xl bg-blue px-3 py-2 text-sm font-black text-white transition hover:bg-blue2 disabled:cursor-not-allowed disabled:opacity-70;
+}
+
+.app-btn {
+  @apply cursor-pointer  rounded-2xl bg-gray-300 px-3 py-2 text-sm font-black text-gray-500 transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-70;
+}
+
+/* Dashboard filter buttons — mobile responsive */
+.btn-filter-search {
+  @apply h-10 px-5 bg-blue rounded-2xl text-white text-sm font-black inline-flex items-center justify-center gap-2 whitespace-nowrap hover:bg-blue2 transition cursor-pointer shrink-0 flex-1 md:flex-none;
+}
+
+.btn-filter-reset {
+  @apply h-10 px-5 bg-gray-500 rounded-2xl text-white text-sm font-black inline-flex items-center justify-center gap-2 whitespace-nowrap hover:bg-gray-600 transition cursor-pointer shrink-0 flex-1 md:flex-none;
+}
+
+/* Wrapper for search input + action buttons */
+.filter-actions-wrap {
+  @apply flex flex-col gap-2 w-full md:flex-row md:items-end md:w-fit self-end;
+}
+.filter-actions-buttons {
+  @apply flex gap-2 w-full md:w-auto;
+}
+
+.app-primary2 {
+  @apply cursor-pointer  flex items-center justify-center gap-2 rounded-2xl bg-blue px-6 py-4 text-sm font-black text-white shadow-glow transition hover:bg-blue2 disabled:cursor-not-allowed disabled:opacity-70;
+}
+
+/* ── Responsive MatDialog on mobile ── */
+@media (max-width: 640px) {
+  .cdk-overlay-pane {
+    max-width: 96vw !important;
+    width: 96vw !important;
+  }
+
+  .mat-mdc-dialog-container,
+  .mdc-dialog__container,
+  .mdc-dialog__surface {
+    max-width: 96vw !important;
+    width: 100% !important;
+  }
+
+  mat-dialog-content,
+  .mat-mdc-dialog-content {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    padding: 0 16px !important;
+  }
+}
+
+
+/* ── Responsive MatDialog ── */
+
+/* Desktop: dialogs get a consistent width */
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+  --mat-dialog-container-max-width: 600px;
+}
+
+/* Mobile: full-width dialogs */
+@media (max-width: 640px) {
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    --mat-dialog-container-max-width: 92vw;
+    max-width: 92vw !important;
+    width: 92vw !important;
+  }
+
+  .mdc-dialog__surface {
+    max-width: 92vw !important;
+    width: 92vw !important;
+    border-radius: 12px !important;
+  }
+
+  .mat-mdc-dialog-content {
+    max-height: 72vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* Fix inner form scroll */
+  .mat-mdc-dialog-content .generic-form {
+    max-height: none !important;
+  }
+}
+
+/* ── Accordion job detail: force single-column layout for the outer description/sidebar split,
+   but keep the 2-column grid inside the "Aperçu du poste" overview card ── */
+.accordion-job-detail job-offers-detail > div > .grid.lg\:grid-cols-3 {
+  grid-template-columns: 1fr !important;
+}
+.accordion-job-detail job-offers-detail > div > .grid.lg\:grid-cols-1 {
+  grid-template-columns: 1fr !important;
+}
+
+/* ── Animated dropdown chevrons ──
+   Across the app, custom-styled native <select> dropdowns are built as
+   <select> followed by a sibling icon (fa-chevron-down / fa-caret-down /
+   fa-angle-down). A native <select>'s open/closed popup state isn't exposed
+   to CSS, so :focus is the closest reliable signal of "the dropdown is
+   open" — rotate the icon while focused, rotate back on blur. */
+i.fa-chevron-down,
+i.fa-caret-down,
+i.fa-angle-down {
+  transition: transform 0.2s ease;
+}
+
+select:focus + i.fa-chevron-down,
+select:focus + div i.fa-chevron-down,
+select:focus ~ i.fa-chevron-down,
+select:focus ~ div i.fa-chevron-down,
+select:focus + i.fa-caret-down,
+select:focus + div i.fa-caret-down,
+select:focus + i.fa-angle-down,
+select:focus + div i.fa-angle-down {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,229 @@
+<div *transloco="let tCore">
+  <!-- Header Section -->
+  <div class="bg-[url('/images/wallpaper.jpg')] bg-center bg-cover shadow-sm">
+    <div class="relative w-full h-full bg-black/30 py-6 px-4 pb-12">
+      <div class="app-container-inner mx-auto">
+        <div
+          class="w-full mx-auto flex flex-col md:flex-row gap-3 items-center justify-between"
+        >
+          <h2 class="text-3xl font-bold text-white">
+            {{ tCore("home.faqs.title") }}
+          </h2>
+          <div class="flex flex-wrap gap-1 justify-center">
+            <a
+              class="text-gray-300 hover:text-white text-[14px]"
+              routerLink="/"
+              >{{ tCore("home.faqs.breadcrumbHome") }}</a
+            >
+            <p class="text-[14px] font-bold text-white">
+              {{ tCore("home.faqs.title") }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form Section -->
+  <section class="py-24 px-6 md:px-12 bg-white">
+    <div
+      class="app-container-inner mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    >
+      <!-- Left Side: Text -->
+      <div class="flex flex-col gap-6 justify-center items-start">
+        <p class="text-sky-600 font-medium mb-2">Who we are</p>
+        <h2
+          class="text-3xl md:text-5xl font-medium text-primary mb-4 leading-tight"
+        >
+          We care about<br />
+          your question
+        </h2>
+        <p class="mb-6 max-w-[500px]">
+          Want to chat? We'd love to hear from you! Get in touch with our
+          Customer Success Team to inquire about speaking events, advertising
+          rates, or just say hello.
+        </p>
+        <button
+          class="bg-primary text-white px-6 py-2 rounded w-full sm:w-auto font-semibold shadow hover:bg-[#187dc0] transition"
+        >
+          Subscribe
+        </button>
+      </div>
+
+      <div
+        class="flex flex-col justify-center w-full max-w-xl mx-auto min-h-[600px]"
+      >
+        <section class="py-20 px-2 md:px-12">
+          <div class="mx-auto max-w-4xl">
+            <!-- FAQ Items -->
+            <div class="space-y-4">
+              <!-- FAQ Item 1 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(1)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q1") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 1 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 1"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  Pour créer un compte, cliquez sur le bouton "S'inscrire" en
+                  haut de la page. Choisissez votre type de compte (Candidat ou
+                  Recruteur) et remplissez le formulaire avec vos informations.
+                  Vous recevrez un email de confirmation pour activer votre
+                  compte.
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(2)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q2") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 2 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 2"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  Notre équipe s'engage à répondre à toutes les demandes dans un
+                  délai de 24 à 48 heures ouvrables. Pour les questions
+                  urgentes, n'hésitez pas à nous contacter par téléphone.
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(3)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q3") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 3 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 3"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  {{ tCore("home.faqs.a3") }}
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(4)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q4") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 4 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 4"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  {{ tCore("home.faqs.a4") }}
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(5)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q5") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 5 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 5"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  {{ tCore("home.faqs.a5") }}
+                </div>
+              </div>
+
+              <!-- FAQ Item 6 -->
+              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  class="w-full px-4 py-2 text-left text-white flex justify-between items-center bg-primary transition"
+                  (click)="toggleFaq(6)"
+                >
+                  <h3 class="text-lg font-semibold text-white pr-4">
+                    {{ tCore("home.faqs.q6") }}
+                  </h3>
+                  <i
+                    class="fa text-white transition-transform duration-300"
+                    [ngClass]="
+                      openFaq === 6 ? 'fa-chevron-up' : 'fa-chevron-down'
+                    "
+                  ></i>
+                </button>
+                <div
+                  *ngIf="openFaq === 6"
+                  class="px-6 pb-5 border-t border-gray-100 pt-4"
+                >
+                  {{ tCore("home.faqs.a6") }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+  <div class="m-12 text-center p-8 bg-primary rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold text-white mb-3">
+      {{ tCore("home.faqs.notFound") }}
+    </h3>
+    <p class="mb-6 text-white">
+      {{ tCore("home.faqs.contactUs") }}
+    </p>
+    <button
+      class="bg-primary text-white px-8 py-3 rounded font-semibold shadow hover:bg-[#187dc0] transition"
+      (click)="navigateToContact()"
+    >
+      {{ tCore("home.faqs.contactButton") }}
+    </button>
+  </div>
+</div>

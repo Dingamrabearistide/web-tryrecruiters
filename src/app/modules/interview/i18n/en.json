@@ -1,0 +1,195 @@
+{
+  "list": {
+    "title": "Interviews",
+    "description": "Manage all your scheduled interviews",
+    "columns": {
+      "candidate": "Candidate",
+      "jobOffer": "Job / Position",
+      "company": "Company",
+      "scheduledAt": "Date & Time",
+      "duration": "Duration",
+      "type": "Type",
+      "status": "Status",
+      "meetUrl": "Meeting link",
+      "actions": "Actions"
+    },
+    "emptyTitle": "No interviews scheduled",
+    "emptySubtitle": "Schedule your first interview",
+    "createLabel": "Schedule an interview",
+    "searchPlaceholder": "Search interviews...",
+    "actions": {
+      "join": "Join",
+      "cancel": "Cancel",
+      "view": "View details",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+  "form": {
+    "interview": "New interview",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "search": "Search",
+    "reset": "Reset",
+    "searchPlaceholder": "Search by candidate, recruiter...",
+    "scheduledAt": {
+      "label": "Scheduled date & time",
+      "placeholder": "Select the interview date and time"
+    },
+    "durationMin": {
+      "label": "Duration (minutes)",
+      "options": {
+        "15min": "15 minutes",
+        "30min": "30 minutes",
+        "45min": "45 minutes",
+        "1h": "1 hour",
+        "1h30": "1h30",
+        "2h": "2 hours"
+      }
+    },
+    "type": {
+      "label": "Interview type",
+      "options": {
+        "googleMeet": "Google Meet",
+        "dailyVideoCall": "Integrated Video Call TryRecruiters",
+        "inPerson": "In person"
+      }
+    },
+    "meetUrl": {
+      "label": "Google Meet link",
+      "placeholder": "https://meet.google.com/xxx-xxxx-xxx"
+    },
+    "location": {
+      "label": "Interview location",
+      "placeholder": "Meeting address"
+    },
+    "timezone": {
+      "label": "Time zone",
+      "options": {
+        "africaDouala": "Africa/Douala (GMT+1)",
+        "europeParis": "Europe/Paris (GMT+1)",
+        "americaNewYork": "America/New York (GMT-5)",
+        "asiaTokyo": "Asia/Tokyo (GMT+9)",
+        "utc": "UTC"
+      }
+    },
+    "notes": {
+      "label": "Notes",
+      "placeholder": "Add any relevant notes about the interview"
+    }
+  },
+  "status": {
+    "SCHEDULED": "Scheduled",
+    "RESCHEDULED": "Rescheduled",
+    "COMPLETED": "Completed",
+    "CANCELED": "Canceled"
+  },
+  "delete": {
+    "title": "Delete interview",
+    "message": "Are you sure you want to delete the interview with {{name}}?"
+  },
+  "errors": {
+    "scheduledAt": {
+      "required": "The interview date and time is required",
+      "pastDate": "The interview date cannot be in the past"
+    },
+    "durationMin": {
+      "required": "The duration is required"
+    },
+    "meetUrl": {
+      "required": "The meeting link is required",
+      "invalid": "Please enter a valid Google Meet link"
+    },
+    "timezone": {
+      "required": "The time zone is required"
+    },
+    "type": {
+      "required": "The interview type is required"
+    },
+    "location": {
+      "required": "The interview location is required"
+    },
+    "createInterview": "An error occurred while creating the interview"
+  },
+  "respond": {
+    "title": "Do you confirm this interview?",
+    "description": "Please confirm or decline this invitation.",
+    "confirm": "Confirm",
+    "decline": "Decline",
+    "messageLabel": "Message (optional)",
+    "messagePlaceholder": "Anything you'd like to share with the recruiter...",
+    "conflict": "The recruiter changed the date or location of this interview. Check the updated details below before responding again.",
+    "error": "Something went wrong. Please try again."
+  },
+  "candidateResponse": {
+    "PENDING": "Awaiting your response",
+    "CONFIRMED": "Confirmed",
+    "DECLINED": "Declined"
+  },
+  "history": {
+    "title": "History",
+    "empty": "No history yet.",
+    "loading": "Loading history..."
+  },
+  "cancel": {
+    "button": "Cancel interview",
+    "confirmMessage": "Are you sure you want to cancel this interview? The candidate will be notified by email.",
+    "conflict": "This interview was changed in the meantime. The details have been reloaded — please try again.",
+    "error": "Failed to cancel. Please try again."
+  },
+  "edit": {
+    "button": "Edit",
+    "title": "Edit interview",
+    "save": "Save changes",
+    "cancelButton": "Cancel",
+    "warning": "Changing the date or location will reset the candidate's response — they will need to confirm again.",
+    "error": "Failed to save changes. Please try again."
+  },
+  "markCompleted": {
+    "button": "Mark as completed",
+    "confirmMessage": "Mark this interview as completed?",
+    "error": "Failed to update the status. Please try again."
+  },
+  "details": {
+    "title": "Interview details",
+    "description": "View interview details and related information.",
+    "back": "Back",
+    "header": "Interview details",
+    "informationTitle": "Interview information",
+    "applicationTitle": "Application",
+    "application": {
+      "idLabel": "Application ID",
+      "statusLabel": "Status",
+      "submittedAtLabel": "Submitted on",
+      "messageLabel": "Cover letter"
+    },
+    "candidateFallback": "Candidate",
+    "actions": {
+      "joinInterview": "Join the interview",
+      "accessLocked": "Confirm your attendance above to unlock the interview link or location."
+    },
+    "fields": {
+      "date": "Date and time",
+      "status": "Status",
+      "meetUrl": "Meeting link",
+      "duration": "Duration",
+      "notes": "Notes"
+    },
+    "errors": {
+      "notFound": "Interview details not found.",
+      "loadError": "Error loading interview details.",
+      "noIdFound": "No interview ID found in the URL."
+    }
+  },
+  "notification": {
+    "interviewInvitation": {
+      "subject": "Interview Invitation – {{jobTitle}}",
+      "body": "Hello {{firstName}} {{lastName}},\nWe would like to schedule an interview with you for the position of {{jobTitle}}. Your application, along with your resume {{resumeName}}, has caught the recruiter's attention.\nPlease confirm your availability for this interview so we can arrange the date and time."
+    }
+  },
+  "joinMeeting": "Join Meeting",
+  "perApplicationLimitReached": "Limit reached: {{current}}/{{max}} interviews already scheduled for this application.",
+  "scheduleButton": "Schedule an interview"
+}

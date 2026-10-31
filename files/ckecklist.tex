@@ -1,0 +1,341 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+% Package pour les cases à cocher interactives
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+
+% Configuration hyperref pour les formulaires PDF
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+% Personnalisation des sections
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries\color{blue!70!black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries\color{blue!50!black}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{blue!30!black}}{\thesubsubsection}{1em}{}
+
+% Compteur pour les cases à cocher
+\newcounter{checkboxcounter}
+
+% Commande pour créer une case à cocher interactive
+\newcommand{\checkbox}[1]{%
+    \stepcounter{checkboxcounter}%
+    \CheckBox[name=checkbox\thecheckboxcounter, width=0.4cm, height=0.4cm]{}~#1%
+}
+
+% Style des listes sans symboles (on utilisera \checkbox)
+\setlist[itemize,1]{label={}, leftmargin=0.5cm}
+\setlist[itemize,2]{label={}, leftmargin=1cm}
+
+\title{\textbf{TryRecruiters}\\Project Tasks Breakdown}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\begin{Form}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%===========================================
+\section{TÂCHES GLOBALES / COMMUNES}
+%===========================================
+
+\subsection{Pages Légales \& Informatives}
+\begin{itemize}
+    \item \checkbox{Créer la page FAQ}
+    \item \checkbox{Créer la page Privacy Policy}
+    \item \checkbox{Créer la page Conditions Générales}
+\end{itemize}
+
+\subsection{Gestion des Profils (Global)}
+\begin{itemize}
+    \item \checkbox{Gérer les pages de profil de manière globale}
+    \item \checkbox{Implémenter les "no content" au niveau des pages des profils}
+    \item \checkbox{Implémenter les "read more" au niveau des pages des profils}
+    \item \checkbox{Gérer le "read more" sur les éléments ajoutés}
+\end{itemize}
+
+\subsection{Système de Rôles \& Permissions}
+\begin{itemize}
+    \item \checkbox{Gérer les rôles pour les candidats et pour les recruteurs}
+    \item \checkbox{Bloquer l'action "Postuler" pour les recruteurs}
+    \item \checkbox{Réserver l'action "Postuler" uniquement pour les candidats}
+\end{itemize}
+
+\subsection{Authentification}
+\begin{itemize}
+    \item \checkbox{Investigate and identify the root cause du login button issue}
+    \item \checkbox{Fix authentication flow}
+    \item \checkbox{Test login process}
+    \item \checkbox{Verify error handling}
+\end{itemize}
+
+%===========================================
+\section{HOME / FRONT OFFICE}
+%===========================================
+
+\subsection{Section "How it Works"}
+\begin{itemize}
+    \item \checkbox{Mettre des textes corrects pour la section "How it Works"}
+    \item \checkbox{Gérer la redirection correctement vers les sections}
+\end{itemize}
+
+\subsection{Section Testimonials}
+\begin{itemize}
+    \item \checkbox{Mettre des textes cohérents}
+\end{itemize}
+
+\subsection{Home - Job Offers (/home/joboffers)}
+\begin{itemize}
+    \item \checkbox{Corriger et tester les filtres}
+    \item \checkbox{Gérer le problème de dates au niveau des offres affichées}
+    \item \checkbox{Permettre la mise en favoris}
+    \item \checkbox{Gérer l'action "Postuler"}
+    \item \checkbox{Fixer le bug pour postuler aux offres}
+    \item \checkbox{Fixer la fonctionnalité de "Postuler" via la modal}
+\end{itemize}
+
+\subsection{Home - Companies (/home/companies)}
+\begin{itemize}
+    \item \checkbox{Corriger et tester les filtres}
+\end{itemize}
+
+\subsection{Home - Candidates (/home/candidates)}
+\begin{itemize}
+    \item \checkbox{Corriger et tester les filtres}
+\end{itemize}
+
+%===========================================
+\section{CANDIDATE DASHBOARD}
+%===========================================
+
+\subsection{Dashboard Navigation \& UI}
+\begin{itemize}
+    \item \checkbox{Dashboard Navigation Avatar - Close Issue}
+    \item \checkbox{Add click-outside functionality}
+    \item \checkbox{Implement proper state management for the avatar menu}
+    \item \checkbox{Test on different screen sizes}
+\end{itemize}
+
+\subsection{Dashboard Design}
+\begin{itemize}
+    \item \checkbox{Redessiner la page de dashboard pour les candidats}
+    \item \checkbox{Review design specifications}
+    \item \checkbox{Implement responsive layout}
+    \item \checkbox{Ensure consistency across components}
+    \item \checkbox{Test on multiple devices}
+\end{itemize}
+
+\subsection{Company Page}
+\begin{itemize}
+    \item \checkbox{Implement filter components (location, industry, size, etc.)}
+    \item \checkbox{Connect filters to backend API}
+    \item \checkbox{Add filter state management}
+    \item \checkbox{Test filter combinations}
+\end{itemize}
+
+\subsection{Job Offers Page}
+
+\subsubsection{Affichage \& Layout}
+\begin{itemize}
+    \item \checkbox{Add creation date to items}
+    \item \checkbox{Display creation date in job offer cards}
+    \item \checkbox{Format date appropriately}
+    \item \checkbox{Ensure responsive display}
+    \item \checkbox{Fix description overflow}
+    \item \checkbox{Implement text truncation or ellipsis}
+    \item \checkbox{Add "Read more" functionality if needed}
+    \item \checkbox{Ensure consistent card heights}
+    \item \checkbox{Fix vertical alignment}
+    \item \checkbox{Adjust CSS for proper alignment}
+    \item \checkbox{Test on different screen sizes}
+    \item \checkbox{Ensure consistency across cards}
+    \item \checkbox{Limit to 3 items per row}
+    \item \checkbox{Adjust grid layout}
+    \item \checkbox{Implement responsive breakpoints}
+    \item \checkbox{Test on various screen sizes}
+\end{itemize}
+
+\subsubsection{Filtres}
+\begin{itemize}
+    \item \checkbox{Ensure all filters are working}
+    \item \checkbox{Test each filter functionality}
+    \item \checkbox{Fix any broken filter logic}
+    \item \checkbox{Verify filter persistence}
+\end{itemize}
+
+\subsubsection{Fonctionnalités}
+\begin{itemize}
+    \item \checkbox{Make "Add to Favorite" button work}
+    \item \checkbox{Implement favorite functionality}
+    \item \checkbox{Add backend integration}
+    \item \checkbox{Update UI state immediately}
+    \item \checkbox{Handle loading and error states}
+\end{itemize}
+
+\subsubsection{Admin Verification}
+\begin{itemize}
+    \item \checkbox{Add admin verification status to job offers}
+    \item \checkbox{Implement verification workflow}
+    \item \checkbox{Add verification indicators in UI}
+\end{itemize}
+
+\subsection{Favorites Page}
+
+\subsubsection{Filtres}
+\begin{itemize}
+    \item \checkbox{Set up correct filter}
+    \item \checkbox{Implement relevant filters for favorites}
+    \item \checkbox{Connect to backend}
+    \item \checkbox{Test filter functionality}
+\end{itemize}
+
+\subsubsection{Layout}
+\begin{itemize}
+    \item \checkbox{Limit to 3 items per row}
+    \item \checkbox{Implement grid layout}
+    \item \checkbox{Add responsive design}
+    \item \checkbox{Fix description overflow}
+    \item \checkbox{Implement text truncation}
+    \item \checkbox{Ensure consistent card design}
+\end{itemize}
+
+\subsubsection{Fonctionnalités}
+\begin{itemize}
+    \item \checkbox{Make details button work}
+    \item \checkbox{Implement navigation to job offer details}
+    \item \checkbox{Pass correct job offer ID}
+    \item \checkbox{Test navigation flow}
+\end{itemize}
+
+\subsection{Job Offer Details Page}
+\begin{itemize}
+    \item \checkbox{Fix description layout and wrapping}
+    \item \checkbox{Fix redirect path to resume management page}
+    \item \checkbox{Implement "Apply Now" button functionality}
+    \item \checkbox{Connect to application submission}
+    \item \checkbox{Add success/error feedback}
+    \item \checkbox{Fix "Similar Offers" section (favorite + details buttons)}
+    \item \checkbox{Debug job application submission and validation}
+\end{itemize}
+
+\subsection{Resumes Module}
+\begin{itemize}
+    \item \checkbox{Translate all texts}
+    \item \checkbox{Fix file uploader bug}
+    \item \checkbox{Enable resume selection in the application form}
+\end{itemize}
+
+\subsection{Applications Module}
+\begin{itemize}
+    \item \checkbox{Rediriger la page des détails d'une application pour les candidats}
+    \item \checkbox{Test application submission}
+    \item \checkbox{Test status updates}
+    \item \checkbox{Verify data display}
+    \item \checkbox{Test filters and search}
+\end{itemize}
+
+\subsection{Interviews Module}
+\begin{itemize}
+    \item \checkbox{Test interview scheduling}
+    \item \checkbox{Test status updates}
+    \item \checkbox{Verify notifications}
+    \item \checkbox{Test calendar integration}
+\end{itemize}
+
+%===========================================
+\section{RECRUITER DASHBOARD}
+%===========================================
+
+\subsection{Dashboard Redesign}
+\begin{itemize}
+    \item \checkbox{Redesigner le dashboard complètement}
+\end{itemize}
+
+\subsection{Entreprises / Companies}
+
+\subsubsection{Filtres}
+\begin{itemize}
+    \item \checkbox{Gérer les filtres de manière correcte}
+    \item \checkbox{Tester les filtres}
+\end{itemize}
+
+\subsubsection{UI \& Layout}
+\begin{itemize}
+    \item \checkbox{Gérer les longs textes pour les pages compagnie}
+    \item \checkbox{Aligner les boutons de manière correcte}
+    \item \checkbox{Corriger les décalages entre les éléments}
+\end{itemize}
+
+\subsubsection{Fonctionnalités}
+\begin{itemize}
+    \item \checkbox{Gérer correctement l'édition dans les pages compagnies (save)}
+\end{itemize}
+
+\subsection{Job Offers}
+
+\subsubsection{Fonctionnalités}
+\begin{itemize}
+    \item \checkbox{Gérer correctement la mise en favoris pour les job offers}
+\end{itemize}
+
+\subsection{Favorites Page}
+
+\subsubsection{Filtres}
+\begin{itemize}
+    \item \checkbox{Gérer les filtres au niveau de la page favoris}
+\end{itemize}
+
+\subsubsection{Fonctionnalités}
+\begin{itemize}
+    \item \checkbox{Gérer correctement la vision des détails pour la page "Favorite"}
+\end{itemize}
+
+\subsection{Applications}
+
+\subsubsection{Filtres}
+\begin{itemize}
+    \item \checkbox{Gérer les filtres au niveau de la page application}
+\end{itemize}
+
+\subsubsection{Design}
+\begin{itemize}
+    \item \checkbox{Redessiner les détails au niveau de la page application}
+\end{itemize}
+
+\subsection{Candidats}
+
+\subsubsection{Section Interview}
+\begin{itemize}
+    \item \checkbox{Intégrer une section interview dans le bas de la page détails section candidats}
+\end{itemize}
+
+\subsection{Pages Détails}
+\begin{itemize}
+    \item \checkbox{Gérer la page de détails de manière correcte}
+\end{itemize}
+
+\subsection{Paiement}
+\begin{itemize}
+    \item \checkbox{Redesigner la page de paiement}
+\end{itemize}
+
+\end{Form}
+
+\end{document}

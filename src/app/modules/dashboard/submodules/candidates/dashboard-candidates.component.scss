@@ -1,0 +1,235 @@
+.dashboard-candidates {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+
+  .dashboard-header {
+    .dashboard-title {
+      color: #2d3748;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtitle {
+      color: #718096;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .dashboard-content {
+    .card {
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+
+      .card-header {
+        background: white;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1.25rem;
+        border-radius: 12px 12px 0 0;
+
+        .card-title {
+          color: #2d3748;
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+      }
+
+      .card-body {
+        padding: 1.25rem;
+      }
+    }
+
+    .profile-completion {
+      .progress {
+        border-radius: 4px;
+        background-color: #e9ecef;
+
+        .progress-bar {
+          border-radius: 4px;
+          transition: width 0.6s ease;
+        }
+      }
+
+      .profile-tips {
+        padding: 0.75rem;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        border-left: 3px solid #3182ce;
+      }
+    }
+
+    .activity-timeline {
+      .activity-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f1f3f4;
+
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        .activity-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1rem;
+          flex-shrink: 0;
+        }
+
+        .activity-content {
+          flex: 1;
+          min-width: 0;
+
+          .activity-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+          }
+
+          .activity-description {
+            color: #4a5568;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+          }
+
+          .activity-date {
+            color: #718096;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &.btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+
+      &:hover {
+        background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+      }
+    }
+
+    &.btn-outline-primary {
+      border-color: #667eea;
+      color: #667eea;
+
+      &:hover {
+        background: #667eea;
+        border-color: #667eea;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .dashboard-candidates {
+    padding: 1rem;
+
+    .dashboard-header {
+      .dashboard-title {
+        font-size: 1.75rem;
+      }
+
+      .dashboard-subtitle {
+        font-size: 0.9rem;
+      }
+    }
+
+    .dashboard-content {
+      .card {
+        margin-bottom: 1rem;
+
+        .card-header,
+        .card-body {
+          padding: 1rem;
+        }
+      }
+
+      .activity-timeline {
+        .activity-item {
+          gap: 0.75rem;
+
+          .activity-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
+          }
+
+          .activity-content {
+            .activity-title {
+              font-size: 0.9rem;
+            }
+
+            .activity-description {
+              font-size: 0.8rem;
+            }
+
+            .activity-date {
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-candidates {
+    padding: 0.75rem;
+
+    .dashboard-header {
+      .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 1rem;
+      }
+
+      .dashboard-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .dashboard-content {
+      .row.g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+      }
+    }
+  }
+}

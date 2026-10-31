@@ -1,0 +1,730 @@
+<div *transloco="let t; read: 'joboffers'">
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("details.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+      <button (click)="handleBack()" class="m-2 bg-primary app-primary">
+        <i class="fas fa-chevron-left mr-1 text-white"></i>
+        {{ t("common.back") }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Section principale -->
+  <div
+    *ngIf="item && !isLoading && !hasError"
+    class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner"
+  >
+    <div
+      class="bg-white pb-7 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 md:gap-6"
+    >
+      <div
+        class="flex items-center flex-col sm:flex-row gap-4 w-full sm:w-auto"
+      >
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">
+          {{ item.title }}
+          <i
+            *ngIf="item.verified"
+            class="fa fa-check-circle text-green-500"
+            title="Vérifié"
+          ></i>
+        </h2>
+      </div>
+
+      <div
+        class="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto"
+      >
+        <div class="flex flex-col sm:flex-row gap-3 items-center">
+          <div
+            (click)="addToFavorites()"
+            class="bookmark-job cursor-pointer mx-3"
+          >
+            <i
+              [ngClass]="{
+                'fa-solid text-yellow-500 bg-yellow-100 border border-yellow-500':
+                  item.isbookmarked,
+                'fa-regular text-[#1D9BED] bg-blue-100 border border-blue-200':
+                  !item.isbookmarked,
+              }"
+              aria-label="Ajouter aux favoris"
+              class="fa fa-bookmark flex items-center justify-center px-3 py-1.5 rounded-md transition"
+            ></i>
+          </div>
+          <button (click)="applyToJob()" class="app-primary">
+            <span class="text-white">{{
+              "joboffers.jobDetails.apply" | transloco
+            }}</span>
+          </button>
+        </div>
+        <p class="text-gray-500">
+          {{ "joboffers.jobDetails.expiresOn" | transloco }}
+          <span class="text-red-500 font-medium">
+            {{ item.expiresAt | date: "dd/MM/yyyy":"UTC" }}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 py-4 px-4 sm:px-6 lg:px-0 my-8"
+    >
+      <!-- Partie gauche -->
+      <div class="lg:col-span-2 gap-6">
+        <!-- Description -->
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "joboffers.jobDetails.description" | transloco }}
+          </h2>
+          <p class="text-gray-700 sm:text-base leading-relaxed">
+            {{ item.description }}
+          </p>
+        </div>
+
+        <!-- Niveau de poste -->
+        <div *ngIf="item.jobLevel">
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "joboffers.jobDetails.jobLevel" | transloco }}
+          </h2>
+          <p class="text-gray-700">{{ item.jobLevel }}</p>
+        </div>
+
+        <!-- Notes -->
+        <div *ngIf="item.notes">
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "joboffers.jobDetails.notes" | transloco }}
+          </h2>
+          <p class="text-gray-700">{{ item.notes }}</p>
+        </div>
+
+        <!-- Tags -->
+        <div *ngIf="item?.tags?.length">
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "joboffers.jobDetails.tags" | transloco }}
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <span
+              *ngFor="let tag of item.tags"
+              class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+            >
+              #{{ tag.tag.name }}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <button (click)="applyToJob()" class="app-primary">
+            <span class="text-white">{{
+              "joboffers.jobDetails.applyNow" | transloco
+            }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Partie droite -->
+      <div class="gap-6 border-4 border-red-500">
+        <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+          <h3 class="text-md font-semibold text-gray-800">
+            {{ "joboffers.jobDetails.jobOverview" | transloco }}
+          </h3>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:text-base text-gray-700"
+          >
+            <div *ngIf="item.publishedAt" class="flex items-start gap-3">
+              <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.publishedOn" | transloco }}
+                </p>
+                <span class="font-normal">{{
+                  item.publishedAt | date: "dd/MM/yyyy"
+                }}</span>
+              </div>
+            </div>
+            <div *ngIf="item.expiresAt" class="flex items-start gap-3">
+              <i class="fa-solid fa-clock text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.expiresOn" | transloco }}
+                </p>
+                <span class="font-normal">{{
+                  item.expiresAt | date: "dd/MM/yyyy":"UTC"
+                }}</span>
+              </div>
+            </div>
+            <div *ngIf="item.salary" class="flex items-start gap-3">
+              <i class="fa-solid fa-money-bill text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.salary" | transloco }}
+                </p>
+                <span class="font-normal">{{ formatSalaryAmount(item.salary) }}<ng-container *ngIf="item.salaryCurrency"> {{ item.salaryCurrency }}</ng-container></span>
+              </div>
+            </div>
+            <div *ngIf="item.educationLevel" class="flex items-start gap-3">
+              <i class="fa-solid fa-graduation-cap text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.educationLevel" | transloco }}
+                </p>
+                <span class="font-normal">{{ item.educationLevel }}</span>
+              </div>
+            </div>
+            <div *ngIf="item.location" class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.location" | transloco }}
+                </p>
+                <span class="font-normal">{{ item.location }}</span>
+              </div>
+            </div>
+            <div *ngIf="item.jobType" class="flex items-start gap-3">
+              <i class="fa-solid fa-briefcase text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.jobType" | transloco }}
+                </p>
+                <span class="font-normal">{{ item.jobType }}</span>
+              </div>
+            </div>
+            <div
+              *ngIf="item.experienceYears !== undefined"
+              class="flex items-start gap-3 col-span-1 sm:col-span-2"
+            >
+              <i class="fa-solid fa-award text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.experience" | transloco }}
+                </p>
+                <span class="font-normal"
+                  >{{ item.experienceYears }} an(s)</span
+                >
+              </div>
+            </div>
+            <div
+              *ngIf="company"
+              class="flex items-start gap-3 col-span-1 sm:col-span-2"
+            >
+              <i class="fa-solid fa-building text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.company" | transloco }}
+                </p>
+                <span class="font-normal">{{ company.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Info -->
+        <!-- Aperçu de l'entreprise -->
+        <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+          <h3 class="text-md font-semibold text-gray-800">
+            {{ "joboffers.jobDetails.companyOverview" | transloco }}
+          </h3>
+
+          <!-- Logo + Nom + Description -->
+          <div class="flex items-center gap-4">
+            <img
+              [src]="company.logoUrl || '/assets/default-company-logo.png'"
+              alt="Logo"
+              class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border"
+            />
+            <div class="flex flex-col">
+              <h4 class="font-semibold text-gray-800 sm:text-base">
+                {{ company.name }}
+              </h4>
+              <!-- <p class="text-sm text-gray-600">
+              {{
+              company.description || "Aucune description disponible"
+              }}
+              </p> -->
+            </div>
+          </div>
+
+          <!-- Infos principales en grille -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:text-base text-gray-700"
+          >
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-industry text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.sector" | transloco }}
+                </p>
+                <span class="font-normal">{{ company.industry }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-users text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.size" | transloco }}
+                </p>
+                <span class="font-normal">{{ company.companySize }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-building text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.organization" | transloco }}
+                </p>
+                <span class="font-normal">{{ company.organizationType }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.foundedIn" | transloco }}
+                </p>
+                <span class="font-normal">{{
+                  company.startDate | date: "yyyy"
+                }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-phone text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.phone" | transloco }}
+                </p>
+                <span class="font-normal">{{
+                  company.phoneNumber || "Non spécifié"
+                }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-envelope text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.email" | transloco }}
+                </p>
+                <span class="font-normal">{{
+                  company.email || "Non spécifié"
+                }}</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.address" | transloco }}
+                </p>
+                <span class="font-normal">
+                  {{
+                    company.addressLine1 +
+                      company.city +
+                      company.region +
+                      company.country
+                  }}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-globe text-blue-500 mt-1"></i>
+              <div>
+                <p class="uppercase text-gray-500">
+                  {{ "joboffers.jobDetails.website" | transloco }}
+                </p>
+                <span class="font-normal">
+                  <a
+                    *ngIf="company.website"
+                    [href]="company.website"
+                    class="text-blue-600 underline"
+                    target="_blank"
+                    >{{ company.website }}</a
+                  >
+                  <span *ngIf="!company.website">Non spécifié</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section similaires -->
+    <div class="py-4 px-4 sm:px-6 lg:px-0 my-8">
+      <div class="app-container-inner mx-auto">
+        <h2
+          class="mb-4 text-start text-lg sm:text-xl md:text-2xl font-semibold text-gray-800"
+        >
+          {{ "joboffers.jobDetails.moreOffers" | transloco }}
+        </h2>
+      </div>
+      <div class="w-full">
+        <app-job-offers-list
+          [displayMode]="'list'"
+          [items]="items"
+        ></app-job-offers-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section principale -->
+<div
+  *ngIf="item && !isLoading && !hasError"
+  class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner"
+>
+  <div
+    class="bg-white pb-7 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 md:gap-6"
+  >
+    <div class="flex items-center flex-col sm:flex-row gap-4 w-full sm:w-auto">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">
+        {{ item.title }}
+        <i
+          *ngIf="item.verified"
+          class="fa fa-check-circle text-green-500"
+          title="Vérifié"
+        ></i>
+      </h2>
+    </div>
+
+    <div class="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto">
+      <div class="flex flex-col sm:flex-row gap-3 items-center">
+        <div
+          (click)="addToFavorites()"
+          class="bookmark-job cursor-pointer mx-3"
+        >
+          <i
+            [ngClass]="{
+              'fa-solid text-yellow-500 bg-yellow-100 border border-yellow-500':
+                item.isbookmarked,
+              'fa-regular text-[#1D9BED] bg-blue-100 border border-blue-200':
+                !item.isbookmarked,
+            }"
+            aria-label="Ajouter aux favoris"
+            class="fa fa-bookmark flex items-center justify-center px-3 py-1.5 rounded-md transition"
+          ></i>
+        </div>
+        <button (click)="applyToJob()" class="app-primary">
+          <span class="text-white">{{
+            "joboffers.jobDetails.apply" | transloco
+          }}</span>
+        </button>
+      </div>
+      <p class="text-gray-500">
+        {{ "joboffers.jobDetails.expiresOn" | transloco }}
+        <span class="text-red-500 font-medium">
+          {{ item.expiresAt | date: "dd/MM/yyyy":"UTC" }}
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 py-4 px-4 sm:px-6 lg:px-0 my-8"
+  >
+    <!-- Partie gauche -->
+    <div class="lg:col-span-2 gap-6">
+      <!-- Description -->
+      <div>
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          {{ "joboffers.jobDetails.description" | transloco }}
+        </h2>
+        <p class="text-gray-700 sm:text-base leading-relaxed">
+          {{ item.description }}
+        </p>
+      </div>
+
+      <!-- Niveau de poste -->
+      <div *ngIf="item.jobLevel">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          {{ "joboffers.jobDetails.jobLevel" | transloco }}
+        </h2>
+        <p class="text-gray-700">{{ item.jobLevel }}</p>
+      </div>
+
+      <!-- Notes -->
+      <div *ngIf="item.notes">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          {{ "joboffers.jobDetails.notes" | transloco }}
+        </h2>
+        <p class="text-gray-700">{{ item.notes }}</p>
+      </div>
+
+      <!-- Tags -->
+      <div *ngIf="item.tags?.length">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          {{ "joboffers.jobDetails.tags" | transloco }}
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <span
+            *ngFor="let tag of item.tags"
+            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+          >
+            #{{ tag.tag.name }}
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="applyToJob()" class="app-primary">
+          <span class="text-white">{{
+            "joboffers.jobDetails.applyNow" | transloco
+          }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Partie droite -->
+    <div class="gap-6">
+      <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+        <h3 class="text-md font-semibold text-gray-800">
+          {{ "joboffers.jobDetails.jobOverview" | transloco }}
+        </h3>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:text-base text-gray-700"
+        >
+          <div *ngIf="item.publishedAt" class="flex items-start gap-3">
+            <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.publishedOn" | transloco }}
+              </p>
+              <span class="font-normal">{{
+                item.publishedAt | date: "dd/MM/yyyy"
+              }}</span>
+            </div>
+          </div>
+          <div *ngIf="item.expiresAt" class="flex items-start gap-3">
+            <i class="fa-solid fa-clock text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.expiresOn" | transloco }}
+              </p>
+              <span class="font-normal">{{
+                item.expiresAt | date: "dd/MM/yyyy":"UTC"
+              }}</span>
+            </div>
+          </div>
+          <div *ngIf="item.salary" class="flex items-start gap-3">
+            <i class="fa-solid fa-money-bill text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.salary" | transloco }}
+              </p>
+              <span class="font-normal">{{ formatSalaryAmount(item.salary) }}<ng-container *ngIf="item.salaryCurrency"> {{ item.salaryCurrency }}</ng-container></span>
+            </div>
+          </div>
+          <div *ngIf="item.educationLevel" class="flex items-start gap-3">
+            <i class="fa-solid fa-graduation-cap text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.educationLevel" | transloco }}
+              </p>
+              <span class="font-normal">{{ item.educationLevel }}</span>
+            </div>
+          </div>
+          <div *ngIf="item.location" class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.location" | transloco }}
+              </p>
+              <span class="font-normal">{{ item.location }}</span>
+            </div>
+          </div>
+          <div *ngIf="item.jobType" class="flex items-start gap-3">
+            <i class="fa-solid fa-briefcase text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.jobType" | transloco }}
+              </p>
+              <span class="font-normal">{{ item.jobType }}</span>
+            </div>
+          </div>
+          <div
+            *ngIf="item.experienceYears !== undefined"
+            class="flex items-start gap-3 col-span-1 sm:col-span-2"
+          >
+            <i class="fa-solid fa-award text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.experience" | transloco }}
+              </p>
+              <span class="font-normal">{{ item.experienceYears }} an(s)</span>
+            </div>
+          </div>
+          <div
+            *ngIf="company"
+            class="flex items-start gap-3 col-span-1 sm:col-span-2"
+          >
+            <i class="fa-solid fa-building text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.company" | transloco }}
+              </p>
+              <span class="font-normal">{{ company.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Info -->
+      <!-- Aperçu de l'entreprise -->
+      <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+        <h3 class="text-md font-semibold text-gray-800">
+          {{ "joboffers.jobDetails.companyOverview" | transloco }}
+        </h3>
+
+        <!-- Logo + Nom + Description -->
+        <div class="flex items-center gap-4">
+          <img
+            [src]="company.logoUrl || '/assets/default-company-logo.png'"
+            alt="Logo"
+            class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border"
+          />
+          <div class="flex flex-col">
+            <h4 class="font-semibold text-gray-800 sm:text-base">
+              {{ company.name }}
+            </h4>
+            <!-- <p class="text-sm text-gray-600">
+                          {{
+                            company.description || "Aucune description disponible"
+                          }}
+                        </p> -->
+          </div>
+        </div>
+
+        <!-- Infos principales en grille -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:text-base text-gray-700"
+        >
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-industry text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.sector" | transloco }}
+              </p>
+              <span class="font-normal">{{ company.industry }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-users text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.size" | transloco }}
+              </p>
+              <span class="font-normal">{{ company.companySize }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-building text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.organization" | transloco }}
+              </p>
+              <span class="font-normal">{{ company.organizationType }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.foundedIn" | transloco }}
+              </p>
+              <span class="font-normal">{{
+                company.startDate | date: "yyyy"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-phone text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.phone" | transloco }}
+              </p>
+              <span class="font-normal">{{
+                company.phoneNumber || "Non spécifié"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.email" | transloco }}
+              </p>
+              <span class="font-normal">{{
+                company.email || "Non spécifié"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.address" | transloco }}
+              </p>
+              <span class="font-normal">
+                {{
+                  company.addressLine1 +
+                    company.city +
+                    company.region +
+                    company.country
+                }}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-globe text-blue-500 mt-1"></i>
+            <div>
+              <p class="uppercase text-gray-500">
+                {{ "joboffers.jobDetails.website" | transloco }}
+              </p>
+              <span class="font-normal">
+                <a
+                  *ngIf="company.website"
+                  [href]="company.website"
+                  class="text-blue-600 underline"
+                  target="_blank"
+                  >{{ company.website }}</a
+                >
+                <span *ngIf="!company.website">Non spécifié</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Section similaires -->
+  <div class="py-4 px-4 sm:px-6 lg:px-0 my-8">
+    <div class="app-container-inner mx-auto">
+      <h2
+        class="mb-4 text-start text-lg sm:text-xl md:text-2xl font-semibold text-gray-800"
+      >
+        {{ "joboffers.jobDetails.moreOffers" | transloco }}
+      </h2>
+    </div>
+    <div class="w-full">
+      <app-job-offers-list
+        [displayMode]="'list'"
+        [items]="items"
+      ></app-job-offers-list>
+    </div>
+  </div>
+</div>

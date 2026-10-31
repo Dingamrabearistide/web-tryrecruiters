@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Modern Tailwind Design</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f5f7fb",
+              line: "#e6ecf4",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 28px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .28)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .hero-grid {
+        background-image:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(20, 157, 242, 0.28),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 82% 18%,
+            rgba(255, 81, 72, 0.22),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 50% 92%,
+            rgba(89, 74, 226, 0.22),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #07152f 0%, #0a1f42 52%, #241449 100%);
+      }
+      .network {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: radial-gradient(
+          circle at center,
+          black 45%,
+          transparent 78%
+        );
+      }
+      .glass {
+        backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .clip-card {
+        clip-path: polygon(0 0, 100% 0, 100% 82%, 88% 100%, 0 100%);
+      }
+      .icon-bubble {
+        box-shadow: inset 0 0 0 1px rgba(20, 157, 242, 0.16);
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-900 antialiased">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex h-20 max-w-[1240px] items-center justify-between px-5 lg:px-8"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <span
+            class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+          >
+            <i class="fa-solid fa-people-group text-xl"></i>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-black tracking-tight text-navy"
+              >TRYRECRUITERS</span
+            >
+            <span
+              class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+              >Talent platform</span
+            >
+          </span>
+        </a>
+
+        <!-- Desktop navigation -->
+        <div
+          class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+        >
+          <a
+            href="#"
+            class="rounded-full bg-white px-5 py-2.5 text-blue shadow-sm"
+            >Home</a
+          >
+          <a
+            href="#jobs"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Jobs</a
+          >
+          <a
+            href="#companies"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Companies</a
+          >
+          <a
+            href="#candidates"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Candidates</a
+          >
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Desktop language dropdown -->
+          <div class="relative hidden sm:block" data-language-dropdown>
+            <button
+              type="button"
+              data-language-button
+              aria-expanded="false"
+              class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-blue hover:text-blue"
+            >
+              <span data-current-language-flag>🇬🇧</span>
+              <span data-current-language-label>English</span>
+              <i
+                class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition"
+                data-language-chevron
+              ></i>
+            </button>
+
+            <div
+              data-language-menu
+              class="invisible absolute right-0 mt-3 w-48 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition duration-200"
+            >
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇬🇧</span>
+                <span>English</span>
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇫🇷</span>
+                <span>Français</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2 sm:inline-flex"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+            >Sign up</a
+          >
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            data-mobile-menu-button
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg" data-mobile-menu-icon></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile navigation -->
+      <div
+        id="mobile-menu"
+        data-mobile-menu
+        class="hidden border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+      >
+        <div class="mx-auto max-w-[1240px] space-y-5">
+          <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+            <a href="#" class="rounded-2xl bg-skysoft px-4 py-3 text-blue"
+              >Home</a
+            >
+            <a
+              href="#jobs"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Jobs</a
+            >
+            <a
+              href="#companies"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Companies</a
+            >
+            <a
+              href="#candidates"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Candidates</a
+            >
+          </div>
+
+          <div class="rounded-3xl border border-slate-200 bg-slate-50 p-3">
+            <p
+              class="mb-2 px-2 text-xs font-black uppercase tracking-[.18em] text-slate-400"
+            >
+              Language
+            </p>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-sm"
+              >
+                🇬🇧 English
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="rounded-2xl bg-white px-4 py-3 text-sm font-black text-slate-700 shadow-sm hover:text-blue"
+              >
+                🇫🇷 Français
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-2xl bg-blue px-5 py-3 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2"
+              >Login</a
+            >
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-200 px-5 py-3 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue"
+              >Sign up</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-grid relative overflow-hidden text-white">
+      <div class="network absolute inset-0 opacity-70"></div>
+      <div
+        class="absolute left-[7%] top-24 size-28 rounded-full bg-blue/25 blur-3xl"
+      ></div>
+      <div
+        class="absolute right-[12%] bottom-20 size-36 rounded-full bg-coral/25 blur-3xl"
+      ></div>
+
+      <div
+        class="relative mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 px-5 py-16 lg:grid-cols-[1.05fr_.95fr] lg:px-8"
+      >
+        <div class="max-w-3xl">
+          <div
+            class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/90"
+          >
+            <i class="fa-solid fa-wand-magic-sparkles text-coral"></i>
+            Faster hiring, better-matched applications
+          </div>
+          <h1
+            class="font-display text-5xl font-black leading-[.95] tracking-tight md:text-7xl"
+          >
+            Find a job that<br class="hidden sm:block" />
+            truly fits you.
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg font-medium leading-8 text-white/78">
+            Explore thousands of opportunities, filter by role, location and
+            skills, then apply in just a few clicks with trusted recruiters.
+          </p>
+
+          <form
+            class="mt-9 overflow-hidden rounded-[28px] bg-white p-2 shadow-soft lg:flex"
+          >
+            <label
+              class="flex min-h-14 flex-1 items-center gap-3 border-b border-slate-100 px-4 lg:border-b-0 lg:border-r"
+            >
+              <i class="fa-solid fa-magnifying-glass text-blue"></i>
+              <input
+                type="text"
+                class="w-full border-0 text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+                placeholder="Job title, keywords, company…"
+              />
+            </label>
+            <label class="flex min-h-14 flex-1 items-center gap-3 px-4">
+              <i class="fa-solid fa-location-dot text-blue"></i>
+              <input
+                type="text"
+                class="w-full border-0 text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+                placeholder="City, region, postal code…"
+              />
+            </label>
+            <button
+              type="button"
+              class="mt-2 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-blue px-7 text-sm font-black text-white transition hover:bg-blue2 lg:mt-0 lg:w-auto"
+            >
+              <i class="fa-solid fa-paper-plane"></i> Search
+            </button>
+          </form>
+
+          <div
+            class="mt-7 flex flex-wrap gap-3 text-sm font-bold text-white/80"
+          >
+            <span class="text-white/55">Popular:</span>
+            <a
+              href="#"
+              class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+              >Web Developer</a
+            >
+            <a
+              href="#"
+              class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+              >Cybersecurity</a
+            >
+            <a
+              href="#"
+              class="rounded-full border border-white/15 bg-white/10 px-4 py-2 hover:bg-white hover:text-navy"
+              >Data</a
+            >
+          </div>
+        </div>
+
+        <div class="relative hidden lg:block">
+          <div
+            class="absolute -left-8 top-10 size-32 rounded-full bg-coral"
+          ></div>
+          <div
+            class="absolute -right-6 bottom-12 size-40 rounded-full bg-blue"
+          ></div>
+          <div
+            class="relative rounded-[36px] border border-white/14 bg-white/10 p-5 shadow-soft backdrop-blur-xl"
+          >
+            <div class="rounded-[28px] bg-white p-5 text-slate-900 shadow-card">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-[.22em] text-blue"
+                  >
+                    Matching score
+                  </p>
+                  <h3 class="mt-1 text-2xl font-black text-navy">
+                    Opportunities for you
+                  </h3>
+                </div>
+                <span
+                  class="grid size-12 place-items-center rounded-2xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-chart-simple text-xl"></i
+                ></span>
+              </div>
+
+              <div class="mt-6 space-y-4">
+                <article
+                  class="rounded-3xl border border-slate-100 bg-slate-50 p-4"
+                >
+                  <div class="flex items-start gap-4">
+                    <span
+                      class="grid size-12 shrink-0 place-items-center rounded-2xl bg-navy text-white"
+                      ><i class="fa-solid fa-shield-halved"></i
+                    ></span>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-black text-navy">
+                        AI Engineer — Fraud Detection
+                      </h4>
+                      <p class="mt-1 text-sm font-medium text-slate-500">
+                        NexarTrust Analytics · Paris
+                      </p>
+                      <div
+                        class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"
+                      >
+                        <div class="h-full w-[88%] rounded-full bg-blue"></div>
+                      </div>
+                    </div>
+                    <span
+                      class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-600"
+                      >88%</span
+                    >
+                  </div>
+                </article>
+
+                <article
+                  class="rounded-3xl border border-slate-100 bg-slate-50 p-4"
+                >
+                  <div class="flex items-start gap-4">
+                    <span
+                      class="grid size-12 shrink-0 place-items-center rounded-2xl bg-coral text-white"
+                      ><i class="fa-solid fa-code"></i
+                    ></span>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-black text-navy">Full-Stack Developer</h4>
+                      <p class="mt-1 text-sm font-medium text-slate-500">
+                        Super Test · Remote
+                      </p>
+                      <div
+                        class="mt-3 h-2 overflow-hidden rounded-full bg-slate-200"
+                      >
+                        <div class="h-full w-[74%] rounded-full bg-coral"></div>
+                      </div>
+                    </div>
+                    <span
+                      class="rounded-full bg-orange-50 px-3 py-1 text-xs font-black text-orange-600"
+                      >74%</span
+                    >
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <!-- Quick actions inspired by jobs.ch cards -->
+      <section class="bg-mist py-12">
+        <div
+          class="mx-auto grid max-w-[1240px] gap-5 px-5 md:grid-cols-3 lg:px-8"
+        >
+          <article
+            class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+          >
+            <div
+              class="mb-5 grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+            >
+              <i class="fa-solid fa-user-plus text-xl"></i>
+            </div>
+            <h2 class="text-xl font-black text-navy">
+              Make your profile more visible
+            </h2>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+              Create a clear candidate profile, receive personalized
+              recommendations and apply faster.
+            </p>
+            <a
+              href="#"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+              >Create my profile <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </article>
+          <article
+            class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+          >
+            <div
+              class="mb-5 grid size-14 place-items-center rounded-2xl bg-red-50 text-coral"
+            >
+              <i class="fa-solid fa-file-arrow-up text-xl"></i>
+            </div>
+            <h2 class="text-xl font-black text-navy">Optimized online CV</h2>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+              Upload your CV and let the platform highlight your most relevant
+              skills.
+            </p>
+            <a
+              href="#"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+              >Upload my CV <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </article>
+          <article
+            class="group rounded-[28px] bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+          >
+            <div
+              class="mb-5 grid size-14 place-items-center rounded-2xl bg-violet-50 text-ink"
+            >
+              <i class="fa-solid fa-building-user text-xl"></i>
+            </div>
+            <h2 class="text-xl font-black text-navy">Verified recruiters</h2>
+            <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+              Discover active companies, their open roles and the details you
+              need before applying.
+            </p>
+            <a
+              href="#"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue"
+              >Explore companies <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Jobs -->
+      <section id="jobs" class="bg-white py-16">
+        <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+          <div
+            class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+          >
+            <div>
+              <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+                Recent jobs
+              </p>
+              <h2
+                class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+              >
+                Latest opportunities
+              </h2>
+            </div>
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+              >View all <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article
+              class="rounded-[28px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-cube text-2xl"></i
+                ></span>
+                <span
+                  class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                  >New</span
+                >
+              </div>
+              <h3 class="mt-6 text-xl font-black text-navy">
+                Web & Mobile Developer
+              </h3>
+              <p class="mt-2 text-sm font-semibold text-slate-500">
+                Super Test 2 · Full-time
+              </p>
+              <p
+                class="mt-4 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+              >
+                Design modern, high-performing and accessible interfaces for
+                products used every day.
+              </p>
+              <div
+                class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-600"
+              >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-location-dot mr-1 text-blue"></i>
+                  Albania</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-briefcase mr-1 text-blue"></i>
+                  Hybrid</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-clock mr-1 text-blue"></i>
+                  Permanent</span
+                >
+              </div>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <button
+                  class="rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white hover:bg-blue2"
+                >
+                  <i class="fa-solid fa-paper-plane mr-2"></i>Apply
+                </button>
+                <button
+                  class="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-navy hover:bg-slate-200"
+                >
+                  <i class="fa-solid fa-eye mr-2"></i>Details
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="rounded-[28px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-violet-50 text-ink"
+                  ><i class="fa-solid fa-robot text-2xl"></i
+                ></span>
+                <span
+                  class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                  >AI</span
+                >
+              </div>
+              <h3 class="mt-6 text-xl font-black text-navy">
+                AI Engineer — Fraud Detection
+              </h3>
+              <p class="mt-2 text-sm font-semibold text-slate-500">
+                NexarTrust Analytics · Remote
+              </p>
+              <p
+                class="mt-4 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+              >
+                Build fraud detection models, ML pipelines and performance
+                dashboards.
+              </p>
+              <div
+                class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-600"
+              >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-location-dot mr-1 text-blue"></i>
+                  France</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-star mr-1 text-blue"></i> Senior</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-bolt mr-1 text-blue"></i> Urgent</span
+                >
+              </div>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <button
+                  class="rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white hover:bg-blue2"
+                >
+                  <i class="fa-solid fa-paper-plane mr-2"></i>Apply
+                </button>
+                <button
+                  class="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-navy hover:bg-slate-200"
+                >
+                  <i class="fa-solid fa-eye mr-2"></i>Details
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="rounded-[28px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-red-50 text-coral"
+                  ><i class="fa-solid fa-shield-halved text-2xl"></i
+                ></span>
+                <span
+                  class="rounded-full bg-orange-50 px-3 py-1.5 text-xs font-black text-orange-600"
+                  >Top</span
+                >
+              </div>
+              <h3 class="mt-6 text-xl font-black text-navy">
+                Cybersecurity Consultant
+              </h3>
+              <p class="mt-2 text-sm font-semibold text-slate-500">
+                CyberSecure Group · Paris
+              </p>
+              <p
+                class="mt-4 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+              >
+                Support clients with audits, compliance, risk management and
+                secure system design.
+              </p>
+              <div
+                class="mt-5 flex flex-wrap gap-2 text-xs font-bold text-slate-600"
+              >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-location-dot mr-1 text-blue"></i>
+                  Paris</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-briefcase mr-1 text-blue"></i>
+                  Permanent</span
+                >
+                <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                  ><i class="fa-solid fa-sack-dollar mr-1 text-blue"></i>
+                  55k+</span
+                >
+              </div>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <button
+                  class="rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white hover:bg-blue2"
+                >
+                  <i class="fa-solid fa-paper-plane mr-2"></i>Apply
+                </button>
+                <button
+                  class="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-navy hover:bg-slate-200"
+                >
+                  <i class="fa-solid fa-eye mr-2"></i>Details
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services + illustration -->
+      <section class="overflow-hidden bg-white py-12">
+        <div
+          class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 lg:grid-cols-2 lg:px-8"
+        >
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+              In-demand roles
+            </p>
+            <h2
+              class="mt-3 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+            >
+              The most requested talent
+            </h2>
+            <div class="mt-8 space-y-4">
+              <a
+                href="#"
+                class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="grid size-12 place-items-center rounded-2xl bg-skysoft text-blue"
+                    ><i class="fa-solid fa-mobile-screen"></i
+                  ></span>
+                  <div>
+                    <h3 class="font-black text-navy">Web & Mobile Developer</h3>
+                    <p class="text-sm font-medium text-slate-500">
+                      42,000+ available profiles
+                    </p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-right text-blue"></i>
+              </a>
+              <a
+                href="#"
+                class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="grid size-12 place-items-center rounded-2xl bg-red-50 text-coral"
+                    ><i class="fa-solid fa-lock"></i
+                  ></span>
+                  <div>
+                    <h3 class="font-black text-navy">
+                      Cybersecurity Consultant
+                    </h3>
+                    <p class="text-sm font-medium text-slate-500">
+                      18,500+ active opportunities
+                    </p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-right text-blue"></i>
+              </a>
+              <a
+                href="#"
+                class="flex items-center justify-between rounded-3xl border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="grid size-12 place-items-center rounded-2xl bg-violet-50 text-ink"
+                    ><i class="fa-solid fa-network-wired"></i
+                  ></span>
+                  <div>
+                    <h3 class="font-black text-navy">
+                      Network & Systems Technician
+                    </h3>
+                    <p class="text-sm font-medium text-slate-500">
+                      16,800+ open jobs
+                    </p>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-right text-blue"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative min-h-[420px]">
+            <div class="absolute inset-8 rounded-[44px] bg-skysoft"></div>
+            <div
+              class="absolute left-16 top-16 h-64 w-72 rounded-[36px] bg-white p-6 shadow-soft"
+            >
+              <div class="mb-5 flex items-center gap-3">
+                <span
+                  class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+                  ><i class="fa-solid fa-lightbulb"></i
+                ></span>
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-widest text-blue"
+                  >
+                    Assistant
+                  </p>
+                  <h3 class="font-black text-navy">Smart matching</h3>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="h-3 w-full rounded-full bg-slate-100">
+                  <div class="h-3 w-[92%] rounded-full bg-blue"></div>
+                </div>
+                <div class="h-3 w-full rounded-full bg-slate-100">
+                  <div class="h-3 w-[76%] rounded-full bg-coral"></div>
+                </div>
+                <div class="h-3 w-full rounded-full bg-slate-100">
+                  <div class="h-3 w-[64%] rounded-full bg-ink"></div>
+                </div>
+              </div>
+              <p class="mt-6 text-sm font-medium leading-6 text-slate-600">
+                More accurate recommendations based on your goals, skills and
+                location.
+              </p>
+            </div>
+            <div
+              class="absolute bottom-10 right-10 h-56 w-64 rounded-[36px] bg-navy p-6 text-white shadow-soft"
+            >
+              <i class="fa-solid fa-user-tie text-4xl text-blue"></i>
+              <h3 class="mt-6 text-2xl font-black">Verified recruiter</h3>
+              <p class="mt-2 text-sm font-medium leading-6 text-white/70">
+                Qualified companies, up-to-date job posts and simplified
+                application tracking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="candidates" class="bg-mist py-16">
+        <div class="mx-auto max-w-[1040px] px-5 text-center lg:px-8">
+          <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+            Process
+          </p>
+          <h2
+            class="mt-3 font-display text-4xl font-black text-navy md:text-5xl"
+          >
+            How TryRecruiters works
+          </h2>
+          <div class="mt-10 grid gap-5 md:grid-cols-4">
+            <article class="rounded-[28px] bg-white p-7 shadow-card">
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-user-plus text-xl"></i
+              ></span>
+              <h3 class="mt-5 font-black text-navy">Create an account</h3>
+              <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+                Sign up for free in just a few minutes.
+              </p>
+            </article>
+            <article class="rounded-[28px] bg-white p-7 shadow-card">
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-file-arrow-up text-xl"></i
+              ></span>
+              <h3 class="mt-5 font-black text-navy">Upload your CV</h3>
+              <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+                Add your CV and highlight your key skills.
+              </p>
+            </article>
+            <article class="rounded-[28px] bg-white p-7 shadow-card">
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-bullseye text-xl"></i
+              ></span>
+              <h3 class="mt-5 font-black text-navy">Find the right job</h3>
+              <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+                Browse roles that match your profile and goals.
+              </p>
+            </article>
+            <article class="rounded-[28px] bg-white p-7 shadow-card">
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-paper-plane text-xl"></i
+              ></span>
+              <h3 class="mt-5 font-black text-navy">Apply in one click</h3>
+              <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+                Send your application quickly and confidently.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section class="bg-white py-16">
+        <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+          <div class="mb-9 flex items-end justify-between">
+            <div>
+              <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+                Explore
+              </p>
+              <h2
+                class="mt-2 font-display text-4xl font-black text-navy md:text-5xl"
+              >
+                Popular categories
+              </h2>
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-paintbrush rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Graphics & Design</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                337 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-code rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Code & Programming</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                312 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-bullhorn rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Digital Marketing</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                297 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-video rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Video & Animation</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                247 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-music rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Music & Audio</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                204 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-file-invoice-dollar rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Accounting & Finance</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                167 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-heart-pulse rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Health & Care</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                135 open positions
+              </p></a
+            >
+            <a
+              href="#"
+              class="rounded-[24px] border border-line bg-white p-5 shadow-card transition hover:border-blue hover:shadow-soft"
+              ><i
+                class="fa-solid fa-database rounded-2xl bg-skysoft p-3 text-blue"
+              ></i>
+              <h3 class="mt-4 font-black text-navy">Data & Science</h3>
+              <p class="mt-1 text-sm font-medium text-slate-500">
+                57 open positions
+              </p></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Companies -->
+      <section id="companies" class="bg-white pb-16">
+        <div class="mx-auto max-w-[1240px] px-5 lg:px-8">
+          <div class="mb-8 flex items-end justify-between">
+            <div>
+              <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+                Employers
+              </p>
+              <h2
+                class="mt-2 font-display text-4xl font-black text-navy md:text-5xl"
+              >
+                Top companies
+              </h2>
+            </div>
+            <a
+              href="#"
+              class="hidden items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue sm:inline-flex"
+              >View all <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <article
+              class="overflow-hidden rounded-[28px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div
+                class="h-36 bg-[linear-gradient(135deg,#07152f,#149df2)] p-5"
+              >
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-white text-navy"
+                  ><i class="fa-solid fa-building text-2xl"></i
+                ></span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-black text-navy">Super Test 2</h3>
+                <p class="mt-2 text-sm font-medium text-slate-500">
+                  Technology company
+                </p>
+                <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  <i class="fa-solid fa-location-dot mr-2 text-blue"></i>Balsh,
+                  Albania
+                </p>
+                <div class="mt-6 flex items-center justify-between">
+                  <span
+                    class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                    >10 jobs</span
+                  ><button
+                    class="rounded-xl bg-blue px-4 py-2 text-xs font-black text-white"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="overflow-hidden rounded-[28px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div
+                class="h-36 bg-[linear-gradient(135deg,#ff5148,#ffb199)] p-5"
+              >
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-white text-coral"
+                  ><i class="fa-solid fa-briefcase text-2xl"></i
+                ></span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-black text-navy">Super Test</h3>
+                <p class="mt-2 text-sm font-medium text-slate-500">
+                  The best test company
+                </p>
+                <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  <i class="fa-solid fa-location-dot mr-2 text-blue"></i
+                  >Bangladesh
+                </p>
+                <div class="mt-6 flex items-center justify-between">
+                  <span
+                    class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                    >0 jobs</span
+                  ><button
+                    class="rounded-xl bg-blue px-4 py-2 text-xs font-black text-white"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="overflow-hidden rounded-[28px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div
+                class="h-36 bg-[linear-gradient(135deg,#241449,#8b5cf6)] p-5"
+              >
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-white text-ink"
+                  ><i class="fa-solid fa-layer-group text-2xl"></i
+                ></span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-black text-navy">Test</h3>
+                <p class="mt-2 text-sm font-medium text-slate-500">
+                  Software solutions
+                </p>
+                <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  <i class="fa-solid fa-location-dot mr-2 text-blue"></i>Balsh,
+                  Albania
+                </p>
+                <div class="mt-6 flex items-center justify-between">
+                  <span
+                    class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                    >0 jobs</span
+                  ><button
+                    class="rounded-xl bg-blue px-4 py-2 text-xs font-black text-white"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article
+              class="overflow-hidden rounded-[28px] border border-line bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+            >
+              <div
+                class="h-36 bg-[linear-gradient(135deg,#0f172a,#64748b)] p-5"
+              >
+                <span
+                  class="grid size-16 place-items-center rounded-3xl bg-white text-navy"
+                  ><i class="fa-brands fa-meta text-2xl"></i
+                ></span>
+              </div>
+              <div class="p-6">
+                <h3 class="font-black text-navy">Meta</h3>
+                <p class="mt-2 text-sm font-medium text-slate-500">
+                  Global technology
+                </p>
+                <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  <i class="fa-solid fa-location-dot mr-2 text-blue"></i
+                  >Akshakam, Chad
+                </p>
+                <div class="mt-6 flex items-center justify-between">
+                  <span
+                    class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                    >1 job</span
+                  ><button
+                    class="rounded-xl bg-blue px-4 py-2 text-xs font-black text-white"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="bg-mist py-16">
+        <div class="mx-auto max-w-[1240px] px-5 text-center lg:px-8">
+          <p class="text-sm font-black uppercase tracking-[.2em] text-blue">
+            Client reviews
+          </p>
+          <h2
+            class="mt-3 font-display text-4xl font-black text-navy md:text-5xl"
+          >
+            What our users say
+          </h2>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <article class="rounded-[28px] bg-white p-7 text-left shadow-card">
+              <div class="text-yellow-400">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+                A clear, fast and much smoother interface for tracking my
+                applications.
+              </p>
+              <div class="mt-7 flex items-center gap-3">
+                <span
+                  class="grid size-12 place-items-center rounded-full bg-blue text-white font-black"
+                  >RF</span
+                >
+                <div>
+                  <h3 class="font-black text-navy">Robert Fox</h3>
+                  <p class="text-xs font-bold text-slate-500">UI/UX Designer</p>
+                </div>
+              </div>
+            </article>
+            <article class="rounded-[28px] bg-white p-7 text-left shadow-card">
+              <div class="text-yellow-400">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+                The matching system helps me receive roles that are genuinely
+                relevant to my profile.
+              </p>
+              <div class="mt-7 flex items-center gap-3">
+                <span
+                  class="grid size-12 place-items-center rounded-full bg-coral text-white font-black"
+                  >BC</span
+                >
+                <div>
+                  <h3 class="font-black text-navy">Bessie Cooper</h3>
+                  <p class="text-xs font-bold text-slate-500">
+                    Creative Director
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="rounded-[28px] bg-white p-7 text-left shadow-card">
+              <div class="text-yellow-400">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+                For recruiters, posting a job is easier and the applications are
+                better qualified.
+              </p>
+              <div class="mt-7 flex items-center gap-3">
+                <span
+                  class="grid size-12 place-items-center rounded-full bg-ink text-white font-black"
+                  >JS</span
+                >
+                <div>
+                  <h3 class="font-black text-navy">Jenny Smith</h3>
+                  <p class="text-xs font-bold text-slate-500">HR Manager</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="relative overflow-hidden bg-coral py-16">
+        <div
+          class="absolute -right-16 bottom-[-150px] size-[420px] rounded-full border-[78px] border-navy"
+        ></div>
+        <div
+          class="absolute left-[-120px] top-[-160px] size-[360px] rounded-full border-[70px] border-white/20"
+        ></div>
+        <div class="relative mx-auto max-w-[920px] px-5">
+          <div class="rounded-[36px] bg-white p-8 shadow-soft md:p-12">
+            <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+              <div>
+                <h2
+                  class="font-display text-4xl font-black leading-none text-navy md:text-5xl"
+                >
+                  Ready to find your next job?
+                </h2>
+                <p
+                  class="mt-4 max-w-2xl text-base font-medium leading-7 text-slate-600"
+                >
+                  Join TryRecruiters and enjoy a faster, more modern and more
+                  personalized job search experience.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-black text-white hover:bg-ink"
+                >Get started now <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white">
+      <div
+        class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 md:grid-cols-4 lg:px-8"
+      >
+        <div>
+          <a href="#" class="flex items-center gap-3"
+            ><span
+              class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+              ><i class="fa-solid fa-people-group"></i></span
+            ><span class="font-black">TRYRECRUITERS</span></a
+          >
+          <p class="mt-5 text-sm font-medium leading-7 text-white/65">
+            A modern platform connecting qualified candidates with active
+            recruiters.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black">Candidates</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Find a job</a></li>
+            <li><a href="#">Create a profile</a></li>
+            <li><a href="#">Upload CV</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Companies</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Post a job</a></li>
+            <li><a href="#">Recruiter area</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Support</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+          <div class="mt-6 flex gap-3">
+            <a
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              href="#"
+              ><i class="fa-brands fa-facebook-f"></i></a
+            ><a
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              href="#"
+              ><i class="fa-brands fa-linkedin-in"></i></a
+            ><a
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              href="#"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6">
+        <div
+          class="mx-auto flex max-w-[1240px] flex-col gap-3 px-5 text-sm font-medium text-white/55 md:flex-row md:items-center md:justify-between lg:px-8"
+        >
+          <span>© 2026 TryRecruiters. All rights reserved.</span>
+          <span>English · Français · Deutsch</span>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const mobileButton = document.querySelector("[data-mobile-menu-button]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileIcon = document.querySelector("[data-mobile-menu-icon]");
+
+      const languageDropdown = document.querySelector(
+        "[data-language-dropdown]",
+      );
+      const languageButton = document.querySelector("[data-language-button]");
+      const languageMenu = document.querySelector("[data-language-menu]");
+      const languageChevron = document.querySelector("[data-language-chevron]");
+      const currentLanguageFlag = document.querySelector(
+        "[data-current-language-flag]",
+      );
+      const currentLanguageLabel = document.querySelector(
+        "[data-current-language-label]",
+      );
+      const languageOptions = document.querySelectorAll(
+        "[data-language-option]",
+      );
+
+      function openMobileMenu() {
+        mobileMenu.classList.remove("hidden");
+        mobileButton.setAttribute("aria-expanded", "true");
+        mobileIcon.classList.remove("fa-bars");
+        mobileIcon.classList.add("fa-xmark");
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileButton.setAttribute("aria-expanded", "false");
+        mobileIcon.classList.remove("fa-xmark");
+        mobileIcon.classList.add("fa-bars");
+      }
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.contains("hidden")
+          ? openMobileMenu()
+          : closeMobileMenu();
+      }
+
+      function openLanguageMenu() {
+        languageMenu.classList.remove(
+          "invisible",
+          "translate-y-2",
+          "opacity-0",
+        );
+        languageMenu.classList.add("visible", "translate-y-0", "opacity-100");
+        languageButton.setAttribute("aria-expanded", "true");
+        languageChevron.classList.add("rotate-180");
+      }
+
+      function closeLanguageMenu() {
+        languageMenu.classList.add("invisible", "translate-y-2", "opacity-0");
+        languageMenu.classList.remove(
+          "visible",
+          "translate-y-0",
+          "opacity-100",
+        );
+        languageButton.setAttribute("aria-expanded", "false");
+        languageChevron.classList.remove("rotate-180");
+      }
+
+      function toggleLanguageMenu() {
+        languageMenu.classList.contains("invisible")
+          ? openLanguageMenu()
+          : closeLanguageMenu();
+      }
+
+      mobileButton.addEventListener("click", toggleMobileMenu);
+      languageButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleLanguageMenu();
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          const flag = option.dataset.flag;
+          const label = option.dataset.label;
+          currentLanguageFlag.textContent = flag;
+          currentLanguageLabel.textContent = label;
+          closeLanguageMenu();
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (languageDropdown && !languageDropdown.contains(event.target)) {
+          closeLanguageMenu();
+        }
+      });
+
+      document.querySelectorAll("[data-mobile-menu] a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+    </script>
+  </body>
+</html>

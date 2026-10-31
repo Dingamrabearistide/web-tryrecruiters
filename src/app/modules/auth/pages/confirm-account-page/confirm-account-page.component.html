@@ -1,0 +1,166 @@
+<div
+  *transloco="let t; read: 'auth'"
+  class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+>
+  <!-- Main: two-panel layout -->
+  <main
+    class="mx-auto grid min-h-[calc(100vh-80px)] w-full max-w-[1160px] items-center gap-8 px-4 py-8 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-12"
+  >
+    <section
+      class="hero-gradient relative hidden overflow-hidden rounded-[38px] p-8 text-white shadow-soft lg:block"
+    >
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative flex min-h-[620px] flex-col justify-between">
+        <div>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-blue"
+          >
+            <i class="fa-solid fa-user-plus"></i>
+            {{ t("register.createAccount") }}
+          </span>
+          <h1
+            class="mt-8 font-display text-6xl font-black leading-none tracking-tight"
+          >
+            {{ t("register.joinTryRecruiters") }}
+          </h1>
+          <p
+            class="mt-5 max-w-md text-base font-medium leading-8 text-white/75"
+          >
+            {{ t("register.joinDescription") }}
+          </p>
+        </div>
+
+        <div class="grid gap-4">
+          <div
+            class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+              >
+                <i class="fa-solid fa-user-tie"></i>
+              </span>
+              <div>
+                <p class="font-black">{{ t("register.candidateAccount") }}</p>
+                <p class="mt-1 text-sm font-medium text-white/65">
+                  {{ t("register.candidateAccountDesc") }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-coral text-white shadow-soft"
+              >
+                <i class="fa-solid fa-building"></i>
+              </span>
+              <div>
+                <p class="font-black">{{ t("register.employerAccount") }}</p>
+                <p class="mt-1 text-sm font-medium text-white/65">
+                  {{ t("register.employerAccountDesc") }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="">
+      <!-- Show email input if code input not shown yet -->
+      <ng-container *ngIf="!showCodeInput">
+        <h2 class="font-bold text-3xl mb-4">
+          {{ t("confirm.titleHeaderEmail") }}
+        </h2>
+
+        <div class="mb-4">
+          <p class="text-sm">
+            {{ t("confirm.back") }}
+            <a class="text-[#1D9BED] hover:underline" routerLink="/auth/login">
+              {{ t("confirm.signIn") }}
+            </a>
+          </p>
+
+          <p class="text-sm">
+            {{ t("confirm.noAccount") }}
+            <a
+              class="text-[#1D9BED] hover:underline"
+              routerLink="/auth/register"
+            >
+              {{ t("confirm.register") }}
+            </a>
+          </p>
+        </div>
+
+        <p class="leading-relaxed text-[#767F8C] text-sm mb-4">
+          {{ t("confirm.instructionsEmail") }}
+        </p>
+
+        <app-forgot-password-form
+          [isLoading]="isLoading"
+          (onSubmit)="onSubmit($event)"
+        ></app-forgot-password-form>
+      </ng-container>
+
+      <!-- Show code input after email submitted -->
+      <ng-container *ngIf="showCodeInput">
+        <h2
+          class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+        >
+          {{ t("confirm.titleHeaderEmail") }}
+        </h2>
+
+        <div class="mb-4">
+          <p class="text-sm">
+            {{ t("confirm.back") }}
+            <a class="text-[#1D9BED] hover:underline" routerLink="/auth/login">
+              {{ t("confirm.signIn") }}
+            </a>
+          </p>
+
+          <p class="text-sm">
+            {{ t("confirm.noAccount") }}
+            <a
+              class="text-[#1D9BED] hover:underline"
+              routerLink="/auth/register"
+            >
+              {{ t("confirm.register") }}
+            </a>
+          </p>
+        </div>
+
+        <p class="leading-relaxed text-[#767F8C] text-sm">
+          {{ t("confirm.instructionsEmail") }}<br />
+          <span class="text-blue-400 font-semibold">{{ phoneOrEmail }}</span
+          >.<br />
+          {{ t("confirm.checkInbox") }}
+        </p>
+
+        <app-confirm-account-form
+          [isLoading]="isLoading"
+          (onSubmit)="onSubmit($event)"
+        ></app-confirm-account-form>
+
+        <div class="mt-4">
+          <p class="text-sm text-[#767F8C]">
+            {{ t("confirm.notReceived") }}
+            <app-resend-countdown
+              #resendCodeRef
+              [duration]="60"
+              (handleReset)="onResendCode()"
+            ></app-resend-countdown>
+          </p>
+          <p class="text-sm text-[#767F8C]">{{ t("confirm.checkSpam") }}</p>
+        </div>
+      </ng-container>
+
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </div>
+  </main>
+</div>

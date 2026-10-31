@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Dashboard Job Details</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .page-bg {
+        background-image:
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(20, 157, 242, 0.13),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 88% 4%,
+            rgba(255, 81, 72, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .sidebar-gradient {
+        background-image:
+          radial-gradient(
+            circle at 20% 8%,
+            rgba(20, 157, 242, 0.24),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #07152f 0%, #0a1f42 58%, #241449 100%);
+      }
+      .hero-gradient {
+        background-image:
+          radial-gradient(
+            circle at 16% 18%,
+            rgba(20, 157, 242, 0.28),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 86% 12%,
+            rgba(255, 81, 72, 0.18),
+            transparent 24%
+          ),
+          linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+      }
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(
+          circle at center,
+          black 48%,
+          transparent 82%
+        );
+      }
+    </style>
+  </head>
+
+  <body class="page-bg min-h-screen text-slate-900 antialiased">
+    <div
+      data-sidebar-overlay
+      class="fixed inset-0 z-40 hidden bg-navy/60 backdrop-blur-sm lg:hidden"
+    ></div>
+
+    <div class="min-h-screen lg:grid lg:grid-cols-[290px_1fr]">
+      <!-- Dashboard sidebar -->
+      <aside
+        data-sidebar
+        class="sidebar-gradient fixed inset-y-0 left-0 z-50 flex w-[290px] -translate-x-full flex-col border-r border-white/10 text-white shadow-soft transition duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-20 items-center justify-between px-5">
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-people-group text-xl"></i>
+            </span>
+            <span class="leading-none">
+              <span class="block text-lg font-black tracking-tight"
+                >TRYRECRUITERS</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+                >Employer area</span
+              >
+            </span>
+          </a>
+          <button
+            type="button"
+            data-close-sidebar
+            class="grid size-10 place-items-center rounded-2xl bg-white/10 text-white lg:hidden"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-1 overflow-y-auto px-4 pb-5">
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-table-columns w-5"></i> Dashboard</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-user-tie w-5"></i> My Profile</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-building w-5"></i> Companies</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-card"
+          >
+            <i class="fa-solid fa-briefcase w-5"></i> Job Offers
+            <span
+              class="ml-auto rounded-full bg-blue px-2 py-0.5 text-[10px] font-black text-white"
+              >14</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-bookmark w-5"></i> My Favorites</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-signature w-5"></i> My Applications</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-video w-5"></i> My Interviews</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-lines w-5"></i> CV</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-gear w-5"></i> Settings</a
+          >
+        </nav>
+
+        <div class="border-t border-white/10 p-4">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-2xl bg-coral px-4 py-3 text-sm font-black text-white transition hover:bg-red-600"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Dashboard content -->
+      <div class="min-w-0">
+        <!-- Dashboard topbar -->
+        <header
+          class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur-xl"
+        >
+          <div
+            class="mx-auto flex h-20 max-w-[1160px] items-center justify-between gap-4 px-5 lg:px-8"
+          >
+            <div class="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                data-open-sidebar
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-navy shadow-sm lg:hidden"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <a
+                href="#"
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+                aria-label="Back to job offers"
+              >
+                <i class="fa-solid fa-arrow-left"></i>
+              </a>
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Job offers
+                </p>
+                <h1 class="truncate text-xl font-black text-navy md:text-2xl">
+                  Job offer details
+                </h1>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                class="relative grid size-11 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span
+                  class="absolute right-2 top-2 size-2 rounded-full bg-coral"
+                ></span>
+              </button>
+              <div
+                class="flex items-center gap-3 rounded-2xl border border-line bg-white p-1.5 shadow-sm"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                  alt="Employer"
+                  class="size-9 rounded-xl object-cover"
+                />
+                <div class="hidden pr-2 leading-tight sm:block">
+                  <p class="text-xs font-black text-navy">David Miller</p>
+                  <p class="text-[11px] font-bold text-slate-400">Recruiter</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Compact job header -->
+        <main class="mx-auto max-w-[1160px] px-5 py-6 lg:px-8">
+          <section
+            class="mb-6 rounded-[30px] border border-line bg-white p-5 shadow-card md:p-6"
+          >
+            <div
+              class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
+            >
+              <div class="flex min-w-0 gap-4">
+                <span
+                  class="grid size-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 to-ink text-lg font-black text-white shadow-card"
+                  >NT</a
+                >
+                <div class="min-w-0">
+                  <div class="mb-2 flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                      ><i class="fa-solid fa-circle-check mr-1"></i
+                      >Published</span
+                    >
+                    <span
+                      class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-600"
+                      >Full-time</span
+                    >
+                    <span
+                      class="rounded-full bg-blue/10 px-3 py-1.5 text-xs font-black text-blue"
+                      >Remote</span
+                    >
+                  </div>
+                  <h2
+                    class="text-2xl font-black leading-tight text-navy md:text-3xl"
+                  >
+                    AI Engineer — Fraud Detection
+                  </h2>
+                  <p class="mt-2 text-sm font-bold text-slate-500">
+                    NexarTrust Analytics · Paris, France · Senior level
+                  </p>
+                </div>
+              </div>
+
+              <div class="grid gap-3 sm:grid-cols-[auto_auto] lg:shrink-0">
+                <div
+                  class="flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3"
+                >
+                  <span class="text-sm font-black text-navy">84</span>
+                  <span class="text-xs font-bold text-slate-500"
+                    >Applications</span
+                  >
+                  <span class="h-5 w-px bg-line"></span>
+                  <span class="text-sm font-black text-navy">1.2k</span>
+                  <span class="text-xs font-bold text-slate-500">Views</span>
+                </div>
+                <div class="flex gap-2">
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+                  >
+                    <i class="fa-solid fa-pen"></i> Edit
+                  </a>
+                  <button
+                    type="button"
+                    data-tab-shortcut="applications"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-4 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+                  >
+                    <i class="fa-solid fa-file-signature"></i> Applications
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="grid gap-7 lg:grid-cols-[1fr_340px] lg:items-start">
+            <!-- Main content -->
+            <div class="space-y-7">
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Job description
+                </p>
+                <h2 class="mt-2 text-3xl font-black text-navy">
+                  About the role
+                </h2>
+                <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+                  We are looking for an AI Engineer to help build fraud
+                  detection models and risk scoring systems for finance teams.
+                  You will work closely with product, data science and backend
+                  teams to deploy reliable machine learning workflows into
+                  production.
+                </p>
+                <p class="mt-4 text-sm font-medium leading-7 text-slate-600">
+                  This role is ideal for someone who enjoys solving complex data
+                  problems, designing robust ML systems and building tools that
+                  help risk teams make faster, more confident decisions.
+                </p>
+
+                <div class="mt-7 grid gap-4 md:grid-cols-2">
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Contract type
+                    </p>
+                    <p class="mt-2 text-sm font-black text-navy">Full-time</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Work mode
+                    </p>
+                    <p class="mt-2 text-sm font-black text-navy">Remote</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Experience
+                    </p>
+                    <p class="mt-2 text-sm font-black text-navy">
+                      Senior level
+                    </p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Created
+                    </p>
+                    <p class="mt-2 text-sm font-black text-navy">
+                      Jan 18, 2026
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Candidate profile
+                </p>
+                <h2 class="mt-2 text-3xl font-black text-navy">Requirements</h2>
+                <div
+                  class="mt-6 space-y-3 text-sm font-medium leading-7 text-slate-600"
+                >
+                  <p>
+                    <i class="fa-solid fa-circle-check mr-2 text-blue"></i
+                    >Strong experience with Python, machine learning and model
+                    evaluation.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-circle-check mr-2 text-blue"></i
+                    >Experience deploying ML models in production environments.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-circle-check mr-2 text-blue"></i>Good
+                    understanding of data pipelines, APIs and cloud
+                    infrastructure.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-circle-check mr-2 text-blue"></i
+                    >Ability to collaborate with product, compliance and
+                    engineering teams.
+                  </p>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                    >Python</span
+                  >
+                  <span
+                    class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                    >Machine Learning</span
+                  >
+                  <span
+                    class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                    >MLOps</span
+                  >
+                  <span
+                    class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                    >Fraud Detection</span
+                  >
+                  <span
+                    class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                    >APIs</span
+                  >
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  What the candidate will do
+                </p>
+                <h2 class="mt-2 text-3xl font-black text-navy">
+                  Responsibilities
+                </h2>
+                <div
+                  class="mt-6 space-y-3 text-sm font-medium leading-7 text-slate-600"
+                >
+                  <p>
+                    <i class="fa-solid fa-arrow-right mr-2 text-coral"></i>Build
+                    and improve machine learning models for fraud and risk
+                    detection.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-arrow-right mr-2 text-coral"></i>Work
+                    on data pipelines, model monitoring and evaluation
+                    workflows.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-arrow-right mr-2 text-coral"></i
+                    >Collaborate with backend engineers to deploy models into
+                    production.
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-arrow-right mr-2 text-coral"></i
+                    >Document model behavior and communicate insights to
+                    internal teams.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <!-- Dashboard sidebar with the same card layout as front office -->
+            <aside class="space-y-6 lg:sticky lg:top-28">
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Manage this job</h2>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-500">
+                  Update the offer, review applications or close it when the
+                  position is filled.
+                </p>
+                <div class="mt-5 grid gap-3">
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+                    ><i class="fa-solid fa-pen"></i>Edit job</a
+                  >
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue"
+                    ><i class="fa-solid fa-file-signature"></i>View
+                    applications</a
+                  >
+                  <button
+                    type="button"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-coral hover:text-coral"
+                  >
+                    <i class="fa-solid fa-lock"></i>Close job
+                  </button>
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Job information</h2>
+                <div class="mt-5 space-y-4 text-sm font-bold text-slate-600">
+                  <p class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                      ><i class="fa-solid fa-building"></i></span
+                    >NexarTrust Analytics
+                  </p>
+                  <p class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                      ><i class="fa-solid fa-location-dot"></i></span
+                    >Paris, France
+                  </p>
+                  <p class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                      ><i class="fa-solid fa-house-laptop"></i></span
+                    >Remote
+                  </p>
+                  <p class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                      ><i class="fa-solid fa-briefcase"></i></span
+                    >Full-time
+                  </p>
+                  <p class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                      ><i class="fa-solid fa-sack-dollar"></i></span
+                    > XAF92k / year
+                  </p>
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Company</h2>
+                <div class="mt-5 flex items-center gap-4">
+                  <span
+                    class="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 to-ink text-lg font-black text-white"
+                    >NT</span
+                  >
+                  <div>
+                    <p class="font-black text-navy">NexarTrust Analytics</p>
+                    <p class="text-sm font-bold text-slate-500">
+                      Finance · Verified
+                    </p>
+                  </div>
+                </div>
+                <p class="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  AI-powered fraud detection and financial risk analytics for
+                  modern finance teams.
+                </p>
+              </section>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarOverlay = document.querySelector("[data-sidebar-overlay]");
+      const openSidebar = document.querySelector("[data-open-sidebar]");
+      const closeSidebar = document.querySelector("[data-close-sidebar]");
+
+      function showSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+
+      function hideSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      }
+
+      openSidebar.addEventListener("click", showSidebar);
+      closeSidebar.addEventListener("click", hideSidebar);
+      sidebarOverlay.addEventListener("click", hideSidebar);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<div
+  class="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-300 transition duration-300 flex flex-col items-center text-center group min-h-[380px]"
+  *transloco="let t; read: 'candidates'"
+>
+  <!-- Avatar -->
+  <div class="relative w-24 h-24 mb-4">
+    <!-- Initials fallback -->
+    <div
+      *ngIf="!hasPhoto"
+      class="w-full h-full rounded-full flex items-center justify-center text-white text-2xl font-bold select-none"
+      [ngClass]="avatarColor"
+    >
+      {{ initials }}
+    </div>
+
+    <!-- Photo (only rendered when photo exists) -->
+    <img
+      *ngIf="hasPhoto"
+      [src]="item.photo"
+      [alt]="(item.firstName || '') + ' ' + (item.lastName || '')"
+      class="w-full h-full rounded-full object-contain absolute inset-0 bg-white"
+      (error)="onImageError()"
+    />
+  </div>
+
+  <!-- Nom & Vérification -->
+  <h4 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+    {{ item.firstName }} {{ item.lastName }}
+    <!-- <i
+      class="fa fa-check-circle text-[#1D9BED] text-sm"
+      [title]="t('candidateItem.verifiedProfile')"
+    ></i> -->
+  </h4>
+
+  <!-- Profession -->
+  <p class="text-sm text-gray-600 mt-1">
+    {{ item.profession || t("candidateItem.professionNotSpecified") }}
+  </p>
+
+  <!-- Localisation + expérience -->
+  <div class="flex gap-4 text-xs text-gray-500 mt-3 justify-center">
+    <span class="flex items-center gap-1" *ngIf="item.region || item.city">
+      <i class="fa fa-location-dot text-[#1D9BED]"></i>
+      {{ item.city || "" }}{{ item.region ? ", " + item.region : "" }}
+    </span>
+    <span class="flex items-center gap-1" *ngIf="item?.experiences?.length">
+      <i class="fa fa-briefcase text-[#1D9BED]"></i>
+      {{ calculateExperienceYears(item.experiences || []) }}
+      {{ t("candidateItem.years") }}
+    </span>
+  </div>
+
+  <!-- Email -->
+  <p *ngIf="item?.email">
+    <i class="fa fa-envelope text-[#1D9BED] mr-1"></i>
+    {{ item.email }}
+  </p>
+
+  <!-- Téléphone -->
+  <p *ngIf="item?.phoneNumber">
+    <i class="fa fa-phone text-[#1D9BED] mr-1"></i>
+    {{ item.phoneNumber }}
+  </p>
+
+  <!-- Diplôme -->
+  <div *ngIf="firstEducation" class="text-xs text-gray-600 mt-2 gap-1">
+    <p *ngIf="firstEducation.degree">
+      <i class="fa fa-graduation-cap text-[#1D9BED] mr-1"></i>
+      {{ firstEducation.degree }}
+    </p>
+    <p *ngIf="firstEducation.schoolName">
+      <i class="fa fa-school text-[#1D9BED] mr-1"></i>
+      {{ firstEducation.schoolName }}
+    </p>
+  </div>
+
+  <!-- Skills -->
+  <div
+    class="flex flex-wrap gap-2 text-xs text-blue-800 mt-3 justify-center flex-1 content-start"
+    *ngIf="item?.skills?.length"
+  >
+    <span
+      class="bg-green-100 text-green-600 px-3 py-1 rounded-full"
+      *ngFor="let skill of item.skills?.slice(0, 3)"
+    >
+      {{ skill.name }}
+    </span>
+  </div>
+
+  <!-- Spacer si pas de skills -->
+  <div class="flex-1" *ngIf="!item.skills?.length"></div>
+
+  <!-- Boutons -->
+  <div class="w-full flex gap-2">
+    <!-- <button
+      (click)="call()"
+      [title]="t('candidateItem.callCandidate')"
+      class="w-1/2 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md text-xs font-semibold transition"
+    >
+      <i class="fa fa-phone mr-2"></i>
+      {{ t("candidateItem.call") }}
+    </button> -->
+    <button
+      [routerLink]="[item.id]"
+      (click)="view()"
+      [title]="t('candidateItem.viewProfile')"
+      class="w-full app-primary"
+    >
+      {{ t("candidateItem.view") }}
+      <i class="fa fa-eye ml-2"></i>
+    </button>
+  </div>
+</div>

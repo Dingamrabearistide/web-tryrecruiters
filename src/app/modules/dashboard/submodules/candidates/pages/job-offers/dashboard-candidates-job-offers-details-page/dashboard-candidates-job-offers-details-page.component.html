@@ -1,0 +1,38 @@
+<div *transloco="let t; read: 'joboffers'">
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <div *ngIf="!isLoading && hasError" class="w-full">
+    <app-generic-error
+      *ngIf="hasError"
+      [message]="errorMessage"
+    ></app-generic-error>
+  </div>
+
+  <!-- Section principale -->
+  <div
+    *ngIf="item && !isLoading && !hasError"
+    class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner"
+  >
+    <job-offers-detail
+      [item]="item"
+      (onAddToFavorite)="addToFavorites()"
+    ></job-offers-detail>
+
+    <!-- Section similaires -->
+    <!-- <div class="py-4 px-4 sm:px-6 lg:px-0 my-8">
+      <div class="app-container-inner mx-auto">
+        <h2
+          class="mb-4 text-start text-lg sm:text-xl md:text-2xl font-semibold text-gray-800"
+        >
+          {{ "joboffers.jobDetails.moreOffers" | transloco }}
+        </h2>
+      </div>
+      <div class="w-full">
+        <app-job-offers-list
+          [displayMode]="'list'"
+          [items]="items"
+        ></app-job-offers-list>
+      </div>
+    </div> -->
+  </div>
+</div>

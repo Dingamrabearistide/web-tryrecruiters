@@ -1,0 +1,17 @@
+<div *transloco="let t; read: 'interviews'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="datatableColumns"
+    [isLoading]="false"
+    [hasError]="false"
+    [showCreateButton]="true"
+    emptyIcon="fas fa-calendar-alt"
+    [emptyTitle]="t('list.emptyTitle')"
+    [emptySubtitle]="t('list.emptySubtitle')"
+    [createLabel]="t('list.createLabel')"
+    (create)="handleCreate()"
+    (view)="handleView($event)"
+    (update)="handleUpdate($event)"
+    (delete)="handleDelete($event)"
+  ></app-generic-datatable>
+</div>

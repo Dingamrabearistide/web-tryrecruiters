@@ -1,0 +1,36 @@
+<button
+  *transloco="let t"
+  (click)="handleBack()"
+  class="my-2 bg-primary app-primary"
+>
+  <i class="fas fa-chevron-left mr-1 text-white"></i>
+  {{ t("general.back") }}
+</button>
+
+<div
+  *transloco="let t; read: 'users'"
+  class="py-6 w-full bg-white rounded-sm flex flex-col"
+>
+  <h2 class="text-2xl pb-2 font-bold text-primary">
+    {{ t("update.title") || "Modifier l'utilisateur" }}
+  </h2>
+
+  <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+    <div class="w-full text-center h-full">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isLoading && item?.id">
+    <app-users-form
+      [defaultValues]="getFormDefaultValues()"
+      [isLoading]="isLoading"
+      (onSubmit)="onSubmit($event)"
+    ></app-users-form>
+  </ng-container>
+
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

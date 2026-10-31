@@ -1,0 +1,201 @@
+<div *transloco="let t; read: 'companies'">
+  <div class="relative w-full app-container-inner mx-auto mt-10 px-4">
+    <!-- Background Image -->
+
+    <!-- Profile Section -->
+    <div class="flex flex-col md:flex-row items-center gap-2">
+      <div
+        class="overflow-hidden w-[100px] h-full max-w-sm max-h-[150px] bg-gray-50 mr-2"
+      >
+        <img
+          [src]="item.logoFile?.url || item.logoUrl || '/images/no-image.jpg'"
+          alt="Profile"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div>
+        <div class="text-4xl font-semibold text-gray-800">
+          {{ item.name }}
+        </div>
+        <!-- Use read-more component to handle long descriptions and HTML -->
+        <!-- <app-read-more
+          [text]="getDescriptionText()"
+          [maxLength]="400"
+        ></app-read-more> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 app-container-inner mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Left Side (Main Content) -->
+      <div class="gap-6">
+        <!-- Description -->
+        <div>
+          <div class="pb-8">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">
+              {{ t("companyDetails.description") }}
+            </h2>
+            <app-read-more
+              [text]="getDescriptionText()"
+              [maxLength]="600"
+            ></app-read-more>
+          </div>
+
+          <!-- <div class="pb-8">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">
+              t("companyDetails.companyBenefits")
+            </h2>
+            <p class="text-gray-700 leading-relaxed">item?.benefitsOverview</p>
+            <ul
+              class="text-gray-700 leading-relaxed list-disc pl-5 gap-1 mt-2"
+            >
+           
+            </ul>
+          </div> -->
+
+          <!-- <div class="pb-8">
+                      <h2 class="text-lg font-semibold text-gray-800 mb-2">
+                        {{ t("companyDetails.companyVision") }}
+                      </h2>
+                      <p class="text-gray-700 leading-relaxed">
+                        {{ item?.vision }}
+                      </p>
+                    </div> -->
+        </div>
+      </div>
+
+      <!-- Right Side (Sidebar) -->
+      <div class="gap-6">
+        <!-- Company Overview -->
+        <!-- <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700">
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">
+                  {{ t("companyDetails.foundedIn") }}:
+                </p>
+                <p>{{ item.foundedAt }}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-clock text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">
+                  {{ t("companyDetails.organizationType") }}
+                </p>
+                <p>{{ item.organizationType }}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa fa-users text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">
+                  {{ t("companyDetails.teamSize") }}
+                </p>
+                <p>item?.teamSize</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-graduation-cap text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs text-gray-500 uppercase">
+                  {{ t("companyDetails.industryTypes") }}
+                </p>
+                <p>item?.industryTypes</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Contact Info -->
+        <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+          <h2 class="font-medium text-xl">
+            {{ t("companyDetails.contactInformation") }}
+          </h2>
+          <div class="gap-4">
+            <div class="flex items-start gap-4 py-4">
+              <i
+                aria-hidden="true"
+                class="fa fa-globe text-blue-500 text-lg"
+              ></i>
+              <div>
+                <p class="text-[14px] text-[#767F8C]">
+                  {{ t("companyDetails.website") }}
+                </p>
+                <p>{{ item.website }}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 py-4">
+              <i
+                aria-hidden="true"
+                class="fa fa-phone text-blue-500 text-lg"
+              ></i>
+              <div>
+                <p class="text-[14px] text-[#767F8C]">
+                  {{ t("companyDetails.phone") }}
+                </p>
+                <p>{{ item.phoneNumber }}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 py-4">
+              <i
+                aria-hidden="true"
+                class="fa fa-envelope text-blue-500 text-lg"
+              ></i>
+              <div>
+                <p class="text-[14px] text-[#767F8C]">
+                  {{ t("companyDetails.email") }}
+                </p>
+                <p>{{ item.email }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <!-- <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+          <h2 class="font-medium text-xl">
+            {{ t("companyDetails.followUsOn") }}:
+          </h2>
+          <div class="flex items-center gap-3">
+            <div
+              *ngFor="let social of item?.socialLinks"
+              class="p-2 w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#E7F0FA]"
+            >
+              social
+              <a [href]="social.url" target="_blank">
+                              <i
+                                [class]="social.icon"
+                                [ngStyle]="{ color: social.color }"
+                              ></i>
+                            </a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!-- 
+    <section class="p-4 my-8">
+      <div
+        class="flex app-container-inner mx-auto items-center justify-start py-4"
+      >
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          {{ t("companyDetails.openPositions") }}
+        </h2>
+      </div>
+
+      <div class="w-full lg:col-span-9 gap-4">
+        <app-job-offers-list [displayMode]="'list'" [items]="jobOffers">
+        </app-job-offers-list>
+      </div>
+    </section> -->
+  </div>
+</div>

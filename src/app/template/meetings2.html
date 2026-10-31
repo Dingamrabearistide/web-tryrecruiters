@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Video Interview</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+              meet: "#202124",
+              meet2: "#2b2c2f",
+              meet3: "#3c4043",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+              meet: "0 18px 70px rgba(0,0,0,.35)",
+            },
+            keyframes: {
+              pop: {
+                "0%": { opacity: "0", transform: "scale(.96) translateY(8px)" },
+                "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
+              },
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              pulseRing: {
+                "0%,100%": { boxShadow: "0 0 0 0 rgba(20,157,242,.30)" },
+                "50%": { boxShadow: "0 0 0 14px rgba(20,157,242,0)" },
+              },
+            },
+            animation: {
+              pop: "pop .35s ease-out both",
+              fadeUp: "fadeUp .35s ease-out both",
+              pulseRing: "pulseRing 2.2s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .page-bg {
+        background-image:
+          radial-gradient(
+            circle at 15% 12%,
+            rgba(20, 157, 242, 0.16),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 86% 8%,
+            rgba(255, 81, 72, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .preview-grid {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          );
+        background-size: 44px 44px;
+      }
+    </style>
+  </head>
+
+  <body class="page-bg min-h-screen text-slate-900 antialiased">
+    <!-- Header shown before joining -->
+    <header
+      data-app-header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex h-20 max-w-[1160px] items-center justify-between px-5 lg:px-8"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <span
+            class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+          >
+            <i class="fa-solid fa-people-group text-xl"></i>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-black tracking-tight text-navy"
+              >TRYRECRUITERS</span
+            >
+            <span
+              class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+              >Talent platform</span
+            >
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+        >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Companies</a
+          >
+          <a
+            href="#"
+            class="rounded-full bg-white px-5 py-2.5 text-blue shadow-sm"
+            >Candidates</a
+          >
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block" data-language-dropdown>
+            <button
+              type="button"
+              data-language-button
+              aria-expanded="false"
+              class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-blue hover:text-blue"
+            >
+              <span data-current-language-flag>🇬🇧</span>
+              <span data-current-language-label>English</span>
+              <i
+                class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition"
+                data-language-chevron
+              ></i>
+            </button>
+            <div
+              data-language-menu
+              class="invisible absolute right-0 mt-3 w-48 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition duration-200"
+            >
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇬🇧</span><span>English</span>
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇫🇷</span><span>Français</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2 sm:inline-flex"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+            >Register</a
+          >
+          <button
+            type="button"
+            data-mobile-menu-button
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg" data-mobile-menu-icon></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        data-mobile-menu
+        class="hidden border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+      >
+        <div class="mx-auto max-w-[1160px] space-y-4">
+          <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Jobs</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Companies</a
+            >
+            <a href="#" class="rounded-2xl bg-skysoft px-4 py-3 text-blue"
+              >Candidates</a
+            >
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇬🇧"
+              data-label="English"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-blue"
+            >
+              🇬🇧 English
+            </button>
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇫🇷"
+              data-label="Français"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 hover:text-blue"
+            >
+              🇫🇷 Français
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Google Meet style pre-join page -->
+    <main
+      data-prejoin-screen
+      class="mx-auto grid min-h-[calc(100vh-80px)] max-w-[1160px] items-center gap-10 px-5 py-10 lg:grid-cols-[1.2fr_.8fr] lg:px-8"
+    >
+      <section class="animate-fadeUp">
+        <div class="mb-7">
+          <div
+            class="mb-3 inline-flex items-center gap-2 rounded-full bg-skysoft px-4 py-2 text-xs font-black text-blue"
+          >
+            <span class="size-2 rounded-full bg-emerald-500"></span>
+            Video interview room
+          </div>
+          <h1
+            class="font-display text-5xl font-black leading-none tracking-tight text-navy md:text-6xl"
+          >
+            Ready to join?
+          </h1>
+          <p
+            class="mt-4 max-w-xl text-base font-medium leading-7 text-slate-600"
+          >
+            Check your camera and microphone before entering
+            <strong>meeting-1761904532916</strong>.
+          </p>
+        </div>
+
+        <div
+          class="relative overflow-hidden rounded-[34px] bg-meet shadow-meet"
+        >
+          <div
+            class="preview-grid flex aspect-video items-center justify-center bg-meet"
+          >
+            <div class="text-center text-white">
+              <span
+                class="mx-auto grid size-28 place-items-center rounded-full bg-blue/20 text-blue ring-1 ring-blue/30"
+              >
+                <i class="fa-solid fa-user text-5xl"></i>
+              </span>
+              <p
+                class="mt-4 text-sm font-black text-white/80"
+                data-preview-name
+              >
+                Guest
+              </p>
+              <p class="mt-1 text-xs font-medium text-white/45">
+                Camera is off
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/45 px-3 py-2 text-xs font-bold text-white/85 backdrop-blur"
+          >
+            <i class="fa-solid fa-lock text-emerald-300"></i>
+            Secure Daily.co room
+          </div>
+
+          <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-3">
+            <button
+              type="button"
+              data-prejoin-camera
+              class="grid size-12 place-items-center rounded-full bg-coral text-white shadow-lg transition hover:bg-red-600"
+              title="Toggle camera"
+            >
+              <i class="fa-solid fa-video-slash"></i>
+            </button>
+            <button
+              type="button"
+              data-prejoin-mic
+              class="grid size-12 place-items-center rounded-full bg-meet3 text-white shadow-lg transition hover:bg-slate-600"
+              title="Toggle microphone"
+            >
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+            <button
+              type="button"
+              class="grid size-12 place-items-center rounded-full bg-meet3 text-white shadow-lg transition hover:bg-slate-600"
+              title="Settings"
+            >
+              <i class="fa-solid fa-gear"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="animate-pop rounded-[34px] border border-line bg-white p-7 text-center shadow-card md:p-9"
+      >
+        <span
+          class="mx-auto grid size-20 place-items-center rounded-full bg-skysoft text-blue animate-pulseRing"
+        >
+          <i class="fa-solid fa-video text-3xl"></i>
+        </span>
+        <h2 class="mt-6 text-3xl font-black text-navy">Join meeting</h2>
+        <p class="mt-2 text-sm font-semibold text-slate-500">
+          meeting-1761904532916
+        </p>
+
+        <label class="mt-7 block text-left">
+          <span class="text-sm font-black text-navy">Your name</span>
+          <input
+            data-name-input
+            type="text"
+            class="mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10"
+            placeholder="Enter your name"
+          />
+        </label>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-slate-50 px-5 py-4 text-sm font-black text-slate-600 transition hover:border-blue hover:text-blue"
+          >
+            <i class="fa-solid fa-arrow-left"></i> Cancel
+          </button>
+          <button
+            type="button"
+            data-join-call
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-4 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+          >
+            <i class="fa-solid fa-right-to-bracket"></i> Join now
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Google Meet style in-call layout -->
+    <section data-call-screen class="hidden min-h-screen bg-meet text-white">
+      <!-- Top bar -->
+      <header class="flex h-16 items-center justify-between px-4 sm:px-6">
+        <div class="min-w-0">
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-9 place-items-center rounded-xl bg-blue text-white"
+            >
+              <i class="fa-solid fa-people-group"></i>
+            </span>
+            <div class="min-w-0">
+              <p class="truncate text-sm font-black">meeting-1761904532916</p>
+              <p class="text-xs font-medium text-white/45">
+                Video call in progress
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden items-center gap-3 sm:flex">
+          <button
+            type="button"
+            class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black text-white/85 transition hover:bg-white/15"
+          >
+            <i class="fa-solid fa-shield-halved text-emerald-300"></i> Secure
+          </button>
+          <button
+            type="button"
+            class="grid size-10 place-items-center rounded-full bg-white/10 text-white/85 transition hover:bg-white/15"
+            title="Settings"
+          >
+            <i class="fa-solid fa-gear"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Meet grid -->
+      <main
+        class="grid min-h-[calc(100vh-144px)] gap-4 px-4 pb-4 sm:px-6 lg:grid-cols-[1fr_320px]"
+      >
+        <section class="grid gap-4 lg:grid-rows-[1fr_180px]">
+          <!-- Main speaker tile -->
+          <article
+            class="preview-grid relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[28px] bg-black shadow-meet"
+          >
+            <button
+              type="button"
+              class="absolute left-4 top-4 grid size-10 place-items-center rounded-full bg-black/45 text-white/80 backdrop-blur transition hover:bg-black/65"
+              title="Fullscreen"
+            >
+              <i class="fa-solid fa-expand"></i>
+            </button>
+
+            <div class="text-center">
+              <span
+                class="mx-auto grid size-32 place-items-center rounded-full bg-blue/20 text-blue ring-1 ring-blue/30 md:size-40"
+              >
+                <i class="fa-solid fa-user text-6xl"></i>
+              </span>
+              <p
+                class="mt-5 text-base font-black text-white/85"
+                data-participant-name
+              >
+                Guest
+              </p>
+              <p class="mt-1 text-sm font-medium text-white/45">
+                Camera is off
+              </p>
+            </div>
+
+            <div
+              class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-2 text-xs font-bold text-white/85 backdrop-blur"
+            >
+              <i class="fa-solid fa-microphone text-emerald-300"></i>
+              <span data-participant-name-small>Guest</span>
+            </div>
+          </article>
+
+          <!-- Other tiles row -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article
+              class="relative flex min-h-[150px] items-center justify-center overflow-hidden rounded-[24px] bg-meet2 ring-1 ring-white/10"
+            >
+              <span
+                class="grid size-16 place-items-center rounded-full bg-coral/20 text-coral"
+              >
+                <i class="fa-solid fa-user-tie text-2xl"></i>
+              </span>
+              <div
+                class="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1.5 text-xs font-bold text-white/75"
+              >
+                <i class="fa-solid fa-microphone-slash text-coral"></i>
+                Recruiter
+              </div>
+            </article>
+
+            <article
+              class="relative flex min-h-[150px] items-center justify-center overflow-hidden rounded-[24px] bg-meet2 ring-1 ring-white/10"
+            >
+              <span
+                class="grid size-16 place-items-center rounded-full bg-blue/20 text-blue"
+              >
+                <i class="fa-solid fa-user text-2xl"></i>
+              </span>
+              <div
+                class="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1.5 text-xs font-bold text-white/75"
+              >
+                <i class="fa-solid fa-microphone text-emerald-300"></i> dev
+                (You)
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Right panel like Meet side drawer -->
+        <aside
+          data-side-panel
+          class="hidden overflow-hidden rounded-[28px] bg-white text-slate-900 shadow-meet lg:block"
+        >
+          <div
+            class="flex items-center justify-between border-b border-line p-5"
+          >
+            <div>
+              <h2 class="text-lg font-black text-navy">People</h2>
+              <p class="text-xs font-bold text-slate-400">2 in the call</p>
+            </div>
+            <button
+              type="button"
+              data-close-panel
+              class="grid size-9 place-items-center rounded-full bg-slate-100 text-slate-500 hover:text-coral"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="space-y-3 p-5">
+            <div class="flex items-center gap-3 rounded-2xl bg-skysoft p-4">
+              <span
+                class="grid size-11 place-items-center rounded-xl bg-blue text-white"
+                ><i class="fa-solid fa-user"></i
+              ></span>
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-black text-navy">dev (You)</p>
+                <p class="text-xs font-bold text-slate-500">
+                  Muted · Camera off
+                </p>
+              </div>
+              <i class="fa-solid fa-microphone-slash text-coral"></i>
+            </div>
+
+            <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+              <span
+                class="grid size-11 place-items-center rounded-xl bg-slate-200 text-slate-600"
+                ><i class="fa-solid fa-user-tie"></i
+              ></span>
+              <div class="min-w-0 flex-1">
+                <p class="truncate text-sm font-black text-navy">Recruiter</p>
+                <p class="text-xs font-bold text-slate-500">Waiting to join</p>
+              </div>
+              <i class="fa-solid fa-clock text-slate-400"></i>
+            </div>
+          </div>
+        </aside>
+      </main>
+
+      <!-- Bottom Google Meet controls -->
+      <footer
+        class="grid min-h-20 grid-cols-1 items-center gap-4 px-4 py-3 sm:grid-cols-[1fr_auto_1fr] sm:px-6"
+      >
+        <div class="hidden min-w-0 text-sm font-bold text-white/75 sm:block">
+          <span>meeting-1761904532916</span>
+        </div>
+
+        <div class="flex items-center justify-center gap-3">
+          <button
+            type="button"
+            data-toggle-mic
+            class="grid size-12 place-items-center rounded-full bg-meet3 text-white transition hover:bg-slate-600"
+            title="Mute microphone"
+          >
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+          <button
+            type="button"
+            data-toggle-camera
+            class="grid size-12 place-items-center rounded-full bg-coral text-white transition hover:bg-red-600"
+            title="Turn camera on"
+          >
+            <i class="fa-solid fa-video-slash"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-12 place-items-center rounded-full bg-meet3 text-white transition hover:bg-slate-600"
+            title="Captions"
+          >
+            <i class="fa-solid fa-closed-captioning"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-12 place-items-center rounded-full bg-meet3 text-white transition hover:bg-slate-600"
+            title="Raise hand"
+          >
+            <i class="fa-solid fa-hand"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-12 place-items-center rounded-full bg-meet3 text-white transition hover:bg-slate-600"
+            title="Present now"
+          >
+            <i class="fa-solid fa-desktop"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-12 place-items-center rounded-full bg-meet3 text-white transition hover:bg-slate-600"
+            title="More options"
+          >
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+          <button
+            type="button"
+            data-leave-call
+            class="grid h-12 w-16 place-items-center rounded-full bg-coral text-white transition hover:bg-red-600"
+            title="Leave call"
+          >
+            <i class="fa-solid fa-phone-slash"></i>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 sm:justify-end">
+          <button
+            type="button"
+            data-open-panel
+            class="grid size-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/15"
+            title="People"
+          >
+            <i class="fa-solid fa-users"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/15"
+            title="Chat"
+          >
+            <i class="fa-solid fa-message"></i>
+          </button>
+          <button
+            type="button"
+            class="grid size-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/15"
+            title="Meeting details"
+          >
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+        </div>
+      </footer>
+    </section>
+
+    <script>
+      const appHeader = document.querySelector("[data-app-header]");
+      const mobileButton = document.querySelector("[data-mobile-menu-button]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileIcon = document.querySelector("[data-mobile-menu-icon]");
+      const languageDropdown = document.querySelector(
+        "[data-language-dropdown]",
+      );
+      const languageButton = document.querySelector("[data-language-button]");
+      const languageMenu = document.querySelector("[data-language-menu]");
+      const languageChevron = document.querySelector("[data-language-chevron]");
+      const currentLanguageFlag = document.querySelector(
+        "[data-current-language-flag]",
+      );
+      const currentLanguageLabel = document.querySelector(
+        "[data-current-language-label]",
+      );
+      const languageOptions = document.querySelectorAll(
+        "[data-language-option]",
+      );
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileButton.setAttribute("aria-expanded", "false");
+        mobileIcon.classList.remove("fa-xmark");
+        mobileIcon.classList.add("fa-bars");
+      }
+
+      mobileButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileButton.setAttribute("aria-expanded", String(isOpen));
+        mobileIcon.classList.toggle("fa-bars", !isOpen);
+        mobileIcon.classList.toggle("fa-xmark", isOpen);
+      });
+
+      function closeLanguageMenu() {
+        languageMenu.classList.add("invisible", "translate-y-2", "opacity-0");
+        languageMenu.classList.remove(
+          "visible",
+          "translate-y-0",
+          "opacity-100",
+        );
+        languageButton.setAttribute("aria-expanded", "false");
+        languageChevron.classList.remove("rotate-180");
+      }
+
+      languageButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isClosed = languageMenu.classList.contains("invisible");
+        languageMenu.classList.toggle("invisible", !isClosed);
+        languageMenu.classList.toggle("translate-y-2", !isClosed);
+        languageMenu.classList.toggle("opacity-0", !isClosed);
+        languageMenu.classList.toggle("visible", isClosed);
+        languageMenu.classList.toggle("translate-y-0", isClosed);
+        languageMenu.classList.toggle("opacity-100", isClosed);
+        languageButton.setAttribute("aria-expanded", String(isClosed));
+        languageChevron.classList.toggle("rotate-180", isClosed);
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          currentLanguageFlag.textContent = option.dataset.flag;
+          currentLanguageLabel.textContent = option.dataset.label;
+          closeLanguageMenu();
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (languageDropdown && !languageDropdown.contains(event.target))
+          closeLanguageMenu();
+      });
+
+      const prejoinScreen = document.querySelector("[data-prejoin-screen]");
+      const callScreen = document.querySelector("[data-call-screen]");
+      const joinButton = document.querySelector("[data-join-call]");
+      const nameInput = document.querySelector("[data-name-input]");
+      const previewName = document.querySelector("[data-preview-name]");
+      const participantName = document.querySelector("[data-participant-name]");
+      const participantNameSmall = document.querySelector(
+        "[data-participant-name-small]",
+      );
+      const leaveButtons = document.querySelectorAll("[data-leave-call]");
+      const sidePanel = document.querySelector("[data-side-panel]");
+
+      nameInput.addEventListener("input", () => {
+        previewName.textContent = nameInput.value.trim() || "Guest";
+      });
+
+      joinButton.addEventListener("click", () => {
+        const name = nameInput.value.trim() || "Guest";
+        participantName.textContent = name;
+        participantNameSmall.textContent = name;
+        prejoinScreen.classList.add("hidden");
+        appHeader.classList.add("hidden");
+        callScreen.classList.remove("hidden");
+        document.body.classList.remove("page-bg");
+        document.body.classList.add("bg-meet");
+      });
+
+      leaveButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          callScreen.classList.add("hidden");
+          prejoinScreen.classList.remove("hidden");
+          appHeader.classList.remove("hidden");
+          document.body.classList.add("page-bg");
+          document.body.classList.remove("bg-meet");
+        });
+      });
+
+      function toggleControl(button, onHtml, offHtml, onClasses, offClasses) {
+        const isOn = button.dataset.on === "true";
+        button.dataset.on = String(!isOn);
+        button.innerHTML = isOn ? offHtml : onHtml;
+        onClasses.forEach((cls) => button.classList.toggle(cls, !isOn));
+        offClasses.forEach((cls) => button.classList.toggle(cls, isOn));
+      }
+
+      document
+        .querySelectorAll("[data-toggle-camera], [data-prejoin-camera]")
+        .forEach((button) => {
+          button.dataset.on = "false";
+          button.addEventListener("click", () => {
+            toggleControl(
+              button,
+              '<i class="fa-solid fa-video"></i>',
+              '<i class="fa-solid fa-video-slash"></i>',
+              ["bg-emerald-600", "hover:bg-emerald-700"],
+              ["bg-coral", "hover:bg-red-600"],
+            );
+          });
+        });
+
+      document
+        .querySelectorAll("[data-toggle-mic], [data-prejoin-mic]")
+        .forEach((button) => {
+          button.dataset.on = "true";
+          button.addEventListener("click", () => {
+            toggleControl(
+              button,
+              '<i class="fa-solid fa-microphone"></i>',
+              '<i class="fa-solid fa-microphone-slash"></i>',
+              ["bg-meet3"],
+              ["bg-coral", "hover:bg-red-600"],
+            );
+          });
+        });
+
+      document
+        .querySelector("[data-open-panel]")
+        .addEventListener("click", () => sidePanel.classList.toggle("hidden"));
+      document
+        .querySelector("[data-close-panel]")
+        .addEventListener("click", () => sidePanel.classList.add("hidden"));
+    </script>
+  </body>
+</html>

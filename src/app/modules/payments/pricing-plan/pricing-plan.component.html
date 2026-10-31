@@ -1,0 +1,122 @@
+<div *transloco="let t; read: 'payments'" class="w-full max-w-7xl mx-auto px-4 py-10">
+  <div *ngIf="loading" class="grid grid-rows-[1fr] h-[300px] mb-6">
+    <div class="w-full text-center h-full">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!loading">
+  <h2 class="text-3xl font-bold text-center text-primary mb-10">
+    {{ t('pricing.mainTitle') }}
+  </h2>
+
+  <!-- BADGE BEST VALUE -->
+  <div class="flex justify-center mb-6" *ngIf="bestValue">
+    <div
+      class="bg-primary hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow"
+    >
+      {{ t('pricing.bestValue') }}
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- PLAN CARD -->
+    <div
+      *ngFor="let plan of plans"
+      class="rounded-2xl bg-white shadow-md border p-6 flex flex-col relative"
+      [ngClass]="{
+        'border-green-500 ring-2 ring-green-200': isCurrentPlan(plan.id),
+        'border-gray-200': !isCurrentPlan(plan.id)
+      }"
+    >
+      <div
+        *ngIf="isCurrentPlan(plan.id)"
+        class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-md"
+      >
+        {{ t('pricing.currentPlan') }}
+      </div>
+
+      <!-- Title -->
+      <h3 class="text-xl font-bold text-center text-primary mb-4">
+        {{ plan.title | transloco }}
+      </h3>
+
+      <!-- Price Block -->
+      <div class="text-center mb-6">
+        <ng-container *ngIf="plan.price === null">
+          <span class="text-3xl font-extrabold text-[#80db69]">{{ t('pricing.free') }}</span>
+        </ng-container>
+
+        <ng-container *ngIf="plan.price !== null">
+          <span class="text-3xl font-extrabold text-[#ff5173]">
+            {{ plan.price }} {{ plan.currency }}
+          </span>
+        </ng-container>
+
+        <!-- Duration selector -->
+        <div *ngIf="plan.title === 'Annonces illimitées'" class="mt-3">
+          <select
+            [(ngModel)]="selectedDuration"
+            class="border border-gray-300 rounded-lg px-3 py-1 text-sm"
+          >
+            <option *ngFor="let d of durations" [value]="d">{{ d }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="mb-6 text-center">
+        <button
+          class="w-full py-3 rounded-full font-semibold transition"
+          [ngClass]="{
+            'bg-gray-400 text-white cursor-not-allowed': isCurrentPlan(plan.id),
+            'bg-primary text-white hover:bg-secondary': !isCurrentPlan(plan.id)
+          }"
+          [disabled]="isCurrentPlan(plan.id)"
+          (click)="onSelect(plan.id)"
+        >
+          {{ getButtonLabel(plan) | transloco }}
+        </button>
+      </div>
+
+      <!-- Features -->
+      <ul class="space-y-3">
+        <li *ngFor="let f of plan.features" class="flex items-start gap-2">
+          <span
+            class="text-lg"
+            [ngClass]="{
+              'text-[#80db69]': f.available,
+              'text-[#f06363]': !f.available
+            }"
+          >
+            {{ f.available ? "✔" : "✖" }}
+          </span>
+          <span
+            [ngClass]="{
+              'text-gray-700': f.available,
+              'text-gray-500': !f.available
+            }"
+          >
+            {{ f.label | transloco: (f.labelParams || {}) }}
+          </span>
+        </li>
+      </ul>
+
+      <div class="mt-6 text-primary underline text-center cursor-pointer">
+        {{ t('pricing.howItWorks') }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer payment logos -->
+  <div class="mt-12 text-center text-sm text-gray-600">
+    {{ t('pricing.paymentFooter') }}
+    <div class="flex justify-center mt-4 gap-3">
+      <img src="/images/visa.png" class="h-6" />
+      <img src="/images/mastercard.png" class="h-6" />
+      <img src="/images/paypal.png" class="h-6" />
+    </div>
+  </div>
+  </ng-container>
+</div>

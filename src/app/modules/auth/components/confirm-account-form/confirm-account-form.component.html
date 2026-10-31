@@ -1,0 +1,28 @@
+<form
+  *transloco="let t; read: 'auth'"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="w-full mt-5"
+>
+  <!-- Code Field -->
+  <div class="flex flex-col gap-1.5 mb-4">
+    <label class="text-sm font-black text-navy">
+      {{ t("confirmAccount.codeLabel") }}
+    </label>
+    <div class="mt-1">
+      <app-otp-input formControlName="code" [length]="6"></app-otp-input>
+    </div>
+    <div *ngIf="form.get('code')?.touched && form.get('code')?.hasError('invalidCode')"
+      class="text-sm text-red-500 mt-1">
+      {{ t("confirmAccount.invalidCode") }}
+    </div>
+  </div>
+
+  <button [disabled]="isLoading" type="submit" class="app-primary w-full mt-2">
+    <div *ngIf="isLoading" class="flex items-center justify-center">
+      <app-loader [showText]="false"></app-loader>
+      <span class="ml-2">{{ t("loading") }}</span>
+    </div>
+    <span *ngIf="!isLoading"> {{ t("confirmAccount.submitButton") }}</span>
+  </button>
+</form>

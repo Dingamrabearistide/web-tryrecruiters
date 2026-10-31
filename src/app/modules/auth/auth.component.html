@@ -1,0 +1,9 @@
+<!-- Full-page login layout based on register page -->
+<app-navbar></app-navbar>
+
+<div
+  *transloco="let t; read: 'auth'"
+  class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+>
+  <router-outlet></router-outlet>
+</div>

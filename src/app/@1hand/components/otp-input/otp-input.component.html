@@ -1,0 +1,20 @@
+<div
+  class="grid gap-2 sm:gap-3"
+  [style.grid-template-columns]="'repeat(' + length + ', minmax(0, 1fr))'"
+>
+  <input
+    #digitInput
+    *ngFor="let digit of digits; let i = index; trackBy: trackByIndex"
+    type="text"
+    maxlength="1"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    [value]="digit"
+    [disabled]="disabled"
+    (input)="onInput(i, $event)"
+    (keydown)="onKeydown(i, $event)"
+    (paste)="onPaste($event)"
+    (blur)="onBlur()"
+    class="h-14 rounded-2xl border border-line bg-white text-center text-xl font-black text-navy outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed disabled:opacity-60 sm:h-16"
+  />
+</div>

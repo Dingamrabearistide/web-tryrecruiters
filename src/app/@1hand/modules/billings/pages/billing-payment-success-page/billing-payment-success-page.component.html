@@ -1,0 +1,91 @@
+<div
+  *transloco="let t; read: 'billings'"
+  class="min-h-[70vh] flex items-center justify-center bg-gray-50 px-4"
+>
+  <div
+    class="w-full max-w-lg bg-white rounded-3xl border border-gray-100 shadow-soft p-8 text-center"
+  >
+    <ng-container *ngIf="status === 'loading'">
+      <i
+        class="fa-solid fa-spinner fa-spin text-5xl text-primary"
+      ></i>
+
+      <h1 class="text-2xl font-bold mt-6">
+        {{ t("verificationTitle") }}
+      </h1>
+
+      <p class="text-gray-500 mt-2">
+        {{ t("verificationDescription") }}
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="status === 'success'">
+      <i
+        class="fa-solid fa-circle-check text-6xl text-green-600"
+      ></i>
+
+      <h1 class="text-2xl font-bold mt-6">
+        {{ t("paymentConfirmedTitle") }}
+      </h1>
+
+      <p class="text-gray-500 mt-2">
+        {{
+          t("paymentConfirmedDescription", {
+            plan: planCode
+          })
+        }}
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mt-7">
+        <button
+          type="button"
+          class="app-primary"
+          (click)="goToCurrentPlan()"
+        >
+          {{ t("viewCurrentPlan") }}
+        </button>
+
+        <button
+          type="button"
+          class="px-5 py-2 border border-gray-300 rounded-lg"
+          (click)="goToPlans()"
+        >
+          {{ t("backToPlans") }}
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="status === 'error'">
+      <i
+        class="fa-solid fa-circle-xmark text-6xl text-red-500"
+      ></i>
+
+      <h1 class="text-2xl font-bold mt-6">
+        {{ t("paymentErrorTitle") }}
+      </h1>
+
+      <p class="text-gray-500 mt-2">
+        {{ errorMessage }}
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mt-7">
+        <button
+          type="button"
+          class="app-primary"
+          [disabled]="isConfirming"
+          (click)="confirmPayment()"
+        >
+          {{ t("retry") }}
+        </button>
+
+        <button
+          type="button"
+          class="px-5 py-2 border border-gray-300 rounded-lg"
+          (click)="goToPlans()"
+        >
+          {{ t("backToPlans") }}
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,280 @@
+<div class="" *transloco="let t; read: 'candidates'">
+
+  <!-- Header -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-4 pb-2">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">{{ t("title") }}</h1>
+        <p class="text-gray-600 text-sm font-normal">{{ t("subtitle") }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Panel -->
+  <div class="bg-white border border-gray-200 rounded-xl shadow-sm mb-6">
+    <!-- Panel header -->
+    <button
+      type="button"
+      class="w-full flex items-center justify-between px-5 py-4 text-left"
+      (click)="filtersExpanded = !filtersExpanded"
+    >
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-sliders text-primary text-sm"></i>
+        <span class="font-semibold text-gray-700 text-sm">{{ t("filters.title") }}</span>
+        <span
+          *ngIf="activeFilterCount > 0"
+          class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold"
+        >{{ activeFilterCount }}</span>
+      </div>
+      <i
+        class="fa-solid fa-chevron-down text-gray-400 text-xs transition-transform duration-200"
+        [class.rotate-180]="filtersExpanded"
+      ></i>
+    </button>
+
+    <!-- Panel body -->
+    <div *ngIf="filtersExpanded" class="px-5 pb-5 border-t border-gray-100">
+
+      <!-- Section: Recherche -->
+      <div class="mt-4 mb-1">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t("filters.sectionSearch") }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.keyword") }}</label>
+            <div class="relative">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              <input type="text" [(ngModel)]="searchTerm" [placeholder]="t('filters.keywordPlaceholder')"
+                class="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.profession") }}</label>
+            <div class="relative">
+              <i class="fa-solid fa-briefcase absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              <input type="text" [(ngModel)]="profession" [placeholder]="t('filters.professionPlaceholder')"
+                class="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.nationality") }}</label>
+            <div class="relative">
+              <i class="fa-solid fa-flag absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              <input type="text" [(ngModel)]="nationality" [placeholder]="t('filters.nationalityPlaceholder')"
+                class="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="border-t border-dashed border-gray-100 my-4"></div>
+
+      <!-- Section: Compétences / Langues / Outils -->
+      <div class="mb-1">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t("filters.sectionSkills") }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          <!-- Skills -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.skillsLabel") }}</label>
+            <div class="flex flex-col gap-2">
+              <div *ngFor="let skill of skills; let i = index" class="flex gap-2">
+                <input type="text" [(ngModel)]="skills[i]" [placeholder]="t('filters.skillsPlaceholder')"
+                  class="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                <button type="button" (click)="removeSkill(i)"
+                  class="px-2 py-1 text-red-400 hover:text-red-600 border border-gray-200 rounded-lg text-xs">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <button type="button" (click)="addSkill()"
+                class="flex items-center gap-1 text-xs text-primary hover:underline mt-1 w-fit">
+                <i class="fa-solid fa-plus text-[10px]"></i> {{ t("filters.addSkill") }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.languagesLabel") }}</label>
+            <div class="flex flex-col gap-2">
+              <div *ngFor="let lang of languages; let i = index" class="flex gap-2">
+                <input type="text" [(ngModel)]="languages[i]" [placeholder]="t('filters.languagesPlaceholder')"
+                  class="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                <button type="button" (click)="removeLanguage(i)"
+                  class="px-2 py-1 text-red-400 hover:text-red-600 border border-gray-200 rounded-lg text-xs">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <button type="button" (click)="addLanguage()"
+                class="flex items-center gap-1 text-xs text-primary hover:underline mt-1 w-fit">
+                <i class="fa-solid fa-plus text-[10px]"></i> {{ t("filters.addLanguage") }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.toolsLabel") }}</label>
+            <div class="flex flex-col gap-2">
+              <div *ngFor="let tool of tools; let i = index" class="flex gap-2">
+                <input type="text" [(ngModel)]="tools[i]" [placeholder]="t('filters.toolsPlaceholder')"
+                  class="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                <button type="button" (click)="removeTool(i)"
+                  class="px-2 py-1 text-red-400 hover:text-red-600 border border-gray-200 rounded-lg text-xs">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <button type="button" (click)="addTool()"
+                class="flex items-center gap-1 text-xs text-primary hover:underline mt-1 w-fit">
+                <i class="fa-solid fa-plus text-[10px]"></i> {{ t("filters.addTool") }}
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="border-t border-dashed border-gray-100 my-4"></div>
+
+      <!-- Section: Filtres avancés -->
+      <div class="mb-1">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t("filters.sectionAdvanced") }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <!-- Niveau d'expérience -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.experienceLevel") }}</label>
+            <div class="relative">
+              <i class="fa-solid fa-award absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+              <select [(ngModel)]="experienceLevel"
+                class="w-full pl-8 pr-8 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none bg-white">
+                <option value="">{{ t("filters.allLevels") }}</option>
+                <option value="entry">{{ t("filters.entry") }}</option>
+                <option value="mid">{{ t("filters.mid") }}</option>
+                <option value="senior">{{ t("filters.senior") }}</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Genre -->
+          <div>
+            <label class="block text-xs font-medium text-gray-600 mb-1">{{ t("filters.gender") }}</label>
+            <div class="relative">
+              <i class="fa-solid fa-venus-mars absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+              <select [(ngModel)]="gender"
+                class="w-full pl-8 pr-8 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none bg-white">
+                <option value="">{{ t("filters.allGenders") }}</option>
+                <option value="MALE">{{ t("filters.male") }}</option>
+                <option value="FEMALE">{{ t("filters.female") }}</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Footer: Search + Reset buttons -->
+      <div class="flex items-center justify-between mt-5 pt-4 border-t border-gray-100">
+        <div class="flex flex-wrap gap-2">
+          <span *ngIf="searchTerm" class="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-200 rounded-full px-3 py-0.5 text-xs font-medium">
+            <i class="fa-solid fa-magnifying-glass text-[10px]"></i> {{ searchTerm }}
+            <button (click)="searchTerm = ''" class="ml-1 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+          </span>
+          <span *ngIf="profession" class="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-200 rounded-full px-3 py-0.5 text-xs font-medium">
+            <i class="fa-solid fa-briefcase text-[10px]"></i> {{ profession }}
+            <button (click)="profession = ''" class="ml-1 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+          </span>
+          <span *ngIf="nationality" class="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-200 rounded-full px-3 py-0.5 text-xs font-medium">
+            <i class="fa-solid fa-flag text-[10px]"></i> {{ nationality }}
+            <button (click)="nationality = ''" class="ml-1 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+          </span>
+          <span *ngIf="experienceLevel" class="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-200 rounded-full px-3 py-0.5 text-xs font-medium">
+            <i class="fa-solid fa-award text-[10px]"></i> {{ experienceLevel }}
+            <button (click)="experienceLevel = ''" class="ml-1 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+          </span>
+          <span *ngIf="gender" class="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-200 rounded-full px-3 py-0.5 text-xs font-medium">
+            <i class="fa-solid fa-venus-mars text-[10px]"></i> {{ gender }}
+            <button (click)="gender = ''" class="ml-1 text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3 shrink-0 ml-4">
+          <button
+            type="button"
+            (click)="clearFilters()"
+            class="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-red-500 hover:border-red-300 transition-colors"
+          >
+            <i class="fa-solid fa-rotate-left text-xs"></i>
+            {{ t("filters.reset") }}
+          </button>
+          <button
+            type="button"
+            (click)="onSearch()"
+            class="flex items-center gap-1.5 px-5 py-2 text-sm font-semibold text-white bg-primary rounded-lg hover:opacity-90 shadow-sm transition-opacity"
+          >
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            {{ t("filters.search") }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+    <div class="w-full text-center h-full">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="!isLoading && hasError" class="w-full">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <!-- Results -->
+  <div *ngIf="!isLoading && !hasError">
+    <!-- Empty state -->
+    <div *ngIf="items.length === 0" class="flex flex-col items-center justify-center py-16 bg-white border border-gray-200 rounded-xl shadow-sm">
+      <div class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+        <i class="fa-solid fa-user-slash text-gray-400 text-2xl"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ t("list.empty") }}</h3>
+      <p class="text-sm text-gray-500 mb-4">{{ t("list.emptySubtitle") }}</p>
+      <button
+        *ngIf="activeFilterCount > 0"
+        type="button"
+        (click)="clearFilters()"
+        class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary/10 transition-colors"
+      >
+        <i class="fa-solid fa-rotate-left text-xs"></i>
+        {{ t("filters.reset") }}
+      </button>
+    </div>
+
+    <app-candidates-list
+      *ngIf="items.length > 0"
+      [items]="items"
+      (onView)="handleView($event)"
+    ></app-candidates-list>
+  </div>
+
+  <!-- Pagination -->
+  <div class="mt-6 flex justify-end" *ngIf="totalPages > 1">
+    <app-generic-paginator
+      [currentPage]="page"
+      [totalPages]="totalPages"
+      [totalItems]="totalItems"
+      [itemsPerPage]="limit"
+      (pageChange)="onPageChange($event)"
+    ></app-generic-paginator>
+  </div>
+
+</div>

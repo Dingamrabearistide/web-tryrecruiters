@@ -1,0 +1,225 @@
+<div
+  *transloco="let t; read: 'candidates'"
+  class="bg-white rounded-lg border border-gray-200 p-6 mb-5"
+>
+  <div class="flex justify-between items-center mb-5">
+    <h3 class="text-xl font-semibold text-primary">
+      {{ t("profilePage.experiences.title") || "Expériences professionnelles" }}
+    </h3>
+
+    <div class="flex items-center gap-3">
+      <!-- <input
+        type="date"
+        class="px-2 py-1 border rounded"
+        [(ngModel)]="filterFrom"
+        (change)="refreshList()"
+        title="Date début"
+      />
+      <input
+        type="date"
+        class="px-2 py-1 border rounded"
+        [(ngModel)]="filterTo"
+        (change)="refreshList()"
+        title="Date fin"
+      />
+
+      <button
+        (click)="resetFilters()"
+        class="px-3 py-1 bg-gray-100 rounded text-sm"
+        title="Réinitialiser filtres"
+      >
+        Reset
+      </button> -->
+
+      <!-- <div class="relative">
+        <button
+          type="button"
+          class="px-3 py-1 border rounded bg-white text-sm flex items-center gap-2"
+          (click)="$event.stopPropagation(); toggleFiltersDropdown($event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="showFiltersDropdown"
+          title="{{ t('candidateDetails.filters') || 'Filters' }}"
+        >
+          <i class="fa fa-filter"></i>
+          <span class="hidden sm:inline">{{
+            t("candidateDetails.filters") || "Filters"
+          }}</span>
+        </button>
+
+        <div
+          *ngIf="showFiltersDropdown"
+          class="absolute right-0 mt-2 w-72 sm:w-80 bg-white border rounded shadow z-50 p-3"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="text-sm mb-2 font-medium">
+            {{ t("candidateDetails.sort") || "Sort" }}
+          </div>
+          <div class="flex flex-col gap-2 mb-3">
+            <button
+              class="text-left px-2 py-1 hover:bg-gray-100 rounded"
+              (click)="
+                sortOrder = 'desc'; closeFiltersDropdown(); refreshList()
+              "
+            >
+              {{ t("candidateDetails.showRecentFirst") || "Recent → Old" }}
+            </button>
+            <button
+              class="text-left px-2 py-1 hover:bg-gray-100 rounded"
+              (click)="sortOrder = 'asc'; closeFiltersDropdown(); refreshList()"
+            >
+              {{ t("candidateDetails.showOldFirst") || "Old → Recent" }}
+            </button>
+          </div>
+
+          <div class="text-sm mb-1 font-medium">
+            {{ t("candidateDetails.dateRange") || "Date range" }}
+          </div>
+          <div class="flex gap-2 items-center mb-3">
+            <input
+              type="date"
+              class="px-2 py-1 border rounded w-1/2"
+              [(ngModel)]="filterFrom"
+              (change)="refreshList()"
+            />
+            <input
+              type="date"
+              class="px-2 py-1 border rounded w-1/2"
+              [(ngModel)]="filterTo"
+              (change)="refreshList()"
+            />
+          </div>
+
+          <div class="border-t mt-3 pt-2 flex justify-between items-center">
+            <button
+              class="text-sm text-gray-600"
+              (click)="resetFilters(); closeFiltersDropdown()"
+            >
+              {{ t("general.reset") || "Reset" }}
+            </button>
+            <button
+              class="text-sm text-primary font-medium"
+              (click)="closeFiltersDropdown()"
+            >
+              {{ t("general.close") || "Close" }}
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+      <button
+        (click)="addItem()"
+        class="inline-flex items-center justify-center w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors"
+      >
+        <i class="fa fa-plus text-sm sm:mr-2"></i>
+        <span class="hidden sm:inline">{{ t("profilePage.experiences.addExperience") || "Ajouter" }}</span>
+      </button>
+    </div>
+  </div>
+
+  <ng-container
+    *ngIf="(displayedExperiences || []).length > 0; else noExperience"
+  >
+    <div class="space-y-4">
+      <div
+        *ngFor="
+          let item of showAll
+            ? displayedExperiences
+            : (displayedExperiences | slice: 0 : 3)
+        "
+        class="border border-gray-200 rounded-lg p-4 relative hover:border-primary transition-colors"
+      >
+        <div class="pr-16">
+          <app-candidate-experience-list-item
+            [item]="item"
+          ></app-candidate-experience-list-item>
+        </div>
+
+        <div class="absolute right-4 top-4 flex gap-3 text-gray-400">
+          <span
+            (click)="updateItem(item)"
+            class="cursor-pointer hover:text-primary transition-colors"
+          >
+            <i class="fa fa-edit text-lg"></i>
+          </span>
+
+          <app-generic-delete-item-button
+            [item]="item"
+            [service]="service"
+            [moduleName]="moduleName"
+            methodName="deleteInfos"
+            [extractId]="getItemId"
+            [buildPayload]="buildDeletePayload"
+            [extractLabel]="getItemLabel"
+            (onDone)="handleDone()"
+          ></app-generic-delete-item-button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="(profile?.experiences?.length || 0) > 3"
+      class="mt-4 text-center"
+    >
+      <button
+        (click)="toggleShowAll()"
+        class="text-primary text-sm font-medium hover:underline"
+      >
+        {{
+          showAll
+            ? t("candidateDetails.showLess") || "Voir moins"
+            : t("candidateDetails.showMore") || "Voir plus"
+        }}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #noExperience>
+    <div class="w-full py-12 px-4 text-center">
+      <div class="flex flex-col items-center gap-4">
+        <div
+          class="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center"
+        >
+          <i class="fa fa-briefcase text-3xl text-primary"></i>
+        </div>
+        <h4 class="text-lg font-semibold text-gray-900">
+          {{ t("profilePage.experiences.noExperience") || "Aucune expérience" }}
+        </h4>
+        <p class="text-sm text-gray-600">
+          {{
+            t("profilePage.experiences.addYourFirstExperience") ||
+              "Ajoutez votre première expérience professionnelle"
+          }}
+        </p>
+        <button
+          (click)="addItem()"
+          class="inline-flex items-center px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors mt-2"
+        >
+          <i class="fa fa-plus text-sm mr-2"></i>
+          {{
+            t("profilePage.experiences.addFirstExperience") ||
+              "Ajouter une expérience"
+          }}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #form>
+    <div class="w-full">
+      <app-generic-form
+        [defaultValues]="defaultValues"
+        [fieldConfigurations]="formConfig"
+        [isLoading]="isLoading"
+        [showActionButton]="false"
+        transationNamespace="candidates"
+        (formReady)="onFormReady($event)"
+        (submitForm)="onSubmit($event)"
+      ></app-generic-form>
+
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+        class="mt-4"
+      ></app-generic-error>
+    </div>
+  </ng-template>
+</div>

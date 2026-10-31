@@ -1,0 +1,492 @@
+{
+  "item": {
+    "details": "Détails"
+  },
+  "offers": "Offres d'emploi",
+  "jobOffers": {
+    "title": "Offres d'emploi",
+    "noOffers": "Aucune offre d'emploi trouvée pour cette entreprise"
+  },
+  "recruiters": {
+    "title": "Recruteurs",
+    "noRecruiters": "Aucun recruteur assigné à cette entreprise"
+  },
+  "details": {
+    "title": "Détails de l'entreprise",
+    "home": "Accueil",
+    "employerList": "Liste des employeurs",
+    "employerDetail": "Détails de l'employeur"
+  },
+  "no_description": "Aucune description disponible",
+  "createTitle": "Créer une entreprise",
+  "updateTitle": "Mettre à jour l'entreprise",
+  "created_success": "Entreprise créée avec succès !",
+  "updated_success": "Entreprise mise à jour avec succès !",
+  "info": {
+    "created_message": "L'entreprise « {{name}} » a été créée avec succès.",
+    "updated_message": "L'entreprise « {{name}} » a été mise à jour avec succès."
+  },
+  "list": {
+    "title": "Entreprises",
+    "description": "Gérez et consultez toutes vos entreprises en un seul endroit.",
+    "noCompanies": "Aucune entreprise trouvée.",
+    "startCreating": "Commencez par créer votre première entreprise",
+    "createCompany": "Créer une entreprise"
+  },
+  "columns": {
+    "name": "Nom de l'entreprise",
+    "city": "Ville",
+    "country": "Pays",
+    "createdAt": "Date de création",
+    "organizationType": "Type d'organisation",
+    "actions": "Actions"
+  },
+  "common": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "back": "Retour"
+  },
+  "dialog": {
+    "success": "L'opération a été effectuée avec succès",
+    "no_description": "Aucune description disponible.",
+    "industry": "Secteur d'activité",
+    "type": "Type",
+    "email": "Email",
+    "phone": "Téléphone",
+    "website": "Site web",
+    "address": "Adresse",
+    "close": "Fermer"
+  },
+  "detail": {
+    "title": "Détails de l'entreprise",
+    "description": "Description",
+    "industry": "Secteur d'activité",
+    "companysize": "Taille de l'entreprise",
+    "organizationtype": "Type d'organisation",
+    "contracttype": "Type de contrat",
+    "period_information": "Informations sur la période",
+    "startdate": "Date de début",
+    "enddate": "Date de fin",
+    "location": "Localisation",
+    "address": "Adresse",
+    "addressline1": "Adresse ligne 1",
+    "addressline2": "Adresse ligne 2",
+    "city": "Ville",
+    "region_country": "Région / Pays",
+    "region": "Région",
+    "country": "Pays",
+    "contact_information": "Informations de contact",
+    "website": "Site web",
+    "phone": "Téléphone",
+    "email": "Email",
+    "share_job": "Partager cette offre",
+    "open_positions": "Postes à pourvoir",
+    "recruiterid": "ID du recruteur",
+    "createdbyid": "Créé par",
+    "back": "Retour",
+    "previous": "Précédent",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "close": "Fermer"
+  },
+  "create": {
+    "success": {
+      "title": "Entreprise créée avec succès",
+      "message": "L'entreprise « {{name}} » a été ajoutée avec succès."
+    }
+  },
+  "update": {
+    "success": {
+      "title": "Mise à jour réussie",
+      "message": "L'entreprise « {{name}} » a été mise à jour avec succès."
+    }
+  },
+  "delete": {
+    "title": "Supprimer l'entreprise",
+    "message": "Êtes-vous sûr de vouloir supprimer l'entreprise « {{name}} » ? Cette action est irréversible.",
+    "confirm": "Supprimer",
+    "cancel": "Annuler",
+    "success": {
+      "title": "Entreprise supprimée",
+      "message": "L'entreprise « {{name}} » a été supprimée avec succès."
+    },
+    "error": {
+      "title": "Échec de la suppression",
+      "message": "Une erreur est survenue lors de la suppression de l'entreprise « {{name}} ». Veuillez réessayer."
+    }
+  },
+  "form": {
+    "titleCreate": "Créer une entreprise",
+    "search": "Rechercher",
+    "reset": "Réinitialiser",
+    "postedDate": "Date de publication",
+    "selectPostedDate": "Sélectionner une période",
+    "postedDateOptions": {
+      "anytime": "N'importe quand",
+      "past_24h": "Dernières 24 heures",
+      "past_week": "Semaine dernière",
+      "past_month": "Mois dernier"
+    },
+    "filterOrganizationType": "Type d'organisation",
+    "private": "Privé",
+    "public": "Public",
+    "searchPlaceholder": "Rechercher des entreprises...",
+    "allTypes": "Tous les types",
+    "fullTime": "Temps plein",
+    "partTime": "Temps partiel",
+    "temporary": "Temporaire",
+    "freelance": "Freelance",
+    "internship": "Stage",
+    "titleUpdate": "Mettre à jour l'entreprise",
+    "name": "Nom",
+    "address": "Adresse",
+    "email": "Email",
+    "phone": "Téléphone",
+    "logo": "Logo",
+    "phoneNumber": "Numéro de téléphone",
+    "description": "Description",
+    "website": "Site web",
+    "industry": "Secteur d'activité",
+    "selectIndustry": "Sélectionner un secteur",
+    "companySize": "Taille de l'entreprise",
+    "selectCompanySize": "Sélectionner une taille",
+    "organizationType": "Type d'organisation",
+    "selectOrganizationType": "Sélectionner un type",
+    "contractType": "Type de contrat",
+    "selectContractType": "Sélectionner un type de contrat",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "company": "Entreprise",
+    "city": "Ville",
+    "region": "Région",
+    "country": "Pays",
+    "addressLine1": "Adresse ligne 1",
+    "addressLine2": "Adresse ligne 2",
+    "loading": "Envoi en cours...",
+    "submit": "Soumettre",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "required": "Champ obligatoire",
+    "errors": {
+      "generic": "Une erreur est survenue.",
+      "notFound": "Aucune entreprise trouvée.",
+      "fields": {
+        "name": {
+          "required": "Le nom de l'entreprise est obligatoire.",
+          "maxlength": "Le nom de l'entreprise ne peut pas dépasser {{length}} caractères.",
+          "pattern": "Le nom de l'entreprise contient des caractères invalides."
+        },
+        "description": {
+          "maxlength": "La description ne peut pas dépasser {{length}} caractères."
+        },
+        "website": {
+          "pattern": "Veuillez entrer une URL valide (commençant par http ou https)."
+        },
+        "email": {
+          "required": "L'email est obligatoire.",
+          "email": "Veuillez entrer une adresse email valide.",
+          "maxlength": "L'email ne peut pas dépasser {{length}} caractères."
+        },
+        "phoneNumber": {
+          "required": "Le numéro de téléphone est obligatoire."
+        },
+        "industry": {
+          "required": "Le secteur d'activité est obligatoire."
+        },
+        "companySize": {
+          "required": "La taille de l'entreprise est obligatoire."
+        },
+        "organizationType": {
+          "required": "Le type d'organisation est obligatoire."
+        },
+        "contractType": {
+          "required": "Le type de contrat est obligatoire."
+        },
+        "startDate": {
+          "required": "La date de début est obligatoire."
+        },
+        "endDate": {
+          "required": "La date de fin est obligatoire."
+        },
+        "dateRange": {
+          "invalid": "La date de fin ne peut pas être antérieure à la date de début."
+        },
+        "city": {
+          "required": "La ville est obligatoire.",
+          "maxlength": "Le nom de la ville ne peut pas dépasser {{length}} caractères.",
+          "pattern": "Le nom de la ville contient des caractères invalides."
+        },
+        "region": {
+          "required": "La région est obligatoire.",
+          "maxlength": "Le nom de la région ne peut pas dépasser {{length}} caractères.",
+          "pattern": "Le nom de la région contient des caractères invalides."
+        },
+        "country": {
+          "required": "Le pays est obligatoire.",
+          "maxlength": "Le nom du pays ne peut pas dépasser {{length}} caractères.",
+          "pattern": "Le nom du pays contient des caractères invalides."
+        },
+        "addressLine1": {
+          "required": "L'adresse ligne 1 est obligatoire.",
+          "maxlength": "L'adresse ligne 1 ne peut pas dépasser {{length}} caractères."
+        },
+        "addressLine2": {
+          "maxlength": "L'adresse ligne 2 ne peut pas dépasser {{length}} caractères."
+        }
+      },
+      "validatePhoneNumber": "Numéro de téléphone invalide."
+    }
+  },
+  "companyDetails": {
+    "title": "Détail de l'entreprise",
+    "home": "Accueil",
+    "companiesList": "Liste des entreprises",
+    "companyDetail": "Détail de l'entreprise",
+    "follow": "Suivre",
+    "contact": "Contacter",
+    "description": "Description",
+    "noDescription": "Aucune description disponible",
+    "companyStats": "Statistiques de l'entreprise",
+    "companyOverview": "Aperçu de l'entreprise",
+    "contactInfo": "Informations de contact",
+    "relatedCompanies": "Entreprises similaires",
+    "industry": "Secteur d'activité",
+    "size": "Taille",
+    "type": "Type",
+    "founded": "Fondée",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "website": "Site web",
+    "followCompany": "Suivre l'entreprise",
+    "followCompanyConfirm": "Voulez-vous vraiment suivre « {{name}} » ?",
+    "contactCompany": "Contacter {{name}}",
+    "contactFormDescription": "Veuillez remplir le formulaire ci-dessous pour contacter cette entreprise.",
+    "contactFormPlaceholder": "Formulaire de contact à implémenter ici",
+    "sendMessage": "Envoyer le message",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "employerDetail": "Détail de l'employeur",
+    "employerList": "Liste des employeurs",
+    "subscribe": "S'abonner",
+    "companyBenefits": "Avantages de l'entreprise",
+    "companyVision": "Vision de l'entreprise",
+    "foundedIn": "Fondée en",
+    "organizationType": "Type d'organisation",
+    "teamSize": "Taille de l'équipe",
+    "industryTypes": "Types d'industrie",
+    "contactInformation": "Informations de contact",
+    "followUsOn": "Suivez-nous sur",
+    "openPositions": "Postes ouverts"
+  },
+  "profile": {
+    "experience": {
+      "addTitle": "Ajouter une expérience",
+      "editTitle": "Modifier l'expérience"
+    },
+    "education": {
+      "addTitle": "Ajouter une formation",
+      "editTitle": "Modifier la formation"
+    },
+    "certification": {
+      "addTitle": "Ajouter une certification",
+      "editTitle": "Modifier la certification"
+    },
+    "skill": {
+      "addTitle": "Ajouter une compétence",
+      "editTitle": "Modifier la compétence"
+    },
+    "language": {
+      "addTitle": "Ajouter une langue",
+      "editTitle": "Modifier la langue"
+    },
+    "form": {
+      "title": {
+        "label": "Intitulé",
+        "placeholder": "Entrez l’intitulé"
+      },
+      "company": {
+        "label": "Entreprise",
+        "placeholder": "Entrez le nom de l’entreprise"
+      },
+      "period": {
+        "label": "Période",
+        "placeholder": "ex. : 2020 - Présent"
+      },
+      "location": {
+        "label": "Lieu",
+        "placeholder": "Entrez le lieu"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Entrez une description"
+      },
+      "degree": {
+        "label": "Diplôme / Domaine d’études",
+        "placeholder": "Entrez votre diplôme ou domaine d’études"
+      },
+      "school": {
+        "label": "École / Université",
+        "placeholder": "Entrez le nom de l’école ou université"
+      },
+      "certName": {
+        "label": "Nom de la certification",
+        "placeholder": "Entrez le nom de la certification"
+      },
+      "issuer": {
+        "label": "Organisme délivrant",
+        "placeholder": "Entrez l’organisme délivrant"
+      },
+      "date": {
+        "label": "Date",
+        "placeholder": "ex. : Juin 2022"
+      },
+      "skillName": {
+        "label": "Nom de la compétence",
+        "placeholder": "Entrez le nom de la compétence"
+      },
+      "languageName": {
+        "label": "Langue",
+        "placeholder": "Entrez la langue"
+      },
+      "level": {
+        "label": "Niveau de maîtrise",
+        "placeholder": "Entrez votre niveau de maîtrise"
+      },
+      "name": {
+        "label": "Nom",
+        "placeholder": "Entrez le nom"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre adresse email"
+      },
+      "phone": {
+        "label": "Téléphone",
+        "placeholder": "Entrez votre numéro de téléphone"
+      },
+      "address": {
+        "label": "Adresse",
+        "placeholder": "Entrez l’adresse"
+      },
+      "website": {
+        "label": "Site web",
+        "placeholder": "Entrez l’URL du site web"
+      }
+    },
+    "errors": {
+      "title": {
+        "required": "L’intitulé est obligatoire.",
+        "maxlength": "L’intitulé ne peut pas dépasser {{length}} caractères."
+      },
+      "company": {
+        "required": "Le nom de l’entreprise est obligatoire.",
+        "maxlength": "Le nom de l’entreprise ne peut pas dépasser {{length}} caractères."
+      },
+      "period": {
+        "required": "La période est obligatoire.",
+        "maxlength": "La période ne peut pas dépasser {{length}} caractères."
+      },
+      "location": {
+        "required": "Le lieu est obligatoire.",
+        "maxlength": "Le lieu ne peut pas dépasser {{length}} caractères."
+      },
+      "description": {
+        "required": "La description est obligatoire.",
+        "maxlength": "La description ne peut pas dépasser {{length}} caractères."
+      },
+      "degree": {
+        "required": "Le diplôme est obligatoire.",
+        "maxlength": "Le diplôme ne peut pas dépasser {{length}} caractères."
+      },
+      "school": {
+        "required": "Le nom de l’école est obligatoire.",
+        "maxlength": "Le nom de l’école ne peut pas dépasser {{length}} caractères."
+      },
+      "certName": {
+        "required": "Le nom de la certification est obligatoire.",
+        "maxlength": "Le nom de la certification ne peut pas dépasser {{length}} caractères."
+      },
+      "issuer": {
+        "required": "L’organisme délivrant est obligatoire.",
+        "maxlength": "Le nom de l’organisme ne peut pas dépasser {{length}} caractères."
+      },
+      "date": {
+        "required": "La date est obligatoire.",
+        "maxlength": "La date ne peut pas dépasser {{length}} caractères."
+      },
+      "skillName": {
+        "required": "Le nom de la compétence est obligatoire.",
+        "maxlength": "Le nom de la compétence ne peut pas dépasser {{length}} caractères."
+      },
+      "languageName": {
+        "required": "La langue est obligatoire.",
+        "maxlength": "Le nom de la langue ne peut pas dépasser {{length}} caractères."
+      },
+      "level": {
+        "required": "Le niveau est obligatoire.",
+        "maxlength": "Le niveau ne peut pas dépasser {{length}} caractères."
+      },
+      "name": {
+        "required": "Le nom est obligatoire.",
+        "maxlength": "Le nom ne peut pas dépasser {{length}} caractères."
+      },
+      "email": {
+        "required": "L’email est obligatoire.",
+        "email": "Veuillez entrer une adresse email valide.",
+        "maxlength": "L’email ne peut pas dépasser {{length}} caractères."
+      },
+      "phone": {
+        "required": "Le numéro de téléphone est obligatoire.",
+        "maxlength": "Le numéro de téléphone ne peut pas dépasser {{length}} caractères."
+      },
+      "address": {
+        "required": "L’adresse est obligatoire.",
+        "maxlength": "L’adresse ne peut pas dépasser {{length}} caractères."
+      },
+      "website": {
+        "pattern": "Veuillez entrer une URL valide (commençant par http ou https)."
+      }
+    },
+    "create": {
+      "success": {
+        "title": "Élément créé",
+        "message": "Le nouvel élément {type} a été ajouté avec succès."
+      },
+      "error": {
+        "title": "Échec de la création"
+      }
+    },
+    "update": {
+      "success": {
+        "title": "Élément mis à jour",
+        "message": "L’élément {type} a été mis à jour avec succès."
+      },
+      "error": {
+        "title": "Échec de la mise à jour"
+      }
+    },
+    "delete": {
+      "confirm": {
+        "title": "Confirmer la suppression",
+        "message": "Êtes-vous sûr de vouloir supprimer définitivement cet élément ? Cette action est irréversible."
+      },
+      "success": {
+        "title": "Élément supprimé",
+        "message": "L’élément sélectionné {type} a été supprimé."
+      },
+      "error": {
+        "title": "Échec de la suppression"
+      }
+    },
+    "error": {
+      "load": "Un problème est survenu lors du chargement du profil. Veuillez réessayer plus tard.",
+      "save": "Impossible d’enregistrer l’élément. Veuillez vérifier le formulaire et réessayer.",
+      "delete": "Impossible de supprimer l’élément. Veuillez réessayer."
+    }
+  }
+}

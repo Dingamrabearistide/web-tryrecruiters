@@ -1,0 +1,62 @@
+<div *transloco="let t; read: 'applications'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("list.back") }}
+  </button>
+
+  <div>
+    <div *ngIf="isLoading" class="mt-4">
+      <div class="w-full text-center h-full">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && hasError" class="w-full">
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </div>
+
+    <ng-container *ngIf="!isLoading && !hasError">
+      <div
+        *ngIf="statusUpdateError"
+        class="mb-4 rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700"
+      >
+        {{ statusUpdateError }}
+      </div>
+
+      <app-applications-details
+        [item]="item"
+        [element]="candidateDetails"
+        [canScheduleInterview]="canScheduleInterview"
+        [scheduleInterviewBlockedReason]="scheduleInterviewBlockedReason"
+        (edit)="handleEdit($event)"
+        (delete)="handleDelete($event)"
+        (updateStatus)="handleUpdateStatus($event)"
+        (viewItem)="handleViewItem($event)"
+        (downloadResume)="handleDownloadResume($event)"
+        (scheduleInterview)="handleScheduleInterview($event)"
+        (interviewCreated)="handleInterviewCreated()"
+      ></app-applications-details>
+
+      <ng-template #candidateDetails>
+        <app-candidates-details2
+          [item]="item.candidate"
+        ></app-candidates-details2>
+      </ng-template>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-6 mt-4">
+        <h3 class="text-base font-semibold text-gray-900 mb-2">
+          {{ t("history.title") }}
+        </h3>
+        <app-history-timeline
+          [items]="history"
+          [isLoading]="isLoadingHistory"
+          [emptyLabel]="t('history.empty')"
+          [loadingLabel]="t('history.loading')"
+        ></app-history-timeline>
+      </div>
+    </ng-container>
+  </div>
+</div>

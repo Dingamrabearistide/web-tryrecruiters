@@ -1,0 +1,89 @@
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { CustomModalUIDirectives } from 'src/app/@1hand/components/custom-modal/custom-modal.directive';
+import { ModalRef } from 'src/app/@1hand/components/custom-modal/custom-modal.service';
+
+@Component({
+  selector: 'app-display-items',
+  standalone: true,
+  imports: [CommonModule, CustomModalUIDirectives],
+  template: `
+    <div custom-modal-title>
+      <h2>{{ title }}</h2>
+    </div>
+
+    <div custom-modal-body>
+      <table class="items-table">
+        <tr *ngFor="let key of objectKeys(data)">
+          <td class="key-column">{{ formatKey(key) }}</td>
+          <td class="value-column">
+            <ng-container *ngIf="isArray(data[key]); else singleValue">
+              <ul>
+                <li *ngFor="let item of data[key]">
+                  {{ item || '(vide)' }}
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #singleValue>
+              {{ data[key] }}
+            </ng-template>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div custom-modal-actions>
+      <button class="app-primary" (click)="closeModal()">Fermer</button>
+    </div>
+  `,
+  styles: [
+    `
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+        vertical-align: top;
+      }
+
+      .key-column {
+        font-weight: bold;
+        width: 40%;
+      }
+
+      .value-column {
+        width: 60%;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1rem;
+        list-style: circle;
+      }
+    `,
+  ],
+})
+export class DisplayItemsComponent {
+  @Input() title: string = 'Détails';
+  @Input() data: Record<string, any> = {};
+  @Input() modalRef!: ModalRef;
+
+  closeModal(): void {
+    this.modalRef.close();
+  }
+
+  isArray(value: any): boolean {
+    return Array.isArray(value);
+  }
+
+  formatKey(key: string): string {
+    return key.replace(/([A-Z])/g, ' $1').trim();
+  }
+
+  objectKeys(obj: any): string[] {
+    return Object.keys(obj);
+  }
+}

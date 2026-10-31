@@ -1,0 +1,15 @@
+<app-generic-datatable
+  [items]="items"
+  [columns]="datatableColumns"
+  [isLoading]="false"
+  [hasError]="false"
+  [showCreateButton]="true"
+  emptyIcon="fas fa-building"
+  emptyTitle="Aucune entreprise trouvée"
+  emptySubtitle="Ajoutez votre première entreprise"
+  createLabel="Ajouter une entreprise"
+  (create)="handleCreate()"
+  (view)="handleView($event)"
+  (update)="handleUpdate($event)"
+  (delete)="handleDelete($event)"
+></app-generic-datatable>

@@ -1,0 +1,72 @@
+<div *transloco="let t" class="w-full mb-4">
+  <form class="flex flex-col gap-3" (ngSubmit)="onSearchSubmit()">
+
+    <!-- Single row: filter dropdowns + search + buttons -->
+    <div class="flex flex-col md:flex-row flex-wrap gap-3 items-end w-full">
+
+      <!-- Posted Date -->
+      <div class="flex flex-col w-full md:w-fit">
+        <label class="block text-sm font-medium text-gray-700 mb-2">{{ t("filters.postedDate") }}</label>
+        <div class="relative w-full md:max-w-[200px] min-w-[160px] h-[40px]">
+          <select [(ngModel)]="selectedDate" (change)="emitChange()" name="postedDate"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            <option value="">{{ t("filters.selectPostedDate") }}</option>
+            <option *ngFor="let d of dateOptions" [value]="d.value">{{ t(d.labelKey) }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- Experience Level -->
+      <div class="flex flex-col w-full md:w-fit">
+        <label class="block text-sm font-medium text-gray-700 mb-2">{{ t("filters.experienceLevel") }}</label>
+        <div class="relative w-full md:max-w-[200px] min-w-[160px] h-[40px]">
+          <select [(ngModel)]="selectedExperience" (change)="emitChange()" name="experience"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            <option value="">{{ t("filters.selectExperienceLevel") }}</option>
+            <option *ngFor="let e of experienceOptions" [value]="e.value">{{ t(e.labelKey) }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="flex flex-col w-full md:w-fit">
+        <label class="block text-sm font-medium text-gray-700 mb-2">{{ t("filters.location") }}</label>
+        <div class="relative w-full md:max-w-[200px] min-w-[160px] h-[40px]">
+          <select [(ngModel)]="selectedLocation" (change)="emitChange()" name="location"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            <option value="">{{ t("filters.selectLocation") }}</option>
+            <option *ngFor="let l of locationOptions" [value]="l.toLowerCase()">{{ l }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- Search input + action buttons -->
+      <div class="filter-actions-wrap">
+        <div class="relative flex-grow">
+          <input type="text" [(ngModel)]="searchQuery" name="search"
+            [placeholder]="t('home.search.jobPlaceholder')"
+            class="block h-10 w-full pl-10 pr-4 border border-gray-300 rounded-[5px] text-sm placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            autocomplete="off" />
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+            <i class="fas fa-search text-gray-400"></i>
+          </div>
+        </div>
+        <div class="filter-actions-buttons">
+          <button type="submit" class="btn-filter-search">
+            <i class="fas fa-search"></i>
+            {{ t("home.search.searchButton") }}
+          </button>
+          <button type="button" (click)="resetFilters()" class="btn-filter-reset">
+            <i class="fas fa-times"></i>
+            {{ t("filters.reset") }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+</div>

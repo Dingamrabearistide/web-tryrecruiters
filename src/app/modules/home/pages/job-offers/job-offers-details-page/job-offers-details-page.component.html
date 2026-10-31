@@ -1,0 +1,120 @@
+<!-- job-detail.component.html -->
+<div class="min-h-screen">
+  <div class="relative flex flex-col">
+    <div class="flex-1 flex flex-col">
+      <div class="flex flex-col w-full">
+        <!-- Added pt-16 to account for fixed navbar -->
+        <!-- Filter Section -->
+        <div class="bg-[url('/images/wallpaper.jpg')] bg-center bg-cover">
+          <div class="relative w-full h-full bg-black/30 py-6 px-4 sm:px-6">
+            <div class="app-container-inner mx-auto">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between"
+              >
+                <div class="flex items-center gap-3">
+                  <button
+                    (click)="goBack()"
+                    class="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition text-white"
+                    title="Retour"
+                  >
+                    <i class="fa-solid fa-arrow-left text-lg"></i>
+                  </button>
+                  <h2 class="text-2xl sm:text-3xl font-bold text-white">
+                    {{ "joboffers.jobDetails.title" | transloco }}
+                  </h2>
+                </div>
+                <div class="flex flex-wrap gap-1 justify-center sm:text-base">
+                  <a
+                    routerLink="/"
+                    class="text-gray-300 hover:text-white"
+                    routerlink="./index.html"
+                    >{{ "joboffers.jobDetails.home" | transloco }} /</a
+                  >
+                  <a
+                    routerLink="../"
+                    class="text-gray-300 hover:text-white"
+                    routerlink="./find_job.html"
+                    >{{ "joboffers.jobDetails.jobList" | transloco }} /</a
+                  >
+                  <p class="font-bold text-white">
+                    {{ "joboffers.jobDetails.jobDetail" | transloco }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full my-6 px-10 app-container-inner">
+          <div class="text-primary">
+            <app-loader *ngIf="isLoading"></app-loader>
+          </div>
+
+          <div *ngIf="!isLoading && hasError" class="w-full">
+            <app-generic-error
+              *ngIf="hasError"
+              [message]="errorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Section principale -->
+          <div
+            *ngIf="item && !isLoading && !hasError"
+            class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner"
+          >
+            <job-offers-detail
+              [item]="item"
+              [resumes]="resumes"
+              (onAddToFavorite)="addToFavorites()"
+            ></job-offers-detail>
+
+            <!-- Section similaires -->
+            <div class="py-4 px-4 sm:px-6 lg:px-0 my-8">
+              <div class="app-container-inner mx-auto">
+                <h2
+                  class="mb-4 text-start text-lg sm:text-xl md:text-2xl font-semibold text-gray-800"
+                >
+                  {{ "joboffers.jobDetails.moreOffers" | transloco }}
+                </h2>
+              </div>
+              <div class="w-full">
+                <app-job-offers-list
+                  [displayMode]="'list'"
+                  [items]="items"
+                  (onView)="handleView($event)"
+                  (onAddToFavorite)="onAddToFavorite($event)"
+                ></app-job-offers-list>
+              </div>
+              <!-- Bouton Afficher plus -->
+              <div
+                class="w-full flex justify-center mt-6"
+                *ngIf="hasMoreOffers"
+              >
+                <button
+                  (click)="loadMoreOffers()"
+                  [disabled]="isLoading"
+                  class="app-primary inline-flex items-center gap-2 px-6 py-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <i
+                    class="fa-solid fa-arrow-down text-xs"
+                    *ngIf="!isLoading"
+                  ></i>
+                  <div class="animate-spin" *ngIf="isLoading">
+                    <i class="fa-solid fa-spinner text-xs"></i>
+                  </div>
+                  <span>{{
+                    isLoading
+                      ? ("common.loading" | transloco)
+                      : ("common.showMore" | transloco)
+                  }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN END -->
+  </div>
+</div>

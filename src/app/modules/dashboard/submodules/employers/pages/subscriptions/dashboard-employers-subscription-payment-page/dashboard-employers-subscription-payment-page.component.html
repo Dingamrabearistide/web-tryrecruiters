@@ -1,0 +1,107 @@
+<!-- This page is superseded by the billings module (/billings/plans). Content preserved below. -->
+
+<!-- <div *transloco="let t; read: 'dashboardemployers'" class="max-w-7xl mx-auto px-4 py-8">
+  <div class="mb-8">
+    <button (click)="goBack()" class="app-primary inline-flex items-center gap-2 px-4 py-2 mb-4" [title]="t('subscriptions.backToPlans')">
+      <i class="fas fa-chevron-left"></i>
+      <span>{{ t('subscriptions.back') }}</span>
+    </button>
+    <h1 class="text-3xl font-bold text-primary">{{ t('subscriptions.payment.finalizeTitle') }}</h1>
+  </div>
+
+  <div *ngIf="loading" class="flex flex-col items-center justify-center py-16 text-center">
+    <div class="w-12 h-12 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+    <p class="mt-4 text-lg text-gray-600">{{ t('subscriptions.payment.loading') }}</p>
+  </div>
+
+  <div *ngIf="error && !loading" class="flex flex-col items-center justify-center py-16 text-center">
+    <i class="fas fa-exclamation-circle text-6xl text-red-500 mb-4"></i>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-2">{{ t('subscriptions.payment.errorTitle') }}</h2>
+    <p class="text-gray-600 mb-6">{{ error }}</p>
+    <button (click)="goBack()" class="app-primary">{{ t('subscriptions.backToPlans') }}</button>
+  </div>
+
+  <div *ngIf="!loading && !error && selectedPlan" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div>
+      <h2 class="text-2xl font-bold text-primary mb-4">{{ t('subscriptions.payment.summary') }}</h2>
+      <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
+        <div class="flex items-start justify-between mb-4">
+          <h3 class="text-xl font-bold text-gray-900">{{ getPlanTitle(selectedPlan) }}</h3>
+          <span class="px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full uppercase">{{ selectedPlan.type }}</span>
+        </div>
+        <div class="mb-4 pb-4 border-b border-gray-200">
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-bold text-gray-900">{{ selectedPlan.price | number : "1.2-2" }} {{ selectedPlan.currency }}</span>
+            <span class="text-gray-600" *ngIf="selectedPlan.durationDays">/ {{ selectedPlan.durationDays }} {{ t('subscriptions.payment.days') }}</span>
+            <span class="text-gray-600" *ngIf="!selectedPlan.durationDays">/ {{ t('subscriptions.payment.permanent') }}</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-6">{{ selectedPlan.description }}</p>
+        <div>
+          <h4 class="text-lg font-semibold text-gray-900 mb-3">{{ t('subscriptions.payment.includes') }}</h4>
+          <ul class="space-y-3">
+            <li *ngIf="selectedPlan.maxActiveJobOffers !== null" class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+              <span class="text-gray-700">{{ selectedPlan.maxActiveJobOffers === -1 ? t('subscriptions.payment.unlimitedActiveOffers') : selectedPlan.maxActiveJobOffers + " " + t('subscriptions.payment.activeOffers') }}</span>
+            </li>
+            <li *ngIf="selectedPlan.canAccessCVDatabase" class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+              <span class="text-gray-700">{{ t('subscriptions.payment.cvDatabaseAccess') }}</span>
+            </li>
+            <li *ngIf="selectedPlan.canExportData" class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+              <span class="text-gray-700">{{ t('subscriptions.payment.dataExport') }}</span>
+            </li>
+            <li *ngIf="selectedPlan.canUseAnalytics" class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+              <span class="text-gray-700">{{ t('subscriptions.payment.analytics') }}</span>
+            </li>
+            <li *ngIf="selectedPlan.canUsePrioritySupport" class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+              <span class="text-gray-700">{{ t('subscriptions.payment.prioritySupport') }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold text-primary mb-4">{{ t('subscriptions.payment.title') }}</h2>
+      <div *ngIf="selectedPlan.price === 0" class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <i class="fas fa-info-circle text-2xl text-blue-600 mt-1"></i>
+          <div>
+            <h3 class="text-lg font-semibold text-blue-900 mb-2">{{ t('subscriptions.payment.freePlan') }}</h3>
+            <p class="text-blue-700">{{ t('subscriptions.payment.freePlanActivating') }}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedPlan.price > 0" class="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
+        <div id="paypal-button-container" class="mb-4"></div>
+        <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+          <i class="fas fa-lock text-gray-500 mt-0.5"></i>
+          <p class="text-sm text-gray-600">{{ t('subscriptions.payment.paypalSecure') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="paymentSuccessMessage" class="fixed top-4 right-4 z-50 flex items-center gap-3 px-6 py-4 bg-green-500 text-white rounded-lg shadow-xl">
+    <i class="fas fa-check-circle text-2xl"></i>
+    <p class="font-medium">{{ paymentSuccessMessage }}</p>
+  </div>
+
+  <div *ngIf="paymentErrorMessage" class="fixed top-4 right-4 z-50 flex items-center gap-3 px-6 py-4 bg-red-500 text-white rounded-lg shadow-xl">
+    <i class="fas fa-times-circle text-2xl"></i>
+    <p class="font-medium">{{ paymentErrorMessage }}</p>
+  </div>
+
+  <div *ngIf="paymentProcessing" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-xl p-8 shadow-2xl">
+      <div class="flex flex-col items-center gap-4">
+        <div class="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+        <p class="text-lg text-gray-700 font-medium">{{ t('subscriptions.payment.processing') }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->

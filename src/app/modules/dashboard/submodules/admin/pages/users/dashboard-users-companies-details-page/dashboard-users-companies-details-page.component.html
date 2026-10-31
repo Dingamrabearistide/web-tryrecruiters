@@ -1,0 +1,261 @@
+<div *transloco="let t; read: 'users'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("common.previous") }}
+  </button>
+
+  <div *ngIf="isLoading" class="grid place-items-center h-[400px]">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="hasError" class="p-4">
+    <div
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"
+    >
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && !hasError && item" class="space-y-6">
+    <!-- User Details -->
+    <app-users-detail
+      [item]="item"
+      [displayActions]="true"
+      (onEdit)="handleEdit()"
+      (onDelete)="handleDelete()"
+      (onActivate)="handleActivate()"
+      (onDeactivate)="handleDeactivate()"
+    ></app-users-detail>
+
+    <!-- Role-based Data Display -->
+    <div class="mt-8">
+      <!-- Companies Section (for RECRUITER and ADMIN) -->
+      <div
+        *ngIf="item.role === UserRole.RECRUITER || item.role === UserRole.ADMIN"
+        class="mb-8"
+      >
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("companies.title") }}
+            </h3>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="companiesLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="!companiesLoading && companiesHasError" class="w-full">
+            <app-generic-error
+              *ngIf="companiesHasError"
+              [message]="companiesErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Data State -->
+          <div *ngIf="!companiesLoading && !companiesHasError">
+            <div *ngIf="userCompanies.length > 0; else noCompanies">
+              <app-companies-datatable
+                [items]="userCompanies"
+                [isLoading]="false"
+                [hasError]="false"
+                (view)="navigateToCompanyDetail($event)"
+              ></app-companies-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="companiesTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="companiesPagination.page"
+                  [totalPages]="companiesTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onCompaniesPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+
+            <ng-template #noCompanies>
+              <div class="text-center py-8 text-gray-500">
+                {{ t("companies.noData") }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Offers Section (for RECRUITER and ADMIN) -->
+      <div
+        *ngIf="item.role === UserRole.RECRUITER || item.role === UserRole.ADMIN"
+        class="mb-8"
+      >
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("jobOffers.title") }}
+            </h3>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="jobOffersLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="!jobOffersLoading && jobOffersHasError" class="w-full">
+            <app-generic-error
+              *ngIf="jobOffersHasError"
+              [message]="jobOffersErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Data State -->
+          <div *ngIf="!jobOffersLoading && !jobOffersHasError">
+            <div *ngIf="userJobOffers.length > 0; else noJobOffers">
+              <app-job-offers-datatable
+                [items]="userJobOffers"
+                [isLoading]="false"
+                [hasError]="false"
+                (onView)="navigateToJobOfferDetail($event)"
+              ></app-job-offers-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="jobOffersTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="jobOffersPagination.page"
+                  [totalPages]="jobOffersTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onJobOffersPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+
+            <ng-template #noJobOffers>
+              <div class="text-center py-8 text-gray-500">
+                {{ t("jobOffers.noData") }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interviews Section (for all roles) -->
+      <div class="mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("interviews.title") }}
+            </h3>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="interviewsLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="!interviewsLoading && interviewsHasError" class="w-full">
+            <app-generic-error
+              *ngIf="interviewsHasError"
+              [message]="interviewsErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Data State -->
+          <div *ngIf="!interviewsLoading && !interviewsHasError">
+            <div *ngIf="userInterviews.length > 0; else noInterviews">
+              <app-interviews-datatable
+                [items]="userInterviews"
+                [isLoading]="false"
+                [hasError]="false"
+                (onView)="navigateToInterviewDetail($event)"
+              ></app-interviews-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="interviewsTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="interviewsPagination.page"
+                  [totalPages]="interviewsTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onInterviewsPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+
+            <ng-template #noInterviews>
+              <div class="text-center py-8 text-gray-500">
+                {{ t("interviews.noData") }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications Section (for CANDIDATE and ADMIN) -->
+      <div
+        *ngIf="item.role === UserRole.CANDIDATE || item.role === UserRole.ADMIN"
+        class="mb-8"
+      >
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("applications.title") }}
+            </h3>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="applicationsLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- Error State -->
+          <div
+            *ngIf="!applicationsLoading && applicationsHasError"
+            class="w-full"
+          >
+            <app-generic-error
+              *ngIf="applicationsHasError"
+              [message]="applicationsErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Data State -->
+          <div *ngIf="!applicationsLoading && !applicationsHasError">
+            <div *ngIf="userApplications.length > 0; else noApplications">
+              <app-applications-datatable
+                [items]="userApplications"
+                [isLoading]="false"
+                [hasError]="false"
+                (view)="navigateToApplicationDetail($event)"
+              ></app-applications-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="applicationsTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="applicationsPagination.page"
+                  [totalPages]="applicationsTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onApplicationsPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+
+            <ng-template #noApplications>
+              <div class="text-center py-8 text-gray-500">
+                {{ t("applications.noData") }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

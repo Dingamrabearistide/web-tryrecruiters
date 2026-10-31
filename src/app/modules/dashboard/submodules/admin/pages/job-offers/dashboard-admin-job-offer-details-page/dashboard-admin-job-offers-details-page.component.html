@@ -1,0 +1,111 @@
+<div *transloco="let t; read: 'joboffers'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("list.back") }}
+  </button>
+
+  <div *ngIf="isLoading" class="grid place-items-center h-[400px]">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <!-- Main Job Offer Details -->
+  <div *ngIf="item && !isLoading && !hasError">
+    <job-offers-detail
+      [item]="item"
+    ></job-offers-detail>
+  </div>
+
+  <!-- Related Data Sections -->
+  <div *ngIf="item && !isLoading && !hasError" class="mt-8 space-y-8">
+    <!-- Applications Section -->
+    <div class="bg-white rounded-lg">
+      <h3
+        class="text-lg font-semibold text-gray-900 mb-4"
+        *transloco="let t; read: 'applications'"
+      >
+        {{ t("title") }}
+      </h3>
+
+      <!-- Applications Loading State -->
+      <div *ngIf="applicationsLoading" class="flex justify-center py-8">
+        <app-loader></app-loader>
+      </div>
+
+      <!-- Applications Error State -->
+      <div *ngIf="applicationsHasError && !applicationsLoading" class="py-8">
+        <!-- (retry)="loadJobOfferApplications(item.id)" -->
+        <app-generic-error [message]="applicationsErrorMessage">
+        </app-generic-error>
+      </div>
+
+      <!-- Applications Data -->
+      <div *ngIf="!applicationsLoading && !applicationsHasError">
+        <div>
+          <app-applications-datatable
+            [items]="jobOfferApplications"
+            (view)="navigateToApplicationDetail($event)"
+          >
+          </app-applications-datatable>
+
+          <!-- Applications Pagination -->
+          <div *ngIf="applicationsTotalPages > 1" class="mt-4">
+            <app-generic-paginator
+              [currentPage]="applicationsPagination.page"
+              [totalPages]="applicationsTotalPages"
+              (pageChange)="onApplicationsPageChange($event)"
+            >
+            </app-generic-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interviews Section -->
+    <div class="bg-white rounded-lg">
+      <h3
+        class="text-lg font-semibold text-gray-900 mb-4"
+        *transloco="let t; read: 'interviews'"
+      >
+        {{ t("title") }}
+      </h3>
+
+      <!-- Interviews Loading State -->
+      <div *ngIf="interviewsLoading" class="flex justify-center py-8">
+        <app-loader></app-loader>
+      </div>
+
+      <!-- Interviews Error State -->
+      <div *ngIf="interviewsHasError && !interviewsLoading" class="py-8">
+        <!-- (retry)="loadJobOfferInterviews(item.id)" -->
+        <app-generic-error [message]="interviewsErrorMessage">
+        </app-generic-error>
+      </div>
+
+      <!-- Interviews Data -->
+      <div *ngIf="!interviewsLoading && !interviewsHasError">
+        <div>
+          <app-interviews-datatable
+            [items]="jobOfferInterviews"
+            (view)="navigateToInterviewDetail($event)"
+          >
+          </app-interviews-datatable>
+
+          <!-- Interviews Pagination -->
+          <div *ngIf="interviewsTotalPages > 1" class="mt-4">
+            <app-generic-paginator
+              [currentPage]="interviewsPagination.page"
+              [totalPages]="interviewsTotalPages"
+              (pageChange)="onInterviewsPageChange($event)"
+            >
+            </app-generic-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

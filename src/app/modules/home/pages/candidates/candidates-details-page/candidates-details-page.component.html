@@ -1,0 +1,348 @@
+<!-- candidate-details-page.component.html -->
+<div *transloco="let t; read: 'candidateDetails'" class="min-h-screen bg-mist">
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="mx-auto max-w-[1160px] px-5 py-10 lg:px-8">
+    <div class="space-y-6">
+      <div class="h-64 animate-pulse rounded-[30px] bg-slate-200"></div>
+      <div class="grid gap-6 lg:grid-cols-[1fr_340px]">
+        <div class="min-w-0 space-y-6">
+          <div class="h-48 animate-pulse rounded-[30px] bg-slate-200"></div>
+          <div class="h-48 animate-pulse rounded-[30px] bg-slate-200"></div>
+        </div>
+        <div class="h-80 animate-pulse rounded-[30px] bg-slate-200"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="!isLoading && hasError" class="mx-auto max-w-[1160px] px-5 py-10 lg:px-8">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <!-- Content -->
+  <ng-container *ngIf="!isLoading && !hasError && candidate">
+    <!-- Hero section -->
+    <section class="hero-gradient relative overflow-hidden text-white">
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative mx-auto max-w-[1160px] px-5 py-10 lg:px-8 lg:py-14">
+        <!-- Back button -->
+        <a routerLink="/candidates" class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/85 transition hover:bg-white hover:text-navy">
+          <i class="fa-solid fa-arrow-left"></i> {{ t('backToCandidates') }}
+        </a>
+
+        <!-- Hero grid: profile + stats card -->
+        <div class="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-end">
+          <!-- Profile photo + info -->
+          <div class="flex min-w-0 flex-col gap-6 md:flex-row md:items-end">
+            <!-- Photo with verified badge -->
+            <div class="relative size-32 shrink-0 overflow-hidden rounded-[36px] bg-white p-1 shadow-soft">
+              <img [src]="candidate.photo || '/images/no-avatar.svg'" [alt]="candidate.firstName + ' ' + candidate.lastName" class="size-full rounded-[30px] object-cover" (error)="onImageError($event)" />
+              <span *ngIf="candidate.experiences && candidate.experiences.length > 0" class="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full bg-emerald-500 text-white ring-4 ring-white">
+                <i class="fa-solid fa-check text-sm"></i>
+              </span>
+            </div>
+
+            <!-- Info -->
+            <div>
+              <div class="mb-4 flex flex-wrap gap-2">
+                <span *ngIf="candidate.experiences && candidate.experiences.length > 0" class="rounded-full bg-emerald-400/20 px-3 py-1.5 text-xs font-black text-emerald-200">
+                  <i class="fa-solid fa-circle-check mr-1"></i>{{ t('verifiedProfile') }}
+                </span>
+                <span class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white/90">
+                  <i class="fa-solid fa-calendar-check mr-1"></i>{{ t('openNow') }}
+                </span>
+                <span *ngIf="candidate.city" class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white/90">
+                  <i class="fa-solid fa-location-dot mr-1"></i>{{ candidate.city }}<span *ngIf="candidate.region">, {{ candidate.region }}</span>
+                </span>
+              </div>
+              <h1 class="font-display text-5xl font-black leading-none tracking-tight md:text-7xl">
+                {{ candidate.firstName }} {{ candidate.lastName }}
+              </h1>
+              <p class="mt-4 max-w-2xl text-lg font-semibold leading-8 text-white/85">
+                {{ candidate.profession || t('notSpecified') }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Stats card -->
+          <div class="rounded-[30px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
+            <div class="flex gap-3">
+              <div class="flex flex-1 flex-col items-center justify-center rounded-2xl bg-white py-4 text-center text-slate-900">
+                <p class="text-2xl font-black text-navy">{{ getExperienceYears() }}</p>
+                <p class="mt-1 px-1 text-[11px] font-bold leading-tight text-slate-500">{{ t('yearsExp') }}</p>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-center rounded-2xl bg-white py-4 text-center text-slate-900">
+                <p class="text-2xl font-black text-navy">{{ candidate.skills?.length || 0 }}</p>
+                <p class="mt-1 px-1 text-[11px] font-bold leading-tight text-slate-500">{{ t('skills') }}</p>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-center rounded-2xl bg-white py-4 text-center text-slate-900">
+                <p class="text-2xl font-black text-navy">{{ candidate.languages?.length || 0 }}</p>
+                <p class="mt-1 px-1 text-[11px] font-bold leading-tight text-slate-500">{{ t('languages') }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main content: 2-column layout -->
+    <main class="mx-auto max-w-[1160px] px-5 py-8 lg:px-8">
+      <div class="grid gap-7 lg:grid-cols-[1fr_340px] lg:items-start">
+        <!-- Left: tabs + content sections -->
+        <div class="min-w-0 space-y-7">
+          <!-- Mobile tabs (hidden on lg) -->
+          <section class="rounded-[26px] border border-line bg-white p-2 shadow-card lg:hidden">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-4">
+              <button type="button" *ngFor="let tab of tabs" (click)="setActiveTab(tab.id)" [ngClass]="activeTab === tab.id ? 'flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-blue px-3 py-3 text-xs font-black text-white sm:text-sm' : 'flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl px-3 py-3 text-xs font-black text-slate-600 hover:bg-skysoft hover:text-blue sm:text-sm'">
+                <i [class]="tab.icon + ' text-xs'"></i><span>{{ t(tab.label) }}</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Overview section -->
+          <section *ngIf="activeTab === 'overview' || isDesktop" class="animate-fadeUp overflow-hidden rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8">
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">{{ t('candidateSummary') }}</p>
+            <h2 class="mt-2 text-3xl font-black text-navy">{{ t('overviewTitle') }}</h2>
+            <p class="mt-5 break-all text-sm font-medium leading-7 text-slate-600">{{ candidate.bio || t('noBiography') }}</p>
+
+            <!-- Summary cards (3) -->
+            <div class="mt-7 grid gap-4 md:grid-cols-3">
+              <div class="rounded-2xl bg-skysoft p-5">
+                <span class="grid size-11 place-items-center rounded-xl bg-blue text-white"><i class="fa-solid fa-briefcase"></i></span>
+                <h3 class="mt-4 font-black text-navy">{{ t('experienceLabel') }}</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">{{ getExperienceYears() }} {{ t('yearsExp') }}</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-5">
+                <span class="grid size-11 place-items-center rounded-xl bg-coral text-white"><i class="fa-solid fa-graduation-cap"></i></span>
+                <h3 class="mt-4 font-black text-navy">{{ t('educationLabel') }}</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">{{ candidate.educations?.length || 0 }} {{ t('diplomas') }}</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-5">
+                <span class="grid size-11 place-items-center rounded-xl bg-ink text-white"><i class="fa-solid fa-code"></i></span>
+                <h3 class="mt-4 font-black text-navy">{{ t('skillsLabel') }}</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">{{ candidate.skills?.length || 0 }} {{ t('technicalSkills') }}</p>
+              </div>
+            </div>
+
+            <!-- Education detail section -->
+            <div *ngIf="candidate.educations && candidate.educations.length > 0" class="mt-7">
+              <h3 class="text-xl font-black text-navy">{{ t('education') }}</h3>
+              <div class="mt-4 space-y-4">
+                <div *ngFor="let edu of candidate.educations" class="rounded-2xl border border-line p-5">
+                  <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h4 class="text-lg font-black text-navy">{{ edu.degree }}</h4>
+                      <p class="mt-1 text-sm font-bold text-slate-600">{{ edu.schoolName }}<span *ngIf="edu.fieldOfStudy"> · {{ edu.fieldOfStudy }}</span></p>
+                    </div>
+                    <span class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue whitespace-nowrap">
+                      {{ edu.startDate | date:'MMM yyyy' }} — {{ edu.endDate ? (edu.endDate | date:'MMM yyyy') : t('present') }}
+                    </span>
+                  </div>
+                  <p *ngIf="edu.description" class="mt-4 text-sm font-medium leading-7 text-slate-600">{{ edu.description }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Experience section -->
+          <section *ngIf="activeTab === 'experience' || isDesktop" [ngClass]="{'hidden': activeTab !== 'experience' && !isDesktop}" class="animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8">
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">{{ t('workExperience') }}</p>
+            <h2 class="mt-2 text-3xl font-black text-navy">{{ t('professionalTimeline') }}</h2>
+
+            <div *ngIf="candidate.experiences && candidate.experiences.length > 0; else noExperience" class="mt-7 space-y-5">
+              <article *ngFor="let exp of candidate.experiences" class="rounded-2xl border border-line p-5">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 class="text-lg font-black text-navy">{{ exp.title }}</h3>
+                    <p class="mt-1 text-sm font-bold text-slate-600">{{ exp.company }}<span *ngIf="exp.location"> · {{ exp.location }}</span></p>
+                  </div>
+                  <span class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue whitespace-nowrap">
+                    {{ exp.startDate | date:'MMM yyyy' }} — {{ exp.endDate ? (exp.endDate | date:'MMM yyyy') : t('present') }}
+                  </span>
+                </div>
+                <p *ngIf="exp.description" class="mt-4 text-sm font-medium leading-7 text-slate-600">{{ exp.description }}</p>
+              </article>
+            </div>
+            <ng-template #noExperience>
+              <p class="mt-7 text-center text-slate-500">{{ t('noExperience') }}</p>
+            </ng-template>
+          </section>
+
+          <!-- Skills section -->
+          <section *ngIf="activeTab === 'skills' || isDesktop" [ngClass]="{'hidden': activeTab !== 'skills' && !isDesktop}" class="animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8">
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">{{ t('skillsExpertise') }}</p>
+            <h2 class="mt-2 text-3xl font-black text-navy">{{ t('technicalStrengths') }}</h2>
+
+            <!-- Skill bars -->
+            <div *ngIf="candidate.skills && candidate.skills.length > 0; else noSkills" class="mt-7 grid gap-4 md:grid-cols-2">
+              <div *ngFor="let skill of candidate.skills" class="rounded-2xl border border-line p-5">
+                <div class="mb-3 flex items-center justify-between">
+                  <span class="font-black text-navy">{{ skill.name }}</span>
+                  <span class="text-xs font-black text-blue">{{ getSkillLevelLabel(skill.level) }}</span>
+                </div>
+                <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-blue" [style.width.%]="getSkillLevelPercent(skill.level)"></div>
+                </div>
+              </div>
+            </div>
+            <ng-template #noSkills>
+              <p class="mt-7 text-center text-slate-500">{{ t('noSkills') }}</p>
+            </ng-template>
+
+            <!-- Tools section -->
+            <div *ngIf="candidate.tools && candidate.tools.length > 0" class="mt-7">
+              <h3 class="text-xl font-black text-navy">{{ t('tools') }}</h3>
+              <div class="mt-4 grid gap-4 md:grid-cols-2">
+                <div *ngFor="let tool of candidate.tools" class="rounded-2xl border border-line p-5">
+                  <div class="mb-3 flex items-center justify-between">
+                    <span class="font-black text-navy">{{ tool.name }}</span>
+                    <span class="text-xs font-black text-blue">{{ getSkillLevelLabel(tool.level) }}</span>
+                  </div>
+                  <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                    <div class="h-full rounded-full bg-blue" [style.width.%]="getSkillLevelPercent(tool.level)"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages section -->
+            <div *ngIf="candidate.languages && candidate.languages.length > 0" class="mt-7">
+              <h3 class="text-xl font-black text-navy">{{ t('languages') }}</h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span *ngFor="let lang of candidate.languages" class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue">
+                  {{ lang.language }} · {{ getLanguageLevelLabel(lang.level) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Tags cloud -->
+            <div *ngIf="candidate.skills && candidate.skills.length > 0" class="mt-6 flex flex-wrap gap-2">
+              <span *ngFor="let skill of candidate.skills" class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue">{{ skill.name }}</span>
+            </div>
+          </section>
+
+          <!-- Portfolio / Resume section -->
+          <section *ngIf="activeTab === 'portfolio' || isDesktop" [ngClass]="{'hidden': activeTab !== 'portfolio' && !isDesktop}" class="animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8">
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">{{ t('portfolio') }}</p>
+            <h2 class="mt-2 text-3xl font-black text-navy">{{ t('resumeAndDocuments') }}</h2>
+
+            <div *ngIf="candidate.resumes && candidate.resumes.length > 0; else noResume" class="mt-7 grid gap-4 md:grid-cols-2">
+              <article *ngFor="let resume of candidate.resumes" class="rounded-2xl border border-line p-5 transition hover:border-blue hover:shadow-card">
+                <span class="grid size-12 place-items-center rounded-2xl bg-skysoft text-blue"><i class="fa-solid fa-file-arrow-down"></i></span>
+                <h3 class="mt-4 font-black text-navy">{{ resume.name }}</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">{{ t('pdf') }}</p>
+                <a [href]="resume.url" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-black text-blue hover:text-blue2">
+                  {{ t('download') }} <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </article>
+            </div>
+            <ng-template #noResume>
+              <p class="mt-7 text-center text-slate-500">{{ t('noResume') }}</p>
+            </ng-template>
+          </section>
+        </div>
+
+        <!-- Right sidebar -->
+        <aside class="space-y-6 lg:sticky lg:top-28">
+          <!-- Profile card -->
+          <section class="rounded-[30px] border border-line bg-white p-6 text-center shadow-card">
+            <!-- Photo with initials fallback -->
+            <div class="mx-auto size-20 overflow-hidden rounded-2xl bg-skysoft">
+              <ng-container *ngIf="candidate.photo && !sidebarImageError; else sidebarInitials">
+                <img
+                  [src]="candidate.photo"
+                  [alt]="candidate.firstName + ' ' + candidate.lastName"
+                  class="size-full object-cover"
+                  (error)="sidebarImageError = true"
+                />
+              </ng-container>
+              <ng-template #sidebarInitials>
+                <div class="flex size-full items-center justify-center text-2xl font-black text-blue">
+                  {{ getCandidateInitials() }}
+                </div>
+              </ng-template>
+            </div>
+            <h2 class="mt-5 text-2xl font-black text-navy">{{ candidate.firstName }} {{ candidate.lastName }}</h2>
+            <p class="mt-1 text-sm font-bold text-slate-500">{{ candidate.profession || t('notSpecified') }}</p>
+            <div class="mt-4 flex justify-center gap-2">
+              <span *ngIf="candidate.experiences && candidate.experiences.length > 0" class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600">
+                <i class="fa-solid fa-circle-check mr-1"></i>{{ t('verified') }}
+              </span>
+              <span *ngIf="candidate.city" class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue">
+                {{ candidate.city }}
+              </span>
+            </div>
+            <div class="mt-6 grid gap-3">
+              <a *ngIf="candidate.resumes && candidate.resumes.length > 0" [href]="candidate.resumes[0].url" target="_blank" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue">
+                <i class="fa-solid fa-file-arrow-down"></i>{{ t('downloadCV') }}
+              </a>
+            </div>
+          </section>
+
+          <!-- Profile information -->
+          <section class="rounded-[30px] border border-line bg-white p-6 shadow-card">
+            <h2 class="text-xl font-black text-navy">{{ t('profileInformation') }}</h2>
+            <div class="mt-5 space-y-4 text-sm font-bold text-slate-600">
+              <p *ngIf="candidate.profession" class="flex items-center gap-3">
+                <span class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"><i class="fa-solid fa-briefcase"></i></span>
+                {{ candidate.profession }}
+              </p>
+              <p *ngIf="candidate.city" class="flex items-center gap-3">
+                <span class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"><i class="fa-solid fa-location-dot"></i></span>
+                {{ candidate.city }}<span *ngIf="candidate.region">, {{ candidate.region }}</span>
+              </p>
+              <p *ngIf="candidate.nationality" class="flex items-center gap-3">
+                <span class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"><i class="fa-solid fa-flag"></i></span>
+                {{ candidate.nationality }}
+              </p>
+              <p class="flex items-center gap-3">
+                <span class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"><i class="fa-solid fa-clock"></i></span>
+                {{ t('activeRecently') }}
+              </p>
+            </div>
+          </section>
+
+          <!-- Contact -->
+          <section class="rounded-[30px] border border-line bg-white p-6 shadow-card">
+            <h2 class="text-xl font-black text-navy">{{ t('contact') }}</h2>
+            <div class="mt-5 space-y-3 text-sm font-bold text-slate-600">
+              <p *ngIf="candidate.email">
+                <i class="fa-solid fa-envelope mr-2 text-blue"></i>{{ candidate.email }}
+              </p>
+              <p *ngIf="candidate.phoneNumber">
+                <i class="fa-solid fa-phone mr-2 text-blue"></i>{{ candidate.phoneNumber }}
+              </p>
+              <p *ngIf="!candidate.email && !candidate.phoneNumber" class="font-medium text-slate-400">
+                {{ t('notSpecified') }}
+              </p>
+            </div>
+          </section>
+
+          <!-- Top skills -->
+          <section *ngIf="candidate.skills && candidate.skills.length > 0" class="rounded-[30px] border border-line bg-white p-6 shadow-card">
+            <h2 class="text-xl font-black text-navy">{{ t('topSkills') }}</h2>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span *ngFor="let skill of candidate.skills" class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue">{{ skill.name }}</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </ng-container>
+
+  <!-- Call form template -->
+  <ng-template #callFormTemplate let-formGroup>
+    <form [formGroup]="formGroup">
+      <div class="flex flex-col gap-5">
+        <div>
+          <label class="block text-gray-800 font-bold mb-2" for="email">{{ t('email') }}</label>
+          <input class="appearance-none border border-gray-100 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" [placeholder]="t('email')" formControlName="email" required />
+        </div>
+        <div>
+          <label class="block text-gray-800 font-bold mb-2" for="meetLink">{{ t('meetLink') }}</label>
+          <input class="appearance-none border border-gray-100 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" id="meetLink" type="text" [placeholder]="t('meetLink')" formControlName="meetLink" required />
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

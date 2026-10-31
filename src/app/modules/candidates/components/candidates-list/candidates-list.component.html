@@ -1,0 +1,218 @@
+<div
+  class="grid gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2"
+  *transloco="let t; read: 'candidates'"
+>
+  <ng-container *ngFor="let item of items">
+    <app-candidates-list-item
+      [item]="item"
+      (onView)="view($event)"
+      (onCall)="call($event)"
+    ></app-candidates-list-item>
+  </ng-container>
+</div>
+
+<ng-template #itemDetails>
+  <div
+    class="p-6 bg-white rounded-xl shadow-md gap-8"
+    *transloco="let t; read: 'candidates'"
+  >
+    <!-- Section Informations Générales -->
+    <section>
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.generalInformation") }}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p>
+          <strong>{{ t("fields.profession") }} :</strong>
+          {{ candidate.profession || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.nationality") }} :</strong>
+          {{ candidate.nationality || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.placeOfBirth") }} :</strong>
+          {{ candidate.placeOfBirth || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.bio") }} :</strong> {{ candidate.bio || "—" }}
+        </p>
+      </div>
+    </section>
+
+    <!-- Section Compte -->
+    <section *ngIf="candidate">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.account") }}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p>
+          <strong>{{ t("candidateList.name") }} :</strong>
+          {{ candidate.firstName }}
+          {{ candidate.lastName }}
+        </p>
+        <p>
+          <strong>{{ t("fields.email") }} :</strong>
+          {{ candidate.email }}
+        </p>
+        <p>
+          <strong>{{ t("fields.phoneNumber") }} :</strong>
+          {{ candidate.phoneNumber || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.gender") }} :</strong>
+          {{ candidate.gender || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.city") }} :</strong>
+          {{ candidate.city || "—" }}
+        </p>
+        <p>
+          <strong>{{ t("fields.region") }} :</strong>
+          {{ candidate.region || "—" }}
+        </p>
+      </div>
+    </section>
+
+    <!-- Section Expériences -->
+    <section *ngIf="candidate?.experiences?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateDetails.workExperience") }}
+      </h2>
+      <div
+        *ngFor="let exp of candidate?.experiences"
+        class="border p-4 rounded-lg mb-3"
+      >
+        <p>
+          <strong>{{ exp.title }}</strong> {{ t("candidateList.at") }}
+          {{ exp.company }}
+        </p>
+        <p class="text-sm text-gray-600">
+          {{ exp.startDate }} -
+          {{ exp.endDate || t("candidateDetails.present") }}
+        </p>
+        <p>{{ exp.location || "" }}</p>
+        <p class="text-gray-700 mt-2">{{ exp.description || "" }}</p>
+      </div>
+    </section>
+
+    <!-- Section Formations -->
+    <section *ngIf="candidate?.educations?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateDetails.education") }}
+      </h2>
+      <div
+        *ngFor="let edu of candidate?.educations"
+        class="border p-4 rounded-lg mb-3"
+      >
+        <p>
+          <strong>{{ edu.degree }}</strong> {{ t("candidateList.in") }}
+          {{ edu.fieldOfStudy }}
+        </p>
+        <p>{{ edu.schoolName }}</p>
+        <p class="text-sm text-gray-600">
+          {{ edu.startDate }} -
+          {{ edu.endDate || t("candidateDetails.present") }}
+        </p>
+        <p class="text-gray-700 mt-2">{{ edu.description || "" }}</p>
+      </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section *ngIf="candidate?.skills?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateDetails.skills") }}
+      </h2>
+      <ul class="list-disc pl-5 gap-1">
+        <li *ngFor="let skill of candidate?.skills">
+          {{ skill.name }} <span *ngIf="skill.level">({{ skill.level }})</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section Langues -->
+    <section *ngIf="candidate?.languages?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.languages") }}
+      </h2>
+      <ul class="list-disc pl-5 gap-1">
+        <li *ngFor="let lang of candidate?.languages">
+          {{ lang.language }} - {{ lang.level }}
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section Outils -->
+    <section *ngIf="candidate?.tools?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.tools") }}
+      </h2>
+      <ul class="list-disc pl-5 gap-1">
+        <li *ngFor="let tool of candidate?.tools">
+          {{ tool.name }} <span *ngIf="tool.level">({{ tool.level }})</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section CV -->
+    <section *ngIf="candidate?.resumes?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.resumes") }}
+      </h2>
+      <ul class="gap-2">
+        <li
+          *ngFor="let resume of candidate?.resumes"
+          class="flex items-center justify-between"
+        >
+          <span
+            >{{ resume.name }}
+            <span *ngIf="resume.isDefault" class="text-sm text-green-600"
+              >({{ t("candidateList.default") }})</span
+            ></span
+          >
+          <a
+            [href]="resume.url"
+            target="_blank"
+            class="text-blue-600 hover:underline text-sm"
+          >
+            {{ t("candidateList.download") }}
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section Candidatures -->
+    <section *ngIf="candidate?.applications?.length">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">
+        {{ t("candidateList.applications") }}
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm border">
+          <thead class="bg-gray-100 text-left">
+            <tr>
+              <th class="p-2 border">{{ t("candidateList.message") }}</th>
+              <th class="p-2 border">{{ t("fields.status") }}</th>
+              <th class="p-2 border">
+                {{ t("candidateList.submissionDate") }}
+              </th>
+              <th class="p-2 border">{{ t("candidateList.offer") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let app of candidate?.applications"
+              class="hover:bg-gray-50"
+            >
+              <td class="p-2 border">{{ app.message || "—" }}</td>
+              <td class="p-2 border">{{ app.status }}</td>
+              <td class="p-2 border">
+                {{ app.submittedAt | date : "mediumDate" }}
+              </td>
+              <td class="p-2 border">{{ app.jobOfferId }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</ng-template>

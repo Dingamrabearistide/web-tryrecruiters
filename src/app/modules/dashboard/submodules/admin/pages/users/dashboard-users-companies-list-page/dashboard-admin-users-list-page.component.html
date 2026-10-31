@@ -1,0 +1,168 @@
+<div *transloco="let t; read: 'users'" class="flex flex-col w-full">
+  <!-- Header Section -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("list.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 pb-8">
+    <!-- Filters Section -->
+    <div class="flex flex-wrap gap-3 items-end mb-7 w-full">
+
+      <!-- Start Date -->
+      <div class="flex flex-col min-w-[150px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="startDate">
+          <i class="fas fa-calendar-alt text-gray-500"></i>
+          {{ t("form.startDate") }}
+        </label>
+        <input (change)="onSearch()" [(ngModel)]="startDate"
+          class="h-[40px] border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          id="startDate" name="startDate" type="date" />
+      </div>
+
+      <!-- End Date -->
+      <div class="flex flex-col min-w-[150px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="endDate">
+          <i class="fas fa-calendar-alt text-gray-500"></i>
+          {{ t("form.endDate") }}
+        </label>
+        <input (change)="onSearch()" [(ngModel)]="endDate"
+          class="h-[40px] border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          id="endDate" name="endDate" type="date" />
+      </div>
+
+      <!-- User Role -->
+      <div class="flex flex-col min-w-[140px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="userRole">
+          <i class="fas fa-user-tag text-gray-500"></i>
+          {{ t("form.userRole") }}
+        </label>
+        <div class="relative h-[40px]">
+          <select (change)="onSearch()" [(ngModel)]="userRole"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+            id="userRole">
+            <option value="">{{ t("form.allRoles") }}</option>
+            <option value="RECRUITER">{{ t("roles.RECRUITER") }}</option>
+            <option value="CANDIDATE">{{ t("roles.CANDIDATE") }}</option>
+            <option value="ADMIN">{{ t("roles.ADMIN") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- User Status -->
+      <div class="flex flex-col min-w-[140px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="userStatus">
+          <i class="fas fa-toggle-on text-gray-500"></i>
+          {{ t("form.userStatus") }}
+        </label>
+        <div class="relative h-[40px]">
+          <select (change)="onSearch()" [(ngModel)]="userStatus"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+            id="userStatus">
+            <option value="">{{ t("form.allStatuses") }}</option>
+            <option value="active">{{ t("status.active") }}</option>
+            <option value="inactive">{{ t("status.inactive") }}</option>
+            <option value="pending">{{ t("status.pending") }}</option>
+            <option value="suspended">{{ t("status.suspended") }}</option>
+            <option value="locked">{{ t("status.locked") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="flex flex-col min-w-[130px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="userGender">
+          <i class="fas fa-venus-mars text-gray-500"></i>
+          {{ t("form.userGender") }}
+        </label>
+        <div class="relative h-[40px]">
+          <select (change)="onSearch()" [(ngModel)]="userGender"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+            id="userGender">
+            <option value="">{{ t("form.allGenders") }}</option>
+            <option value="MALE">{{ t("gender.MALE") }}</option>
+            <option value="FEMALE">{{ t("gender.FEMALE") }}</option>
+            <option value="OTHER">{{ t("gender.OTHER") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"><i class="fas fa-chevron-down"></i></div>
+        </div>
+      </div>
+
+      <!-- Search input + buttons -->
+      <div class="filter-actions-wrap flex-1">
+        <div class="relative flex-grow min-w-[200px]">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fas fa-search text-gray-400"></i>
+          </span>
+          <input (keyup.enter)="onSearch()" [(ngModel)]="keyword"
+            class="h-10 w-full border border-gray-300 outline-none rounded-[5px] pl-10 pr-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+            id="search" placeholder="{{ t('form.searchPlaceholder') }}" type="text" />
+        </div>
+        <div class="filter-actions-buttons">
+          <button (click)="onSearch()" class="btn-filter-search">
+            <i class="fas fa-search"></i>
+            {{ t("form.search") }}
+          </button>
+          <button (click)="onReset()" class="btn-filter-reset">
+            <i class="fas fa-times"></i>
+            {{ t("form.reset") }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+      <div class="w-full text-center h-full">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && hasError" class="w-full">
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </div>
+
+    <div *ngIf="!isLoading && !hasError" class="max-w-full w-full">
+      <app-users-datatable
+        (create)="handleCreate()"
+        (delete)="handleDelete($event)"
+        (update)="handleUpdate($event)"
+        (view)="handleView($event)"
+        (assignUnlimited)="assignUnlimited($event)"
+        (deactivatePlans)="deactivatePlans($event)"
+        [hasError]="false"
+        [isLoading]="false"
+        [items]="items"
+      ></app-users-datatable>
+    </div>
+
+    <div class="flex justify-end mb-4">
+      <app-generic-paginator
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxVisible]="5"
+        [totalPages]="totalPages"
+        [totalPages]="totalPages"
+      ></app-generic-paginator>
+    </div>
+  </div>
+
+  <!-- Error Component -->
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

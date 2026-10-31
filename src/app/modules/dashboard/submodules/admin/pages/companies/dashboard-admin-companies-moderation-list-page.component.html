@@ -1,0 +1,203 @@
+<div class="companies-list-container">
+  <!-- Header -->
+  <div class="list-header">
+    <h1>{{ "dashboard.admin.companies.title" | transloco }}</h1>
+    <div class="header-actions">
+      <button mat-raised-button color="primary" (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+        {{ "common.refresh" | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-section" [formGroup]="filterForm">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "common.search" | transloco }}</mat-label>
+      <input matInput formControlName="keyword" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{
+        "dashboard.admin.companies.archived" | transloco
+      }}</mat-label>
+      <mat-select formControlName="archived">
+        <mat-option value="">{{ "common.all" | transloco }}</mat-option>
+        <mat-option [value]="false">{{
+          "common.active" | transloco
+        }}</mat-option>
+        <mat-option [value]="true">{{
+          "dashboard.admin.companies.archived" | transloco
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "common.deleted" | transloco }}</mat-label>
+      <mat-select formControlName="deleted">
+        <mat-option value="">{{ "common.all" | transloco }}</mat-option>
+        <mat-option [value]="false">{{
+          "common.active" | transloco
+        }}</mat-option>
+        <mat-option [value]="true">{{
+          "common.deleted" | transloco
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="resetFilters()">
+      <mat-icon>clear_all</mat-icon>
+      {{ "common.reset" | transloco }}
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- Table -->
+  <div *ngIf="!isLoading" class="table-container">
+    <table mat-table [dataSource]="companies" class="companies-table">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "common.name" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">{{ company.name }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "common.email" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">{{ company.email }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "common.status" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">
+          <mat-chip
+            class="status-chip"
+            [color]="getStatusColor(company.status)"
+            selected
+          >
+            {{ company.status }}
+          </mat-chip>
+        </td>
+      </ng-container>
+
+      <!-- Archived Column -->
+      <ng-container matColumnDef="archived">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "dashboard.admin.companies.archived" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">
+          <mat-icon [class.archived]="company.archived">
+            {{ company.archived ? "archive" : "unarchive" }}
+          </mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Deleted Column -->
+      <ng-container matColumnDef="deleted">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "common.deleted" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">
+          <mat-icon [class.deleted]="company.deleted">
+            {{ company.deleted ? "delete" : "check_circle" }}
+          </mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Created Date Column -->
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "dashboard.admin.companies.createdAt" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">
+          {{ company.createdAt | date: "short" }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "common.actions" | transloco }}
+        </th>
+        <td mat-cell *matCellDef="let company">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            matTooltip="{{ 'common.moreActions' | transloco }}"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              (click)="activateCompany(company)"
+              *ngIf="company.status !== 'ACTIVE'"
+            >
+              <mat-icon>check_circle</mat-icon>
+              <span>{{
+                "dashboard.admin.companies.activate" | transloco
+              }}</span>
+            </button>
+            <button
+              mat-menu-item
+              (click)="deactivateCompany(company)"
+              *ngIf="company.status === 'ACTIVE'"
+            >
+              <mat-icon>cancel</mat-icon>
+              <span>{{
+                "dashboard.admin.companies.deactivate" | transloco
+              }}</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button
+              mat-menu-item
+              (click)="archiveCompany(company)"
+              *ngIf="!company.archived"
+            >
+              <mat-icon>archive</mat-icon>
+              <span>{{ "dashboard.admin.companies.archive" | transloco }}</span>
+            </button>
+            <button
+              mat-menu-item
+              (click)="deleteCompany(company)"
+              class="delete-action"
+            >
+              <mat-icon>delete</mat-icon>
+              <span>{{ "common.delete" | transloco }}</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- Paginator -->
+  <mat-paginator
+    *ngIf="!isLoading && totalItems > 0"
+    [length]="totalItems"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)"
+  ></mat-paginator>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && companies.length === 0" class="empty-state">
+    <mat-icon>business</mat-icon>
+    <p>{{ "common.noData" | transloco }}</p>
+  </div>
+</div>

@@ -1,0 +1,775 @@
+<div *transloco="let t; read: 'dashboardadmin'">
+  <div class="flex flex-col w-full">
+    <!-- Header Section -->
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold pb-2 text-primary">
+        {{ t("dashboard.admin.title") }}
+      </h1>
+      <div class="gap-3 justify-start items-center pb-5">
+        <span class="text-lg font-medium text-primary">
+          {{ t("dashboard.admin.welcome") }}
+        </span>
+        <div class="text-md text-gray-600 font-normal mt-1">
+          {{ t("dashboard.admin.summary") }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-10 text-gray-500">
+      {{ t("general.loading") }}
+    </div>
+
+    <!-- Error State -->
+    <div
+      *ngIf="error && !loading"
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-5"
+    >
+      {{ error }}
+    </div>
+
+    <!-- Statistics Grid -->
+    <div
+      *ngIf="!loading && !error"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-6 mb-10"
+    >
+      <!-- Total Users Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#1d9bed24] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{ stats.totalUsers }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.totalUsers")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-users fa-2x text-primary"></i>
+        </div>
+      </div>
+
+      <!-- Active Users Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#10b981] bg-opacity-10 p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{ stats.activeUsers }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.activeUsers")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-user-check fa-2x text-green-600"></i>
+        </div>
+      </div>
+
+      <!-- Total Companies Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FFF0E5] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{ stats.totalCompanies }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.totalCompanies")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-building fa-2x text-orange-500"></i>
+        </div>
+      </div>
+
+      <!-- Total Job Offers Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FCEFFD] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{ stats.totalJobOffers }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.totalJobOffers")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-briefcase fa-2x text-pink-600"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Metrics Row -->
+    <div
+      *ngIf="!loading && !error"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10"
+    >
+      <!-- Pending Applications Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FFE4E6] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.pendingApplications
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.pendingApplications")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-hourglass-end fa-2x text-red-500"></i>
+        </div>
+      </div>
+
+      <!-- New Companies This Month Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#E0F2FE] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.newCompaniesThisMonth
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.newCompaniesThisMonth")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i
+            class="fa-solid fa-building-circle-arrow-right fa-2x text-blue-500"
+          ></i>
+        </div>
+      </div>
+
+      <!-- New Users This Month Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#F0FDFA] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.newUsersThisMonth
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.newUsersThisMonth")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-user-plus fa-2x text-teal-600"></i>
+        </div>
+      </div>
+
+      <!-- New Job Offers This Month Card -->
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FFFBEB] p-5 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.newJobOffersThisMonth
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.admin.metrics.newJobOffersThisMonth")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-file-circle-plus fa-2x text-yellow-600"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- See More Button -->
+    <div *ngIf="!loading && !error" class="flex justify-center mb-6">
+      <button
+        (click)="toggleDetailedStats()"
+        class="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity font-medium shadow-sm"
+      >
+        <i
+          class="fa-solid"
+          [ngClass]="showDetailedStats ? 'fa-chevron-up' : 'fa-chart-line'"
+        ></i>
+        <span>{{
+          showDetailedStats
+            ? t("dashboard.admin.detailed.seeLess")
+            : t("dashboard.admin.detailed.seeMore")
+        }}</span>
+      </button>
+    </div>
+
+    <!-- Detailed Stats Section (See More) -->
+    <div
+      *ngIf="showDetailedStats && !loading && !error"
+      class="detailed-stats-section mb-10"
+    >
+      <!-- Loading -->
+      <div *ngIf="detailedLoading" class="text-center py-10 text-gray-500">
+        <i class="fa-solid fa-spinner fa-spin fa-2x mb-3"></i>
+        <p>{{ t("general.loading") }}</p>
+      </div>
+
+      <!-- Detailed Metrics Grid -->
+      <div *ngIf="!detailedLoading && detailedMetrics.length > 0">
+        <h2 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-chart-bar"></i>
+          {{ t("dashboard.admin.detailed.title") }}
+        </h2>
+
+        <!-- Cards avec même design que les KPI du haut - fond blanc -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+          <div
+            *ngFor="let metric of detailedMetrics"
+            class="flex gap-4 justify-between rounded-lg bg-white p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+          >
+            <div class="flex flex-col text-secondary">
+              <span class="text-2xl font-semibold">{{ metric.value }}</span>
+              <span class="text-xs">{{ t(metric.label) }}</span>
+            </div>
+            <div
+              class="flex justify-center items-center w-12 h-12 rounded-full"
+              [style.background-color]="metric.color + '18'"
+            >
+              <i
+                [class]="metric.icon + ' fa-lg'"
+                [style.color]="metric.color"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row: Bar Chart + Donut Chart -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <!-- Bar Chart -->
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div class="flex flex-wrap justify-between items-center mb-6">
+              <h2
+                class="text-lg font-bold text-primary flex items-center gap-2"
+              >
+                <i class="fa-solid fa-chart-column"></i>
+                {{ t("dashboard.admin.chart.title") }}
+              </h2>
+              <div class="flex flex-wrap gap-2 mt-2 sm:mt-0">
+                <button
+                  *ngFor="let filter of chartFilters"
+                  (click)="setChartFilter(filter.key)"
+                  class="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+                  [ngClass]="
+                    activeChartFilter === filter.key
+                      ? 'bg-primary text-white shadow-sm'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  "
+                >
+                  {{ t(filter.label) }}
+                </button>
+              </div>
+            </div>
+            <div class="chart-container">
+              <div class="chart-bars">
+                <div *ngFor="let bar of chartData" class="chart-bar-group">
+                  <div class="chart-bar-wrapper">
+                    <span class="chart-bar-value">{{ bar.value }}</span>
+                    <div
+                      class="chart-bar"
+                      [style.height.%]="bar.percentage"
+                      [style.background-color]="bar.color"
+                    ></div>
+                  </div>
+                  <span class="chart-bar-label">{{ t(bar.label) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Donut Chart -->
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <h2
+              class="text-lg font-bold text-primary flex items-center gap-2 mb-6"
+            >
+              <i class="fa-solid fa-chart-pie"></i>
+              {{ t("dashboard.admin.chart.donutTitle") }}
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-6">
+              <!-- SVG Donut -->
+              <div class="donut-chart-wrapper">
+                <svg viewBox="0 0 36 36" class="donut-chart">
+                  <circle
+                    cx="18"
+                    cy="18"
+                    r="15.9"
+                    fill="none"
+                    stroke="#f3f4f6"
+                    stroke-width="3"
+                  ></circle>
+                  <circle
+                    *ngFor="let seg of donutSegments; let i = index"
+                    cx="18"
+                    cy="18"
+                    r="15.9"
+                    fill="none"
+                    [attr.stroke]="seg.color"
+                    stroke-width="3"
+                    [attr.stroke-dasharray]="
+                      seg.percentage + ' ' + (100 - seg.percentage)
+                    "
+                    [attr.stroke-dashoffset]="25 - getDonutOffset(i)"
+                    stroke-linecap="round"
+                    class="donut-segment"
+                  ></circle>
+                </svg>
+                <div class="donut-center">
+                  <span class="text-2xl font-bold text-gray-800">{{
+                    donutTotal
+                  }}</span>
+                  <span class="text-xs text-gray-500">{{
+                    t("dashboard.admin.chart.donutTotalLabel")
+                  }}</span>
+                </div>
+              </div>
+              <!-- Legend -->
+              <div class="flex flex-col gap-3 flex-1">
+                <div
+                  *ngFor="let seg of donutSegments"
+                  class="flex items-center gap-3"
+                >
+                  <div
+                    class="w-3 h-3 rounded-full flex-shrink-0"
+                    [style.background-color]="seg.color"
+                  ></div>
+                  <div class="flex justify-between items-center flex-1">
+                    <span class="text-sm text-gray-600">{{
+                      t(seg.label)
+                    }}</span>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-semibold text-gray-800">{{
+                        seg.value
+                      }}</span>
+                      <span class="text-xs text-gray-400"
+                        >({{ seg.percentage | number: "1.0-1" }}%)</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal Bar Chart -->
+        <div
+          class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 mb-8"
+        >
+          <h2
+            class="text-lg font-bold text-primary flex items-center gap-2 mb-6"
+          >
+            <i class="fa-solid fa-bars-staggered"></i>
+            {{ t("dashboard.admin.chart.horizontalTitle") }}
+          </h2>
+          <div class="flex flex-col gap-4">
+            <div
+              *ngFor="let bar of horizontalBars"
+              class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
+            >
+              <div
+                class="flex items-center gap-2 sm:w-40 flex-shrink-0 min-w-0"
+              >
+                <i
+                  [class]="bar.icon"
+                  [style.color]="bar.color"
+                  class="text-sm w-5 text-center flex-shrink-0"
+                ></i>
+                <span class="text-sm text-gray-600 truncate">{{
+                  t(bar.label)
+                }}</span>
+              </div>
+              <div class="flex-1 flex items-center gap-3 min-w-0">
+                <div
+                  class="flex-1 bg-gray-100 rounded-full h-4 overflow-hidden min-w-0"
+                >
+                  <div
+                    class="h-4 rounded-full transition-all duration-700"
+                    [style.width.%]="bar.percentage"
+                    [style.background-color]="bar.color"
+                  ></div>
+                </div>
+                <span
+                  class="text-sm font-semibold text-gray-800 whitespace-nowrap flex-shrink-0 tabular-nums"
+                  >{{ bar.value | number }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insights Section - Qualitative Analysis -->
+        <h2 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-lightbulb"></i>
+          {{ t("dashboard.admin.insights.title") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div
+            *ngFor="let insight of insights"
+            class="bg-white rounded-lg p-5 shadow-sm border border-gray-100 flex gap-4"
+          >
+            <div
+              class="flex justify-center items-center w-11 h-11 rounded-full flex-shrink-0"
+              [style.background-color]="insight.bgColor"
+            >
+              <i [class]="insight.icon" [style.color]="insight.color"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-semibold text-gray-800 mb-1">{{
+                t(insight.title)
+              }}</span>
+              <span class="text-xs text-gray-500 leading-relaxed">{{
+                t(insight.description)
+              }}</span>
+            </div>
+            <div class="flex items-start ml-auto flex-shrink-0">
+              <span
+                class="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                [ngClass]="{
+                  'bg-green-100 text-green-700': insight.status === 'good',
+                  'bg-yellow-100 text-yellow-700': insight.status === 'warning',
+                  'bg-blue-100 text-blue-700': insight.status === 'info',
+                }"
+              >
+                {{
+                  insight.status === "good"
+                    ? "✓"
+                    : insight.status === "warning"
+                      ? "!"
+                      : "i"
+                }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis Section with Progress Bars -->
+        <h2 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          {{ t("dashboard.admin.analysis.title") }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div
+            *ngFor="let card of analysisCards"
+            class="bg-white rounded-lg p-5 shadow-sm border border-gray-100"
+          >
+            <h3 class="text-md font-semibold text-gray-800 mb-4">
+              {{ t(card.title) }}
+            </h3>
+            <div *ngFor="let item of card.items" class="mb-4 last:mb-0">
+              <div
+                class="flex flex-wrap justify-between items-center mb-1 gap-x-2"
+              >
+                <span class="text-sm text-gray-600 min-w-0 truncate">{{
+                  t(item.label)
+                }}</span>
+                <span
+                  class="text-xs font-semibold whitespace-nowrap flex-shrink-0"
+                  [style.color]="item.color"
+                >
+                  {{ item.current | number }} / {{ item.total | number }} ({{
+                    getPercentage(item.current, item.total)
+                  }}%)
+                </span>
+              </div>
+              <div
+                class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden"
+              >
+                <div
+                  class="h-2.5 rounded-full transition-all duration-500"
+                  [style.width.%]="getPercentage(item.current, item.total)"
+                  [style.background-color]="item.color"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Comparison Table -->
+        <h2 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-table"></i>
+          {{ t("dashboard.admin.detailed.comparisonTable") }}
+        </h2>
+        <div
+          class="overflow-x-auto rounded-lg border border-gray-100 mb-6 shadow-sm"
+        >
+          <table class="w-full text-sm text-left">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                  {{ t("dashboard.admin.detailed.metric") }}
+                </th>
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                  {{ t("dashboard.admin.detailed.value") }}
+                </th>
+                <th class="px-4 py-3 font-semibold text-gray-700">
+                  {{ t("dashboard.admin.detailed.source") }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let metric of detailedMetrics; let odd = odd"
+                class="hover:bg-gray-50 transition-colors"
+                [class.bg-gray-50]="odd"
+              >
+                <td class="px-4 py-3 flex items-center gap-2">
+                  <i
+                    [class]="metric.icon"
+                    [style.color]="metric.color"
+                    class="text-sm"
+                  ></i>
+                  {{ t(metric.label) }}
+                </td>
+                <td class="px-4 py-3 font-semibold">{{ metric.value }}</td>
+                <td class="px-4 py-3 text-gray-500 text-xs font-mono">
+                  {{ metric.source }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-10">
+      <!-- Left Column - Management Sections -->
+      <div class="lg:col-span-2 flex flex-col gap-10">
+        <!-- Users Management Section -->
+        <div>
+          <div class="flex justify-between pb-4 border-b border-gray-200 mb-4">
+            <h2 class="text-xl text-primary font-bold text-gray-800">
+              {{ t("dashboard.admin.sections.userManagement") }}
+            </h2>
+            <button (click)="navigateTo('/users/list')
+" class="app-primary text-sm">
+              {{ t("general.view") }}
+            </button>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            <div
+              class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-colors"
+              (click)="navigateTo('/users/list')
+"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">
+                    {{ t("dashboard.admin.actions.viewAllUsers") }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ t("dashboard.admin.descriptions.manageUsers") }}
+                  </p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-primary"></i>
+              </div>
+            </div>
+            <div
+              class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-colors"
+              (click)="navigateTo('/permissions/list')
+"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">
+                    {{ t("dashboard.admin.actions.managePermissions") }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ t("dashboard.admin.descriptions.managePermissions") }}
+                  </p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Companies Management Section -->
+        <div>
+          <div class="flex justify-between pb-4 border-b border-gray-200 mb-4">
+            <h2 class="text-xl text-primary font-bold text-gray-800">
+              {{ t("dashboard.admin.sections.companyManagement") }}
+            </h2>
+            <button
+              (click)="navigateTo('/companies/list')
+"
+              class="app-primary text-sm"
+            >
+              {{ t("general.view") }}
+            </button>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            <div
+              class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-colors"
+              (click)="navigateTo('/companies/list')
+"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">
+                    {{ t("dashboard.admin.actions.viewAllCompanies") }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ t("dashboard.admin.descriptions.manageCompanies") }}
+                  </p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Offers Management Section -->
+        <div>
+          <div class="flex justify-between pb-4 border-b border-gray-200 mb-4">
+            <h2 class="text-xl text-primary font-bold text-gray-800">
+              {{ t("dashboard.admin.sections.jobOfferManagement") }}
+            </h2>
+            <button
+              (click)="navigateTo('/job-offers/list')
+"
+              class="app-primary text-sm"
+            >
+              {{ t("general.view") }}
+            </button>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            <div
+              class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-colors"
+              (click)="navigateTo('/job-offers/list')
+"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">
+                    {{ t("dashboard.admin.actions.viewJobOffers") }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ t("dashboard.admin.descriptions.manageJobOffers") }}
+                  </p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Quick Actions & Info -->
+      <div class="flex flex-col gap-10">
+        <!-- Quick Actions -->
+        <div>
+          <h2
+            class="text-xl font-bold text-primary pb-4 border-b border-gray-200 mb-4"
+          >
+            {{ t("dashboard.admin.quickActions.title") }}
+          </h2>
+          <div
+            class="bg-white rounded-lg shadow-md p-5 flex flex-col gap-3 border border-gray-200"
+          >
+            <button
+              (click)="navigateTo('/users/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-users text-primary"></i>
+              <span>{{ t("dashboard.admin.quickActions.viewUsers") }}</span>
+            </button>
+            <button
+              (click)="navigateTo('/companies/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-building text-primary"></i>
+              <span>{{ t("dashboard.admin.quickActions.viewCompanies") }}</span>
+            </button>
+            <button
+              (click)="navigateTo('/job-offers/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-briefcase text-primary"></i>
+              <span>{{ t("dashboard.admin.quickActions.viewJobOffers") }}</span>
+            </button>
+            <button
+              (click)="navigateTo('/applications/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-file-alt text-primary"></i>
+              <span>{{
+                t("dashboard.admin.quickActions.viewApplications")
+              }}</span>
+            </button>
+            <button
+              (click)="navigateTo('/interviews/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-video text-primary"></i>
+              <span>{{
+                t("dashboard.admin.quickActions.viewInterviews")
+              }}</span>
+            </button>
+            <button
+              (click)="navigateTo('/permissions/list')
+"
+              class="app-link w-full text-left flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+            >
+              <i class="fa-solid fa-lock text-primary"></i>
+              <span>{{
+                t("dashboard.admin.quickActions.managePermissions")
+              }}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Information Box -->
+        <div>
+          <h2
+            class="text-xl font-bold text-primary pb-4 border-b border-gray-200 mb-4"
+          >
+            {{ t("dashboard.admin.systemInfo") }}
+          </h2>
+          <div
+            class="bg-white rounded-lg shadow-md p-5 flex flex-col gap-3 border border-gray-200"
+          >
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">{{
+                t("dashboard.admin.info.platformVersion")
+              }}</span>
+              <span class="text-sm font-semibold text-gray-800">v1.0.0</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">{{
+                t("dashboard.admin.info.lastUpdated")
+              }}</span>
+              <!-- <span class="text-sm font-semibold text-gray-800">{{
+                "now" | date: "short"
+              }}</span> -->
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">{{
+                t("dashboard.admin.info.systemStatus")
+              }}</span>
+              <span class="text-sm font-semibold text-green-600">{{
+                t("dashboard.admin.info.online")
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

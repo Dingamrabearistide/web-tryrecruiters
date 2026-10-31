@@ -1,0 +1,44 @@
+<div>
+  <div class="relative flex">
+    <div
+      class="hidden md:block relative bg-white w-[250px] flex-shrink-0"
+    ></div>
+    <div
+      id="sidebar-container"
+      class="fixed z-[1000] w-full md:w-[250px] overflow-hidden transition-transform duration-300 transform md:translate-x-0"
+      [class.-translate-x-full]="!sidebarOpen"
+    >
+      <app-dashboard-sidebar
+        [menuItems]="menu"
+        namespace="dashboardemployers"
+        [disableLogoLink]="true"
+      ></app-dashboard-sidebar>
+    </div>
+    <!-- SIDEBAR END -->
+
+    <!-- MAIN START -->
+    <div class="w-[100px] flex-1 flex flex-col">
+      <!-- NAVBAR START -->
+      <div class="relative bg-white w-full h-[70px] flex-shrink-0">
+        <button
+          id="menu-toggle"
+          (click)="toggleSidebar()"
+          class="fixed z-[900] top-[25px] left-[20px] w-[30px] text-2xl text-primary hover:text-gray-700 focus:outline-none md:hidden"
+        >
+          <i class="fas fa-bars text-primary"></i>
+        </button>
+      </div>
+
+      <div id="navbar-container" class="fixed navbar-width shadow top-0 z-10">
+        <app-dashboard-navbar></app-dashboard-navbar>
+      </div>
+      <!-- NAVBAR END -->
+
+      <div class="w-full mt-5 py-2 md:py-5 px-4 md:px-8 pb-24">
+        <div #billingPaymentAlertHost></div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- MAIN END -->
+  </div>
+</div>

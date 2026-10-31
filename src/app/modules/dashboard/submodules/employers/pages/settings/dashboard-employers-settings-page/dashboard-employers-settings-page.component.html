@@ -1,0 +1,123 @@
+<div *transloco="let t" class="settings-page">
+  <!-- Header -->
+  <div class="settings-header mb-6">
+    <h1 class="text-2xl font-bold text-gray-900 mb-2">
+      {{ t("settings.title") }}
+    </h1>
+    <p class="text-gray-600">
+      {{ t("settings.subtitle") }}
+    </p>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="settings-tabs mb-8">
+    <nav class="flex space-x-8 border-b border-gray-200">
+      <!-- Profile Tab - Hidden for Candidates -->
+      <div
+        *ngIf="!isCandidate"
+        (click)="setActiveTab('profile')"
+        [class.border-blue-500]="activeTab === 'profile'"
+        [class.text-blue-500]="activeTab === 'profile'"
+        [class.text-gray-500]="activeTab !== 'profile'"
+        class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+      >
+        <i class="fas fa-user mr-2"></i>
+        {{ t("settings.tabs.profile") }}
+      </div>
+
+      <div
+        (click)="setActiveTab('password')"
+        [class.border-blue-500]="activeTab === 'password'"
+        [class.text-blue-500]="activeTab === 'password'"
+        [class.text-gray-500]="activeTab !== 'password'"
+        class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+      >
+        <i class="fas fa-lock mr-2"></i>
+        {{ t("settings.tabs.password") }}
+      </div>
+
+      <div
+        (click)="setActiveTab('twoFactor')"
+        [class.border-blue-500]="activeTab === 'twoFactor'"
+        [class.text-blue-500]="activeTab === 'twoFactor'"
+        [class.text-gray-500]="activeTab !== 'twoFactor'"
+        class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+      >
+        <i class="fas fa-shield-alt mr-2"></i>
+        {{ t("settings.tabs.twoFactor") }}
+      </div>
+
+      <!-- <div
+        (click)="setActiveTab('account')"
+        [class.border-blue-500]="activeTab === 'account'"
+        [class.text-blue-500]="activeTab === 'account'"
+        [class.text-gray-500]="activeTab !== 'account'"
+        class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+      >
+        <i class="fas fa-cog mr-2"></i>
+        {{ t("settings.tabs.account") }}
+      </div> -->
+
+      <!-- <div
+        (click)="setActiveTab('danger')"
+        [class.border-red-500]="activeTab === 'danger'"
+        [class.text-red-600]="activeTab === 'danger'"
+        [class.text-gray-500]="activeTab !== 'danger'"
+        class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-red-600"
+      >
+        <i class="fas fa-exclamation-triangle mr-2"></i>
+        {{ t("settings.tabs.danger") }}
+      </div> -->
+    </nav>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="settings-content">
+    <!-- Profile Tab - Hidden for Candidates -->
+    <div *ngIf="activeTab === 'profile' && !isCandidate" class="tab-content">
+      <app-profile-settings
+        [currentUser]="currentUser"
+        [isLoading]="isUpdatingProfile"
+        (profileUpdate)="onProfileSubmit($event)"
+      ></app-profile-settings>
+
+      @if (!!errorMessage) {
+        <app-generic-error [message]="errorMessage" />
+      }
+    </div>
+
+    <!-- Password Tab -->
+    <div *ngIf="activeTab === 'password'" class="tab-content">
+      <app-password-settings
+        [isLoading]="isChangingPassword"
+        (passwordChange)="onPasswordSubmit($event)"
+      ></app-password-settings>
+    </div>
+
+    <!-- Two Factor Authentication Tab -->
+    <div *ngIf="activeTab === 'twoFactor'" class="tab-content">
+      <app-two-factor-settings
+        [isLoading]="isUpdating2FA"
+        [settings]="twoFactorDefaultValues"
+        (twoFactorUpdate)="onTwoFactorSubmit($event)"
+      ></app-two-factor-settings>
+    </div>
+
+    <!-- Account Settings Tab -->
+    <!-- <div *ngIf="activeTab === 'account'" class="tab-content">
+      <app-account-settings
+        [isLoading]="isUpdatingSettings"
+        [settings]="accountSettingsDefaultValues"
+        (accountSettingsUpdate)="onAccountSettingsSubmit($event)"
+      ></app-account-settings>
+    </div> -->
+
+    <!-- Danger Zone Tab -->
+    <!-- <div *ngIf="activeTab === 'danger'" class="tab-content">
+      <app-danger-zone
+        [isClosingAccount]="isClosingAccount"
+        (closeAccount)="confirmCloseAccount()"
+      ></app-danger-zone>
+    </div> -->
+  </div>
+</div>

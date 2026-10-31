@@ -1,0 +1,546 @@
+<div class="mt-4 sm:mt-6">
+  <!-- Header compact -->
+  <div
+    class="bg-white pb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+  >
+    <div class="flex items-center gap-2 flex-1 min-w-0">
+      <h2 class="sm:text-2xl md:text-4xl font-bold text-gray-800 truncate">
+        {{ item.title }}
+      </h2>
+      <i
+        *ngIf="item.verified"
+        class="fa fa-check-circle text-green-500 text-lg flex-shrink-0"
+        title="Vérifié"
+      ></i>
+    </div>
+
+    <div
+      *ngIf="canApply && !hasAlreadyApplied"
+      class="flex items-center gap-2 flex-shrink-0"
+    >
+      <ng-container *ngIf="!isExpired">
+      <div
+        *ngIf="isAuthenticated && isCandidate"
+        class="bookmark-job"
+        [class.cursor-pointer]="!isFavoriteLoading"
+        [class.cursor-not-allowed]="isFavoriteLoading"
+        (click)="!isFavoriteLoading && addToFavorites()"
+      >
+        <ng-container *ngIf="isFavoriteLoading; else favIcon">
+          <div
+            class="flex items-center justify-center w-9 h-9 rounded-md bg-gray-100 border border-gray-200"
+          >
+            <div
+              class="animate-spin rounded-full h-4 w-4 border-2 border-transparent border-t-primary"
+            ></div>
+          </div>
+        </ng-container>
+        <ng-template #favIcon>
+          <div
+            class="flex items-center justify-center w-9 h-9 rounded-md transition"
+            [ngClass]="{
+              'text-[#1D9BED] bg-blue-50 border border-blue-400': isInFavorite,
+              'text-gray-400 bg-gray-50 border border-gray-200': !isInFavorite,
+            }"
+            aria-label="Ajouter aux favoris"
+          >
+            <i
+              class="fa fa-bookmark text-sm"
+              [class.fa-solid]="isInFavorite"
+              [class.fa-regular]="!isInFavorite"
+            ></i>
+          </div>
+        </ng-template>
+      </div>
+
+      <button
+        *ngIf="isAuthenticated && isCandidate"
+        [routerLink]="['/apply', item.id]"
+        class="app-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
+      >
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+        <span class="text-white">{{
+          "joboffers.jobDetails.apply" | transloco
+        }}</span>
+      </button>
+
+      <!-- <button
+        *ngIf="isAuthenticated && !isCandidate"
+        disabled
+        class="app-primary opacity-50 cursor-not-allowed inline-flex items-center gap-2 px-4 py-2 text-sm"
+        [title]="'joboffers.candidateOnly' | transloco"
+      >
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+        <span>{{ "joboffers.jobDetails.apply" | transloco }}</span>
+      </button> -->
+
+      <button
+        *ngIf="!isAuthenticated"
+        [routerLink]="['/apply', item.id]"
+        class="app-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
+      >
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+        <span class="text-white">{{
+          "joboffers.jobDetails.apply" | transloco
+        }}</span>
+      </button>
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div
+    *ngIf="hasAlreadyApplied && isCandidate"
+    class="flex items-center gap-3 bg-yellow-50 border border-yellow-200 rounded-lg px-4 py-3 mb-4"
+  >
+    <div
+      class="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center"
+    >
+      <svg
+        class="w-4 h-4 text-yellow-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+    </div>
+    <div class="flex-1 min-w-0">
+      <span class="font-semibold text-gray-800 text-sm">{{
+        "applications.alreadyApplied.title" | transloco
+      }}</span>
+      <span class="text-gray-500 text-sm ml-1">{{
+        "applications.alreadyApplied.message" | transloco
+      }}</span>
+    </div>
+    <div class="flex gap-2 flex-shrink-0">
+      <button
+        (click)="goToMyApplications()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-white border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition"
+      >
+        <svg
+          class="w-3.5 h-3.5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          />
+        </svg>
+        {{ "applications.alreadyApplied.viewApplications" | transloco }}
+      </button>
+      <button
+        (click)="goToJobsList()"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-white border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition"
+      >
+        <svg
+          class="w-3.5 h-3.5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          />
+        </svg>
+        {{ "applications.alreadyApplied.backToJobs" | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Main grid : layout dynamique selon longueur description -->
+  <div
+    class="grid grid-cols-1 gap-5 py-2 items-start"
+    [ngClass]="isDescriptionShort ? 'lg:grid-cols-1' : 'lg:grid-cols-3'"
+  >
+    <!-- Colonne gauche -->
+    <div
+      class="space-y-5"
+      [ngClass]="isDescriptionShort ? 'w-full' : 'lg:col-span-2'"
+    >
+      <!-- Expired banner -->
+      <div
+        *ngIf="isExpired"
+        class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3"
+      >
+        <div class="flex-shrink-0 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-clock text-gray-500 text-sm"></i>
+        </div>
+        <div class="flex-1">
+          <span class="font-semibold text-gray-700 text-sm">{{ "joboffers.expired.title" | transloco }}</span>
+          <span class="text-gray-500 text-sm ml-1">{{ "joboffers.expired.message" | transloco }}</span>
+        </div>
+        <button
+          *ngIf="canRepublish"
+          (click)="onRepublish$.emit(item)"
+          class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-primary text-white rounded-lg hover:opacity-90 transition"
+        >
+          <i class="fa-solid fa-rotate-right text-xs"></i>
+          {{ "joboffers.republish.confirm" | transloco }}
+        </button>
+      </div>
+
+      <div>
+        <div
+          [innerHTML]="item.description"
+          class="text-gray-600 leading-relaxed text-sm"
+        ></div>
+      </div>
+
+      <div *ngIf="item.jobLevel">
+        <h2 class="text-base font-semibold text-gray-700 mb-2">
+          {{ "joboffers.jobDetails.jobLevel" | transloco }}
+        </h2>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">
+          <i class="fa-solid fa-layer-group text-xs"></i>
+          {{ getJobLevel(item.jobLevel) }}
+        </span>
+      </div>
+
+      <div *ngIf="item.notes">
+        <h2
+          class="text-base font-semibold text-gray-700 mb-1.5 flex items-center gap-2"
+        >
+          <i class="fa-solid fa-note-sticky text-blue-400 text-sm"></i>
+          {{ "joboffers.jobDetails.notes" | transloco }}
+        </h2>
+        <p class="text-gray-600 text-sm">{{ item.notes }}</p>
+      </div>
+
+      <div *ngIf="item.tags?.length">
+        <h2
+          class="text-base font-semibold text-gray-700 mb-1.5 flex items-center gap-2"
+        >
+          <i class="fa-solid fa-tags text-blue-400 text-sm"></i>
+          {{ "joboffers.jobDetails.tags" | transloco }}
+        </h2>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            *ngFor="let tag of item.tags"
+            class="bg-blue-50 text-blue-700 border border-blue-100 px-2.5 py-0.5 rounded-full text-xs font-medium"
+          >
+            #{{ tag.tag.name }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="canApply && !hasAlreadyApplied && !isExpired" class="pt-1">
+        <button
+          *ngIf="isAuthenticated && isCandidate"
+          [routerLink]="['/apply', item.id]"
+          class="app-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
+        >
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span class="text-white">{{
+            "joboffers.jobDetails.applyNow" | transloco
+          }}</span>
+        </button>
+        <button
+          *ngIf="!isAuthenticated"
+          [routerLink]="['/apply', item.id]"
+          class="app-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
+        >
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span class="text-white">{{
+            "joboffers.jobDetails.apply" | transloco
+          }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Colonne droite -->
+    <div
+      class="space-y-4"
+      [ngClass]="
+        isDescriptionShort
+          ? 'w-full lg:flex lg:gap-5 lg:space-y-0'
+          : 'lg:col-span-1'
+      "
+    >
+      <!-- Job Overview -->
+      <div
+        class="bg-white border border-gray-100 rounded-lg p-4 shadow-sm"
+        [ngClass]="isDescriptionShort ? 'lg:flex-1' : ''"
+      >
+        <h3
+          class="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3 pb-2 border-b border-gray-100"
+        >
+          {{ "joboffers.jobDetails.jobOverview" | transloco }}
+        </h3>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-gray-700">
+          <div class="flex items-center gap-2.5" *ngIf="item.publishedAt">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-calendar text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.publishedOn" | transloco }}
+              </p>
+              <span class="text-green-600 text-sm font-medium">{{
+                item.publishedAt | date: "dd/MM/yyyy"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="item.expiresAt">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-clock text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.expiresOn" | transloco }}
+              </p>
+              <span class="text-red-500 text-sm font-medium">{{
+                item.expiresAt | date: "dd/MM/yyyy":"UTC"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="item.salary">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-money-bill text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.salary" | transloco }}
+              </p>
+              <span class="text-green-600 text-sm font-bold"
+                >{{ formatSalaryAmount(item.salary) }}<ng-container *ngIf="item.salaryCurrency"> {{ item.salaryCurrency }}</ng-container></span
+              >
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="item.educationLevel">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-graduation-cap text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.educationLevel" | transloco }}
+              </p>
+              <span class="text-sm">{{
+                "joboffers.educationLevel." + item.educationLevel | transloco
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="item.location">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-location-dot text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.location" | transloco }}
+              </p>
+              <span class="text-sm truncate block">{{ item.location }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="item.jobType">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-briefcase text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.jobType" | transloco }}
+              </p>
+              <span class="text-sm">{{
+                "joboffers.jobType." + item.jobType | transloco
+              }}</span>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center gap-2.5"
+            *ngIf="item.experienceYears !== undefined"
+          >
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-award text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.experience" | transloco }}
+              </p>
+              <span class="text-sm">{{ item.experienceYears }} an(s)</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5" *ngIf="company">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-building text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.company" | transloco }}
+              </p>
+              <span class="text-sm">{{ company.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Info -->
+      <div
+        *ngIf="displayCompanyDetails"
+        class="bg-white border border-gray-100 rounded-lg p-4 shadow-sm"
+        [ngClass]="isDescriptionShort ? 'lg:flex-1' : ''"
+      >
+        <h3
+          class="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3 pb-2 border-b border-gray-100"
+        >
+          {{ "joboffers.jobDetails.companyOverview" | transloco }}
+        </h3>
+
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-12 h-12 rounded-md border border-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <!-- Initials fallback -->
+            <div
+              *ngIf="!hasCompanyLogo || companyLogoFailed"
+              class="w-full h-full flex items-center justify-center text-white text-sm font-bold select-none"
+              [ngClass]="companyAvatarColor"
+            >
+              {{ companyInitials }}
+            </div>
+            <!-- Logo -->
+            <img
+              *ngIf="hasCompanyLogo && !companyLogoFailed"
+              [src]="companyLogo"
+              alt="Logo"
+              class="w-full h-full object-contain p-0.5 bg-white"
+              (error)="companyLogoFailed = true"
+            />
+          </div>
+          <h4 class="font-semibold text-sm text-gray-800 min-w-0 truncate">
+            {{ company.name }}
+          </h4>
+        </div>
+
+        <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-gray-700">
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-phone text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.phone" | transloco }}
+              </p>
+              <span class="text-sm truncate block">{{
+                company.phoneNumber || "Non spécifié"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-envelope text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.email" | transloco }}
+              </p>
+              <span class="text-sm break-all">{{
+                company.email || "Non spécifié"
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5 col-span-2">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5"
+            >
+              <i class="fa-solid fa-location-dot text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.address" | transloco }}
+              </p>
+              <span class="text-sm leading-snug">{{
+                company.addressLine1 +
+                  (company.city ? ", " + company.city : "") +
+                  (company.region ? ", " + company.region : "") +
+                  (company.country ? ", " + company.country : "")
+              }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5 col-span-2">
+            <div
+              class="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center flex-shrink-0"
+            >
+              <i class="fa-solid fa-globe text-blue-500 text-xs"></i>
+            </div>
+            <div class="min-w-0 overflow-hidden">
+              <p
+                class="uppercase text-gray-400 text-[10px] font-medium leading-none mb-0.5"
+              >
+                {{ "joboffers.jobDetails.website" | transloco }}
+              </p>
+              <a
+                *ngIf="company.website"
+                [href]="company.website"
+                target="_blank"
+                class="text-blue-600 text-sm underline break-all"
+                >{{ company.website }}</a
+              >
+              <span *ngIf="!company.website" class="text-sm">Non spécifié</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

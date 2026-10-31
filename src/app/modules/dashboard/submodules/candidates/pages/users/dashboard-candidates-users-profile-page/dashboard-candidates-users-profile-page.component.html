@@ -1,0 +1,88 @@
+<div class="flex flex-col w-full">
+  <!-- <div
+    class="flex flex-col justify-between items-start text-2xl font-bold text-secondary"
+  >
+    <div class="relative"></div>
+    <div class="">
+      <h1 class="text-2xl font-bold text-primary">Mon profile</h1>
+    </div>
+  </div> -->
+
+  <div class="mt-4">
+    <app-loader *ngIf="isLoading"></app-loader>
+  </div>
+
+  <div
+    *ngIf="!hasError && !isLoading"
+    class="w-full mb-10 mx-auto flex flex-col xl:flex-row gap-6 text-sm text-gray-700"
+  >
+    <div class="w-full xl:w-3/4 inline-block align-top pr-8">
+      <app-candidates-personal-info
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-personal-info>
+
+      <!-- Work Experience Section -->
+      <app-candidates-experiences-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-experiences-list>
+
+      <app-candidates-educations-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-educations-list>
+
+      <app-candidates-certifications-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-certifications-list>
+    </div>
+
+    <div class="w-full xl:w-1/4 inline-block align-top">
+      <!-- <div class="bg-white border rounded-lg shadow-sm p-5 gap-4 mb-6">
+        <h3 class="font-bold text-gray-500 text-xl">Contact Information</h3>
+        <div class="gap-3">
+          <div class="flex items-center gap-3">
+            <i class="fa fa-envelope text-blue-500 w-4 text-center"></i
+            ><a class="hover:underline" href="mailto:{{ profile?.email }}">
+              {{ profile?.email }}</a
+            >
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa fa-phone text-blue-500 w-4 text-center"></i
+            ><span>{{ profile?.phone }}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa fa-globe text-blue-500 w-4 text-center"></i
+            ><a
+              class="hover:underline"
+              href="{{ profile?.website }}"
+              target="_blank"
+              >{{ profile?.website }}</a
+            >
+          </div>
+        </div>
+      </div> -->
+
+      <app-candidates-skills-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-skills-list>
+
+      <app-candidates-languages-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-languages-list>
+
+      <app-candidates-tools-list
+        [profile]="profile"
+        (onDone)="handleDone($event)"
+      ></app-candidates-tools-list>
+    </div>
+  </div>
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

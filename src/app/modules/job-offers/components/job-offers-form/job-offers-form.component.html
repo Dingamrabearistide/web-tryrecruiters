@@ -1,0 +1,19 @@
+<app-generic-form
+  #genericFormComp
+  [isLoading]="isLoading"
+  [defaultValues]="formDefaultValues"
+  [fieldConfigurations]="genericFormConfig"
+  (submitForm)="handleSubmit($event)"
+  transationNamespace="joboffers"
+/>
+
+<div class="w-full mt-2" *transloco="let t; read: 'joboffers'">
+  <button
+    type="button"
+    [disabled]="isLoading"
+    (click)="saveDraft()"
+    class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors disabled:opacity-60"
+  >
+    {{ t("saveDraft") }}
+  </button>
+</div>

@@ -1,0 +1,39 @@
+<div
+  *transloco="let t; read: 'candidates'"
+  class="flex text-gray-500 justify-between items-start"
+>
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-yellow-100 rounded-full">
+      <i class="fa fa-award text-yellow-600 text-xl" aria-hidden="true"></i>
+    </div>
+    <div class="flex-1">
+      <h4 class="font-bold text-gray-500 text-lg">{{ item.name }}</h4>
+      <p class="text-gray-500 font-semibold">
+        {{ t("profilePage.certifications.issuedBy") }}
+        {{ item.issuer }}
+      </p>
+      <p class="text-gray-500 text-sm">
+        {{ t("profilePage.certifications.date") }}:
+        {{ item.issueDate | date : "MMM yyyy" }}
+        <span *ngIf="item.expirationDate">
+          - {{ t("profilePage.certifications.expires") }}:
+          {{ item.expirationDate | date : "MMM yyyy" }}
+        </span>
+      </p>
+      <div *ngIf="item.credentialId || item.credentialUrl" class="mt-2">
+        <p *ngIf="item.credentialId" class="text-gray-500 text-sm">
+          {{ t("profilePage.certifications.credentialId") }}:
+          {{ item.credentialId }}
+        </p>
+        <a
+          *ngIf="item.credentialUrl"
+          [href]="item.credentialUrl"
+          target="_blank"
+          class="text-blue-500 hover:underline text-sm"
+        >
+          {{ t("profilePage.certifications.viewCredential") }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

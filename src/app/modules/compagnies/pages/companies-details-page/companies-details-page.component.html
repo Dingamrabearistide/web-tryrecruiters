@@ -1,0 +1,300 @@
+<!-- company-details.component.html -->
+<div class="min-h-screen">
+  <div class="relative flex flex-col">
+    <div class="flex-1 flex flex-col">
+      <div class="flex flex-col w-full pt-16">
+        <!-- Added pt-16 to account for fixed navbar -->
+        <!-- Header Section -->
+        <div class="bg-[url('/images/wallpaper.jpg')] bg-center bg-cover">
+          <div class="relative w-full h-full bg-black/30 py-6 px-4 sm:px-6">
+            <div class="app-container-inner mx-auto">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between"
+              >
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">
+                  {{ "companies.companyDetails.title" | transloco }}
+                </h2>
+                <div class="flex flex-wrap gap-1 justify-center sm:text-base">
+                  <a
+                    routerLink="/"
+                    class="text-gray-300 hover:text-white"
+                    routerlink="./index.html"
+                    >{{ "companies.companyDetails.home" | transloco }} /</a
+                  >
+                  <a
+                    routerLink="../"
+                    class="text-gray-300 hover:text-white"
+                    routerlink="./companies.html"
+                    >{{
+                      "companies.companyDetails.companiesList" | transloco
+                    }}
+                    /</a
+                  >
+                  <p class="font-bold text-white">
+                    {{ "companies.companyDetails.companyDetail" | transloco }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div
+          *ngIf="item && !isLoading && !hasError"
+          class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner"
+        >
+          <!-- Company Header -->
+          <div
+            class="bg-white pb-7 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 md:gap-6"
+          >
+            <div
+              class="flex items-center flex-col sm:flex-row gap-4 w-full sm:w-auto"
+            >
+              <div class="flex items-center gap-4">
+                <img
+                  [src]="item.logoUrl || '/assets/default-company-logo.png'"
+                  alt="Company Logo"
+                  class="company-logo w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-white shadow-lg"
+                />
+                <div>
+                  <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">
+                    {{ item.name }}
+                  </h2>
+                  <p class="text-gray-600">{{ item.industry }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto"
+            >
+              <div
+                class="action-buttons flex flex-col sm:flex-row gap-3 items-center"
+              >
+                <button class="btn-follow" (click)="followCompany()">
+                  <span>{{
+                    "companies.companyDetails.follow" | transloco
+                  }}</span>
+                </button>
+                <button class="btn-contact" (click)="contactCompany()">
+                  <span>{{
+                    "companies.companyDetails.contact" | transloco
+                  }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 py-4 px-4 sm:px-6 lg:px-0 my-8"
+          >
+            <!-- Left Column -->
+            <div class="lg:col-span-2 gap-6">
+              <!-- Company Description -->
+              <div>
+                <h2 class="text-lg font-semibold text-gray-800 mb-2">
+                  {{ "companies.companyDetails.description" | transloco }}
+                </h2>
+                <p
+                  [innerHTML]="
+                    item.description ||
+                    ('companies.companyDetails.noDescription' | transloco)
+                  "
+                  class="text-red-700 sm:text-base leading-relaxed"
+                ></p>
+              </div>
+
+              <!-- Company Stats -->
+              <div class="company-stats">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                  {{ "companies.companyDetails.companyStats" | transloco }}
+                </h2>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div class="stat-item text-center">
+                    <i
+                      class="fa-solid fa-users text-2xl text-blue-500 mb-2"
+                    ></i>
+                    <p class="text-sm text-gray-500 uppercase">
+                      {{ "companies.companyDetails.size" | transloco }}
+                    </p>
+                    <p class="font-semibold text-gray-800">
+                      {{ item.companySize }}
+                    </p>
+                  </div>
+                  <div class="stat-item text-center">
+                    <i
+                      class="fa-solid fa-calendar text-2xl text-blue-500 mb-2"
+                    ></i>
+                    <p class="text-sm text-gray-500 uppercase">
+                      {{ "companies.companyDetails.founded" | transloco }}
+                    </p>
+                    <p class="font-semibold text-gray-800">
+                      {{ item.startDate | date : "yyyy" }}
+                    </p>
+                  </div>
+                  <div class="stat-item text-center">
+                    <i
+                      class="fa-solid fa-building text-2xl text-blue-500 mb-2"
+                    ></i>
+                    <p class="text-sm text-gray-500 uppercase">
+                      {{ "companies.companyDetails.type" | transloco }}
+                    </p>
+                    <p class="font-semibold text-gray-800">
+                      {{ item.organizationType }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="gap-6">
+              <!-- Company Overview -->
+              <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+                <h3 class="text-md font-semibold text-gray-800">
+                  {{ "companies.companyDetails.companyOverview" | transloco }}
+                </h3>
+                <div class="company-info-grid gap-2">
+                  <div class="info-item">
+                    <i class="fa-solid fa-industry"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.industry" | transloco }}
+                      </p>
+                      <span class="value">{{ item.industry }}</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="fa-solid fa-users"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.size" | transloco }}
+                      </p>
+                      <span class="value">{{ item.companySize }}</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="fa-solid fa-building"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.type" | transloco }}
+                      </p>
+                      <span class="value">{{ item.organizationType }}</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="fa-solid fa-calendar"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.founded" | transloco }}
+                      </p>
+                      <span class="value">{{
+                        item.startDate | date : "yyyy"
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact Information -->
+              <div class="bg-white border border-gray-100 rounded-lg p-5 gap-4">
+                <h3 class="text-md font-semibold text-gray-800">
+                  {{ "companies.companyDetails.contactInfo" | transloco }}
+                </h3>
+                <div class="company-info-grid gap-2">
+                  <div class="info-item" *ngIf="item.email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.email" | transloco }}
+                      </p>
+                      <span class="value">{{ item.email }}</span>
+                    </div>
+                  </div>
+                  <div class="info-item" *ngIf="item.phoneNumber">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.phone" | transloco }}
+                      </p>
+                      <span class="value">{{ item.phoneNumber }}</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.address" | transloco }}
+                      </p>
+                      <span class="value">
+                        {{ item.addressLine1 }}
+                        <span *ngIf="item.addressLine2"
+                          >, {{ item.addressLine2 }}</span
+                        >
+                        <br />
+                        {{ item.city }}, {{ item.region }}, {{ item.country }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="info-item" *ngIf="item.website">
+                    <i class="fa-solid fa-globe"></i>
+                    <div>
+                      <p class="label">
+                        {{ "companies.companyDetails.website" | transloco }}
+                      </p>
+                      <span class="value">
+                        <a
+                          [href]="item.website"
+                          target="_blank"
+                          class="text-blue-600 underline hover:text-blue-800"
+                        >
+                          {{ item.website }}
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Companies Section -->
+          <div class="py-4 px-4 sm:px-6 lg:px-0 my-8">
+            <div class="app-container-inner mx-auto">
+              <h2
+                class="mb-4 text-start text-lg sm:text-xl md:text-2xl font-semibold text-gray-800"
+              >
+                {{ "companies.companyDetails.relatedCompanies" | transloco }}
+              </h2>
+            </div>
+            <div class="w-full">
+              <app-companies-list
+                [items]="relatedCompanies"
+              ></app-companies-list>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="flex justify-center items-center py-20">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
+          ></div>
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="hasError" class="flex justify-center items-center py-20">
+          <div class="text-center">
+            <i
+              class="fa-solid fa-exclamation-triangle text-4xl text-red-500 mb-4"
+            ></i>
+            <p class="text-gray-600">{{ errorMessage }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

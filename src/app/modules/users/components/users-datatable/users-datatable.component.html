@@ -1,0 +1,20 @@
+<div *transloco="let t; read: 'users'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="datatableColumns"
+    [isLoading]="isLoading"
+    [hasError]="hasError"
+    [showCreateButton]="true"
+    emptyIcon="fas fa-user"
+    [emptyTitle]="t('list.noData')"
+    [emptySubtitle]="t('list.emptySubtitle')"
+    [createLabel]="t('actions.create')"
+    [enableRecruiterPlanActions]="true"
+    (create)="handleCreate()"
+    (view)="handleView($event)"
+    (update)="handleUpdate($event)"
+    (delete)="handleDelete($event)"
+    (assignUnlimited)="handleAssignUnlimited($event)"
+    (deactivatePlans)="handleDeactivatePlans($event)"
+  ></app-generic-datatable>
+</div>

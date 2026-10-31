@@ -1,0 +1,598 @@
+{
+  "enums": {
+    "gender": {
+      "MALE": "Homme",
+      "FEMALE": "Femme"
+    }
+  },
+  "title": "Candidats",
+  "subtitle": "Gestion des candidats",
+  "edit": "Modifier",
+  "list": {
+    "title": "Liste des candidats",
+    "empty": "Aucun candidat trouvé",
+    "emptySubtitle": "Commencez par ajouter votre premier candidat"
+  },
+  "create": {
+    "title": "Nouveau candidat",
+    "subtitle": "Créer un nouveau profil de candidat",
+    "success": "Candidat créé avec succès"
+  },
+  "update": {
+    "title": "Modifier le candidat",
+    "subtitle": "Modifier les informations du candidat",
+    "success": "Candidat mis à jour avec succès"
+  },
+  "updateProfile": {
+    "success": {
+      "title": "Mise à jour réussie",
+      "message": "Les informations de {{name}} ont été mises à jour avec succès"
+    }
+  },
+  "details": {
+    "title": "Détails du candidat",
+    "personalInfo": "Informations personnelles",
+    "professionalInfo": "Informations professionnelles",
+    "systemInfo": "Informations système",
+    "previous": "Précédent"
+  },
+  "delete": {
+    "title": "Supprimer le candidat",
+    "message": "Êtes-vous sûr de vouloir supprimer ce candidat ? Cette action est irréversible.",
+    "success": {
+      "title": "Informations supprimées avec succès",
+      "message": "Le candidat {{name}} a été supprimé avec succès."
+    }
+  },
+  "candidateDetails": {
+    "notSpecified": "Non spécifié",
+    "scheduleCall": "Planifier un appel",
+    "call": "Appeler",
+    "biography": "Biographie",
+    "noBiography": "Aucune biographie disponible",
+    "personalInformation": "Informations personnelles",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "gender": "Genre",
+    "profession": "Profession",
+    "nationality": "Nationalité",
+    "placeOfBirth": "Lieu de naissance",
+    "region": "Région",
+    "city": "Ville",
+    "education": "Formation",
+    "noEducation": "Aucune information de formation",
+    "present": "Présent",
+    "workExperience": "Expérience professionnelle",
+    "noExperience": "Aucune expérience professionnelle",
+    "downloadResume": "Télécharger le CV",
+    "pdf": "PDF",
+    "noResume": "Aucun CV disponible",
+    "contactInformation": "Informations de contact",
+    "phone": "Téléphone",
+    "noPhone": "Aucun numéro de téléphone",
+    "emailAddress": "Adresse e-mail",
+    "location": "Localisation",
+    "noLocation": "Aucune localisation",
+    "skills": "Compétences",
+    "noSkills": "Aucune compétence renseignée",
+    "tools": "Outils",
+    "noTools": "Aucun outil renseigné",
+    "languages": "Langues",
+    "noLanguages": "Aucune langue renseignée",
+    "showMore": "Voir plus",
+    "showLess": "Voir moins",
+    "expert": "Expert",
+    "advanced": "Avancé",
+    "intermediate": "Intermédiaire",
+    "beginner": "Débutant",
+    "native": "Natif",
+    "professional": "Professionnel",
+    "retry": "Réessayer",
+    "home": "Accueil",
+    "candidateList": "Liste des candidats",
+    "candidateDetails": "Détails du candidat",
+    "title": "Détails du candidat",
+    "meetLink": "Lien de réunion",
+    "showRecentFirst": "Récent → Ancien",
+    "showOldFirst": "Ancien → Récent",
+    "filters": "Filtres",
+    "sort": "Trier",
+    "dateRange": "Plage de dates"
+  },
+  "candidateList": {
+    "generalInformation": "Informations générales",
+    "account": "Compte",
+    "name": "Nom",
+    "at": "à",
+    "in": "en",
+    "languages": "Langues",
+    "tools": "Outils",
+    "resumes": "CV",
+    "default": "Par défaut",
+    "download": "Télécharger",
+    "applications": "Candidatures",
+    "message": "Message",
+    "submissionDate": "Date de soumission",
+    "offer": "Offre"
+  },
+  "applications": {
+    "joinMeeting": "Rejoindre la réunion",
+    "interviews": "Entretiens",
+    "status": "Statut"
+  },
+  "candidateItem": {
+    "available": "Disponible",
+    "verifiedProfile": "Profil vérifié",
+    "professionNotSpecified": "Profession non spécifiée",
+    "years": "ans",
+    "callCandidate": "Appeler le candidat",
+    "call": "Appeler",
+    "viewProfile": "Voir le profil",
+    "view": "Voir"
+  },
+  "candidateDetailsPage": {
+    "loading": "Chargement des données..."
+  },
+  "datatable": {
+    "fullName": "Nom complet",
+    "actions": "Actions"
+  },
+  "fields": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "phoneNumber": "Téléphone",
+    "gender": "Genre",
+    "city": "Ville",
+    "region": "Région",
+    "profession": "Profession",
+    "bio": "Biographie",
+    "nationality": "Nationalité",
+    "placeOfBirth": "Lieu de naissance",
+    "resumeUrl": "URL du CV",
+    "createdAt": "Date d'inscription",
+    "updatedAt": "Dernière modification",
+    "status": "Statut"
+  },
+  "filters": {
+    "title": "Filtres",
+    "sectionSearch": "Recherche",
+    "sectionSkills": "Compétences, Langues & Outils",
+    "sectionAdvanced": "Filtres avancés",
+    "search": "Rechercher",
+    "searchPlaceholder": "Nom, e-mail, profession...",
+    "keyword": "Mot-clé",
+    "keywordPlaceholder": "Rechercher dans bio, profession...",
+    "profession": "Profession",
+    "professionPlaceholder": "Ex: Développeur, Comptable...",
+    "nationality": "Nationalité",
+    "nationalityPlaceholder": "Ex: Camerounaise, Française...",
+    "skillsLabel": "Compétences requises",
+    "skillsPlaceholder": "Ex: Angular, Python...",
+    "addSkill": "Ajouter une compétence",
+    "languagesLabel": "Langues requises",
+    "languagesPlaceholder": "Ex: Français, Anglais...",
+    "addLanguage": "Ajouter une langue",
+    "toolsLabel": "Outils requis",
+    "toolsPlaceholder": "Ex: Figma, Docker...",
+    "addTool": "Ajouter un outil",
+    "experienceLevel": "Niveau d'expérience",
+    "gender": "Genre",
+    "placeOfBirth": "Lieu de naissance",
+    "allGenders": "Tous les genres",
+    "male": "Homme",
+    "female": "Femme",
+    "reset": "Réinitialiser",
+    "allLevels": "Tous les niveaux",
+    "entry": "Débutant (< 2 ans)",
+    "mid": "Intermédiaire (2-5 ans)",
+    "senior": "Senior (> 5 ans)"
+  },
+  "actions": {
+    "create": "Nouveau candidat",
+    "view": "Voir",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "back": "Retour"
+  },
+  "notProvided": "Non renseigné",
+  "general": {
+    "reset": "Réinitialiser",
+    "close": "Fermer",
+    "ok": "OK",
+    "cancel": "Annuler",
+    "read_more": "Lire la suite"
+  },
+  "common": {
+    "edit": "Modifier"
+  },
+  "status": {
+    "active": "Actif",
+    "archived": "Archivé",
+    "deleted": "Supprimé"
+  },
+  "gender": {
+    "male": "Homme",
+    "female": "Femme",
+    "other": "Autre"
+  },
+  "profile": {
+    "form": {
+      "firstName": {
+        "label": "Prénom",
+        "placeholder": "Entrez votre prénom"
+      },
+      "lastName": {
+        "label": "Nom",
+        "placeholder": "Entrez votre nom"
+      },
+      "phoneNumber": {
+        "label": "Numéro de téléphone",
+        "placeholder": "Entrez votre numéro de téléphone"
+      },
+      "gender": {
+        "label": "Genre",
+        "placeholder": "Sélectionnez votre genre"
+      },
+      "birthDate": {
+        "label": "Date de naissance",
+        "placeholder": "Sélectionnez votre date de naissance"
+      },
+      "country": {
+        "label": "Pays",
+        "placeholder": "Entrez votre pays"
+      },
+      "city": {
+        "label": "Ville",
+        "placeholder": "Entrez votre ville"
+      },
+      "region": {
+        "label": "Région",
+        "placeholder": "Entrez votre région"
+      },
+      "bio": {
+        "label": "Biographie",
+        "placeholder": "Entrez votre biographie"
+      },
+      "profession": {
+        "label": "Profession",
+        "placeholder": "Entrez votre profession"
+      },
+      "certificationName": {
+        "label": "Nom de la certification",
+        "placeholder": "Entrez le nom de la certification"
+      },
+      "issuer": {
+        "label": "Organisation émettrice",
+        "placeholder": "Entrez l'organisation émettrice"
+      },
+      "certificationDate": {
+        "label": "Date d'émission",
+        "placeholder": "Sélectionnez la date d'émission"
+      },
+      "expiryDate": {
+        "label": "Date d'expiration",
+        "placeholder": "Sélectionnez la date d'expiration (optionnel)"
+      },
+      "credentialId": {
+        "label": "Identifiant de la certification",
+        "placeholder": "Entrez l'identifiant de la certification (optionnel)"
+      },
+      "credentialUrl": {
+        "label": "URL de vérification",
+        "placeholder": "Entrez l'URL de vérification (optionnel)"
+      },
+      "skillName": {
+        "label": "Nom de la compétence",
+        "placeholder": "Entrez le nom de la compétence"
+      },
+      "skillLevel": {
+        "label": "Niveau de compétence",
+        "placeholder": "Sélectionnez le niveau de compétence"
+      },
+      "languageName": {
+        "label": "Nom de la langue",
+        "placeholder": "Entrez le nom de la langue"
+      },
+      "languageLevel": {
+        "label": "Niveau de langue",
+        "placeholder": "Sélectionnez le niveau de langue"
+      },
+      "toolName": {
+        "label": "Nom de l'outil",
+        "placeholder": "Entrez le nom de l'outil"
+      },
+      "toolLevel": {
+        "label": "Niveau de maîtrise",
+        "placeholder": "Sélectionnez le niveau de maîtrise"
+      },
+      "schoolName": {
+        "label": "Nom de l'établissement",
+        "placeholder": "Entrez le nom de l'établissement"
+      },
+      "degree": {
+        "label": "Diplôme",
+        "placeholder": "Entrez le diplôme obtenu"
+      },
+      "fieldOfStudy": {
+        "label": "Domaine d'études",
+        "placeholder": "Entrez le domaine d'études"
+      },
+      "title": {
+        "label": "Intitulé du poste",
+        "placeholder": "Entrez l'intitulé du poste"
+      },
+      "company": {
+        "label": "Entreprise",
+        "placeholder": "Entrez le nom de l'entreprise"
+      },
+      "startDate": {
+        "label": "Date de début",
+        "placeholder": "Sélectionnez la date de début"
+      },
+      "endDate": {
+        "label": "Date de fin",
+        "placeholder": "Sélectionnez la date de fin (optionnel)"
+      },
+      "currentlyEmployed": {
+        "label": "En poste actuellement",
+        "placeholder": ""
+      },
+      "location": {
+        "label": "Localisation",
+        "placeholder": "Entrez le lieu de travail"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Décrivez vos responsabilités et réalisations"
+      }
+    },
+    "errors": {
+      "firstName": {
+        "required": "Le prénom est requis",
+        "maxlength50": "Le prénom ne peut pas dépasser 50 caractères"
+      },
+      "lastName": {
+        "required": "Le nom est requis",
+        "maxlength50": "Le nom ne peut pas dépasser 50 caractères"
+      },
+      "phoneNumber": {
+        "required": "Le numéro de téléphone est requis"
+      },
+      "gender": {
+        "required": "Le genre est requis"
+      },
+      "birthDate": {
+        "required": "La date de naissance est requise",
+        "minAge": "Vous devez avoir au moins 18 ans",
+        "maxAge": "Âge invalide (maximum 99 ans)"
+      },
+      "country": {
+        "maxlength100": "Le pays ne peut pas dépasser 100 caractères"
+      },
+      "city": {
+        "required": "La ville est requise",
+        "maxlength100": "La ville ne peut pas dépasser 100 caractères"
+      },
+      "region": {
+        "required": "La région est requise",
+        "maxlength100": "La région ne peut pas dépasser 100 caractères"
+      },
+      "profession": {
+        "required": "La profession est requise",
+        "maxlength120": "La profession ne peut pas dépasser 120 caractères"
+      },
+      "bio": {
+        "maxlength4000": "La biographie ne peut pas dépasser 4000 caractères"
+      },
+      "certificationName": {
+        "required": "Le nom de la certification est requis",
+        "maxlength120": "Le nom de la certification ne peut pas dépasser 120 caractères"
+      },
+      "issuer": {
+        "required": "L'organisation émettrice est requise",
+        "maxlength120": "L'organisation émettrice ne peut pas dépasser 120 caractères"
+      },
+      "certificationDate": {
+        "required": "La date d'émission est requise",
+        "iso8601": "La date d'émission doit être dans un format valide"
+      },
+      "expiryDate": {
+        "iso8601": "La date d'expiration doit être dans un format valide"
+      },
+      "credentialId": {
+        "maxlength50": "L'identifiant de la certification ne peut pas dépasser 50 caractères"
+      },
+      "skillName": {
+        "required": "Le nom de la compétence est requis",
+        "maxlength120": "Le nom de la compétence ne peut pas dépasser 120 caractères"
+      },
+      "languageName": {
+        "required": "Le nom de la langue est requis",
+        "maxlength120": "Le nom de la langue ne peut pas dépasser 120 caractères"
+      },
+      "languageLevel": {
+        "required": "Le niveau de langue est requis"
+      },
+      "toolName": {
+        "required": "Le nom de l'outil est requis",
+        "maxlength120": "Le nom de l'outil ne peut pas dépasser 120 caractères"
+      },
+      "schoolName": {
+        "required": "Le nom de l'établissement est requis",
+        "maxlength150": "Le nom de l'établissement ne peut pas dépasser 150 caractères"
+      },
+      "degree": {
+        "required": "Le diplôme est requis",
+        "maxlength120": "Le diplôme ne peut pas dépasser 120 caractères"
+      },
+      "fieldOfStudy": {
+        "required": "Le domaine d'études est requis",
+        "maxlength120": "Le domaine d'études ne peut pas dépasser 120 caractères"
+      },
+      "title": {
+        "required": "L'intitulé du poste est requis",
+        "maxlength120": "L'intitulé du poste ne peut pas dépasser 120 caractères"
+      },
+      "company": {
+        "required": "Le nom de l'entreprise est requis",
+        "maxlength120": "Le nom de l'entreprise ne peut pas dépasser 120 caractères"
+      },
+      "startDate": {
+        "required": "La date de début est requise",
+        "iso8601": "La date de début doit être dans un format valide"
+      },
+      "endDate": {
+        "iso8601": "La date de fin doit être dans un format valide"
+      },
+      "location": {
+        "maxlength120": "La localisation ne peut pas dépasser 120 caractères",
+        "required": "La localisation est requise"
+      },
+      "description": {
+        "maxlength4000": "La description ne peut pas dépasser 4000 caractères"
+      }
+    },
+    "dialog": {
+      "editPersonalInfo": {
+        "title": "Modifier les informations personnelles"
+      }
+    }
+  },
+  "profilePage": {
+    "title": "Mon profil",
+    "summary": "Voici un aperçu de votre activité récente et des prochaines étapes suggérées.",
+    "personalInfo": {
+      "title": "Informations personnelles",
+      "professionNotSpecified": "Profession non spécifiée",
+      "photoAlt": "Photo de profil",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "E-mail",
+      "phoneNumber": "Numéro de téléphone",
+      "gender": "Genre",
+      "birthDate": "Date de naissance",
+      "city": "Ville",
+      "region": "Région",
+      "country": "Pays",
+      "profession": "Profession",
+      "placeOfBirth": "Lieu de naissance",
+      "nationality": "Nationalité",
+      "notProvided": "Non renseigné"
+    },
+    "experiences": {
+      "title": "Expérience professionnelle",
+      "addExperience": "Ajouter une expérience",
+      "noExperience": "Aucune expérience professionnelle ajoutée.",
+      "addFirstExperience": "Ajoutez votre première expérience",
+      "addYourFirstExperience": "Ajoutez votre première expérience professionnelle",
+      "dialog": {
+        "add": {
+          "title": "Ajouter une expérience"
+        },
+        "edit": {
+          "title": "Modifier l'expérience"
+        }
+      }
+    },
+    "educations": {
+      "title": "Formation",
+      "addEducation": "Ajouter une formation",
+      "noEducation": "Aucune formation ajoutée.",
+      "addFirstEducation": "Ajoutez votre première formation",
+      "addYourFirstEducation": "Ajoutez votre parcours éducatif",
+      "dialog": {
+        "add": {
+          "title": "Ajouter une formation"
+        },
+        "edit": {
+          "title": "Modifier la formation"
+        }
+      }
+    },
+    "skills": {
+      "title": "Compétences",
+      "competence": "Compétence",
+      "level": "Niveau",
+      "beginnerDescription": "Connaissances de base",
+      "intermediateDescription": "Bonne connaissance pratique",
+      "professionalDescription": "Bonne connaissance pratique, prêt pour les entreprises",
+      "advancedDescription": "Solide connaissance pratique",
+      "expertDescription": "Niveau expert, autorité reconnue",
+      "beginner": "Débutant",
+      "addSkill": "Ajouter une compétence",
+      "noSkills": "Aucune compétence ajoutée.",
+      "addFirstSkill": "Ajoutez votre première compétence",
+      "addYourFirstSkill": "Ajoutez votre première compétence pour mettre en valeur votre expertise",
+      "dialog": {
+        "add": {
+          "title": "Ajouter une compétence"
+        },
+        "edit": {
+          "title": "Modifier la compétence"
+        }
+      }
+    },
+    "languages": {
+      "title": "Langues",
+      "languageSkill": "Langue",
+      "level": "Niveau",
+      "beginnerDescription": "Connaissances de base",
+      "intermediateDescription": "Bonne connaissance pratique",
+      "professionalDescription": "Bonne connaissance pratique, prêt pour les entreprises",
+      "nativeDescription": "Langue maternelle ou bilingue",
+      "advancedDescription": "Solide connaissance pratique",
+      "beginner": "Débutant",
+      "addLanguage": "Ajouter une langue",
+      "noLanguages": "Aucune langue ajoutée.",
+      "addFirstLanguage": "Ajoutez votre première langue",
+      "addYourFirstLanguage": "Ajoutez une langue que vous parlez et votre niveau de maîtrise",
+      "dialog": {
+        "add": {
+          "title": "Ajouter une langue"
+        },
+        "edit": {
+          "title": "Modifier la langue"
+        }
+      }
+    },
+    "tools": {
+      "title": "Outils",
+      "addTool": "Ajouter un outil",
+      "noTools": "Aucun outil ajouté.",
+      "addFirstTool": "Ajoutez votre premier outil",
+      "addYourFirstTool": "Ajoutez les outils que vous maîtrisez",
+      "dialog": {
+        "add": {
+          "title": "Ajouter un outil"
+        },
+        "edit": {
+          "title": "Modifier l'outil"
+        }
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "addCertification": "Ajouter une certification",
+      "noCertifications": "Aucune certification ajoutée.",
+      "addFirstCertification": "Ajoutez votre première certification",
+      "addYourFirstCertification": "Ajoutez une certification pour valider vos compétences",
+      "issuedBy": "Délivré par",
+      "date": "Date",
+      "expires": "Expire le",
+      "credentialId": "Identifiant de la certification",
+      "viewCredential": "Voir la certification",
+      "dialog": {
+        "add": {
+          "title": "Ajouter une certification"
+        },
+        "edit": {
+          "title": "Modifier la certification"
+        }
+      }
+    }
+  },
+  "formErrors": {
+    "endDateBeforeStartDate": "La date de fin doit être postérieure à la date de début"
+  }
+}

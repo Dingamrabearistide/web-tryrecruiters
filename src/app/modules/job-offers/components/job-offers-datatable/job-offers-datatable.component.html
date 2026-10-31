@@ -1,0 +1,25 @@
+<div *transloco="let t; read: 'joboffers'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="datatableColumns"
+    [isLoading]="false"
+    [hasError]="false"
+    [showCreateButton]="true"
+    [currentStatus]="currentStatus"
+    [processingJobIds]="processingJobIds"
+    emptyIcon="fas fa-building"
+    [emptyTitle]="t('list.noCompanies')"
+    [emptySubtitle]="t('list.startCreating')"
+    [createLabel]="t('list.createJob')"
+    (create)="handleCreate()"
+    (view)="handleView($event)"
+    (update)="handleUpdate($event)"
+    (delete)="handleDelete($event)"
+    (approve)="handleApprove($event)"
+    (reject)="handleReject($event)"
+    (revoke)="handleRevoke($event)"
+    (republish)="handleRepublish($event)"
+    (submit)="handleSubmit($event)"
+  ></app-generic-datatable>
+</div>
+

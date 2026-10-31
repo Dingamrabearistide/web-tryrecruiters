@@ -1,0 +1,130 @@
+{
+  "test": "Hello",
+  "dashboard": {
+    "admin": {
+      "title": "Admin Dashboard",
+      "welcome": "Welcome, Administrator!",
+      "summary": "Here's an overview of your platform's key metrics and management options.",
+      "metrics": {
+        "totalUsers": "Total Users",
+        "activeUsers": "Active Users",
+        "totalCompanies": "Total Companies",
+        "totalJobOffers": "Total Job Offers",
+        "pendingApplications": "Pending Applications",
+        "upcomingInterviews": "Upcoming Interviews",
+        "newUsersThisMonth": "New Users This Month",
+        "totalApplications": "Total Applications",
+        "newCompaniesThisMonth": "New Companies This Month",
+        "newJobOffersThisMonth": "New Job Offers This Month"
+      },
+      "sections": {
+        "userManagement": "User Management",
+        "companyManagement": "Company Management",
+        "jobOfferManagement": "Job Offer Management"
+      },
+      "actions": {
+        "viewAllUsers": "View All Users",
+        "managePermissions": "Manage Permissions",
+        "viewAllCompanies": "View All Companies",
+        "viewJobOffers": "View Job Offers"
+      },
+      "descriptions": {
+        "manageUsers": "Manage user accounts and profiles",
+        "managePermissions": "Control user roles and permissions",
+        "manageCompanies": "View and manage company profiles",
+        "manageJobOffers": "Approve, edit and manage job postings"
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "viewUsers": "View All Users",
+        "viewCompanies": "View All Companies",
+        "viewJobOffers": "View Job Offers",
+        "viewApplications": "View Applications",
+        "viewInterviews": "View Interviews",
+        "managePermissions": "Manage Permissions"
+      },
+      "systemInfo": "System Information",
+      "info": {
+        "platformVersion": "Platform Version",
+        "lastUpdated": "Last Updated",
+        "systemStatus": "System Status",
+        "online": "Online"
+      },
+      "detailed": {
+        "seeMore": "See More Statistics",
+        "seeLess": "Hide Statistics",
+        "title": "Detailed Statistics",
+        "comparisonTable": "Comparison Table",
+        "metric": "Metric",
+        "value": "Value",
+        "source": "Source",
+        "totalUsersFromList": "Total Users (list)",
+        "activeUsers": "Active Users",
+        "allCompanies": "All Companies",
+        "pendingCompanies": "Pending Companies",
+        "allJobOffers": "All Job Offers",
+        "pendingJobOffers": "Pending Job Offers",
+        "pendingApplications": "Pending Applications",
+        "newUsersThisMonth": "New Users This Month",
+        "newCompaniesThisMonth": "New Companies This Month",
+        "newJobOffersThisMonth": "New Job Offers This Month"
+      },
+      "analysis": {
+        "title": "Analysis & Trends",
+        "usersAnalysis": "Users Analysis",
+        "companiesAnalysis": "Companies Analysis",
+        "jobOffersAnalysis": "Job Offers Analysis",
+        "activeRate": "Activity rate",
+        "pendingRate": "Pending rate",
+        "newThisMonth": "New this month"
+      },
+      "chart": {
+        "title": "Statistics Chart",
+        "filterAll": "All",
+        "filterUsers": "Users",
+        "filterCompanies": "Companies",
+        "filterJobOffers": "Job Offers",
+        "filterMonthly": "This Month",
+        "donutTitle": "Platform Distribution",
+        "donutUsers": "Users",
+        "donutCompanies": "Companies",
+        "donutJobOffers": "Job Offers",
+        "donutApplications": "Applications",
+        "donutTotalLabel": "Total",
+        "horizontalTitle": "Quantitative Comparison"
+      },
+      "insights": {
+        "title": "Qualitative Analysis",
+        "highActivity": "High activity rate",
+        "highActivityDesc": "Over 70% of registered users are active. The platform benefits from strong engagement.",
+        "moderateActivity": "Moderate activity rate",
+        "moderateActivityDesc": "Between 40% and 70% of users are active. Engagement actions could improve this rate.",
+        "lowActivity": "Low activity rate",
+        "lowActivityDesc": "Less than 40% of users are active. Re-engagement campaigns are recommended.",
+        "pendingCompanies": "Pending companies",
+        "pendingCompaniesDesc": "Some companies are awaiting validation. Process them quickly to maintain service quality.",
+        "pendingJobOffers": "Offers to validate",
+        "pendingJobOffersDesc": "Job offers are pending moderation. Quick validation improves the candidate experience.",
+        "growth": "Monthly growth",
+        "growthDesc": "New users have registered this month. A positive sign for platform growth.",
+        "overview": "Overview",
+        "overviewDesc": "This dashboard aggregates data from multiple endpoints to provide a complete view of the platform status."
+      }
+    }
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "jobsoffers": "Job Offers",
+    "applications": "Applications",
+    "categories": "Categories",
+    "profile": "My Profiles",
+    "candidates": "Users",
+    "payements": "Payments",
+    "parametres": "Settings",
+    "favorites": "My favorites",
+    "interviews": "Interviews",
+    "users": "Users",
+    "permissions": "Permissions"
+  }
+}

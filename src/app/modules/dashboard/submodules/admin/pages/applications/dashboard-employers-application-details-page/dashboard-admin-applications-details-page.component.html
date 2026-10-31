@@ -1,0 +1,22 @@
+<div *transloco="let t; read: 'applications'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("list.back") }}
+  </button>
+
+  <div *ngIf="isLoading" class="grid place-items-center h-[400px]">
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <app-applications-details
+    *ngIf="!isLoading && !hasError && item"
+    [item]="item"
+    (edit)="handleEdit($event)"
+    (delete)="handleDelete($event)"
+    (updateStatus)="handleUpdateStatus($event)"
+  ></app-applications-details>
+</div>

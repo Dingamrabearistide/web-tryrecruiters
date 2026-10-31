@@ -1,0 +1,70 @@
+<main
+  class="mx-auto grid min-h-[calc(100vh-80px)] w-full max-w-[1160px] items-center gap-8 px-4 py-8 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-12"
+  *transloco="let t; read: 'auth'"
+>
+  <!-- Left: Hero panel -->
+  <section
+    class="hero-gradient relative hidden overflow-hidden rounded-[38px] p-8 text-white shadow-soft lg:block"
+  >
+    <div class="hero-grid absolute inset-0 opacity-70"></div>
+    <div class="relative flex min-h-[520px] flex-col justify-between">
+      <div>
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-blue"
+        >
+          <i class="fa-solid fa-paper-plane"></i>
+          {{ t("sendCode.badge") || "Vérification" }}
+        </span>
+        <h1
+          class="mt-8 font-display text-6xl font-black leading-none tracking-tight"
+        >
+          {{ t("sendCode.heroTitle") || "Sécurisez votre compte" }}
+        </h1>
+        <p class="mt-5 max-w-md text-base font-medium leading-8 text-white/75">
+          {{ t("sendCode.heroDescription") || "Choisissez comment recevoir votre code de vérification pour confirmer votre identité." }}
+        </p>
+      </div>
+
+      <div class="grid gap-4">
+        <div class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
+          <div class="flex items-center gap-4">
+            <span class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <div>
+              <p class="font-black">{{ t("sendCode.secureCardTitle") || "Vérification sécurisée" }}</p>
+              <p class="mt-1 text-sm font-medium text-white/65">
+                {{ t("sendCode.secureCardDesc") || "Votre code expire après quelques minutes pour votre sécurité." }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
+          <div class="flex items-center gap-4">
+            <span class="grid size-12 place-items-center rounded-2xl bg-coral text-white shadow-soft">
+              <i class="fa-solid fa-bolt"></i>
+            </span>
+            <div>
+              <p class="font-black">{{ t("sendCode.instantCardTitle") || "Livraison instantanée" }}</p>
+              <p class="mt-1 text-sm font-medium text-white/65">
+                {{ t("sendCode.instantCardDesc") || "Recevez votre code en quelques secondes via le canal de votre choix." }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right: Channel selection -->
+  <section
+    class="mx-auto w-full max-w-xl rounded-[34px] border border-line bg-white p-5 shadow-card sm:p-6 md:p-8 lg:max-w-none"
+  >
+    <app-send-code-channel
+      [isLoading]="isLoading"
+      [hasError]="hasError"
+      [errorMessage]="errorMessage"
+      (channelSelected)="onChannelSelected($event)"
+    ></app-send-code-channel>
+  </section>
+</main>

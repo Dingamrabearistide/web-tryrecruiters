@@ -1,0 +1,121 @@
+<!-- THUMBNAIL (remplace <img>) -->
+<!-- [attr.width]="width || null"
+  [attr.height]="height || null" -->
+<!-- 'hover:opacity-80 cursor-pointer h-32 w-32 rounded-md ring-1 ring-gray-200 object-cover cursor-zoom-in' -->
+
+<img
+  *ngIf="src"
+  [src]="src"
+  [alt]="alt || 'image'"
+  [attr.tabindex]="0"
+  [class]="class"
+  (click)="open()"
+  (keydown.enter)="open()"
+  (keydown.space)="open(); $event.preventDefault()"
+/>
+
+<!-- MODAL OVERLAY -->
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 z-[1000] bg-black/70 backdrop-blur-sm flex items-center justify-center"
+  (wheel)="onWheel($event)"
+>
+  <!-- CONTAINER -->
+  <div
+    class="relative cursor-pointer relative max-w-[95vw] max-h-[95vh] bg-white rounded-xl shadow-lg overflow-hidden"
+  >
+    <!-- HEADER -->
+    <div
+      class="flex items-center justify-between px-4 py-2 border-b border-gray-200"
+    >
+      <h2
+        class="flex-1 text-2xl font-medium text-center text-gray-800 truncate"
+        [title]="title || alt"
+      >
+        {{ title || alt || "Aperçu" }}
+      </h2>
+
+      <div class="absolute right-2 top-2">
+        <!-- <a
+          class="px-2 py-1 text-xs rounded-md bg-gray-100 hover:bg-gray-200"
+          [href]="src"
+          [attr.download]="downloadName || 'image'"
+          target="_blank"
+          title="Télécharger"
+          >Télécharger</a
+        > -->
+
+        <button type="button" (click)="close()" title="Fermer (Esc)">
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY (zone scrollable + pan) -->
+
+    <div
+      class="bg-gray-50 overflow-auto max-h-full"
+      (mousedown)="onMouseDown($event)"
+      (mousemove)="onMouseMove($event)"
+      (mouseup)="onMouseUp()"
+      (mouseleave)="onMouseUp()"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+      [style.maxHeight.%]="100"
+    >
+      <div class="min-w-[60vw] min-h-[60vh] flex items-center justify-center">
+        <img
+          [src]="src"
+          [alt]="alt || 'image'"
+          class="select-none ring-1 ring-gray-200 bg-white"
+          [style.transform]="
+            'translate(' +
+            translateX +
+            'px,' +
+            translateY +
+            'px) scale(' +
+            scale +
+            ')'
+          "
+          style="transform-origin: center center; will-change: transform"
+          (load)="error = false"
+          (error)="error = true"
+          draggable="false"
+        />
+      </div>
+      <div *ngIf="error" class="pb-4 text-center text-sm text-rose-600">
+        Impossible de charger l'image.
+      </div>
+    </div>
+
+    <div
+      class="absolute bottom-4 left-[calc(50%-120px)] flex items-center gap-2"
+    >
+      <button
+        type="button"
+        (click)="zoomOut()"
+        [disabled]="scale <= 0.25"
+        title="Zoom -"
+      >
+        −
+      </button>
+      <button
+        type="button"
+        class="app-primary"
+        (click)="reset()"
+        title="Taille réelle"
+      >
+        Reset
+      </button>
+      <button
+        type="button"
+        (click)="zoomIn()"
+        [disabled]="scale >= 6"
+        title="Zoom +"
+      >
+        +
+      </button>
+    </div>
+  </div>
+</div>

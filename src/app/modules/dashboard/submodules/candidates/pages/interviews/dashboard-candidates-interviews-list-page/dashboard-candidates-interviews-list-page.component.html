@@ -1,0 +1,156 @@
+<div class="flex flex-col w-full" *transloco="let t; read: 'interviews'">
+  <!-- Header Section -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("list.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+      <!-- <button
+        [routerLink]="['../create']"
+        class="bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-all duration-200 flex items-center gap-2"
+      >
+        <i class="fas fa-plus"></i>
+        <span>{{ t("form.interview") }}</span>
+      </button> -->
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 pb-8">
+    <!-- Filters Section -->
+    <div class="flex flex-col md:flex-row flex-wrap gap-3 items-end mb-7 w-full">
+
+      <!-- Start date -->
+      <div class="flex flex-col w-full md:max-w-[160px] min-w-[140px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="startDate">
+          <i class="fas fa-calendar-alt text-gray-500"></i>
+          {{ t("form.startDate") }}
+        </label>
+        <input
+          type="date"
+          id="startDate"
+          name="startDate"
+          [(ngModel)]="startDate"
+          (change)="onSearch()"
+          class="h-[40px] w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+        />
+      </div>
+
+      <!-- End date -->
+      <div class="flex flex-col w-full md:max-w-[160px] min-w-[140px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="endDate">
+          <i class="fas fa-calendar-check text-gray-500"></i>
+          {{ t("form.endDate") }}
+        </label>
+        <input
+          type="date"
+          id="endDate"
+          name="endDate"
+          [(ngModel)]="endDate"
+          [min]="startDate"
+          (change)="onSearch()"
+          class="h-[40px] w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+        />
+      </div>
+
+      <!-- Status select -->
+      <div class="flex flex-col w-full md:max-w-[200px] min-w-[160px]">
+        <label class="text-sm text-gray-700 mb-2 flex items-center gap-1" for="status">
+          <i class="fas fa-tasks text-gray-500"></i>
+          {{ t("form.status") }}
+        </label>
+        <div class="relative h-[40px]">
+          <select
+            id="status"
+            [(ngModel)]="status"
+            (change)="onSearch()"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          >
+            <option value="">{{ t("form.allStatuses") }}</option>
+            <option value="SCHEDULED">{{ t("status.SCHEDULED") }}</option>
+            <option value="RESCHEDULED">{{ t("status.RESCHEDULED") }}</option>
+            <option value="COMPLETED">{{ t("status.COMPLETED") }}</option>
+            <option value="CANCELED">{{ t("status.CANCELED") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="relative flex-1 max-w-[280px] min-w-[180px] h-[40px]">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <i class="fas fa-search text-gray-400"></i>
+        </span>
+        <input
+          id="search"
+          type="text"
+          placeholder="{{ t('form.searchPlaceholder') }}"
+          [(ngModel)]="keyword"
+          (keyup.enter)="onSearch()"
+          class="h-full w-full border border-gray-300 outline-none rounded-[5px] pl-10 pr-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-2 w-full md:w-fit h-[40px]">
+        <button class="btn-filter-search h-full" (click)="onSearch()">
+          <i class="fas fa-search"></i>
+          {{ t("form.search") }}
+        </button>
+        <button type="button" class="btn-filter-reset h-full" (click)="onReset()">
+          <i class="fas fa-times"></i>
+          {{ t("form.reset") }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+      <div class="w-full text-center h-full">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && hasError" class="w-full">
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </div>
+
+    <div *ngIf="!isLoading && !hasError" class="max-w-full w-full">
+      <app-interviews-datatable
+        [items]="items"
+        [isLoading]="false"
+        [hasError]="false"
+        [hideCandidate]="true"
+        (create)="handleCreate()"
+        (view)="handleView($event)"
+        (update)="handleUpdate($event)"
+        (delete)="handleDelete($event)"
+      ></app-interviews-datatable>
+    </div>
+
+    <div class="flex justify-end mb-4">
+      <app-generic-paginator
+        [currentPage]="page"
+        [totalPages]="totalPages"
+        [maxVisible]="5"
+        [totalPages]="totalPages"
+        (pageChange)="onPageChange($event)"
+      ></app-generic-paginator>
+    </div>
+  </div>
+
+  <!-- Error Component -->
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

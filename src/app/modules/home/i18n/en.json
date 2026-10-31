@@ -1,0 +1,579 @@
+{
+  "welcome": "Welcome",
+  "loading": "Loading...",
+  "back": "Back",
+
+  "genericVerifyTitle": "Success",
+  "genericVerifyMessage": "Operation completed. Click OK to continue.",
+
+  "layout": {
+    "sloganTitle": "A successful career starts\nwith a great application.",
+    "sloganDescription": "Build your profile and connect with the right opportunities in just a few steps."
+  },
+
+  "login": {
+    "title": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Register",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Login",
+
+    "verifyTitle": "Identity Verification Required",
+    "verifyMessage": "For security reasons, please verify your identity by entering the code sent to your preferred method.",
+
+    "verifySuccessTitle": "Identity Verified",
+    "verifySuccessMessage": "Your identity has been successfully verified. You are now being redirected to your dashboard."
+  },
+
+  "register": {
+    "title": "Create your account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "candidate": "Candidate",
+    "employer": "Employer",
+    "agree": "I agree to the",
+    "terms": "Terms and Conditions",
+
+    "accountCreatedTitle": "Account Created Successfully",
+    "accountCreatedMessage": "Your account has been created. To activate it, please check your email and follow the confirmation link we sent you.",
+
+    "verifyTitle": "Registration Complete",
+    "verifyMessage": "Your account has been created. Click OK to go to the login page.",
+
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "country": "Country",
+      "city": "City",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "buttons": {
+        "submit": "Register",
+        "loading": "Registering..."
+      },
+      "errors": {
+        "firstName": {
+          "required": "First name is required.",
+          "tooShort": "First name is too short.",
+          "invalid": "Invalid first name."
+        },
+        "lastName": {
+          "required": "Last name is required.",
+          "tooShort": "Last name is too short.",
+          "invalid": "Invalid last name."
+        },
+        "email": {
+          "required": "Email is required.",
+          "invalid": "Invalid email address."
+        },
+        "phone": {
+          "required": "Phone number is required.",
+          "invalid": "Invalid phone number."
+        },
+        "country": {
+          "required": "Country is required.",
+          "invalid": "Invalid country."
+        },
+        "city": {
+          "required": "City is required.",
+          "invalid": "Invalid city name."
+        },
+        "password": {
+          "required": "Password is required.",
+          "tooShort": "Password must be at least 8 characters.",
+          "mismatch": "Passwords do not match."
+        },
+        "confirmPassword": {
+          "required": "Password confirmation is required.",
+          "invalid": "Invalid confirmation."
+        }
+      }
+    }
+  },
+
+  "confirm": {
+    "titleHeaderEmail": "Confirm Your Email Address",
+    "back": "Back",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "instructionsEmail": "We sent a confirmation code to your email:",
+    "checkInbox": "Please check your inbox and enter the code below.",
+    "notReceived": "Didn't receive the code?",
+    "checkSpam": "Check your spam or junk folder.",
+
+    "verifyTitle": "Account Confirmed",
+    "verifyMessage": "Your account has been verified. Click OK to log in."
+  },
+  "confirmAccount": {
+    "codeLabel": "Confirmation Code",
+    "codePlaceholder": "Enter the 6-digit code",
+    "submitButton": "Confirm My Account"
+  },
+
+  "forgot": {
+    "title": "Forgot Your Password?",
+    "back": "Back",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+
+    "verifyTitle": "Check Your Email",
+    "verifyMessage": "A link has been sent to your email. Click OK to reset your password."
+  },
+  "forgotPassword": {
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "submitButton": "Reset My Password"
+  },
+
+  "resetPassword": {
+    "title": "Reset Your Password",
+    "backTo": "Back to",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "instructions": "Please enter the verification code you received along with your new password.",
+    "codeLabel": "Verification Code",
+    "codePlaceholder": "Enter the code you received",
+    "passwordLabel": "New Password",
+    "passwordPlaceholder": "Enter your new password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "submitButton": "Reset Password",
+
+    "passwordResetedTitle": "Password Reset Successful",
+    "passwordResetedMessage": "Your password has been successfully reset. Click OK to log in with your new credentials."
+  },
+
+  "otp": {
+    "codeLabel": "Verification Code",
+    "codePlaceholder": "Enter the 6-digit code",
+    "submitButton": "Verify",
+    "title": "Two-Factor Authentication",
+    "backToLogin": "Back to Sign In",
+    "instructions": "Please enter the 6-digit verification code sent to your device.",
+
+    "codeSentTitle": "Verification Code Sent",
+    "codeSentMessage": "A verification code has been sent to your {{channel}}. Please check your messages and enter the code."
+  },
+
+  "sendCode": {
+    "title": "Choose a delivery method",
+    "chooseMethod": "Where should we send the code?",
+    "instruction": "Select one of the options below to receive your verification code.",
+    "sendViaEmail": "Send via Email",
+    "sendViaWhatsapp": "Send via WhatsApp",
+    "sendViaSms": "Send via SMS",
+    "sendingEmail": "Sending code to your email...",
+    "sendingWhatsapp": "Sending code via WhatsApp...",
+    "sendingSms": "Sending code via SMS..."
+  },
+
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated:",
+    "introduction": "At TryRecruiters, we are committed to protecting your privacy and ensuring you have a positive experience on our platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.",
+    "description": "Read the full Privacy Policy and download the PDF version if you need an offline copy.",
+    "viewPdf": "Open the PDF in a new tab",
+
+    "sections": {
+      "informationWeCollect": {
+        "title": "1. Information We Collect",
+        "description": "We collect information you provide directly and information collected automatically:",
+        "items": [
+          "Personal identification information (name, email, phone number, location)",
+          "Employment information (job title, company, experience, resume/CV)",
+          "Profile information (professional background, skills, certifications)",
+          "Communication data (messages, feedback, support requests)",
+          "Payment information (processed securely through PayPal)",
+          "Device and usage data (IP address, browser type, pages visited, time spent)"
+        ]
+      },
+      "howWeUseInformation": {
+        "title": "2. How We Use Your Information",
+        "description": "We use the collected information for:",
+        "items": [
+          "Providing and improving our services",
+          "Matching candidates with job opportunities",
+          "Processing payments and managing subscriptions",
+          "Sending communications (newsletters, updates, notifications)",
+          "Analyzing usage patterns and site performance",
+          "Complying with legal obligations",
+          "Preventing fraud and ensuring security"
+        ]
+      },
+      "informationSharing": {
+        "title": "3. Information Sharing",
+        "description": "We may share your information with:",
+        "items": [
+          "Service providers and partners necessary to operate our platform",
+          "Employers and recruiters (for job matching, with your consent)",
+          "Legal authorities when required by law",
+          "Business partners in case of merger or acquisition"
+        ]
+      },
+      "dataSecurity": {
+        "title": "4. Data Security",
+        "description": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure."
+      },
+      "dataRetention": {
+        "title": "5. Data Retention",
+        "description": "We retain your personal information for as long as necessary to provide our services and fulfill the purposes outlined in this policy. You can request deletion of your account and associated data at any time."
+      },
+      "yourRights": {
+        "title": "6. Your Rights",
+        "description": "Depending on your location, you may have the following rights:",
+        "items": [
+          "Right to access your personal data",
+          "Right to correct inaccurate data",
+          "Right to delete your data (right to be forgotten)",
+          "Right to restrict processing",
+          "Right to data portability",
+          "Right to object to processing"
+        ]
+      },
+      "cookies": {
+        "title": "7. Cookies and Tracking",
+        "description": "We use cookies and similar technologies to enhance your experience, remember your preferences, and analyze site usage. You can manage cookie preferences through your browser settings."
+      },
+      "thirdPartyLinks": {
+        "title": "8. Third-Party Links",
+        "description": "Our platform may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. Please review their privacy policies before providing any information."
+      },
+      "childrenPrivacy": {
+        "title": "9. Children's Privacy",
+        "description": "Our services are not directed to children under 13. We do not knowingly collect personal information from children. If we discover we have collected information from a child under 13, we will delete it immediately."
+      },
+      "changes": {
+        "title": "10. Changes to This Policy",
+        "description": "We may update this Privacy Policy from time to time. We will notify you of significant changes via email or by posting the updated policy on our website. Your continued use of our services constitutes acceptance of the revised policy."
+      },
+      "contact": {
+        "title": "11. Contact Us",
+        "description": "If you have questions about this Privacy Policy or our privacy practices, please contact us at:",
+        "email": "Email: support@tryrecruiters.com",
+        "address": "Address: 6391 Elgin St. Celina, Delaware 10299, New York, États-Unis d'Amérique",
+        "phone": "Phone: (319) 555-0115"
+      }
+    }
+  },
+
+  "terms": {
+    "badge": "Legal Documents",
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "December 15, 2025",
+    "backHome": "Back to Home",
+    "intro": "By using TRYRECRUITERS, you agree to these terms. Please read them carefully. This document includes our Confidentiality Agreement and User Agreement.",
+    "acceptanceNote": "By clicking 'Sign Up', 'Create Account', or any similar reference, you acknowledge that you have read, understood, and agreed to be bound by this Agreement in its entirety.",
+    "createAccount": "Create an Account",
+
+    "toc": {
+      "title": "Table of contents",
+      "privacyIntro": "Introduction",
+      "privacyCollect": "Information we collect",
+      "privacyUse": "How we use information",
+      "privacyShare": "How we share information",
+      "privacyRights": "Your rights and choices",
+      "privacySecurity": "Data security",
+      "privacyRetention": "Data retention",
+      "privacyChildren": "Children's privacy",
+      "privacyChanges": "Changes to this agreement",
+      "privacyContact": "Contact us",
+      "agreementIntro": "Introduction",
+      "agreementAcceptance": "Acceptance of terms",
+      "agreementEligibility": "Eligibility",
+      "agreementAccounts": "User accounts",
+      "agreementMisc": "Privacy, content & IP",
+      "agreementTermination": "Termination",
+      "agreementLaw": "Applicable law",
+      "agreementModifications": "Modifications",
+      "agreementContact": "Contact us"
+    },
+
+    "privacy": {
+      "heading": "Confidentiality Agreement",
+      "s1": { "title": "Introduction", "body": "Welcome to TRYRECRUITERS! Your privacy is important to us. This Confidentiality Agreement explains how we collect, use, disclose, and protect your personal information when you use the App. By creating an account and using the App, you agree to be bound by the terms and conditions set out in this Agreement." },
+      "s2": {
+        "title": "Information We Collect",
+        "sub1": {
+          "title": "Information You Provide to Us",
+          "items": [
+            "Account Information: your name, email address, password, CV, and other necessary information.",
+            "Profile Information: optional additions such as a profile picture, phone number, and other details.",
+            "Content: any information or content you provide, upload, or share through the App."
+          ]
+        },
+        "sub2": {
+          "title": "Information We Collect Automatically",
+          "items": [
+            "Device Information: hardware models, operating systems, and unique device identifiers.",
+            "Usage Information: access times, pages viewed, and actions taken.",
+            "Location Information: via IP address, GPS, or other location-based technologies."
+          ]
+        }
+      },
+      "s3": {
+        "title": "How We Use Your Information",
+        "sub1": {
+          "title": "To Provide and Improve Our Services",
+          "items": [
+            "To create and manage your account.",
+            "To personalize your experience and provide content tailored to your interests.",
+            "To respond to your comments and questions and provide tailored customer service."
+          ]
+        },
+        "sub2": {
+          "title": "For Communication",
+          "items": [
+            "To send technical notices, updates, security alerts, and support messages.",
+            "To provide information about new features, services, and promotions."
+          ]
+        },
+        "sub3": {
+          "title": "For Security and Fraud Prevention",
+          "items": [
+            "To monitor and analyze usage and activities to ensure the security of the App.",
+            "To detect, prevent, and address fraud, unauthorized activities, and access."
+          ]
+        },
+        "sub4": { "title": "Legal Compliance", "body": "To comply with legal obligations, enforce our agreements, and protect the rights, property, and safety of TRYRECRUITERS, our users, and others." }
+      },
+      "s4": {
+        "title": "How We Share Your Information",
+        "sub1": { "title": "With Service Providers", "body": "We may share your information with third-party vendors, consultants, and other service providers who need access to your information to perform work on our behalf." },
+        "sub2": { "title": "For Legal Reasons", "body": "We may disclose your information if required by law or in response to a legal request, such as a court order, subpoena, or government investigation." },
+        "sub3": { "title": "Business Transfers", "body": "We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business by another company." }
+      },
+      "s5": {
+        "title": "Your Rights and Choices",
+        "sub1": { "title": "Access and Update", "body": "You can access and update your personal information through your account settings." },
+        "sub2": { "title": "Delete Account", "body": "You can delete your account at any time, which will remove your profile and associated data from our systems." },
+        "sub3": { "title": "Unsubscribe", "body": "You can opt out of receiving promotional communications by following the instructions in those communications or through your account settings." }
+      },
+      "s6": { "title": "Data Security", "body": "We implement various security measures to protect your personal information from unauthorized access, use, or disclosure. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security." },
+      "s7": { "title": "Data Retention", "body": "We retain your personal information as long as necessary to achieve the purposes described in this Agreement unless a longer retention period is required or permitted by law." },
+      "s8": { "title": "Children's Privacy", "body": "Our App is not intended for children under 18 years old. We do not knowingly collect personal information from children under 18. If we become aware that we have inadvertently received personal information from a user under 18, we will delete such information from our records." },
+      "s9": { "title": "Changes to This Confidentiality Agreement", "body": "We may update this Confidentiality Agreement from time to time. We will notify you of any significant changes by posting the new Agreement on the App and updating the 'Effective Date.' Your continued use of the App after any changes constitutes your acceptance of the revised Agreement." },
+      "s10": { "title": "Contact Us", "body": "If you have any questions about this Confidentiality Agreement, please contact us at " }
+    },
+
+    "agreement": {
+      "heading": "User Agreement",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "December 15, 2025",
+      "s1": {
+        "title": "Introduction",
+        "body": "Welcome to TRYRECRUITERS! This User Agreement governs your use of the TRYRECRUITERS Web application.",
+        "sub1": { "title": "Contract", "body": "By using our Web application, you agree to all these terms. Your use is also subject to our Privacy Policy and Cookie Policy. By clicking 'Sign Up' or 'Create Account', you agree to enter a legally binding contract with TRYRECRUITERS." },
+        "sub2": { "title": "Services", "body": "This Agreement applies to the TRYRECRUITERS Web application and other TRYRECRUITERS-related sites, applications, communications, and services offered under this Agreement." },
+        "sub3": { "title": "Members and Visitors", "body": "When you register and join TRYRECRUITERS Services, you become a member. If you choose not to register, you can access certain features as a 'Visitor'." },
+        "sub4": { "title": "Modifications", "body": "We may modify this Agreement from time to time. If we make significant changes, we will notify you. Your continued use of our Services after changes constitutes your acceptance of the updated terms." },
+        "sub5": {
+          "title": "Prohibited Conduct",
+          "intro": "You agree not to post or share content that:",
+          "items": [
+            "Is obscene, pornographic, violent, or sexually explicit.",
+            "Harasses, intimidates, or promotes hate speech.",
+            "Violates others' privacy, including sharing intimate or private images without consent.",
+            "Contains inappropriate or offensive language or content.",
+            "Is generally illegal."
+          ]
+        }
+      },
+      "s2": {
+        "title": "Acceptance of Terms",
+        "body": "By accessing or using the Web application, you agree to comply with and be bound by this Agreement and all applicable laws and regulations.",
+        "sub1": { "title": "Service Eligibility", "body": "To use the Services, you must be the Minimum Age (18) or older, have only one TRYRECRUITERS account in your real name, and not already be restricted by TRYRECRUITERS from using the Services." },
+        "sub2": { "title": "Your Account", "body": "You agree to use a strong password and keep it confidential, not transfer any part of your account, and comply with applicable law and our policies. You are responsible for everything that happens through your account." },
+        "sub3": {
+          "title": "Content and Conduct",
+          "intro": "You agree not to post or share content that:",
+          "items": [
+            "Is sexually explicit, obscene, or pornographic.",
+            "Harasses, intimidates, or promotes hate speech.",
+            "Violates others' privacy, including sharing intimate or private images without consent.",
+            "Contains inappropriate or offensive language or content.",
+            "Encourages or facilitates any illegal activity."
+          ]
+        },
+        "sub4": { "title": "Payment", "body": "You will honor your payment obligations and agree that we store your payment information. You understand there may be fees and taxes added to our prices. Refunds are subject to our policy." },
+        "sub5": { "title": "Notices and Messages", "body": "You agree that we will provide notices and messages to you through our websites, Web applications, and contact information. If your contact information is outdated, you may miss important notices." },
+        "sub6": { "title": "Sharing", "body": "When you share information on our Services, others can see, copy, and use that information. Our Services allow messaging and sharing information in various ways, including profile, articles, group posts, messages, and job postings." }
+      },
+      "s3": {
+        "title": "Eligibility",
+        "body": "You must be at least 18 years old to use the Web application. By using the Web application, you represent and warrant that you have the legal capacity to enter into this agreement.",
+        "sub1": {
+          "title": "Minimum Age Requirement",
+          "items": [
+            "You must be the minimum age or older — at least 18 years old.",
+            "You will not create an account for anyone other than yourself.",
+            "You are not already restricted by TRYRECRUITERS from using the services."
+          ]
+        },
+        "sub2": { "title": "Legal Capacity", "body": "By accessing or using the Web application, you affirm that you have the legal capacity to enter into this agreement and are not prohibited from using it under applicable laws." },
+        "sub3": { "title": "Compliance with Laws", "body": "You agree to comply with all applicable laws and regulations when using the Web application, including laws related to online conduct, content, privacy, data protection, and intellectual property." }
+      },
+      "s4": {
+        "title": "User Accounts",
+        "sub1": { "title": "Registration", "body": "To use certain features, you must create an account. You agree to provide accurate, current, and complete information and keep it up to date. Creating an account with false information is a violation of our terms." },
+        "sub2": { "title": "Account Security", "body": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. Notify TRYRECRUITERS immediately of any unauthorized use of your account." },
+        "sub3": { "title": "Account Termination", "body": "You may terminate your account at any time. TRYRECRUITERS reserves the right to terminate or suspend your account without prior notice or liability for any reason, including breach of this agreement." }
+      },
+      "s5to8": {
+        "title": "Privacy, Content, Intellectual Property & Disclaimers",
+        "body": "We collect and use your personal data in accordance with our Privacy Policy. You retain ownership of the content you post. All intellectual property in the TRYRECRUITERS application remains the exclusive property of TRYRECRUITERS. The application is provided 'as is' without warranties. To the maximum extent permitted by applicable law, TRYRECRUITERS shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the application."
+      },
+      "s10": {
+        "title": "Termination",
+        "sub1": { "title": "Termination by You", "body": "You have the right to terminate your account at any time by contacting our customer support team and requesting account termination. After termination, your access will be revoked and your personal data deleted in accordance with our Privacy Policy." },
+        "sub2": { "title": "Termination by Us", "body": "TRYRECRUITERS reserves the right to suspend or terminate your account in cases of Agreement violation, prolonged inactivity, suspected fraudulent activity, or legal compliance requirements." },
+        "sub6": { "title": "Survival", "body": "Certain provisions of this Agreement will survive termination, including provisions regarding Intellectual Property, Limitations of Liability, Indemnification, and Dispute Resolution." }
+      },
+      "s12": {
+        "title": "Applicable Law",
+        "body": "This Agreement shall be governed and construed in accordance with applicable laws. Any dispute arising out of this Agreement shall be resolved through binding arbitration. You agree to first attempt informal resolution by contacting TRYRECRUITERS at info@tryrecruiters.com."
+      },
+      "s13": {
+        "title": "Modifications to this Agreement",
+        "body": "TRYRECRUITERS reserves the right to modify or update this Agreement at any time. Any modification shall be effective immediately upon posting. Your continued use of the Web application after modifications constitutes your acceptance of the revised Agreement."
+      },
+      "s14": { "title": "Contact Us", "body": "If you have any questions about this Agreement, please contact us at " }
+    }
+  },
+
+  "categories": {
+    "list": {
+      "design": "Design",
+      "programming": "Programming",
+      "digitalMarketing": "Digital Marketing",
+      "video": "Video",
+      "animation": "Animation"
+    }
+  },
+
+  "candidates": {
+    "hero": {
+      "badge": "Talent Pool",
+      "title": "Find Talent",
+      "subtitle": "Browse our pool of qualified candidates and find the perfect match for your team.",
+      "activeCandidates": "Active Candidates",
+      "openToWork": "Open to Work",
+      "verifiedProfiles": "Verified Profiles"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name, skill…",
+      "allLevels": "All levels",
+      "reset": "Reset"
+    },
+    "results": {
+      "talentPool": "Talent Pool",
+      "candidatesFound": "candidates found"
+    },
+    "sort": {
+      "match": "Best match",
+      "experience": "Experience",
+      "recent": "Most recent",
+      "name": "Name"
+    },
+    "card": {
+      "verified": "Verified",
+      "yearsExp": "yrs exp.",
+      "viewProfile": "View profile",
+      "profile": "Profile"
+    },
+    "empty": {
+      "title": "No candidates found",
+      "description": "Try adjusting your filters or search terms to find candidates.",
+      "reset": "Reset filters"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "time": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "daysAgo": "days ago",
+      "monthsAgo": "months ago"
+    }
+  },
+
+  "cards": {
+    "candidate": {
+      "title": "Find Your Next Opportunity",
+      "description": "Connect with top employers and land the job of your dreams"
+    },
+    "employer": {
+      "title": "Hire Talent",
+      "description": "Find the best candidates for your company"
+    }
+  },
+
+  "contact": {
+    "badge": "Get in touch",
+    "title": "Let's talk about your project",
+    "subtitle": "A question, a suggestion, or need help? Our team gets back to you fast.",
+    "info": {
+      "emailLabel": "Email us",
+      "addressLabel": "Our address",
+      "hoursLabel": "Business hours",
+      "hoursValue": "Mon - Fri: 9:00 AM - 6:00 PM",
+      "followUs": "Follow us"
+    },
+    "formTitle": "Send us a message",
+    "formSubtitle": "Fill in the form below and your email client will open with your message ready to send.",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "message": "Message",
+      "messagePlaceholder": "How can we help?",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "sentConfirmation": "Your message has been sent. Our team will get back to you shortly.",
+      "errorMessage": "Something went wrong while sending. Please try again or email us directly at {{email}}.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "A valid email is required",
+        "subjectRequired": "Subject is required",
+        "messageRequired": "Message is required"
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Frequently Asked Questions",
+      "description": "Find quick answers to the most common questions about our services and processes",
+      "q1": "How can I create an account?",
+      "a1": "To create an account, click on the \"Register\" button at the top of the page. Choose your account type (Candidate or Recruiter) and fill out the form with your information. You will receive a confirmation email to activate your account.",
+      "q2": "What are the response times?",
+      "a2": "Our team is committed to responding to all requests within 24 to 48 business hours. For urgent questions, please do not hesitate to contact us by phone.",
+      "q3": "How to post a job offer?",
+      "a3": "After creating a recruiter account, log in to your space and click on \"Post a job\". Fill in the job details, define your criteria and publish. Your offer will be visible immediately after validation.",
+      "q4": "Are the services free?",
+      "a4": "Registration and consultation of offers are completely free for candidates. For recruiters, we offer several packages adapted to your needs. Contact us for more details on our rates.",
+      "q5": "How to modify my profile information?",
+      "a5": "Log in to your account and access your personal space. Click on \"My profile\" then on \"Edit\". You can update your personal information, your CV, and your preferences at any time.",
+      "q6": "What to do if I forgot my password?",
+      "a6": "On the login page, click on \"Forgot password?\". Enter your email address and you will receive a link to reset your password. The link is valid for 24 hours.",
+      "notFound": "Can't find your answer?",
+      "contactUs": "Our team is here to help you. Feel free to contact us.",
+      "contactButton": "Contact Us"
+    }
+  }
+}

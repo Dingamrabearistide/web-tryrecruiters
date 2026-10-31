@@ -1,0 +1,11 @@
+<div *transloco="let t; read: 'billings'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="columns"
+    [isLoading]="isLoading"
+    [hasError]="hasError"
+    emptyIcon="fas fa-box-open"
+    [emptyTitle]="t('plansList.emptyTitle')"
+    [emptySubtitle]="t('plansList.emptySubtitle')"
+  ></app-generic-datatable>
+</div>

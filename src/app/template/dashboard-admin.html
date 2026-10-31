@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Admin Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .page-bg {
+        background-image:
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(20, 157, 242, 0.13),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 88% 4%,
+            rgba(255, 81, 72, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .sidebar-gradient {
+        background-image:
+          radial-gradient(
+            circle at 20% 8%,
+            rgba(20, 157, 242, 0.24),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #07152f 0%, #0a1f42 58%, #241449 100%);
+      }
+    </style>
+  </head>
+
+  <body
+    class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+  >
+    <div
+      data-sidebar-overlay
+      class="fixed inset-0 z-40 hidden bg-navy/60 backdrop-blur-sm lg:hidden"
+    ></div>
+
+    <div
+      class="min-h-screen min-w-0 lg:grid lg:grid-cols-[290px_minmax(0,1fr)]"
+    >
+      <!-- Admin sidebar -->
+      <aside
+        data-sidebar
+        class="sidebar-gradient fixed inset-y-0 left-0 z-50 flex w-[290px] -translate-x-full flex-col border-r border-white/10 text-white shadow-soft transition duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-20 items-center justify-between px-5">
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-shield-halved text-xl"></i>
+            </span>
+            <span class="leading-none">
+              <span class="block text-lg font-black tracking-tight"
+                >TRYRECRUITERS</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+                >Admin area</span
+              >
+            </span>
+          </a>
+          <button
+            type="button"
+            data-close-sidebar
+            class="grid size-10 place-items-center rounded-2xl bg-white/10 text-white lg:hidden"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-1 overflow-y-auto px-4 pb-5">
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-card"
+          >
+            <i class="fa-solid fa-table-columns w-5"></i> Dashboard
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-users w-5"></i> Users</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-building w-5"></i> Companies</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-briefcase w-5"></i> Job Offers</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-signature w-5"></i> Applications</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-video w-5"></i> Interviews</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-credit-card w-5"></i> Subscriptions</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-flag w-5"></i> Reports</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-gear w-5"></i> Settings</a
+          >
+        </nav>
+
+        <div class="border-t border-white/10 p-4">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-2xl bg-coral px-4 py-3 text-sm font-black text-white transition hover:bg-red-600"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="min-w-0">
+        <!-- Topbar -->
+        <header
+          class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur-xl"
+        >
+          <div
+            class="mx-auto flex h-20 w-full max-w-[1180px] min-w-0 items-center justify-between gap-3 px-4 sm:px-5 lg:px-6 xl:px-8"
+          >
+            <div class="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                data-open-sidebar
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-navy shadow-sm lg:hidden"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Admin workspace
+                </p>
+                <h1 class="truncate text-xl font-black text-navy md:text-2xl">
+                  Dashboard
+                </h1>
+              </div>
+            </div>
+
+            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+              <button
+                type="button"
+                class="relative grid size-11 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span
+                  class="absolute right-2 top-2 size-2 rounded-full bg-coral"
+                ></span>
+              </button>
+              <div
+                class="flex items-center gap-3 rounded-2xl border border-line bg-white p-1.5 shadow-sm"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80"
+                  alt="Admin"
+                  class="size-9 rounded-xl object-cover"
+                />
+                <div class="hidden pr-2 leading-tight sm:block">
+                  <p class="text-xs font-black text-navy">Alex Morgan</p>
+                  <p class="text-[11px] font-bold text-slate-400">
+                    Super Admin
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main
+          class="mx-auto w-full max-w-[1180px] min-w-0 px-4 py-6 sm:px-5 lg:px-6 xl:px-8"
+        >
+          <!-- Stats -->
+          <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-users"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">12,480</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Total users</p>
+            </article>
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-600"
+                ><i class="fa-solid fa-building-circle-check"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">842</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Companies</p>
+            </article>
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-yellow-50 text-yellow-700"
+                ><i class="fa-solid fa-briefcase"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">3,214</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Job offers</p>
+            </article>
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-red-50 text-coral"
+                ><i class="fa-solid fa-credit-card"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">XAF48.2k</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">
+                Monthly revenue
+              </p>
+            </article>
+          </section>
+
+          <section
+            class="mt-6 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start"
+          >
+            <!-- Main column -->
+            <div class="min-w-0 space-y-6">
+              <!-- Platform overview -->
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <div
+                  class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+                >
+                  <div>
+                    <p
+                      class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                    >
+                      Overview
+                    </p>
+                    <h2 class="mt-2 text-3xl font-black text-navy">
+                      Platform activity
+                    </h2>
+                  </div>
+                  <select
+                    class="h-11 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+                  >
+                    <option>Last 30 days</option>
+                    <option>Last 7 days</option>
+                    <option>This year</option>
+                  </select>
+                </div>
+
+                <div class="grid gap-4 md:grid-cols-3">
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      New users
+                    </p>
+                    <p class="mt-2 text-2xl font-black text-navy">1,284</p>
+                    <p class="mt-1 text-xs font-bold text-emerald-600">
+                      <i class="fa-solid fa-arrow-trend-up mr-1"></i>+12.4%
+                    </p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Applications
+                    </p>
+                    <p class="mt-2 text-2xl font-black text-navy">8,940</p>
+                    <p class="mt-1 text-xs font-bold text-emerald-600">
+                      <i class="fa-solid fa-arrow-trend-up mr-1"></i>+8.1%
+                    </p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-5">
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-slate-400"
+                    >
+                      Interviews
+                    </p>
+                    <p class="mt-2 text-2xl font-black text-navy">426</p>
+                    <p class="mt-1 text-xs font-bold text-emerald-600">
+                      <i class="fa-solid fa-arrow-trend-up mr-1"></i>+6.8%
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 grid h-64 items-end gap-3 rounded-[26px] bg-slate-50 p-5 sm:grid-cols-7"
+                >
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue/35"
+                      style="height: 42%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Mon</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue/50"
+                      style="height: 58%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Tue</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue/70"
+                      style="height: 72%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Wed</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue"
+                      style="height: 88%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Thu</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue/60"
+                      style="height: 64%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Fri</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-blue/40"
+                      style="height: 46%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Sat</span
+                    >
+                  </div>
+                  <div class="flex h-full flex-col justify-end gap-2">
+                    <div
+                      class="rounded-t-2xl bg-coral/70"
+                      style="height: 54%"
+                    ></div>
+                    <span class="text-center text-xs font-black text-slate-400"
+                      >Sun</span
+                    >
+                  </div>
+                </div>
+              </section>
+
+              <!-- Recent users -->
+              <section
+                class="rounded-[30px] border border-line bg-white p-5 shadow-card md:p-6"
+              >
+                <div
+                  class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <h2 class="text-2xl font-black text-navy">Recent users</h2>
+                  <a
+                    href="#"
+                    class="inline-flex w-fit items-center gap-2 rounded-2xl bg-skysoft px-4 py-2.5 text-sm font-black text-blue hover:bg-blue hover:text-white"
+                  >
+                    View all <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+
+                <div
+                  class="max-w-full overflow-x-auto rounded-[24px] border border-line"
+                >
+                  <table class="w-full min-w-[760px] text-left">
+                    <thead class="bg-slate-50">
+                      <tr
+                        class="border-b border-line text-xs font-black uppercase tracking-widest text-slate-400"
+                      >
+                        <th class="px-4 py-4">User</th>
+                        <th class="px-4 py-4">Role</th>
+                        <th class="px-4 py-4">Status</th>
+                        <th class="px-4 py-4">Joined</th>
+                        <th class="px-4 py-4 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-line bg-white">
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4">
+                          <div class="flex items-center gap-3">
+                            <img
+                              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                              alt="Jane Cooper"
+                              class="size-10 rounded-xl object-cover"
+                            />
+                            <div>
+                              <p class="text-sm font-black text-navy">
+                                Jane Cooper
+                              </p>
+                              <p class="text-xs font-bold text-slate-400">
+                                jane@example.com
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Candidate
+                        </td>
+                        <td class="px-4 py-4">
+                          <span
+                            class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                            >Active</span
+                          >
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Today
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="grid size-9 place-items-center rounded-xl bg-blue text-white"
+                          >
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4">
+                          <div class="flex items-center gap-3">
+                            <img
+                              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                              alt="David Miller"
+                              class="size-10 rounded-xl object-cover"
+                            />
+                            <div>
+                              <p class="text-sm font-black text-navy">
+                                David Miller
+                              </p>
+                              <p class="text-xs font-bold text-slate-400">
+                                david@example.com
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Recruiter
+                        </td>
+                        <td class="px-4 py-4">
+                          <span
+                            class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                            >Active</span
+                          >
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Yesterday
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="grid size-9 place-items-center rounded-xl bg-blue text-white"
+                          >
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4">
+                          <div class="flex items-center gap-3">
+                            <img
+                              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80"
+                              alt="Esther Howard"
+                              class="size-10 rounded-xl object-cover"
+                            />
+                            <div>
+                              <p class="text-sm font-black text-navy">
+                                Esther Howard
+                              </p>
+                              <p class="text-xs font-bold text-slate-400">
+                                esther@example.com
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Candidate
+                        </td>
+                        <td class="px-4 py-4">
+                          <span
+                            class="rounded-full bg-yellow-50 px-3 py-1.5 text-xs font-black text-yellow-700"
+                            >Pending</span
+                          >
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Jan 20
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="grid size-9 place-items-center rounded-xl bg-blue text-white"
+                          >
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="min-w-0 space-y-6 xl:sticky xl:top-28">
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Pending review</h2>
+                <div class="mt-5 space-y-3">
+                  <a
+                    href="#"
+                    class="flex items-center justify-between gap-4 rounded-2xl border border-line p-4 hover:border-blue hover:bg-skysoft"
+                  >
+                    <span
+                      class="flex items-center gap-3 text-sm font-black text-navy"
+                      ><i class="fa-solid fa-building text-blue"></i
+                      >Companies</span
+                    >
+                    <span
+                      class="rounded-full bg-yellow-50 px-3 py-1.5 text-xs font-black text-yellow-700"
+                      >12</span
+                    >
+                  </a>
+                  <a
+                    href="#"
+                    class="flex items-center justify-between gap-4 rounded-2xl border border-line p-4 hover:border-blue hover:bg-skysoft"
+                  >
+                    <span
+                      class="flex items-center gap-3 text-sm font-black text-navy"
+                      ><i class="fa-solid fa-briefcase text-blue"></i>Job
+                      offers</span
+                    >
+                    <span
+                      class="rounded-full bg-yellow-50 px-3 py-1.5 text-xs font-black text-yellow-700"
+                      >28</span
+                    >
+                  </a>
+                  <a
+                    href="#"
+                    class="flex items-center justify-between gap-4 rounded-2xl border border-line p-4 hover:border-blue hover:bg-skysoft"
+                  >
+                    <span
+                      class="flex items-center gap-3 text-sm font-black text-navy"
+                      ><i class="fa-solid fa-flag text-blue"></i>Reports</span
+                    >
+                    <span
+                      class="rounded-full bg-red-50 px-3 py-1.5 text-xs font-black text-coral"
+                      >5</span
+                    >
+                  </a>
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Subscriptions</h2>
+                <div class="mt-5 space-y-4 text-sm font-bold text-slate-600">
+                  <p class="flex items-center justify-between gap-4">
+                    <span>Active plans</span><span class="text-navy">612</span>
+                  </p>
+                  <p class="flex items-center justify-between gap-4">
+                    <span>Pro Recruiter</span><span class="text-navy">428</span>
+                  </p>
+                  <p class="flex items-center justify-between gap-4">
+                    <span>Starter</span><span class="text-navy">184</span>
+                  </p>
+                  <p class="flex items-center justify-between gap-4">
+                    <span>Cancelled</span><span class="text-coral">19</span>
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+                >
+                  Manage subscriptions
+                </a>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Quick actions</h2>
+                <div class="mt-5 grid gap-3">
+                  <button
+                    type="button"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+                  >
+                    <i class="fa-solid fa-user-plus"></i>Add admin
+                  </button>
+                  <button
+                    type="button"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue"
+                  >
+                    <i class="fa-solid fa-download"></i>Export report
+                  </button>
+                </div>
+              </section>
+            </aside>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarOverlay = document.querySelector("[data-sidebar-overlay]");
+      const openSidebar = document.querySelector("[data-open-sidebar]");
+      const closeSidebar = document.querySelector("[data-close-sidebar]");
+
+      function showSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+
+      function hideSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      }
+
+      openSidebar.addEventListener("click", showSidebar);
+      closeSidebar.addEventListener("click", hideSidebar);
+      sidebarOverlay.addEventListener("click", hideSidebar);
+    </script>
+  </body>
+</html>

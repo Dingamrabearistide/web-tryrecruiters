@@ -1,0 +1,361 @@
+<div *transloco="let t; read: 'joboffers'">
+  <!-- Banner Section -->
+  <div class="relative text-white py-6 sm:py-8 overflow-hidden">
+    <!-- Background Image -->
+    <div
+      class="absolute rounded inset-0 bg-cover bg-center bg-no-repeat"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+        height: 300px;
+      "
+    ></div>
+    <div class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner p-6">
+      <div class="text-center">
+        <h1 class="text-2xl sm:text-3xl font-bold">
+          {{ t("banner.jobs") }}
+        </h1>
+        <p class="text-sm sm:text-base opacity-90 mt-1"></p>
+      </div>
+    </div>
+
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 app-container-inner sm:px-6">
+      <div class="text-center">
+        <h1 class="text-2xl sm:text-4xl font-bold">
+          {{ t("banner.jobs") || "Jobs" }}
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Original Content with No Content handling -->
+  <div class="mt-6 sm:mt-10 mx-4 sm:mx-6 lg:mx-auto app-container-inner">
+    <div
+      class="bg-white pb-7 px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 md:gap-6"
+    >
+      <!-- Profile Section -->
+      <div
+        class="flex items-center flex-col sm:flex-row gap-4 w-full sm:w-auto"
+      >
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">
+          <span *ngIf="job?.title; else noJobTitle">{{ job.title }}</span>
+          <ng-template #noJobTitle>
+            <span class="text-gray-400 italic text-xl sm:text-2xl">{{
+              t("details.noTitle") || "Titre non disponible"
+            }}</span>
+          </ng-template>
+        </h2>
+      </div>
+
+      <!-- Subscribe Section -->
+      <div
+        class="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto"
+      >
+        <div *ngIf="job?.expireDate; else noExpireDate">
+          <p class="text-xs sm:text-sm text-gray-500">
+            {{ t("details.expire") }}
+            <span class="text-red-500 font-medium">{{ job.expireDate }}</span>
+          </p>
+        </div>
+        <ng-template #noExpireDate>
+          <p class="text-xs sm:text-sm text-gray-400 italic">
+            {{ t("details.noExpireDate") }}
+          </p>
+        </ng-template>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 gap-4 app-container-inner mx-auto mt-4 py-4 px-4 sm:px-6 lg:px-0 my-8"
+    >
+      <!-- Left Side (Main Content) -->
+      <div class="lg:col-span-2 gap-6">
+        <!-- Job Description -->
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            Job Description
+          </h2>
+
+          <div
+            *ngIf="job?.description || job?.description2; else noDescription"
+          >
+            <p
+              *ngIf="job?.description"
+              class="text-gray-700 text-sm sm:text-base leading-relaxed"
+            >
+              {{ job.description }}
+            </p>
+            <p
+              *ngIf="job?.description2"
+              class="text-gray-700 text-sm sm:text-base mt-4 leading-relaxed"
+            >
+              {{ job.description2 }}
+            </p>
+          </div>
+
+          <ng-template #noDescription>
+            <div class="text-center py-6 bg-gray-50 rounded-lg border">
+              <i class="fa-solid fa-file-text text-gray-300 text-3xl mb-3"></i>
+              <p class="text-gray-500 text-sm sm:text-base">
+                {{
+                  t("details.noDescription") ||
+                    "Aucune description disponible pour ce poste"
+                }}
+              </p>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Responsibilities -->
+        <div *ngIf="job?.responsibilities?.length">
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">
+            Responsibilities
+          </h2>
+          <ul
+            class="list-disc list-inside text-sm sm:text-base text-gray-700 gap-1"
+          >
+            <li *ngFor="let responsibility of job.responsibilities">
+              {{ responsibility }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Card -->
+        <div class="bg-white border rounded-lg shadow-sm p-5 gap-4">
+          <div *ngIf="company; else noCompanyInfo">
+            <div class="flex items-center gap-3">
+              <div
+                class="h-12 w-12 sm:h-16 sm:w-16 rounded-full flex justify-center items-center border"
+              >
+                <img
+                  *ngIf="company?.logoUrl; else defaultLogo"
+                  [src]="company.logoUrl"
+                  alt="Logo"
+                  class="w-8 h-8 sm:w-12 sm:h-12 rounded object-cover"
+                />
+                <ng-template #defaultLogo>
+                  <i
+                    class="bg-primary fa-building text-gray-400 text-lg sm:text-xl"
+                  ></i>
+                </ng-template>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800 text-sm sm:text-base">
+                  <span *ngIf="company?.name; else noCompanyName">{{
+                    company.name
+                  }}</span>
+                  <ng-template #noCompanyName>
+                    <span class="text-gray-400 italic">{{
+                      t("details.noCompanyName") || "Nom non disponible"
+                    }}</span>
+                  </ng-template>
+                </h4>
+                <p *ngIf="company?.description" class="font-normal">
+                  {{ company.description | slice : 0 : 100 }}
+                </p>
+                <p
+                  *ngIf="!company?.description"
+                  class="font-normal text-gray-400 italic text-sm"
+                >
+                  {{
+                    t("details.noCompanyDescription") ||
+                      "Description non disponible"
+                  }}
+                </p>
+              </div>
+            </div>
+
+            <div class="text-xs sm:text-sm gap-2">
+              <p *ngIf="company?.organizationType" class="flex justify-between">
+                <span class="text-[#5E6670]">{{
+                  t("details.organizationType")
+                }}</span>
+                <span class="font-normal">{{ company.organizationType }}</span>
+              </p>
+              <p *ngIf="company?.companySize" class="flex justify-between">
+                <span class="text-[#5E6670]">{{
+                  t("details.companySize")
+                }}</span>
+                <span class="font-normal">{{ company.companySize }}</span>
+              </p>
+              <p *ngIf="company?.phoneNumber" class="flex justify-between">
+                <span class="text-[#5E6670]">{{ t("details.phone") }}</span>
+                <span class="font-normal">{{ company.phoneNumber }}</span>
+              </p>
+              <p *ngIf="company?.email" class="flex justify-between">
+                <span class="text-[#5E6670]">{{ t("details.email") }}</span>
+                <span class="font-normal break-all">{{ company.email }}</span>
+              </p>
+              <p *ngIf="company?.website" class="flex justify-between">
+                <span class="text-[#5E6670]">{{ t("details.website") }}</span>
+                <span class="font-normal break-all">{{ company.website }}</span>
+              </p>
+
+              <!-- No content messages for missing company info -->
+              <div
+                *ngIf="
+                  !company?.organizationType &&
+                  !company?.companySize &&
+                  !company?.phoneNumber &&
+                  !company?.email &&
+                  !company?.website
+                "
+                class="text-center py-4"
+              >
+                <p class="text-gray-400 italic text-xs">
+                  {{
+                    t("details.noCompanyDetails") ||
+                      "Détails de l'entreprise non disponibles"
+                  }}
+                </p>
+              </div>
+            </div>
+
+            <button
+              (click)="onViewCompany.emit()"
+              class="app-primary w-full mt-4"
+            >
+              {{ t("details.more") }}
+            </button>
+          </div>
+
+          <ng-template #noCompanyInfo>
+            <div class="text-center py-8">
+              <i class="fa-solid fa-building text-gray-300 text-4xl mb-4"></i>
+              <p class="text-gray-500 text-sm sm:text-base">
+                {{
+                  t("details.noCompanyInfo") ||
+                    "Informations sur l'entreprise non disponibles"
+                }}
+              </p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- Right Side (Sidebar) -->
+      <div class="gap-6">
+        <!-- Job Overview -->
+        <div class="bg-white border rounded-lg shadow-sm p-5 gap-4">
+          <h3 class="text-md font-semibold text-gray-800">Job Overview</h3>
+
+          <div
+            *ngIf="job; else noJobOverview"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 text-sm sm:text-base text-gray-700"
+          >
+            <div *ngIf="job?.postedDate" class="flex items-start gap-3">
+              <i class="fa-solid fa-calendar text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.posted") }}
+                </p>
+                <span class="font-normal">{{ job.postedDate }}</span>
+              </div>
+            </div>
+
+            <div *ngIf="job?.expireIn" class="flex items-start gap-3">
+              <i class="fa-solid fa-clock text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.expire") }}
+                </p>
+                <span class="font-normal">{{ job.expireIn }}</span>
+              </div>
+            </div>
+
+            <div *ngIf="job?.salary" class="flex items-start gap-3">
+              <i class="fa-solid fa-money-bill text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.salary") }}
+                </p>
+                <span class="font-normal"
+                  >{{ formatSalaryAmount(job.salary)
+                  }}<ng-container *ngIf="job.salaryCurrency"> {{ job.salaryCurrency }}</ng-container></span
+                >
+              </div>
+            </div>
+
+            <div *ngIf="job?.education" class="flex items-start gap-3">
+              <i class="fa-solid fa-graduation-cap text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.education") }}
+                </p>
+                <span class="font-normal">{{ job.education }}</span>
+              </div>
+            </div>
+
+            <div *ngIf="job?.location" class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.location") }}
+                </p>
+                <span class="font-normal">{{ job.location }}</span>
+              </div>
+            </div>
+
+            <div *ngIf="job?.jobType" class="flex items-start gap-3">
+              <i class="fa-solid fa-briefcase text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.jobType") }}
+                </p>
+                <span class="font-normal">{{ job.jobType }}</span>
+              </div>
+            </div>
+
+            <div
+              *ngIf="job?.experience"
+              class="flex items-start gap-3 col-span-1 sm:col-span-2 lg:col-span-1"
+            >
+              <i class="fa-solid fa-award text-blue-500 mt-1"></i>
+              <div>
+                <p class="text-xs uppercase text-gray-500">
+                  {{ t("details.experience") }}
+                </p>
+                <span class="font-normal">{{ job.experience }}</span>
+              </div>
+            </div>
+
+            <!-- No content message if no job details -->
+            <div
+              *ngIf="
+                !job?.postedDate &&
+                !job?.expireIn &&
+                !job?.salary &&
+                !job?.education &&
+                !job?.location &&
+                !job?.jobType &&
+                !job?.experience
+              "
+              class="col-span-full text-center py-4"
+            >
+              <p class="text-gray-400 italic text-sm">
+                {{
+                  t("details.noJobDetails") ||
+                    "Détails du poste non disponibles"
+                }}
+              </p>
+            </div>
+          </div>
+
+          <ng-template #noJobOverview>
+            <div class="text-center py-6">
+              <i class="fa-solid fa-briefcase text-gray-300 text-3xl mb-3"></i>
+              <p class="text-gray-500 text-sm">
+                {{
+                  t("details.noJobOverview") || "Aperçu du poste non disponible"
+                }}
+              </p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

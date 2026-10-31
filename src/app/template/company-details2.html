@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Company Details</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+              muted: "#6b7a90",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+            animation: {
+              fadeUp: "fadeUp .35s ease-out both",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .hero-gradient {
+        background-image:
+          radial-gradient(
+            circle at 16% 18%,
+            rgba(20, 157, 242, 0.28),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 86% 12%,
+            rgba(255, 81, 72, 0.18),
+            transparent 24%
+          ),
+          linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+      }
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(
+          circle at center,
+          black 48%,
+          transparent 82%
+        );
+      }
+    </style>
+  </head>
+
+  <body class="bg-mist text-slate-900 antialiased">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex h-20 max-w-[1160px] items-center justify-between px-5 lg:px-8"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <span
+            class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+          >
+            <i class="fa-solid fa-people-group text-xl"></i>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-black tracking-tight text-navy"
+              >TRYRECRUITERS</span
+            >
+            <span
+              class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+              >Talent platform</span
+            >
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+        >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="rounded-full bg-white px-5 py-2.5 text-blue shadow-sm"
+            >Companies</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Candidates</a
+          >
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block" data-language-dropdown>
+            <button
+              type="button"
+              data-language-button
+              aria-expanded="false"
+              class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-blue hover:text-blue"
+            >
+              <span data-current-language-flag>🇬🇧</span>
+              <span data-current-language-label>English</span>
+              <i
+                class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition"
+                data-language-chevron
+              ></i>
+            </button>
+            <div
+              data-language-menu
+              class="invisible absolute right-0 mt-3 w-48 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition duration-200"
+            >
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇬🇧</span><span>English</span>
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇫🇷</span><span>Français</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2 sm:inline-flex"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+            >Register</a
+          >
+          <button
+            type="button"
+            data-mobile-menu-button
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg" data-mobile-menu-icon></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        data-mobile-menu
+        class="hidden border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+      >
+        <div class="mx-auto max-w-[1160px] space-y-4">
+          <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Jobs</a
+            >
+            <a href="#" class="rounded-2xl bg-skysoft px-4 py-3 text-blue"
+              >Companies</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Candidates</a
+            >
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇬🇧"
+              data-label="English"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-blue"
+            >
+              🇬🇧 English
+            </button>
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇫🇷"
+              data-label="Français"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 hover:text-blue"
+            >
+              🇫🇷 Français
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Company hero -->
+    <section class="hero-gradient relative overflow-hidden text-white">
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative mx-auto max-w-[1160px] px-5 py-10 lg:px-8 lg:py-14">
+        <a
+          href="#"
+          class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/85 transition hover:bg-white hover:text-navy"
+        >
+          <i class="fa-solid fa-arrow-left"></i> Back to companies
+        </a>
+
+        <div class="grid gap-8 lg:grid-cols-[1fr_320px] lg:items-end">
+          <div class="flex flex-col gap-6 md:flex-row md:items-end">
+            <span
+              class="grid size-28 shrink-0 place-items-center rounded-[32px] bg-white text-4xl font-black text-navy shadow-soft"
+              >NT</span
+            >
+            <div>
+              <div class="mb-4 flex flex-wrap gap-2">
+                <span
+                  class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-black text-white/90"
+                  >Finance</span
+                >
+                <span
+                  class="rounded-full bg-emerald-400/20 px-3 py-1.5 text-xs font-black text-emerald-200"
+                  ><i class="fa-solid fa-circle-check mr-1"></i>Verified
+                  employer</span
+                >
+              </div>
+              <h1
+                class="font-display text-5xl font-black leading-none tracking-tight md:text-7xl"
+              >
+                NexarTrust Analytics
+              </h1>
+              <p
+                class="mt-4 max-w-2xl text-lg font-medium leading-8 text-white/75"
+              >
+                AI-powered fraud detection and financial risk analytics for
+                modern finance teams.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="rounded-[30px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div class="rounded-2xl bg-white p-4 text-slate-900">
+                <p class="text-2xl font-black text-navy">14</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Open jobs</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 text-slate-900">
+                <p class="text-2xl font-black text-navy">4.8</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Rating</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 text-slate-900">
+                <p class="text-2xl font-black text-navy">51-250</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Employees</p>
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                class="rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+              >
+                <i class="fa-solid fa-plus mr-2"></i>Follow
+              </button>
+              <button
+                type="button"
+                class="rounded-2xl bg-white px-5 py-3 text-sm font-black text-navy transition hover:bg-skysoft hover:text-blue"
+              >
+                <i class="fa-solid fa-share-nodes mr-2"></i>Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="mx-auto max-w-[1160px] px-5 py-8 lg:px-8">
+      <div class="grid gap-7 lg:grid-cols-[1fr_340px] lg:items-start">
+        <!-- Main content -->
+        <div class="space-y-7">
+          <!-- Tabs -->
+          <section
+            class="rounded-[26px] border border-line bg-white p-2 shadow-card"
+          >
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-4">
+              <button
+                type="button"
+                data-tab-button="overview"
+                class="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-blue px-3 py-3 text-xs font-black text-white sm:text-sm"
+              >
+                <i class="fa-solid fa-circle-info text-xs"></i>
+                <span>Overview</span>
+              </button>
+              <button
+                type="button"
+                data-tab-button="jobs"
+                class="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl px-3 py-3 text-xs font-black text-slate-600 hover:bg-skysoft hover:text-blue sm:text-sm"
+              >
+                <i class="fa-solid fa-briefcase text-xs"></i>
+                <span>Open jobs</span>
+              </button>
+              <button
+                type="button"
+                data-tab-button="culture"
+                class="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl px-3 py-3 text-xs font-black text-slate-600 hover:bg-skysoft hover:text-blue sm:text-sm"
+              >
+                <i class="fa-solid fa-heart text-xs"></i>
+                <span>Culture</span>
+              </button>
+              <button
+                type="button"
+                data-tab-button="reviews"
+                class="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl px-3 py-3 text-xs font-black text-slate-600 hover:bg-skysoft hover:text-blue sm:text-sm"
+              >
+                <i class="fa-solid fa-star text-xs"></i>
+                <span>Reviews</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Overview -->
+          <section
+            data-tab-panel="overview"
+            class="animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+          >
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+              About the company
+            </p>
+            <h2 class="mt-2 text-3xl font-black text-navy">
+              Building safer financial products with AI.
+            </h2>
+            <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+              NexarTrust Analytics helps finance, insurance and risk teams
+              detect suspicious activity faster. The company combines machine
+              learning, explainable risk models and modern compliance tooling to
+              help teams make better decisions with confidence.
+            </p>
+            <p class="mt-4 text-sm font-medium leading-7 text-slate-600">
+              Teams at NexarTrust work across product, engineering, data science
+              and customer success. The company values clarity, ownership and
+              pragmatic execution.
+            </p>
+
+            <div class="mt-7 grid gap-4 md:grid-cols-3">
+              <div class="rounded-2xl bg-skysoft p-5">
+                <span
+                  class="grid size-11 place-items-center rounded-xl bg-blue text-white"
+                  ><i class="fa-solid fa-brain"></i
+                ></span>
+                <h3 class="mt-4 font-black text-navy">AI-first product</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Modern machine learning workflows for fraud and risk teams.
+                </p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-5">
+                <span
+                  class="grid size-11 place-items-center rounded-xl bg-coral text-white"
+                  ><i class="fa-solid fa-shield-halved"></i
+                ></span>
+                <h3 class="mt-4 font-black text-navy">Security focused</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Privacy, compliance and reliability are built into every
+                  workflow.
+                </p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-5">
+                <span
+                  class="grid size-11 place-items-center rounded-xl bg-ink text-white"
+                  ><i class="fa-solid fa-users-gear"></i
+                ></span>
+                <h3 class="mt-4 font-black text-navy">Collaborative teams</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Product, data and engineering teams work closely with
+                  customers.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Jobs -->
+          <section
+            data-tab-panel="jobs"
+            class="hidden animate-fadeUp rounded-[30px] border border-line bg-white p-5 shadow-card md:p-6"
+          >
+            <div
+              class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+            >
+              <div>
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Open roles
+                </p>
+                <h2 class="mt-2 text-3xl font-black text-navy">
+                  14 jobs at NexarTrust
+                </h2>
+                <p class="mt-2 text-sm font-medium text-slate-500">
+                  Browse current opportunities from this company.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+              >
+                View all jobs <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="mb-4 grid gap-3 md:grid-cols-[1fr_180px]">
+              <label
+                class="flex min-h-12 items-center gap-3 rounded-2xl border border-line bg-slate-50 px-4 focus-within:border-blue focus-within:bg-white"
+              >
+                <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                <input
+                  type="text"
+                  class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+                  placeholder="Search roles at NexarTrust"
+                />
+              </label>
+              <select
+                class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+              >
+                <option>Most recent</option>
+                <option>Best match</option>
+                <option>Salary high to low</option>
+              </select>
+            </div>
+
+            <div class="space-y-3">
+              <article
+                class="group rounded-2xl border border-line bg-white p-4 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex gap-4">
+                  <div
+                    class="grid size-16 shrink-0 place-items-center rounded-xl bg-violet-600 text-sm font-black text-white shadow-sm"
+                  >
+                    NT
+                  </div>
+
+                  <div class="min-w-0 flex-1">
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                    >
+                      <div>
+                        <a
+                          href="#"
+                          class="text-lg font-black leading-tight text-navy hover:text-blue"
+                          >AI Engineer — Fraud Detection</a
+                        >
+                        <p class="mt-1 text-sm font-bold text-slate-600">
+                          NexarTrust Analytics
+                        </p>
+                        <p class="mt-1 text-xs font-semibold text-slate-500">
+                          <i class="fa-solid fa-location-dot mr-1 text-blue"></i
+                          >Paris, France · Remote
+                        </p>
+                      </div>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <span
+                          class="rounded-full bg-yellow-50 px-3 py-1 text-[11px] font-black text-yellow-700"
+                          ><i class="fa-solid fa-star mr-1"></i>High fit</span
+                        >
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-skysoft text-blue hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-slate-100 text-slate-500 hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <p
+                      class="mt-3 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+                    >
+                      Design and deploy machine learning systems for fraud
+                      detection and financial risk analysis.
+                    </p>
+
+                    <div
+                      class="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-black"
+                    >
+                      <span
+                        class="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700"
+                        ><i class="fa-solid fa-circle-check mr-1"></i>98%
+                        match</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Full-time</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Senior</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                      >
+                        XAF92k</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >Python</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >ML</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >Fraud</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-3 flex items-center justify-between border-t border-line pt-3 text-xs font-bold text-slate-400"
+                >
+                  <span>1 day ago</span>
+                  <a
+                    href="#"
+                    class="text-blue opacity-100 transition hover:text-blue2"
+                    >View job details
+                    <i class="fa-solid fa-arrow-right ml-1"></i
+                  ></a>
+                </div>
+              </article>
+
+              <article
+                class="group rounded-2xl border border-line bg-white p-4 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex gap-4">
+                  <div
+                    class="grid size-16 shrink-0 place-items-center rounded-xl bg-violet-600 text-sm font-black text-white shadow-sm"
+                  >
+                    NT
+                  </div>
+
+                  <div class="min-w-0 flex-1">
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                    >
+                      <div>
+                        <a
+                          href="#"
+                          class="text-lg font-black leading-tight text-navy hover:text-blue"
+                          >Customer Success Manager</a
+                        >
+                        <p class="mt-1 text-sm font-bold text-slate-600">
+                          NexarTrust Analytics
+                        </p>
+                        <p class="mt-1 text-xs font-semibold text-slate-500">
+                          <i class="fa-solid fa-location-dot mr-1 text-blue"></i
+                          >London, UK · Hybrid
+                        </p>
+                      </div>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-skysoft text-blue hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-slate-100 text-slate-500 hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <p
+                      class="mt-3 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+                    >
+                      Help enterprise customers adopt analytics products and
+                      achieve measurable outcomes.
+                    </p>
+
+                    <div
+                      class="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-black"
+                    >
+                      <span
+                        class="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700"
+                        ><i class="fa-solid fa-circle-check mr-1"></i>73%
+                        match</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Full-time</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Mid</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                      >
+                        XAF60k</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >Client success</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >Onboarding</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-3 flex items-center justify-between border-t border-line pt-3 text-xs font-bold text-slate-400"
+                >
+                  <span>24 days ago</span>
+                  <a
+                    href="#"
+                    class="text-blue opacity-100 transition hover:text-blue2"
+                    >View job details
+                    <i class="fa-solid fa-arrow-right ml-1"></i
+                  ></a>
+                </div>
+              </article>
+
+              <article
+                class="group rounded-2xl border border-line bg-white p-4 shadow-card transition hover:border-blue hover:shadow-soft"
+              >
+                <div class="flex gap-4">
+                  <div
+                    class="grid size-16 shrink-0 place-items-center rounded-xl bg-purple-700 text-sm font-black text-white shadow-sm"
+                  >
+                    ML
+                  </div>
+
+                  <div class="min-w-0 flex-1">
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                    >
+                      <div>
+                        <a
+                          href="#"
+                          class="text-lg font-black leading-tight text-navy hover:text-blue"
+                          >Machine Learning Researcher</a
+                        >
+                        <p class="mt-1 text-sm font-bold text-slate-600">
+                          ModelLab · NexarTrust Partner
+                        </p>
+                        <p class="mt-1 text-xs font-semibold text-slate-500">
+                          <i class="fa-solid fa-location-dot mr-1 text-blue"></i
+                          >Remote · Contract
+                        </p>
+                      </div>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <span
+                          class="rounded-full bg-yellow-50 px-3 py-1 text-[11px] font-black text-yellow-700"
+                          ><i class="fa-solid fa-star mr-1"></i>High fit</span
+                        >
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-skysoft text-blue hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="grid size-8 place-items-center rounded-full bg-slate-100 text-slate-500 hover:bg-blue hover:text-white"
+                        >
+                          <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <p
+                      class="mt-3 line-clamp-2 text-sm font-medium leading-6 text-slate-600"
+                    >
+                      Research model evaluation methods and build benchmarks for
+                      applied AI systems.
+                    </p>
+
+                    <div
+                      class="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-black"
+                    >
+                      <span
+                        class="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700"
+                        ><i class="fa-solid fa-circle-check mr-1"></i>93%
+                        match</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Contract</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                        >Senior</span
+                      >
+                      <span
+                        class="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+                      >
+                        XAF120k</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >LLMs</span
+                      >
+                      <span
+                        class="rounded-full bg-blue/10 px-2.5 py-1 text-blue"
+                        >Evaluation</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-3 flex items-center justify-between border-t border-line pt-3 text-xs font-bold text-slate-400"
+                >
+                  <span>11 days ago</span>
+                  <a
+                    href="#"
+                    class="text-blue opacity-100 transition hover:text-blue2"
+                    >View job details
+                    <i class="fa-solid fa-arrow-right ml-1"></i
+                  ></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Culture -->
+          <section
+            data-tab-panel="culture"
+            class="hidden animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+          >
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+              Culture & benefits
+            </p>
+            <h2 class="mt-2 text-3xl font-black text-navy">
+              A focused, flexible and ambitious team.
+            </h2>
+            <div class="mt-7 grid gap-4 md:grid-cols-2">
+              <div class="rounded-2xl border border-line p-5">
+                <i class="fa-solid fa-house-laptop text-blue"></i>
+                <h3 class="mt-3 font-black text-navy">Remote-friendly</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Flexible work options across product and engineering roles.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-line p-5">
+                <i class="fa-solid fa-chart-line text-blue"></i>
+                <h3 class="mt-3 font-black text-navy">Growth budget</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Learning support for courses, conferences and certifications.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-line p-5">
+                <i class="fa-solid fa-heart-pulse text-blue"></i>
+                <h3 class="mt-3 font-black text-navy">Health support</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Wellbeing programs and health coverage depending on location.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-line p-5">
+                <i class="fa-solid fa-people-arrows text-blue"></i>
+                <h3 class="mt-3 font-black text-navy">Clear ownership</h3>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  Small teams, direct communication and strong product
+                  ownership.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Reviews -->
+          <section
+            data-tab-panel="reviews"
+            class="hidden animate-fadeUp rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+          >
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+              Employee reviews
+            </p>
+            <h2 class="mt-2 text-3xl font-black text-navy">What people say</h2>
+            <div class="mt-6 grid gap-4 md:grid-cols-2">
+              <article class="rounded-2xl bg-slate-50 p-5">
+                <div class="text-yellow-400">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p class="mt-4 text-sm font-medium leading-7 text-slate-600">
+                  Great technical challenges and a lot of ownership. The team is
+                  focused and collaborative.
+                </p>
+                <p class="mt-4 text-sm font-black text-navy">Data Scientist</p>
+              </article>
+              <article class="rounded-2xl bg-slate-50 p-5">
+                <div class="text-yellow-400">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="mt-4 text-sm font-medium leading-7 text-slate-600">
+                  Strong product culture, good flexibility and meaningful
+                  customer problems.
+                </p>
+                <p class="mt-4 text-sm font-black text-navy">Product Manager</p>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6 lg:sticky lg:top-28">
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+          >
+            <h2 class="text-xl font-black text-navy">Company information</h2>
+            <div class="mt-5 space-y-4 text-sm font-bold text-slate-600">
+              <p class="flex items-center gap-3">
+                <span
+                  class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-industry"></i></span
+                >Finance
+              </p>
+              <p class="flex items-center gap-3">
+                <span
+                  class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-location-dot"></i></span
+                >Paris, France
+              </p>
+              <p class="flex items-center gap-3">
+                <span
+                  class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-users"></i></span
+                >51-250 employees
+              </p>
+              <p class="flex items-center gap-3">
+                <span
+                  class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-calendar"></i></span
+                >Founded in 2018
+              </p>
+              <p class="flex items-center gap-3">
+                <span
+                  class="grid size-10 place-items-center rounded-xl bg-skysoft text-blue"
+                  ><i class="fa-solid fa-globe"></i></span
+                >nexartrust.example
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+          >
+            <h2 class="text-xl font-black text-navy">Recruiter contact</h2>
+            <div class="mt-5 flex items-center gap-4">
+              <span
+                class="grid size-14 place-items-center rounded-2xl bg-blue text-white"
+                ><i class="fa-solid fa-user-tie text-xl"></i
+              ></span>
+              <div>
+                <p class="font-black text-navy">Sarah Mitchell</p>
+                <p class="text-sm font-bold text-slate-500">
+                  Talent Acquisition
+                </p>
+              </div>
+            </div>
+            <div class="mt-5 grid gap-3">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+                ><i class="fa-solid fa-envelope"></i>Contact recruiter</a
+              >
+              <a
+                href="#"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue"
+                ><i class="fa-solid fa-video"></i>Request interview</a
+              >
+            </div>
+          </section>
+
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+          >
+            <h2 class="text-xl font-black text-navy">Popular tags</h2>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span
+                class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                >AI</span
+              >
+              <span
+                class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                >Fintech</span
+              >
+              <span
+                class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                >Remote friendly</span
+              >
+              <span
+                class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                >Machine Learning</span
+              >
+              <span
+                class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue"
+                >Risk analytics</span
+              >
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="mt-10 bg-navy text-white">
+      <div
+        class="mx-auto grid max-w-[1160px] gap-10 px-5 py-14 md:grid-cols-4 lg:px-8"
+      >
+        <div>
+          <a href="#" class="flex items-center gap-3"
+            ><span
+              class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+              ><i class="fa-solid fa-people-group"></i></span
+            ><span class="font-black">TRYRECRUITERS</span></a
+          >
+          <p class="mt-5 text-sm font-medium leading-7 text-white/65">
+            A modern platform connecting qualified candidates with active
+            recruiters.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black">Candidates</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Find a job</a></li>
+            <li><a href="#">Create a profile</a></li>
+            <li><a href="#">Upload CV</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Companies</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Post a job</a></li>
+            <li><a href="#">Recruiter area</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Support</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6">
+        <div
+          class="mx-auto flex max-w-[1160px] flex-col gap-3 px-5 text-sm font-medium text-white/55 md:flex-row md:items-center md:justify-between lg:px-8"
+        >
+          <span>© 2026 TryRecruiters. All rights reserved.</span>
+          <span>English · Français · Deutsch</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileButton = document.querySelector("[data-mobile-menu-button]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileIcon = document.querySelector("[data-mobile-menu-icon]");
+      const languageDropdown = document.querySelector(
+        "[data-language-dropdown]",
+      );
+      const languageButton = document.querySelector("[data-language-button]");
+      const languageMenu = document.querySelector("[data-language-menu]");
+      const languageChevron = document.querySelector("[data-language-chevron]");
+      const currentLanguageFlag = document.querySelector(
+        "[data-current-language-flag]",
+      );
+      const currentLanguageLabel = document.querySelector(
+        "[data-current-language-label]",
+      );
+      const languageOptions = document.querySelectorAll(
+        "[data-language-option]",
+      );
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileButton.setAttribute("aria-expanded", "false");
+        mobileIcon.classList.remove("fa-xmark");
+        mobileIcon.classList.add("fa-bars");
+      }
+
+      mobileButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileButton.setAttribute("aria-expanded", String(isOpen));
+        mobileIcon.classList.toggle("fa-bars", !isOpen);
+        mobileIcon.classList.toggle("fa-xmark", isOpen);
+      });
+
+      function closeLanguageMenu() {
+        languageMenu.classList.add("invisible", "translate-y-2", "opacity-0");
+        languageMenu.classList.remove(
+          "visible",
+          "translate-y-0",
+          "opacity-100",
+        );
+        languageButton.setAttribute("aria-expanded", "false");
+        languageChevron.classList.remove("rotate-180");
+      }
+
+      languageButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isClosed = languageMenu.classList.contains("invisible");
+        languageMenu.classList.toggle("invisible", !isClosed);
+        languageMenu.classList.toggle("translate-y-2", !isClosed);
+        languageMenu.classList.toggle("opacity-0", !isClosed);
+        languageMenu.classList.toggle("visible", isClosed);
+        languageMenu.classList.toggle("translate-y-0", isClosed);
+        languageMenu.classList.toggle("opacity-100", isClosed);
+        languageButton.setAttribute("aria-expanded", String(isClosed));
+        languageChevron.classList.toggle("rotate-180", isClosed);
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          currentLanguageFlag.textContent = option.dataset.flag;
+          currentLanguageLabel.textContent = option.dataset.label;
+          closeLanguageMenu();
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (languageDropdown && !languageDropdown.contains(event.target))
+          closeLanguageMenu();
+      });
+
+      const tabButtons = document.querySelectorAll("[data-tab-button]");
+      const tabPanels = document.querySelectorAll("[data-tab-panel]");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.tabButton;
+
+          tabButtons.forEach((item) => {
+            item.classList.remove("bg-blue", "text-white");
+            item.classList.add(
+              "text-slate-600",
+              "hover:bg-skysoft",
+              "hover:text-blue",
+            );
+          });
+
+          button.classList.add("bg-blue", "text-white");
+          button.classList.remove(
+            "text-slate-600",
+            "hover:bg-skysoft",
+            "hover:text-blue",
+          );
+
+          tabPanels.forEach((panel) => {
+            panel.classList.toggle("hidden", panel.dataset.tabPanel !== target);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

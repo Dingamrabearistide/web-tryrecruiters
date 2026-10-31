@@ -1,0 +1,162 @@
+<div
+  *transloco="let t; read: 'billings'"
+  class="min-h-full bg-gray-50 py-8 px-4"
+>
+  <app-dashboard-header
+    [title]="t('currentTitle')"
+    [description]="t('currentDescription')"
+    [backText]="'common.back'"
+    backLink="../plans"
+  ></app-dashboard-header>
+
+  <div
+    *ngIf="isLoading"
+    class="flex justify-center items-center h-64"
+  >
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error
+      [message]="errorMessage"
+    ></app-generic-error>
+
+    <div class="text-center mt-5">
+      <button
+        type="button"
+        class="app-primary"
+        (click)="loadCurrentPlan()"
+      >
+        {{ t("retry") }}
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="
+      !isLoading &&
+      !hasError &&
+      currentPlan as subscription
+    "
+    class="max-w-3xl mx-auto bg-white rounded-3xl border border-gray-100 shadow-soft overflow-hidden"
+  >
+    <div class="p-6 md:p-8">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="w-14 h-14 rounded-2xl bg-green-50 text-green-700 flex items-center justify-center"
+          >
+            <i class="fa-solid fa-credit-card text-2xl"></i>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500">
+              {{ t("activePlan") }}
+            </p>
+
+            <h2 class="text-2xl font-bold">
+              {{ getPlanName(subscription) }}
+            </h2>
+          </div>
+        </div>
+
+        <span
+          class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
+          [ngClass]="{
+            'bg-green-100 text-green-800':
+              subscription.status === 'ACTIVE',
+            'bg-gray-100 text-gray-700':
+              subscription.status !== 'ACTIVE'
+          }"
+        >
+          {{ subscription.status }}
+        </span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-8">
+        <div>
+          <p class="text-sm text-gray-500">
+            {{ t("remainingCredits") }}
+          </p>
+
+          <p class="text-3xl font-bold mt-1">
+            {{ subscription.remainingCredits }}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500">
+            {{ t("activatedAt") }}
+          </p>
+
+          <p class="font-semibold mt-1">
+            {{
+              subscription.activatedAt
+                | date: "dd/MM/yyyy HH:mm"
+            }}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500">
+            {{ t("price") }}
+          </p>
+
+          <p class="font-semibold mt-1">
+            {{
+              subscription.plan?.price
+                | number: "1.0-2"
+            }}
+
+            {{
+              subscription.plan?.currency
+                | uppercase
+            }}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500">
+            {{ t("freePlanUsed") }}
+          </p>
+
+          <p class="font-semibold mt-1">
+            {{
+              subscription.hasUsedFreePlan
+                ? t("yes")
+                : t("no")
+            }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="
+      !isLoading &&
+      !hasError &&
+      !currentPlan
+    "
+    class="max-w-xl mx-auto bg-white rounded-3xl p-10 text-center"
+  >
+    <i class="fa-solid fa-credit-card text-5xl text-gray-300"></i>
+
+    <h2 class="text-xl font-bold mt-5">
+      {{ t("noCurrentPlanTitle") }}
+    </h2>
+
+    <p class="text-gray-500 mt-2">
+      {{ t("noCurrentPlanDescription") }}
+    </p>
+
+    <a
+      routerLink="../plans"
+      class="inline-block app-primary mt-6"
+    >
+      {{ t("choosePlan") }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Job Application</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+              muted: "#6b7a90",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 8px 22px rgba(15, 23, 42, .07)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+            keyframes: {
+              detailsIn: {
+                "0%": {
+                  opacity: "0",
+                  maxHeight: "0",
+                  transform: "translateY(-8px)",
+                },
+                "100%": {
+                  opacity: "1",
+                  maxHeight: "900px",
+                  transform: "translateY(0)",
+                },
+              },
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(8px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              pulseSoft: {
+                "0%, 100%": { boxShadow: "0 0 0 0 rgba(20,157,242,.28)" },
+                "50%": { boxShadow: "0 0 0 12px rgba(20,157,242,0)" },
+              },
+            },
+            animation: {
+              detailsIn: "detailsIn .32s ease-out both",
+              fadeUp: "fadeUp .22s ease-out both",
+              pulseSoft: "pulseSoft 2.2s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .hero-gradient {
+        background-image:
+          radial-gradient(
+            circle at 14% 16%,
+            rgba(20, 157, 242, 0.22),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 86% 10%,
+            rgba(255, 81, 72, 0.17),
+            transparent 22%
+          ),
+          linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+      }
+      .input-focus:focus {
+        box-shadow: 0 0 0 4px rgba(20, 157, 242, 0.12);
+      }
+      .upload-pattern {
+        background-image: radial-gradient(
+          rgba(20, 157, 242, 0.13) 1px,
+          transparent 1px
+        );
+        background-size: 18px 18px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-mist text-slate-900 antialiased">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex h-20 max-w-[1160px] items-center justify-between px-5 lg:px-8"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <span
+            class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+          >
+            <i class="fa-solid fa-people-group text-xl"></i>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-black tracking-tight text-navy"
+              >TRYRECRUITERS</span
+            >
+            <span
+              class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+              >Talent platform</span
+            >
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+        >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="rounded-full bg-white px-5 py-2.5 text-blue shadow-sm"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Companies</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Candidates</a
+          >
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block" data-language-dropdown>
+            <button
+              type="button"
+              data-language-button
+              aria-expanded="false"
+              class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-blue hover:text-blue"
+            >
+              <span data-current-language-flag>🇬🇧</span>
+              <span data-current-language-label>English</span>
+              <i
+                class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition"
+                data-language-chevron
+              ></i>
+            </button>
+            <div
+              data-language-menu
+              class="invisible absolute right-0 mt-3 w-48 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition duration-200"
+            >
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇬🇧</span><span>English</span>
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇫🇷</span><span>Français</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2 sm:inline-flex"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+            >Sign up</a
+          >
+
+          <button
+            type="button"
+            data-mobile-menu-button
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg" data-mobile-menu-icon></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        data-mobile-menu
+        class="hidden border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+      >
+        <div class="mx-auto max-w-[1160px] space-y-5">
+          <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Home</a
+            >
+            <a href="#" class="rounded-2xl bg-skysoft px-4 py-3 text-blue"
+              >Jobs</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Companies</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Candidates</a
+            >
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-slate-50 p-3">
+            <p
+              class="mb-2 px-2 text-xs font-black uppercase tracking-[.18em] text-slate-400"
+            >
+              Language
+            </p>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-sm"
+              >
+                🇬🇧 English
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="rounded-2xl bg-white px-4 py-3 text-sm font-black text-slate-700 shadow-sm hover:text-blue"
+              >
+                🇫🇷 Français
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-2xl bg-blue px-5 py-3 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2"
+              >Login</a
+            >
+            <a
+              href="#"
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-200 px-5 py-3 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue"
+              >Sign up</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-gradient relative overflow-hidden text-white">
+      <div
+        class="absolute -left-24 top-8 size-72 rounded-full bg-blue/20 blur-3xl"
+      ></div>
+      <div
+        class="absolute -right-20 bottom-0 size-72 rounded-full bg-coral/20 blur-3xl"
+      ></div>
+
+      <div class="relative mx-auto max-w-[1160px] px-5 py-10 lg:px-8 lg:py-12">
+        <div
+          class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div>
+            <div
+              class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/90"
+            >
+              <i class="fa-solid fa-paper-plane text-coral"></i>
+              Application form
+            </div>
+            <h1
+              class="font-display text-5xl font-black leading-none tracking-tight md:text-6xl"
+            >
+              Apply with confidence.
+            </h1>
+            <p
+              class="mt-4 max-w-2xl text-base font-medium leading-7 text-white/75"
+            >
+              Submit your application in a few steps. Your profile, CV and
+              motivation letter will be sent securely to the recruiter.
+            </p>
+          </div>
+
+          <div
+            class="rounded-[28px] border border-white/15 bg-white/10 p-4 backdrop-blur lg:min-w-[340px]"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-white text-blue"
+              >
+                <i class="fa-solid fa-shield-check text-xl"></i>
+              </span>
+              <div>
+                <p class="text-sm font-black">Secure application</p>
+                <p class="text-xs font-semibold text-white/65">
+                  Your data is protected and shared only with this employer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="mx-auto max-w-[1160px] px-5 py-8 lg:px-8">
+      <div class="grid gap-7 lg:grid-cols-[1fr_340px] lg:items-start">
+        <div class="space-y-6">
+          <!-- Job summary -->
+          <section
+            class="overflow-hidden rounded-[30px] border border-line bg-white shadow-card"
+          >
+            <div class="bg-blue px-6 py-5 text-white">
+              <p
+                class="text-sm font-black uppercase tracking-[.18em] text-white/75"
+              >
+                You are applying for
+              </p>
+            </div>
+            <div class="p-6">
+              <div
+                class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between"
+              >
+                <div class="flex gap-4">
+                  <span
+                    class="grid size-16 shrink-0 place-items-center rounded-2xl bg-skysoft text-blue"
+                  >
+                    <i class="fa-solid fa-cube text-2xl"></i>
+                  </span>
+                  <div>
+                    <h2 class="text-2xl font-black text-navy">
+                      Web & Mobile Developer
+                    </h2>
+                    <p class="mt-2 text-sm font-bold text-slate-600">
+                      <i class="fa-solid fa-building mr-2 text-blue"></i>Super
+                      Test 2
+                    </p>
+                    <div
+                      class="mt-4 flex flex-wrap gap-2 text-xs font-black text-slate-600"
+                    >
+                      <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                        ><i class="fa-solid fa-location-dot mr-1 text-blue"></i
+                        >Balsh, Albania</span
+                      >
+                      <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                        ><i class="fa-solid fa-briefcase mr-1 text-blue"></i
+                        >Full-time</span
+                      >
+                      <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                        ><i class="fa-solid fa-house-laptop mr-1 text-blue"></i
+                        >Hybrid</span
+                      >
+                      <span class="rounded-full bg-slate-100 px-3 py-1.5"
+                        ><i class="fa-solid fa-hashtag mr-1 text-blue"></i
+                        >23423423</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex gap-3 md:flex-col md:items-end">
+                  <button
+                    type="button"
+                    data-toggle-job-details
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+                  >
+                    More details
+                    <i
+                      class="fa-solid fa-chevron-down text-xs transition"
+                      data-job-details-icon
+                    ></i>
+                  </button>
+                  <a
+                    href="#application-form"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+                  >
+                    Apply now <i class="fa-solid fa-arrow-down"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                data-job-details
+                class="hidden mt-6 animate-detailsIn overflow-hidden rounded-2xl border border-line bg-slate-50 p-5"
+              >
+                <div class="grid gap-5 md:grid-cols-3">
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-[.16em] text-slate-400"
+                    >
+                      Salary
+                    </p>
+                    <p class="mt-1 text-sm font-black text-navy">
+                      XAF48k – XAF62k estimated
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-[.16em] text-slate-400"
+                    >
+                      Experience
+                    </p>
+                    <p class="mt-1 text-sm font-black text-navy">Mid level</p>
+                  </div>
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-[.16em] text-slate-400"
+                    >
+                      Posted
+                    </p>
+                    <p class="mt-1 text-sm font-black text-navy">2 days ago</p>
+                  </div>
+                </div>
+                <p class="mt-5 text-sm font-medium leading-7 text-slate-600">
+                  Build modern, accessible interfaces for web and mobile
+                  products used by candidates and recruiters. You will work
+                  closely with designers, backend engineers and product managers
+                  to deliver polished user experiences.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Application form -->
+          <section
+            id="application-form"
+            class="overflow-hidden rounded-[30px] border border-line bg-white shadow-card"
+          >
+            <div class="bg-blue px-6 py-5 text-white">
+              <h2 class="text-xl font-black">Your application</h2>
+              <p class="mt-1 text-sm font-medium text-white/80">
+                Fill out the form below to submit your application.
+              </p>
+            </div>
+
+            <form class="p-6" data-application-form>
+              <div class="mb-6 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-2xl bg-skysoft p-4">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-blue text-white"
+                      ><i class="fa-solid fa-user"></i
+                    ></span>
+                    <div>
+                      <p
+                        class="text-xs font-black uppercase tracking-widest text-blue"
+                      >
+                        Step 1
+                      </p>
+                      <p class="text-sm font-black text-navy">Profile</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-white text-blue shadow-sm"
+                      ><i class="fa-solid fa-file-arrow-up"></i
+                    ></span>
+                    <div>
+                      <p
+                        class="text-xs font-black uppercase tracking-widest text-slate-400"
+                      >
+                        Step 2
+                      </p>
+                      <p class="text-sm font-black text-navy">CV upload</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="grid size-10 place-items-center rounded-xl bg-white text-blue shadow-sm"
+                      ><i class="fa-solid fa-envelope-open-text"></i
+                    ></span>
+                    <div>
+                      <p
+                        class="text-xs font-black uppercase tracking-widest text-slate-400"
+                      >
+                        Step 3
+                      </p>
+                      <p class="text-sm font-black text-navy">Motivation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid gap-5 md:grid-cols-2">
+                <label class="block">
+                  <span class="text-sm font-black text-navy"
+                    >First name <span class="text-coral">*</span></span
+                  >
+                  <input
+                    required
+                    type="text"
+                    class="input-focus mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue"
+                    placeholder="Jane"
+                  />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-black text-navy"
+                    >Last name <span class="text-coral">*</span></span
+                  >
+                  <input
+                    required
+                    type="text"
+                    class="input-focus mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue"
+                    placeholder="Cooper"
+                  />
+                </label>
+              </div>
+
+              <div class="mt-5 grid gap-5 md:grid-cols-2">
+                <label class="block">
+                  <span class="text-sm font-black text-navy"
+                    >Email address <span class="text-coral">*</span></span
+                  >
+                  <div
+                    class="input-focus mt-2 flex h-13 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 transition focus-within:border-blue"
+                  >
+                    <i class="fa-solid fa-envelope text-blue"></i>
+                    <input
+                      required
+                      type="email"
+                      class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none"
+                      placeholder="jane.cooper@email.com"
+                    />
+                  </div>
+                </label>
+
+                <label class="block">
+                  <span class="text-sm font-black text-navy"
+                    >Phone number <span class="text-coral">*</span></span
+                  >
+                  <div
+                    class="input-focus mt-2 flex h-13 items-center rounded-2xl border border-line bg-white transition focus-within:border-blue"
+                  >
+                    <button
+                      type="button"
+                      data-country-button
+                      class="flex h-full items-center gap-2 border-r border-line px-4 text-sm font-black text-slate-700"
+                    >
+                      <span data-country-flag>🇫🇷</span>
+                      <span data-country-code>+33</span>
+                      <i
+                        class="fa-solid fa-chevron-down text-[10px] text-slate-400"
+                      ></i>
+                    </button>
+                    <input
+                      required
+                      type="tel"
+                      class="min-w-0 flex-1 bg-transparent px-4 text-sm font-semibold text-slate-700 outline-none"
+                      placeholder="6 22 12 34 56"
+                    />
+                  </div>
+                </label>
+              </div>
+
+              <div
+                class="relative mt-2 hidden rounded-2xl border border-line bg-white p-2 shadow-soft"
+                data-country-menu
+              >
+                <div class="grid gap-1 sm:grid-cols-4">
+                  <button
+                    type="button"
+                    data-country-option
+                    data-flag="🇫🇷"
+                    data-code="+33"
+                    class="rounded-xl px-3 py-2 text-left text-sm font-bold hover:bg-skysoft hover:text-blue"
+                  >
+                    🇫🇷 France +33
+                  </button>
+                  <button
+                    type="button"
+                    data-country-option
+                    data-flag="🇨🇩"
+                    data-code="+243"
+                    class="rounded-xl px-3 py-2 text-left text-sm font-bold hover:bg-skysoft hover:text-blue"
+                  >
+                    🇨🇩 DRC +243
+                  </button>
+                  <button
+                    type="button"
+                    data-country-option
+                    data-flag="🇬🇧"
+                    data-code="+44"
+                    class="rounded-xl px-3 py-2 text-left text-sm font-bold hover:bg-skysoft hover:text-blue"
+                  >
+                    🇬🇧 UK +44
+                  </button>
+                  <button
+                    type="button"
+                    data-country-option
+                    data-flag="🇺🇸"
+                    data-code="+1"
+                    class="rounded-xl px-3 py-2 text-left text-sm font-bold hover:bg-skysoft hover:text-blue"
+                  >
+                    🇺🇸 USA +1
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                  <span class="text-sm font-black text-navy"
+                    >Upload your CV <span class="text-coral">*</span></span
+                  >
+                  <span class="text-xs font-bold text-slate-400"
+                    >PDF, DOC, DOCX, JPG, JPEG, PNG · Max 5MB</span
+                  >
+                </div>
+
+                <label
+                  data-upload-zone
+                  class="upload-pattern group flex min-h-[210px] cursor-pointer flex-col items-center justify-center rounded-[28px] border-2 border-dashed border-blue/25 bg-slate-50 p-8 text-center transition hover:border-blue hover:bg-skysoft"
+                >
+                  <input
+                    data-file-input
+                    required
+                    type="file"
+                    class="hidden"
+                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                  />
+                  <span
+                    class="grid size-16 place-items-center rounded-3xl bg-blue text-white shadow-glow transition group-hover:scale-105"
+                  >
+                    <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+                  </span>
+                  <strong
+                    class="mt-4 text-base font-black text-navy"
+                    data-upload-title
+                    >Drop your CV here or browse</strong
+                  >
+                  <span
+                    class="mt-2 text-sm font-medium text-slate-500"
+                    data-upload-helper
+                    >Accepted formats: PDF, DOC, DOCX, JPG, JPEG, PNG</span
+                  >
+                  <span
+                    class="mt-4 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-black text-blue shadow-sm"
+                  >
+                    <i class="fa-solid fa-file-arrow-up"></i> Choose file
+                  </span>
+                </label>
+              </div>
+
+              <div class="mt-6">
+                <div class="mb-2 flex items-center justify-between">
+                  <label for="motivation" class="text-sm font-black text-navy"
+                    >Motivation letter <span class="text-coral">*</span></label
+                  >
+                  <span class="text-xs font-bold text-slate-400"
+                    ><span data-letter-count>0</span>/1200</span
+                  >
+                </div>
+                <textarea
+                  id="motivation"
+                  data-letter-input
+                  required
+                  maxlength="1200"
+                  rows="8"
+                  class="input-focus w-full resize-none rounded-2xl border border-line bg-white px-4 py-4 text-sm font-semibold leading-7 text-slate-700 outline-none transition focus:border-blue"
+                  placeholder="Tell the recruiter why you are interested in this role and what makes you a strong candidate..."
+                ></textarea>
+              </div>
+
+              <div class="mt-5 rounded-2xl bg-slate-50 p-4">
+                <label
+                  class="flex items-start gap-3 text-sm font-medium leading-6 text-slate-600"
+                >
+                  <input
+                    required
+                    type="checkbox"
+                    class="mt-1 size-4 rounded border-line accent-blue"
+                  />
+                  <span
+                    >I confirm that the information provided is accurate and I
+                    agree that TryRecruiters may share my application with the
+                    employer for recruitment purposes.</span
+                  >
+                </label>
+              </div>
+
+              <div
+                class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-6 py-4 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+                >
+                  <i class="fa-regular fa-floppy-disk"></i> Save draft
+                </button>
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center gap-3 rounded-2xl bg-blue px-8 py-4 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+                >
+                  Submit application <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6 lg:sticky lg:top-28">
+          <section
+            class="overflow-hidden rounded-[30px] border border-line bg-white shadow-card"
+          >
+            <div class="bg-blue px-6 py-5 text-white">
+              <h3 class="flex items-center gap-3 text-lg font-black">
+                <i class="fa-regular fa-lightbulb"></i>Application tips
+              </h3>
+            </div>
+            <div class="space-y-4 p-6">
+              <div class="flex gap-3">
+                <span
+                  class="grid size-8 shrink-0 place-items-center rounded-full bg-skysoft text-blue"
+                  ><i class="fa-solid fa-check text-xs"></i
+                ></span>
+                <p class="text-sm font-medium leading-6 text-slate-600">
+                  Make sure your CV is up to date and relevant to the role.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <span
+                  class="grid size-8 shrink-0 place-items-center rounded-full bg-skysoft text-blue"
+                  ><i class="fa-solid fa-check text-xs"></i
+                ></span>
+                <p class="text-sm font-medium leading-6 text-slate-600">
+                  Write a personalized motivation letter that highlights your
+                  strengths.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <span
+                  class="grid size-8 shrink-0 place-items-center rounded-full bg-skysoft text-blue"
+                  ><i class="fa-solid fa-check text-xs"></i
+                ></span>
+                <p class="text-sm font-medium leading-6 text-slate-600">
+                  Review your information before sending your application.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <span
+                  class="grid size-8 shrink-0 place-items-center rounded-full bg-skysoft text-blue"
+                  ><i class="fa-solid fa-check text-xs"></i
+                ></span>
+                <p class="text-sm font-medium leading-6 text-slate-600">
+                  Be honest, clear and concise in your answers.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+          >
+            <p class="text-xs font-black uppercase tracking-[.18em] text-blue">
+              Application status
+            </p>
+            <h3 class="mt-2 text-xl font-black text-navy">
+              Complete your profile
+            </h3>
+            <div class="mt-5 space-y-4">
+              <div>
+                <div
+                  class="mb-2 flex items-center justify-between text-xs font-black text-slate-500"
+                >
+                  <span>Progress</span><span data-progress-text>20%</span>
+                </div>
+                <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    data-progress-bar
+                    class="h-full w-[20%] rounded-full bg-blue transition-all duration-300"
+                  ></div>
+                </div>
+              </div>
+              <div class="grid gap-2 text-sm font-bold text-slate-600">
+                <p data-progress-item="profile">
+                  <i class="fa-regular fa-circle mr-2 text-slate-300"></i
+                  >Personal information
+                </p>
+                <p data-progress-item="cv">
+                  <i class="fa-regular fa-circle mr-2 text-slate-300"></i>CV
+                  uploaded
+                </p>
+                <p data-progress-item="letter">
+                  <i class="fa-regular fa-circle mr-2 text-slate-300"></i
+                  >Motivation letter
+                </p>
+                <p data-progress-item="consent">
+                  <i class="fa-regular fa-circle mr-2 text-slate-300"></i
+                  >Consent confirmed
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+          >
+            <div class="flex items-start gap-4">
+              <span
+                class="grid size-14 shrink-0 place-items-center rounded-2xl bg-coral text-white"
+              >
+                <i class="fa-solid fa-users text-xl"></i>
+              </span>
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-coral"
+                >
+                  Talent pool
+                </p>
+                <h3 class="mt-1 text-xl font-black text-navy">
+                  Get discovered faster
+                </h3>
+                <p class="mt-3 text-sm font-medium leading-6 text-slate-600">
+                  Create a candidate profile so verified recruiters can contact
+                  you for similar opportunities.
+                </p>
+                <a
+                  href="#"
+                  class="mt-5 inline-flex items-center gap-2 rounded-2xl bg-navy px-5 py-3 text-sm font-black text-white transition hover:bg-ink"
+                  >Create profile <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Stats / Footer -->
+    <section class="mt-8 bg-blue text-white">
+      <div
+        class="mx-auto grid max-w-[1160px] gap-6 px-5 py-10 text-center sm:grid-cols-3 lg:px-8"
+      >
+        <div>
+          <p class="text-3xl font-black">1,75,324</p>
+          <p class="mt-1 text-sm font-semibold text-white/75">Available jobs</p>
+        </div>
+        <div>
+          <p class="text-3xl font-black">97,354</p>
+          <p class="mt-1 text-sm font-semibold text-white/75">Companies</p>
+        </div>
+        <div>
+          <p class="text-3xl font-black">38,47154</p>
+          <p class="mt-1 text-sm font-semibold text-white/75">Candidates</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-navy text-white">
+      <div
+        class="mx-auto grid max-w-[1160px] gap-10 px-5 py-14 md:grid-cols-5 lg:px-8"
+      >
+        <div class="md:col-span-2">
+          <a href="#" class="flex items-center gap-3"
+            ><span
+              class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+              ><i class="fa-solid fa-people-group"></i></span
+            ><span class="font-black">TRYRECRUITERS</span></a
+          >
+          <p class="mt-5 max-w-sm text-sm font-medium leading-7 text-white/65">
+            A modern platform connecting qualified candidates with active
+            recruiters.
+          </p>
+          <p class="mt-5 text-sm font-bold text-white/80">
+            Need help? <span class="text-white">(319) 555-0115</span>
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black">Quick links</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Candidate</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Browse jobs</a></li>
+            <li><a href="#">Browse employers</a></li>
+            <li><a href="#">Candidate dashboard</a></li>
+            <li><a href="#">Saved jobs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Support</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6">
+        <div
+          class="mx-auto flex max-w-[1160px] flex-col gap-4 px-5 text-sm font-medium text-white/55 md:flex-row md:items-center md:justify-between lg:px-8"
+        >
+          <span>© 2026 TryRecruiters. All rights reserved.</span>
+          <div class="flex gap-3 text-white/70">
+            <a
+              href="#"
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              class="grid size-10 place-items-center rounded-full bg-white/10 hover:bg-blue"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileButton = document.querySelector("[data-mobile-menu-button]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileIcon = document.querySelector("[data-mobile-menu-icon]");
+      const languageDropdown = document.querySelector(
+        "[data-language-dropdown]",
+      );
+      const languageButton = document.querySelector("[data-language-button]");
+      const languageMenu = document.querySelector("[data-language-menu]");
+      const languageChevron = document.querySelector("[data-language-chevron]");
+      const currentLanguageFlag = document.querySelector(
+        "[data-current-language-flag]",
+      );
+      const currentLanguageLabel = document.querySelector(
+        "[data-current-language-label]",
+      );
+      const languageOptions = document.querySelectorAll(
+        "[data-language-option]",
+      );
+
+      function openMobileMenu() {
+        mobileMenu.classList.remove("hidden");
+        mobileButton.setAttribute("aria-expanded", "true");
+        mobileIcon.classList.remove("fa-bars");
+        mobileIcon.classList.add("fa-xmark");
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileButton.setAttribute("aria-expanded", "false");
+        mobileIcon.classList.remove("fa-xmark");
+        mobileIcon.classList.add("fa-bars");
+      }
+
+      mobileButton.addEventListener("click", () =>
+        mobileMenu.classList.contains("hidden")
+          ? openMobileMenu()
+          : closeMobileMenu(),
+      );
+
+      function openLanguageMenu() {
+        languageMenu.classList.remove(
+          "invisible",
+          "translate-y-2",
+          "opacity-0",
+        );
+        languageMenu.classList.add("visible", "translate-y-0", "opacity-100");
+        languageButton.setAttribute("aria-expanded", "true");
+        languageChevron.classList.add("rotate-180");
+      }
+
+      function closeLanguageMenu() {
+        languageMenu.classList.add("invisible", "translate-y-2", "opacity-0");
+        languageMenu.classList.remove(
+          "visible",
+          "translate-y-0",
+          "opacity-100",
+        );
+        languageButton.setAttribute("aria-expanded", "false");
+        languageChevron.classList.remove("rotate-180");
+      }
+
+      languageButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        languageMenu.classList.contains("invisible")
+          ? openLanguageMenu()
+          : closeLanguageMenu();
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          currentLanguageFlag.textContent = option.dataset.flag;
+          currentLanguageLabel.textContent = option.dataset.label;
+          closeLanguageMenu();
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (languageDropdown && !languageDropdown.contains(event.target))
+          closeLanguageMenu();
+      });
+
+      document
+        .querySelectorAll("[data-mobile-menu] a")
+        .forEach((link) => link.addEventListener("click", closeMobileMenu));
+
+      const detailsButton = document.querySelector("[data-toggle-job-details]");
+      const detailsPanel = document.querySelector("[data-job-details]");
+      const detailsIcon = document.querySelector("[data-job-details-icon]");
+
+      detailsButton.addEventListener("click", () => {
+        detailsPanel.classList.toggle("hidden");
+        detailsIcon.classList.toggle("rotate-180");
+      });
+
+      const countryButton = document.querySelector("[data-country-button]");
+      const countryMenu = document.querySelector("[data-country-menu]");
+      const countryFlag = document.querySelector("[data-country-flag]");
+      const countryCode = document.querySelector("[data-country-code]");
+
+      countryButton.addEventListener("click", () =>
+        countryMenu.classList.toggle("hidden"),
+      );
+      document.querySelectorAll("[data-country-option]").forEach((option) => {
+        option.addEventListener("click", () => {
+          countryFlag.textContent = option.dataset.flag;
+          countryCode.textContent = option.dataset.code;
+          countryMenu.classList.add("hidden");
+        });
+      });
+
+      const uploadZone = document.querySelector("[data-upload-zone]");
+      const fileInput = document.querySelector("[data-file-input]");
+      const uploadTitle = document.querySelector("[data-upload-title]");
+      const uploadHelper = document.querySelector("[data-upload-helper]");
+
+      function setFile(file) {
+        if (!file) return;
+        uploadTitle.textContent = file.name;
+        uploadHelper.textContent = `${(file.size / 1024 / 1024).toFixed(2)} MB selected`;
+        uploadZone.classList.remove("border-blue/25", "bg-slate-50");
+        uploadZone.classList.add("border-blue", "bg-skysoft");
+        updateProgress();
+      }
+
+      fileInput.addEventListener("change", () => setFile(fileInput.files[0]));
+
+      ["dragenter", "dragover"].forEach((eventName) => {
+        uploadZone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          uploadZone.classList.add("border-blue", "bg-skysoft");
+        });
+      });
+
+      ["dragleave", "drop"].forEach((eventName) => {
+        uploadZone.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          if (eventName === "drop") {
+            const file = event.dataTransfer.files[0];
+            fileInput.files = event.dataTransfer.files;
+            setFile(file);
+          }
+        });
+      });
+
+      const letterInput = document.querySelector("[data-letter-input]");
+      const letterCount = document.querySelector("[data-letter-count]");
+      const form = document.querySelector("[data-application-form]");
+      const progressBar = document.querySelector("[data-progress-bar]");
+      const progressText = document.querySelector("[data-progress-text]");
+
+      function markProgressItem(name, done) {
+        const item = document.querySelector(`[data-progress-item="${name}"]`);
+        const icon = item.querySelector("i");
+        icon.className = done
+          ? "fa-solid fa-circle-check mr-2 text-blue"
+          : "fa-regular fa-circle mr-2 text-slate-300";
+        item.classList.toggle("text-navy", done);
+      }
+
+      function updateProgress() {
+        const requiredTextInputs = [
+          ...form.querySelectorAll(
+            'input[required]:not([type="file"]):not([type="checkbox"]), textarea[required]',
+          ),
+        ];
+        const profileDone = requiredTextInputs
+          .slice(0, 4)
+          .every((input) => input.value.trim().length > 0);
+        const cvDone = fileInput.files.length > 0;
+        const letterDone = letterInput.value.trim().length > 20;
+        const consentDone = form.querySelector(
+          'input[type="checkbox"]',
+        ).checked;
+        const total = [profileDone, cvDone, letterDone, consentDone].filter(
+          Boolean,
+        ).length;
+        const percent = total * 25;
+
+        progressBar.style.width = `${percent}%`;
+        progressText.textContent = `${percent}%`;
+        markProgressItem("profile", profileDone);
+        markProgressItem("cv", cvDone);
+        markProgressItem("letter", letterDone);
+        markProgressItem("consent", consentDone);
+      }
+
+      form.addEventListener("input", updateProgress);
+      form.addEventListener("change", updateProgress);
+
+      letterInput.addEventListener("input", () => {
+        letterCount.textContent = letterInput.value.length;
+        updateProgress();
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        updateProgress();
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.innerHTML =
+          '<i class="fa-solid fa-check"></i> Application ready';
+        submitButton.classList.remove("bg-blue", "hover:bg-blue2");
+        submitButton.classList.add("bg-emerald-600");
+        setTimeout(() => {
+          submitButton.innerHTML =
+            'Submit application <i class="fa-solid fa-paper-plane"></i>';
+          submitButton.classList.add("bg-blue", "hover:bg-blue2");
+          submitButton.classList.remove("bg-emerald-600");
+        }, 2200);
+      });
+
+      updateProgress();
+    </script>
+  </body>
+</html>

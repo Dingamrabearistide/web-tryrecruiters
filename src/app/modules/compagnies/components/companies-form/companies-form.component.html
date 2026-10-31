@@ -1,0 +1,35 @@
+<app-generic-form
+  #genericFormComp
+  [isLoading]="isLoading"
+  [defaultValues]="defaultValues"
+  [fieldConfigurations]="genericFormConfig"
+  [showActionButton]="true"
+  (submitForm)="handleSubmit($event)"
+  transationNamespace="companies"
+></app-generic-form>
+
+<!-- Custom action buttons so we can enable Save only when appropriate
+     - For update (defaultValues present): enable only when form.dirty && form.valid
+     - For create: enable when form.valid -->
+<!-- <div class=" hide mt-4 flex gap-2 justify-end">
+  <button
+    type="button"
+    class="btn bg-gray-200 text-gray-700 px-4 py-2 rounded"
+    (click)="formComponent?.form?.reset(defaultValues || {})"
+    [disabled]="isLoading || !formComponent?.form"
+    [class.opacity-50]="isLoading || !formComponent?.form"
+  >
+    {{ "general.cancel" | transloco }}
+  </button>
+
+  <button
+    type="button"
+    class="btn app-primary px-4 py-2 rounded text-white"
+    (click)="submitManually()"
+    [disabled]="isLoading || !canSave"
+    [class.opacity-50]="isLoading || !canSave"
+  >
+    {{ "general.save" | transloco }}
+    <span *ngIf="isLoading">...</span>
+  </button>
+</div> -->

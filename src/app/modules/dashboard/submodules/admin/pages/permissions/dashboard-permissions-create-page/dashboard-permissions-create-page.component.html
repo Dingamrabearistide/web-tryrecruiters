@@ -1,0 +1,61 @@
+<div class="flex flex-col w-full" *transloco="let t; read: 'permissions'">
+  <!-- Header Section -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("create.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("create.description") }}
+        </p>
+      </div>
+      <button
+        (click)="goBack()"
+        class="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-600 transition-all duration-200 flex items-center gap-2"
+      >
+        <i class="fas fa-arrow-left"></i>
+        <span>{{ t("actions.back") }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 pb-8">
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <app-permissions-form
+        [item]="null"
+        [isLoading]="isLoading"
+        [hasError]="hasError"
+        [errorMessage]="errorMessage"
+        #permissionForm
+      ></app-permissions-form>
+
+      <div class="flex justify-end gap-3 mt-6 pt-6 border-t">
+        <button
+          (click)="goBack()"
+          class="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-600 transition-all duration-200 flex items-center gap-2"
+          type="button"
+        >
+          <i class="fas fa-times"></i>
+          <span>{{ t("actions.cancel") }}</span>
+        </button>
+        <button
+          (click)="handleSubmit(permissionForm)"
+          [disabled]="isLoading"
+          class="bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          type="submit"
+        >
+          <i class="fas fa-save" *ngIf="!isLoading"></i>
+          <i class="fas fa-spinner fa-spin" *ngIf="isLoading"></i>
+          <span>{{ t("actions.create") }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Component -->
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

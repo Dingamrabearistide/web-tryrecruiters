@@ -1,0 +1,437 @@
+{
+  "details": {
+    "noCompany": "No associated company",
+    "noNotes": "No notes available"
+  },
+  "no_description": "No description available",
+  "createTitle": "Create User",
+  "updateTitle": "Edit User",
+  "created_success": "User created successfully!",
+  "updated_success": "User updated successfully!",
+  "info": {
+    "created_message": "User {{name}} has been created successfully.",
+    "updated_message": "User {{name}} has been updated successfully."
+  },
+  "list": {
+    "title": "Users",
+    "emptySubtitle": "No data found.",
+    "description": "Manage all your users in one place.",
+    "noData": "No data found.",
+    "startCreating": "Start by creating your first user",
+    "createUsers": "Create User",
+    "noUsers": "No users found",
+    "genericError": "An error occurred while loading",
+    "back": "previous"
+  },
+  "columns": {
+    "name": "Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "prename": "First Name",
+    "username": "Username",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "Phone Number",
+    "city": "City",
+    "region": "Region",
+    "website": "Website",
+    "company": "Company",
+    "role": "Role",
+    "status": "Status",
+    "gender": "Gender",
+    "birthDate": "Birth Date",
+    "createdAt": "Created Date",
+    "updatedAt": "Last Modified",
+    "lastLogin": "Last Login",
+    "emailConfirmed": "Email Confirmed",
+    "actions": "Actions"
+  },
+  "common": {
+    "previous": "Previous",
+    "next": "Next",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "view": "View",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "dialog": {
+    "success": "Operation completed successfully",
+    "no_description": "No description available.",
+    "industry": "Industry",
+    "type": "Type",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website",
+    "address": "Address",
+    "close": "Close"
+  },
+  "actions": {
+    "create": "Create",
+    "update": "Update",
+    "delete": "Delete",
+    "view": "View",
+    "share": "Share",
+    "edit": "Edit",
+    "archive": "Archive",
+    "restore": "Restore",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "deactivate": "Deactivate",
+    "assignUnlimited": {
+      "title": "Activate unlimited plan",
+      "confirm": "Activate unlimited plan for recruiter {{name}}?"
+    },
+    "deactivatePlans": {
+      "title": "Deactivate plans",
+      "confirm": "Deactivate all plans for recruiter {{name}}?"
+    }
+  },
+  "detail": {
+    "title": "User Details",
+    "description": "Description",
+    "address": "Address",
+    "addressline1": "Address Line 1",
+    "addressline2": "Address Line 2",
+    "city": "City",
+    "region_country": "Region / Country",
+    "region": "Region",
+    "country": "Country",
+    "contact_information": "Contact Information",
+    "website": "Website",
+    "phone": "Phone",
+    "email": "Email",
+    "share_job": "Share this job",
+    "open_positions": "Open Positions",
+    "recruiterid": "Recruiter ID",
+    "createdbyid": "Created by",
+    "back": "Back",
+    "previous": "Previous",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "userInfo": "User Information",
+    "personalInfo": "Personal Information",
+    "companyInfo": "Company Information",
+    "accountInfo": "Account Information",
+    "securityInfo": "Security Information",
+    "notes": "Notes",
+    "noNotes": "No notes available",
+    "noCompany": "No Company",
+    "statusOverview": "Status Overview"
+  },
+  "create": {
+    "success": {
+      "title": "User created successfully",
+      "message": "User \"{{name}}\" has been added successfully."
+    }
+  },
+  "update": {
+    "title": "Edit User",
+    "success": {
+      "title": "Update successful",
+      "message": "User \"{{name}}\" has been updated successfully."
+    }
+  },
+  "interviews": {
+    "title": "Interviews",
+    "noData": "No interview data"
+  },
+  "applications": {
+    "title": "Applications",
+    "noData": "No applications found"
+  },
+  "companies": {
+    "title": "Companies",
+    "noData": "No company data"
+  },
+  "jobOffers": {
+    "title": "Job Offers",
+    "noData": "No job offers data"
+  },
+  "delete": {
+    "title": "Delete User",
+    "message": "Are you sure you want to delete user \"{{name}}\"? This action cannot be undone",
+    "confirmTitle": "Delete User",
+    "confirmMessage": "Are you sure you want to delete user \"{{name}}\"? This action cannot be undone",
+    "confirm": "Delete",
+    "cancel": "Cancel",
+    "success": {
+      "title": "User deleted",
+      "message": "User {{name}} has been deleted successfully."
+    },
+    "error": {
+      "title": "Deletion failed",
+      "message": "An error occurred while deleting user {{name}}. Please try again."
+    }
+  },
+  "form": {
+    "nationality": "Nationality",
+    "bio": "Biography",
+    "adminLevel": "Admin Level",
+    "adminPosition": "Admin Position",
+    "twoFactorEnabled": "2FA Enabled",
+    "users": "Users",
+    "titleCreate": "Create User",
+    "titleUpdate": "Edit User",
+    "startDate": "Start Date",
+    "reset": "reset",
+    "userRole": "User Role",
+    "userStatus": "User Status",
+    "userGender": "Gender",
+    "selectStatus": "Select a status",
+    "dateRange": "Date Range",
+    "filterByPeriod": "Filter by period",
+    "name": "Full Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "prename": "First Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "Phone Number",
+    "username": "Username",
+    "password": "Password",
+    "role": "Role",
+    "status": "Status",
+    "gender": "Gender",
+    "birthDate": "Birth Date",
+    "photo": "Photo",
+    "notes": "Notes",
+    "selectUser": "Select a user",
+    "selectRole": "Select a role",
+    "selectGender": "Select gender",
+    "search": "Search",
+    "searchPlaceholder": "Name, email, phone...",
+    "address": {
+      "street": "Street",
+      "suite": "Apartment/Suite",
+      "city": "City",
+      "zipcode": "Zip Code",
+      "geo": "Geographic Coordinates"
+    },
+    "company": {
+      "name": "Company Name",
+      "catchPhrase": "Slogan",
+      "bs": "Business Sector"
+    },
+    "website": "Website",
+    "endDate": "End Date",
+    "city": "City",
+    "region": "Region",
+    "country": "Country",
+    "loading": "Sending...",
+    "submit": "Submit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "required": "Required field",
+    "addUser": "Add User",
+    "allUsers": "All Users",
+    "allRoles": "All Roles",
+    "allStatuses": "All Statuses",
+    "allGenders": "All Genders",
+    "emailConfirmed": "Email Confirmed",
+    "lastLogin": "Last Login",
+    "failedLoginAttempts": "Failed Login Attempts",
+    "lockedUntil": "Locked Until",
+    "deleted": "Deleted",
+    "archived": "Archived",
+    "errors": {
+      "generic": "An error occurred.",
+      "notFound": "No users found.",
+      "fields": {
+        "name": {
+          "required": "Name is required.",
+          "minlength": "Name is too short.",
+          "maxlength": "Name cannot exceed {{length}} characters.",
+          "pattern": "Name contains invalid characters."
+        },
+        "firstName": {
+          "required": "First name is required.",
+          "minlength": "First name is too short.",
+          "maxlength": "First name cannot exceed {{length}} characters."
+        },
+        "lastName": {
+          "required": "Last name is required.",
+          "minlength": "Last name is too short.",
+          "maxlength": "Last name cannot exceed {{length}} characters."
+        },
+        "username": {
+          "required": "Username is required.",
+          "minlength": "Username is too short.",
+          "maxlength": "Username is too long.",
+          "pattern": "Username contains invalid characters."
+        },
+        "email": {
+          "required": "Email is required.",
+          "email": "Please enter a valid email address.",
+          "maxlength": "Email cannot exceed {{length}} characters."
+        },
+        "phone": {
+          "required": "Phone is required.",
+          "pattern": "Invalid phone number format."
+        },
+        "phoneNumber": {
+          "required": "Phone number is required.",
+          "pattern": "Invalid phone number format."
+        },
+        "password": {
+          "required": "Password is required.",
+          "minlength": "Password must contain at least {{length}} characters.",
+          "pattern": "Password must contain at least one uppercase letter, one lowercase letter, and one digit."
+        },
+        "role": {
+          "required": "Role is required."
+        },
+        "gender": {
+          "required": "Gender is required."
+        },
+        "birthDate": {
+          "required": "Birth date is required.",
+          "dateFormat": "Invalid date format."
+        },
+        "address": {
+          "street": {
+            "required": "Street is required.",
+            "maxlength": "Street is too long."
+          },
+          "suite": {
+            "maxlength": "Apartment/suite is too long."
+          },
+          "city": {
+            "required": "City is required.",
+            "maxlength": "City is too long."
+          },
+          "zipcode": {
+            "required": "Zip code is required.",
+            "pattern": "Invalid zip code format."
+          }
+        },
+        "company": {
+          "name": {
+            "required": "Company name is required.",
+            "maxlength": "Company name is too long."
+          },
+          "catchPhrase": {
+            "maxlength": "Slogan is too long."
+          },
+          "bs": {
+            "required": "Business sector is required.",
+            "maxlength": "Business sector is too long."
+          }
+        },
+        "website": {
+          "required": "Website is required.",
+          "url": "Please enter a valid URL.",
+          "maxlength": "Website URL is too long."
+        }
+      },
+      "validatePhoneNumber": "Phone number is invalid."
+    }
+  },
+  "usersDetails": {
+    "title": "User Details",
+    "home": "Home",
+    "companiesList": "Companies List",
+    "usersList": "Users List",
+    "usersDetail": "User Details",
+    "contact": "Contact",
+    "description": "Description",
+    "noDescription": "No description available",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "website": "Website",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "fullName": "Full Name",
+    "role": "Role",
+    "gender": "Gender",
+    "birthDate": "Birth Date",
+    "personalInformation": "Personal Information",
+    "contactInformation": "Contact Information",
+    "addressInformation": "Address Information",
+    "companyInformation": "Company Information",
+    "accountInformation": "Account Information",
+    "securityInformation": "Security Information",
+    "fullAddress": "Full Address",
+    "companyName": "Company Name",
+    "companyCatchPhrase": "Company Slogan",
+    "companyBusiness": "Business Sector",
+    "accountStatus": "Account Status",
+    "emailConfirmed": "Email Confirmed",
+    "lastLogin": "Last Login",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "notes": "Notes",
+    "noNotes": "No notes available"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "users": "users",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending",
+    "suspended": "Suspended",
+    "locked": "Locked",
+    "deleted": "Deleted",
+    "archived": "Archived",
+    "notConfirmed": "Not Confirmed"
+  },
+  "roles": {
+    "RECRUITER": "Recruiter",
+    "EMPLOYER": "Employer",
+    "CANDIDATE": "Candidate",
+    "ADMIN": "Administrator",
+    "PLATFORM_ADMIN": "Platform Administrator",
+    "SUPER_ADMIN": "Super Administrator"
+  },
+  "gender": {
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "OTHER": "Other"
+  },
+  "fields": {
+    "name": "Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "prename": "First Name",
+    "username": "Username",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNumber": "Phone Number",
+    "website": "Website",
+    "address": "Address",
+    "city": "City",
+    "region": "Region",
+    "zipcode": "Zip Code",
+    "company": "Company",
+    "role": "Role",
+    "status": "Status",
+    "gender": "Gender",
+    "birthDate": "Birth Date",
+    "photo": "Photo",
+    "notes": "Notes",
+    "createdAt": "Created Date",
+    "updatedAt": "Updated Date",
+    "lastLogin": "Last Login",
+    "emailConfirmed": "Email Confirmed",
+    "failedAttempts": "Failed Attempts",
+    "lockedUntil": "Locked Until",
+    "deleted": "Deleted",
+    "archived": "Archived",
+    "fullName": "Full Name",
+    "verified": "Verified"
+  }
+}

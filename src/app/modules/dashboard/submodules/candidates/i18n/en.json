@@ -1,0 +1,16 @@
+{
+  "test": "Hello",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "jobsoffers": "Job Offers",
+    "applications": "My Applications",
+    "categories": "Categories",
+    "profile": "My Profiles",
+    "payements": "Payments",
+    "parametres": "Settings",
+    "favorites": "My favorites",
+    "interviews": "My interviews",
+    "resumes": "Resumes"
+  }
+}

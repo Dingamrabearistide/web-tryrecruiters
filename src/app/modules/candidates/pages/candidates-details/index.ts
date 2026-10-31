@@ -1,0 +1,1 @@
+export * from "./candidates-details-jobs/candidates-details-jobs.component"

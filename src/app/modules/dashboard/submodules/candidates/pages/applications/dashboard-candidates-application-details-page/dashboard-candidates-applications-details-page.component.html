@@ -1,0 +1,58 @@
+<div *transloco="let t; read: 'applications'">
+  <div class="flex flex-col gap-3 justify-between items-start">
+    <button (click)="handleBack()" class="m-2 bg-primary app-primary">
+      <i class="fas fa-chevron-left mr-1 text-white"></i>
+      {{ t("list.back") }}
+    </button>
+
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("details.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+    <div class="w-full text-center h-full">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && hasError" class="w-full">
+    <app-generic-error [message]="errorMessage"></app-generic-error>
+  </div>
+
+  <ng-container *ngIf="!isLoading && !hasError && item">
+    <ng-template #candidateDetails>
+      <app-candidates-details2 [item]="item.candidate"></app-candidates-details2>
+    </ng-template>
+
+    <app-applications-details
+      (delete)="handleDelete($event)"
+      (edit)="handleEdit($event)"
+      [element]="candidateDetails"
+      (updateStatus)="handleUpdateStatus($event)"
+      (downloadResume)="handleDownloadResume()"
+      [item]="item"
+    ></app-applications-details>
+
+    <div class="bg-white rounded-lg border border-gray-200 p-6 mt-4">
+      <h3 class="text-base font-semibold text-gray-900 mb-2">
+        {{ t("history.title") }}
+      </h3>
+      <app-history-timeline
+        [items]="history"
+        [isLoading]="isLoadingHistory"
+        [emptyLabel]="t('history.empty')"
+        [loadingLabel]="t('history.loading')"
+      ></app-history-timeline>
+    </div>
+
+    <div class="lg:col-span-3 mt-10"></div>
+  </ng-container>
+</div>

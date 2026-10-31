@@ -1,0 +1,41 @@
+.hero-gradient {
+  background-image:
+    radial-gradient(circle at 14% 16%, rgba(20, 157, 242, 0.22), transparent 24%),
+    radial-gradient(circle at 86% 10%, rgba(255, 81, 72, 0.17), transparent 22%),
+    linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+}
+
+.page-bg {
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(20, 157, 242, 0.16), transparent 24%),
+    radial-gradient(circle at 85% 10%, rgba(255, 81, 72, 0.12), transparent 20%),
+    linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.86) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseSuccess {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-pop {
+  animation: pop 0.35s ease-out both;
+}
+
+.animate-pulseSuccess {
+  animation: pulseSuccess 2.2s ease-in-out infinite;
+}

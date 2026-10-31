@@ -1,0 +1,40 @@
+<div class="flex flex-col w-full" *transloco="let t; read: 'permissions'">
+  <!-- Header Section -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("details.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("details.description") }}
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          (click)="handleEdit()"
+          class="bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-all duration-200 flex items-center gap-2"
+        >
+          <i class="fas fa-edit"></i>
+          <span>{{ t("actions.edit") }}</span>
+        </button>
+        <button
+          (click)="handleBack()"
+          class="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-600 transition-all duration-200 flex items-center gap-2"
+        >
+          <i class="fas fa-arrow-left"></i>
+          <span>{{ t("actions.back") }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 pb-8">
+    <app-permissions-detail
+      [item]="item"
+      [isLoading]="isLoading"
+      [hasError]="hasError"
+      [errorMessage]="errorMessage"
+    ></app-permissions-detail>
+  </div>
+</div>

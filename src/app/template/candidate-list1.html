@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Candidates</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+              muted: "#6b7a90",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+            animation: {
+              fadeUp: "fadeUp .35s ease-out both",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .hero-gradient {
+        background-image:
+          radial-gradient(
+            circle at 16% 18%,
+            rgba(20, 157, 242, 0.28),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at 86% 12%,
+            rgba(255, 81, 72, 0.18),
+            transparent 24%
+          ),
+          linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+      }
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(
+          circle at center,
+          black 48%,
+          transparent 82%
+        );
+      }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body class="bg-mist text-slate-900 antialiased">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex h-20 max-w-[1160px] items-center justify-between px-5 lg:px-8"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <span
+            class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+          >
+            <i class="fa-solid fa-people-group text-xl"></i>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-black tracking-tight text-navy"
+              >TRYRECRUITERS</span
+            >
+            <span
+              class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+              >Talent platform</span
+            >
+          </span>
+        </a>
+
+        <div
+          class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+        >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+            >Companies</a
+          >
+          <a
+            href="#"
+            class="rounded-full bg-white px-5 py-2.5 text-blue shadow-sm"
+            >Candidates</a
+          >
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block" data-language-dropdown>
+            <button
+              type="button"
+              data-language-button
+              aria-expanded="false"
+              class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:border-blue hover:text-blue"
+            >
+              <span data-current-language-flag>🇬🇧</span>
+              <span data-current-language-label>English</span>
+              <i
+                class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition"
+                data-language-chevron
+              ></i>
+            </button>
+            <div
+              data-language-menu
+              class="invisible absolute right-0 mt-3 w-48 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition duration-200"
+            >
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇬🇧"
+                data-label="English"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇬🇧</span><span>English</span>
+              </button>
+              <button
+                type="button"
+                data-language-option
+                data-flag="🇫🇷"
+                data-label="Français"
+                class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-skysoft hover:text-blue"
+              >
+                <span>🇫🇷</span><span>Français</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-blue2 sm:inline-flex"
+            >Login</a
+          >
+          <a
+            href="#"
+            class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+            >Register</a
+          >
+          <button
+            type="button"
+            data-mobile-menu-button
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg" data-mobile-menu-icon></i>
+          </button>
+        </div>
+      </nav>
+
+      <div
+        id="mobile-menu"
+        data-mobile-menu
+        class="hidden border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+      >
+        <div class="mx-auto max-w-[1160px] space-y-4">
+          <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Jobs</a
+            >
+            <a
+              href="#"
+              class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+              >Companies</a
+            >
+            <a href="#" class="rounded-2xl bg-skysoft px-4 py-3 text-blue"
+              >Candidates</a
+            >
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇬🇧"
+              data-label="English"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-blue"
+            >
+              🇬🇧 English
+            </button>
+            <button
+              type="button"
+              data-language-option
+              data-flag="🇫🇷"
+              data-label="Français"
+              class="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 hover:text-blue"
+            >
+              🇫🇷 Français
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-gradient relative overflow-hidden text-white">
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative mx-auto max-w-[1160px] px-5 py-14 lg:px-8 lg:py-16">
+        <div class="grid gap-10 lg:grid-cols-[1fr_360px] lg:items-center">
+          <div>
+            <div
+              class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-white/90"
+            >
+              <i class="fa-solid fa-user-check text-coral"></i>
+              Candidate directory
+            </div>
+            <h1
+              class="font-display text-5xl font-black leading-none tracking-tight md:text-7xl"
+            >
+              Find qualified candidates faster.
+            </h1>
+            <p
+              class="mt-5 max-w-2xl text-lg font-medium leading-8 text-white/75"
+            >
+              Browse verified profiles, review skills, compare experience and
+              connect with candidates who are ready for their next role.
+            </p>
+          </div>
+
+          <div
+            class="rounded-[30px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              <div class="rounded-2xl bg-white p-5 text-slate-900">
+                <p class="text-3xl font-black text-navy">38,471</p>
+                <p class="mt-1 text-sm font-bold text-slate-500">
+                  Active candidates
+                </p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 text-slate-900">
+                <p class="text-3xl font-black text-navy">12,840</p>
+                <p class="mt-1 text-sm font-bold text-slate-500">
+                  Open to work
+                </p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 text-slate-900">
+                <p class="text-3xl font-black text-navy">8,920</p>
+                <p class="mt-1 text-sm font-bold text-slate-500">
+                  Verified profiles
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="mx-auto max-w-[1160px] px-5 py-8 lg:px-8">
+      <!-- Filters -->
+      <section
+        class="rounded-[30px] border border-line bg-white p-4 shadow-card md:p-5"
+      >
+        <form
+          data-candidate-form
+          class="grid gap-3 lg:grid-cols-[1fr_180px_180px_180px_auto]"
+        >
+          <label
+            class="flex min-h-12 items-center gap-3 rounded-2xl border border-line bg-slate-50 px-4 focus-within:border-blue focus-within:bg-white"
+          >
+            <i class="fa-solid fa-magnifying-glass text-blue"></i>
+            <input
+              data-search-input
+              type="text"
+              class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+              placeholder="Search by name, role, skill or keyword"
+            />
+          </label>
+
+          <select
+            data-role-filter
+            class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+          >
+            <option value="all">All roles</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Data">Data</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Cybersecurity">Cybersecurity</option>
+            <option value="Operations">Operations</option>
+          </select>
+
+          <select
+            data-location-filter
+            class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+          >
+            <option value="all">All locations</option>
+            <option value="Remote">Remote</option>
+            <option value="Paris">Paris</option>
+            <option value="London">London</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Zurich">Zurich</option>
+            <option value="Albania">Albania</option>
+          </select>
+
+          <select
+            data-availability-filter
+            class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+          >
+            <option value="all">All availability</option>
+            <option value="Open now">Open now</option>
+            <option value="Available soon">Available soon</option>
+            <option value="Passive">Passive</option>
+          </select>
+
+          <button
+            type="button"
+            data-reset-filters
+            class="h-12 rounded-2xl border border-line bg-white px-5 text-sm font-black text-navy transition hover:border-coral hover:text-coral"
+          >
+            <i class="fa-solid fa-rotate-left mr-2"></i>Reset
+          </button>
+        </form>
+      </section>
+
+      <!-- Results header -->
+      <section
+        class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+            Talent pool
+          </p>
+          <h2 class="mt-2 text-3xl font-black text-navy">
+            <span data-result-count>0</span> candidates found
+          </h2>
+        </div>
+        <div class="flex gap-3">
+          <select
+            data-sort-filter
+            class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+          >
+            <option value="match">Sort by match</option>
+            <option value="experience">Sort by experience</option>
+            <option value="recent">Recently active</option>
+            <option value="name">Sort by name</option>
+          </select>
+          <button
+            type="button"
+            data-view-toggle
+            class="grid size-12 place-items-center rounded-2xl border border-line bg-white text-blue shadow-sm transition hover:border-blue"
+          >
+            <i class="fa-solid fa-list"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- Active chips -->
+      <section data-active-chips class="mt-4 flex flex-wrap gap-2"></section>
+
+      <!-- Candidate cards -->
+      <section
+        data-candidates-list
+        class="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      ></section>
+
+      <!-- Empty state -->
+      <section
+        data-empty-state
+        class="mt-5 hidden rounded-[30px] border border-dashed border-slate-300 bg-white p-10 text-center shadow-card"
+      >
+        <span
+          class="mx-auto grid size-16 place-items-center rounded-3xl bg-skysoft text-blue"
+        >
+          <i class="fa-solid fa-user-slash text-2xl"></i>
+        </span>
+        <h3 class="mt-5 text-2xl font-black text-navy">No candidates found</h3>
+        <p
+          class="mx-auto mt-2 max-w-md text-sm font-medium leading-6 text-slate-500"
+        >
+          Try adjusting your filters or searching with broader keywords.
+        </p>
+        <button
+          type="button"
+          data-reset-filters-empty
+          class="mt-6 rounded-2xl bg-blue px-6 py-3 text-sm font-black text-white hover:bg-blue2"
+        >
+          Reset filters
+        </button>
+      </section>
+
+      <!-- Pagination -->
+      <section data-pagination class="mt-7"></section>
+    </main>
+
+    <footer class="mt-10 bg-navy text-white">
+      <div
+        class="mx-auto grid max-w-[1160px] gap-10 px-5 py-14 md:grid-cols-4 lg:px-8"
+      >
+        <div>
+          <a href="#" class="flex items-center gap-3"
+            ><span
+              class="grid size-11 place-items-center rounded-2xl bg-blue text-white"
+              ><i class="fa-solid fa-people-group"></i></span
+            ><span class="font-black">TRYRECRUITERS</span></a
+          >
+          <p class="mt-5 text-sm font-medium leading-7 text-white/65">
+            A modern platform connecting qualified candidates with active
+            recruiters.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black">Candidates</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Find a job</a></li>
+            <li><a href="#">Create a profile</a></li>
+            <li><a href="#">Upload CV</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Companies</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Post a job</a></li>
+            <li><a href="#">Recruiter area</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-black">Support</h3>
+          <ul class="mt-5 space-y-3 text-sm font-medium text-white/65">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6">
+        <div
+          class="mx-auto flex max-w-[1160px] flex-col gap-3 px-5 text-sm font-medium text-white/55 md:flex-row md:items-center md:justify-between lg:px-8"
+        >
+          <span>© 2026 TryRecruiters. All rights reserved.</span>
+          <span>English · Français · Deutsch</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileButton = document.querySelector("[data-mobile-menu-button]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+      const mobileIcon = document.querySelector("[data-mobile-menu-icon]");
+      const languageDropdown = document.querySelector(
+        "[data-language-dropdown]",
+      );
+      const languageButton = document.querySelector("[data-language-button]");
+      const languageMenu = document.querySelector("[data-language-menu]");
+      const languageChevron = document.querySelector("[data-language-chevron]");
+      const currentLanguageFlag = document.querySelector(
+        "[data-current-language-flag]",
+      );
+      const currentLanguageLabel = document.querySelector(
+        "[data-current-language-label]",
+      );
+      const languageOptions = document.querySelectorAll(
+        "[data-language-option]",
+      );
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileButton.setAttribute("aria-expanded", "false");
+        mobileIcon.classList.remove("fa-xmark");
+        mobileIcon.classList.add("fa-bars");
+      }
+
+      mobileButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileButton.setAttribute("aria-expanded", String(isOpen));
+        mobileIcon.classList.toggle("fa-bars", !isOpen);
+        mobileIcon.classList.toggle("fa-xmark", isOpen);
+      });
+
+      function closeLanguageMenu() {
+        languageMenu.classList.add("invisible", "translate-y-2", "opacity-0");
+        languageMenu.classList.remove(
+          "visible",
+          "translate-y-0",
+          "opacity-100",
+        );
+        languageButton.setAttribute("aria-expanded", "false");
+        languageChevron.classList.remove("rotate-180");
+      }
+
+      languageButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isClosed = languageMenu.classList.contains("invisible");
+        languageMenu.classList.toggle("invisible", !isClosed);
+        languageMenu.classList.toggle("translate-y-2", !isClosed);
+        languageMenu.classList.toggle("opacity-0", !isClosed);
+        languageMenu.classList.toggle("visible", isClosed);
+        languageMenu.classList.toggle("translate-y-0", isClosed);
+        languageMenu.classList.toggle("opacity-100", isClosed);
+        languageButton.setAttribute("aria-expanded", String(isClosed));
+        languageChevron.classList.toggle("rotate-180", isClosed);
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          currentLanguageFlag.textContent = option.dataset.flag;
+          currentLanguageLabel.textContent = option.dataset.label;
+          closeLanguageMenu();
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (languageDropdown && !languageDropdown.contains(event.target))
+          closeLanguageMenu();
+      });
+
+      const candidates = [
+        {
+          id: 1,
+          name: "Jane Cooper",
+          title: "Senior Frontend Developer",
+          role: "Engineering",
+          location: "Paris, France",
+          availability: "Open now",
+          experience: 7,
+          match: 98,
+          salary: " XAF75k",
+          initials: "JC",
+          color: "from-blue to-blue2",
+          lastActive: 1,
+          verified: true,
+          summary:
+            "Frontend engineer focused on React, accessibility and scalable design systems.",
+          skills: ["React", "TypeScript", "Tailwind", "Design systems"],
+        },
+        {
+          id: 2,
+          name: "Marvin McKinney",
+          title: "Machine Learning Engineer",
+          role: "Data",
+          location: "Remote",
+          availability: "Open now",
+          experience: 6,
+          match: 95,
+          salary: " XAF92k",
+          initials: "MM",
+          color: "from-violet-600 to-ink",
+          lastActive: 2,
+          verified: true,
+          summary:
+            "Builds ML pipelines, model evaluation workflows and production AI systems.",
+          skills: ["Python", "ML", "MLOps", "LLMs"],
+        },
+        {
+          id: 3,
+          name: "Esther Howard",
+          title: "Product Designer",
+          role: "Design",
+          location: "Berlin, Germany",
+          availability: "Available soon",
+          experience: 5,
+          match: 90,
+          salary: " XAF62k",
+          initials: "EH",
+          color: "from-orange-500 to-coral",
+          lastActive: 4,
+          verified: true,
+          summary:
+            "Product designer with strong UX research and design system experience.",
+          skills: ["Figma", "UX research", "Prototyping", "SaaS"],
+        },
+        {
+          id: 4,
+          name: "Cameron Williamson",
+          title: "Cybersecurity Analyst",
+          role: "Cybersecurity",
+          location: "London, UK",
+          availability: "Open now",
+          experience: 4,
+          match: 87,
+          salary: " XAF58k",
+          initials: "CW",
+          color: "from-slate-900 to-slate-700",
+          lastActive: 3,
+          verified: false,
+          summary:
+            "Security analyst experienced in SOC monitoring, risk analysis and incident response.",
+          skills: ["SOC", "Risk", "SIEM", "Incident response"],
+        },
+        {
+          id: 5,
+          name: "Wade Warren",
+          title: "Growth Marketing Manager",
+          role: "Marketing",
+          location: "Remote",
+          availability: "Passive",
+          experience: 8,
+          match: 83,
+          salary: " XAF68k",
+          initials: "WW",
+          color: "from-indigo-600 to-blue",
+          lastActive: 10,
+          verified: true,
+          summary:
+            "Growth marketer with experience across acquisition, CRM and lifecycle campaigns.",
+          skills: ["SEO", "Paid ads", "CRM", "Analytics"],
+        },
+        {
+          id: 6,
+          name: "Jenny Wilson",
+          title: "Data Analyst",
+          role: "Data",
+          location: "Zurich, Switzerland",
+          availability: "Available soon",
+          experience: 3,
+          match: 81,
+          salary: " XAF55k",
+          initials: "JW",
+          color: "from-emerald-600 to-teal-600",
+          lastActive: 7,
+          verified: false,
+          summary:
+            "Data analyst turning product and marketing data into actionable dashboards.",
+          skills: ["SQL", "BI", "Dashboards", "Looker"],
+        },
+        {
+          id: 7,
+          name: "Guy Hawkins",
+          title: "Backend Engineer",
+          role: "Engineering",
+          location: "Albania",
+          availability: "Open now",
+          experience: 6,
+          match: 89,
+          salary: " XAF70k",
+          initials: "GH",
+          color: "from-coral to-red-600",
+          lastActive: 5,
+          verified: true,
+          summary:
+            "Backend engineer building scalable APIs, integrations and reliable cloud services.",
+          skills: ["Node.js", "APIs", "PostgreSQL", "AWS"],
+        },
+        {
+          id: 8,
+          name: "Bessie Cooper",
+          title: "People Operations Lead",
+          role: "Operations",
+          location: "Paris, France",
+          availability: "Passive",
+          experience: 9,
+          match: 78,
+          salary: " XAF64k",
+          initials: "BC",
+          color: "from-pink-600 to-coral",
+          lastActive: 14,
+          verified: true,
+          summary:
+            "People operations specialist with experience in onboarding and HR systems.",
+          skills: ["HR ops", "Onboarding", "Culture", "ATS"],
+        },
+        {
+          id: 9,
+          name: "Jacob Jones",
+          title: "Cloud Security Engineer",
+          role: "Cybersecurity",
+          location: "Remote",
+          availability: "Open now",
+          experience: 7,
+          match: 93,
+          salary: " XAF96k",
+          initials: "JJ",
+          color: "from-cyan-600 to-blue",
+          lastActive: 1,
+          verified: true,
+          summary:
+            "Cloud security engineer focused on Kubernetes, DevSecOps and infrastructure hardening.",
+          skills: ["Kubernetes", "DevSecOps", "AWS", "Security"],
+        },
+      ];
+
+      const state = {
+        search: "",
+        role: "all",
+        location: "all",
+        availability: "all",
+        sort: "match",
+        page: 1,
+        pageSize: 6,
+        listView: false,
+      };
+
+      const searchInput = document.querySelector("[data-search-input]");
+      const roleFilter = document.querySelector("[data-role-filter]");
+      const locationFilter = document.querySelector("[data-location-filter]");
+      const availabilityFilter = document.querySelector(
+        "[data-availability-filter]",
+      );
+      const sortFilter = document.querySelector("[data-sort-filter]");
+      const list = document.querySelector("[data-candidates-list]");
+      const emptyState = document.querySelector("[data-empty-state]");
+      const resultCount = document.querySelector("[data-result-count]");
+      const pagination = document.querySelector("[data-pagination]");
+      const viewToggle = document.querySelector("[data-view-toggle]");
+      const activeChips = document.querySelector("[data-active-chips]");
+
+      function candidateCard(candidate) {
+        if (state.listView) {
+          return `
+          <article class="rounded-[26px] border border-line bg-white p-5 shadow-card transition hover:-translate-y-1 hover:border-blue hover:shadow-soft md:col-span-2 xl:col-span-3">
+            <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+              <div class="flex gap-4">
+                <span class="grid size-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${candidate.color} text-lg font-black text-white">${candidate.initials}</span>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h3 class="text-xl font-black text-navy">${candidate.name}</h3>
+                    ${candidate.verified ? '<span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-black text-emerald-600"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>' : ""}
+                  </div>
+                  <p class="mt-1 text-sm font-bold text-slate-600">${candidate.title}</p>
+                  <p class="mt-2 max-w-2xl text-sm font-medium leading-6 text-slate-600">${candidate.summary}</p>
+                  <div class="mt-3 flex flex-wrap gap-2">${candidate.skills.map((skill) => `<span class="rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-black text-blue">${skill}</span>`).join("")}</div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 md:justify-end">
+                <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700">${candidate.match}% match</span>
+                <span class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-600">${candidate.experience} yrs exp.</span>
+                <a href="#" class="rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white hover:bg-blue2">View profile</a>
+              </div>
+            </div>
+          </article>
+        `;
+        }
+
+        return `
+        <article class="overflow-hidden rounded-[30px] border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-blue hover:shadow-soft">
+          <div class="flex items-start justify-between gap-4">
+            <span class="grid size-18 shrink-0 place-items-center rounded-[24px] bg-gradient-to-br ${candidate.color} text-xl font-black text-white shadow-card">${candidate.initials}</span>
+            <div class="flex gap-2">
+              ${candidate.verified ? '<span class="rounded-full bg-emerald-50 px-3 py-1.5 text-[11px] font-black text-emerald-600"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>' : ""}
+              <button type="button" class="grid size-9 place-items-center rounded-full bg-skysoft text-blue transition hover:bg-blue hover:text-white"><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <h3 class="text-xl font-black text-navy">${candidate.name}</h3>
+            <p class="mt-1 text-sm font-bold text-slate-600">${candidate.title}</p>
+            <p class="mt-3 line-clamp-2 text-sm font-medium leading-6 text-slate-600">${candidate.summary}</p>
+          </div>
+
+          <div class="mt-5 grid gap-2 text-sm font-bold text-slate-600">
+            <p><i class="fa-solid fa-location-dot mr-2 text-blue"></i>${candidate.location}</p>
+            <p><i class="fa-solid fa-briefcase mr-2 text-blue"></i>${candidate.experience} years experience</p>
+            <p><i class="fa-solid fa-calendar-check mr-2 text-blue"></i>${candidate.availability}</p>
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            ${candidate.skills.map((skill) => `<span class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-600">${skill}</span>`).join("")}
+          </div>
+
+          <div class="mt-6 flex items-center justify-between gap-3 border-t border-line pt-5">
+            <div>
+              <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700"><i class="fa-solid fa-circle-check mr-1"></i>${candidate.match}% match</span>
+              <p class="mt-2 text-xs font-bold text-slate-400">Active ${candidate.lastActive}d ago</p>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 rounded-2xl bg-blue px-4 py-2.5 text-sm font-black text-white transition hover:bg-blue2">Profile <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      `;
+      }
+
+      function getFilteredCandidates() {
+        let filtered = candidates.filter((candidate) => {
+          const searchable =
+            `${candidate.name} ${candidate.title} ${candidate.role} ${candidate.location} ${candidate.availability} ${candidate.summary} ${candidate.skills.join(" ")}`.toLowerCase();
+          const searchMatch =
+            !state.search || searchable.includes(state.search.toLowerCase());
+          const roleMatch =
+            state.role === "all" || candidate.role === state.role;
+          const locationMatch =
+            state.location === "all" ||
+            candidate.location.includes(state.location);
+          const availabilityMatch =
+            state.availability === "all" ||
+            candidate.availability === state.availability;
+          return searchMatch && roleMatch && locationMatch && availabilityMatch;
+        });
+
+        filtered.sort((a, b) => {
+          if (state.sort === "experience") return b.experience - a.experience;
+          if (state.sort === "recent") return a.lastActive - b.lastActive;
+          if (state.sort === "name") return a.name.localeCompare(b.name);
+          return b.match - a.match;
+        });
+
+        return filtered;
+      }
+
+      function renderChips() {
+        const chips = [];
+        if (state.search) chips.push(`Search: ${state.search}`);
+        if (state.role !== "all") chips.push(state.role);
+        if (state.location !== "all") chips.push(state.location);
+        if (state.availability !== "all") chips.push(state.availability);
+        activeChips.innerHTML = chips
+          .map(
+            (chip) =>
+              `<span class="rounded-full bg-skysoft px-3 py-1.5 text-xs font-black text-blue">${chip}</span>`,
+          )
+          .join("");
+      }
+
+      function renderPagination(total) {
+        const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
+        if (totalPages <= 1) {
+          pagination.innerHTML = "";
+          return;
+        }
+
+        const pages = Array.from(
+          { length: totalPages },
+          (_, index) => index + 1,
+        );
+        pagination.innerHTML = `
+        <div class="flex flex-col gap-3 rounded-2xl border border-line bg-white p-4 shadow-card sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-xs font-bold text-slate-500">Page <strong class="text-navy">${state.page}</strong> of <strong class="text-navy">${totalPages}</strong></p>
+          <div class="flex flex-wrap items-center gap-2">
+            <button type="button" data-page="prev" class="rounded-xl border border-line px-4 py-2 text-xs font-black text-slate-600 transition hover:border-blue hover:text-blue ${state.page === 1 ? "pointer-events-none opacity-40" : ""}"><i class="fa-solid fa-chevron-left mr-1"></i>Previous</button>
+            ${pages.map((page) => `<button type="button" data-page="${page}" class="grid size-9 place-items-center rounded-xl text-xs font-black transition ${page === state.page ? "bg-blue text-white shadow-glow" : "border border-line bg-white text-slate-600 hover:border-blue hover:text-blue"}">${page}</button>`).join("")}
+            <button type="button" data-page="next" class="rounded-xl border border-line px-4 py-2 text-xs font-black text-slate-600 transition hover:border-blue hover:text-blue ${state.page === totalPages ? "pointer-events-none opacity-40" : ""}">Next<i class="fa-solid fa-chevron-right ml-1"></i></button>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderCandidates() {
+        const filtered = getFilteredCandidates();
+        const totalPages = Math.max(
+          1,
+          Math.ceil(filtered.length / state.pageSize),
+        );
+        if (state.page > totalPages) state.page = totalPages;
+
+        const pageItems = filtered.slice(
+          (state.page - 1) * state.pageSize,
+          state.page * state.pageSize,
+        );
+        resultCount.textContent = filtered.length;
+        list.className = state.listView
+          ? "mt-5 grid gap-4"
+          : "mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3";
+        list.innerHTML = pageItems.map(candidateCard).join("");
+        emptyState.classList.toggle("hidden", filtered.length !== 0);
+        renderChips();
+        renderPagination(filtered.length);
+      }
+
+      function syncFilters() {
+        state.search = searchInput.value.trim();
+        state.role = roleFilter.value;
+        state.location = locationFilter.value;
+        state.availability = availabilityFilter.value;
+        state.sort = sortFilter.value;
+        state.page = 1;
+        renderCandidates();
+      }
+
+      [
+        searchInput,
+        roleFilter,
+        locationFilter,
+        availabilityFilter,
+        sortFilter,
+      ].forEach((input) => {
+        input.addEventListener("input", syncFilters);
+        input.addEventListener("change", syncFilters);
+      });
+
+      function resetFilters() {
+        searchInput.value = "";
+        roleFilter.value = "all";
+        locationFilter.value = "all";
+        availabilityFilter.value = "all";
+        sortFilter.value = "match";
+        syncFilters();
+      }
+
+      document
+        .querySelectorAll("[data-reset-filters], [data-reset-filters-empty]")
+        .forEach((button) => button.addEventListener("click", resetFilters));
+
+      viewToggle.addEventListener("click", () => {
+        state.listView = !state.listView;
+        viewToggle.innerHTML = state.listView
+          ? '<i class="fa-solid fa-table-cells-large"></i>'
+          : '<i class="fa-solid fa-list"></i>';
+        renderCandidates();
+      });
+
+      pagination.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-page]");
+        if (!button) return;
+        const filtered = getFilteredCandidates();
+        const totalPages = Math.max(
+          1,
+          Math.ceil(filtered.length / state.pageSize),
+        );
+        if (button.dataset.page === "prev")
+          state.page = Math.max(1, state.page - 1);
+        else if (button.dataset.page === "next")
+          state.page = Math.min(totalPages, state.page + 1);
+        else state.page = Number(button.dataset.page);
+        renderCandidates();
+        document
+          .querySelector("[data-candidates-list]")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      renderCandidates();
+    </script>
+  </body>
+</html>

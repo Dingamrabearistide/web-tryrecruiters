@@ -1,0 +1,72 @@
+{
+  "list": {
+    "title": "My Resumes",
+    "description": "Manage all your resumes and documents"
+  },
+  "form": {
+    "createTitle": "New Resume",
+    "resume": "New Resume",
+    "name": "Resume Name",
+    "namePlaceholder": "Ex: Frontend Developer Resume",
+    "file": "PDF File",
+    "isDefault": "Set as default resume",
+    "upload": "Upload Resume",
+    "search": "Search",
+    "searchPlaceholder": "Search by resume name...",
+    "isDefaultLabel": "Default",
+    "allValues": "All",
+    "createdAfter": "Created after",
+    "createdBefore": "Created before",
+    "reset": "Reset",
+    "back": "Back",
+    "download": "Download",
+    "preview": "Preview",
+    "setAsDefault": "Set as Default",
+    "removeDefault": "Remove Default"
+  },
+  "status": {
+    "default": "Default",
+    "notDefault": "Standard"
+  },
+  "actions": {
+    "create": "Add Resume",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "download": "Download"
+  },
+  "delete": {
+    "title": "Delete Resume",
+    "message": "Are you sure you want to delete the resume \"{{name}}\"?",
+    "messageDefault": "\"{{name}}\" is your default resume. If you delete it, no resume will be set as default — remember to pick another one afterward. Continue?",
+    "warning": "This action cannot be undone."
+  },
+  "messages": {
+    "uploadSuccess": "Resume uploaded successfully",
+    "updateSuccess": "Resume updated successfully",
+    "deleteSuccess": "Resume deleted successfully",
+    "setDefaultSuccess": "Resume set as default",
+    "maxFilesReached": "You have reached the maximum number of resumes (5)",
+    "invalidFileType": "Only PDF files are accepted",
+    "fileTooLarge": "File must not exceed 5 MB",
+    "nameRequired": "Resume name is required",
+    "fileRequired": "Please select a PDF file"
+  },
+  "empty": {
+    "title": "No resumes found",
+    "subtitle": "Add your first resume to start applying",
+    "action": "Add Resume"
+  },
+  "validation": {
+    "name": {
+      "required": "Resume name is required",
+      "minLength": "Name must be at least 3 characters long",
+      "maxLength": "Name cannot exceed 100 characters"
+    },
+    "file": {
+      "required": "Please select a file",
+      "invalidType": "Only PDF files are accepted",
+      "tooLarge": "File must not exceed 5 MB"
+    }
+  }
+}

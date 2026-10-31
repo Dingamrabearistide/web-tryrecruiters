@@ -1,0 +1,53 @@
+.hero-grid {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(20, 157, 242, 0.28), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(255, 81, 72, 0.22), transparent 26%),
+    radial-gradient(circle at 50% 92%, rgba(89, 74, 226, 0.22), transparent 34%),
+    linear-gradient(135deg, #07152f 0%, #0a1f42 52%, #241449 100%);
+}
+
+.network {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 78%);
+}
+
+// Fix for routerLinkActive on pill navigation
+a.ring-0 {
+  box-shadow: none;
+}
+
+// Ensure input fields inside hero search form don't get global styles
+input[type="text"] {
+  &.border-0 {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    height: auto !important;
+    outline: none !important;
+
+    &:focus {
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+}
+
+// Remove default global button styles for design-specific buttons
+// Use ::ng-deep to ensure Tailwind classes can override when needed
+button {
+  &.rounded-2xl,
+  &.rounded-xl {
+    min-width: unset;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

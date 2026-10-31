@@ -1,0 +1,358 @@
+{
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "December 18, 2025",
+    "introduction": "Welcome to TRYRECRUITERS! Your privacy is important to us. This Confidentiality Agreement (\"Agreement\") explains how we collect, use, disclose, and protect your personal information when you use the TRYRECRUITERS Web. By creating an account and using the App, you agree to be bound by the terms and conditions set out in this Agreement.",
+    
+    "section1": {
+      "title": "1. Information We Collect",
+      "subsection1": {
+        "title": "1.1 Information You Provide to Us:",
+        "items": [
+          "Account Information: When you create an account, we collect your name, email address, password, CV, and other necessary information.",
+          "Profile Information: You can choose to add additional information to your profile such as a profile picture, phone number, and other details.",
+          "Content: Any information or content that you provide, upload, or share through the App, such as messages, posts, and multimedia files."
+        ]
+      },
+      "subsection2": {
+        "title": "1.2 Information We Collect Automatically:",
+        "items": [
+          "Device Information: We collect information about the device you use to access the App, including hardware models, operating systems, and unique device identifiers.",
+          "Usage Information: We collect information about your interactions with the App, such as access times, pages viewed, and actions taken.",
+          "Location Information: We may collect information about your location via your IP address, GPS, or other location-based technologies if you use these services."
+        ]
+      }
+    },
+
+    "section2": {
+      "title": "2. How We Use Your Information",
+      "subsection1": {
+        "title": "2.1 To Provide and Improve Our Services:",
+        "items": [
+          "To create and manage your account.",
+          "To personalize your experience and provide content and features tailored to your interests and profile.",
+          "To respond to your comments, questions, and provide tailored customer service."
+        ]
+      },
+      "subsection2": {
+        "title": "2.2 For Communication:",
+        "items": [
+          "To send you technical notices, updates, security alerts, and support messages.",
+          "To provide you with information about new features, services, and promotions."
+        ]
+      },
+      "subsection3": {
+        "title": "2.3 For Security and Fraud Prevention:",
+        "items": [
+          "To monitor and analyze usage and activities to ensure the security of the App.",
+          "To detect, prevent, and address fraud, unauthorized activities, and access."
+        ]
+      },
+      "subsection4": {
+        "title": "2.4 Legal Compliance:",
+        "items": [
+          "To comply with legal obligations, enforce our agreements, and protect the rights, property, and safety of TRYRECRUITERS, our users, and others."
+        ]
+      }
+    },
+
+    "section3": {
+      "title": "3. How We Share Your Information",
+      "subsection1": {
+        "title": "3.1 With Service Providers:",
+        "description": "We may share your information with third-party vendors, consultants, and other service providers who need access to your information to perform work on our behalf."
+      },
+      "subsection2": {
+        "title": "3.2 For Legal Reasons:",
+        "description": "We may disclose your information if required by law or in response to a legal request, such as a court order, subpoena, or government investigation or tax authority."
+      },
+      "subsection3": {
+        "title": "3.3 Business Transfers:",
+        "description": "We may share or transfer your information in connection with, during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business by another company."
+      }
+    },
+
+    "section4": {
+      "title": "4. Your Rights and Choices",
+      "subsection1": {
+        "title": "4.1 Access and Update:",
+        "description": "You can access and update your personal information through your account settings."
+      },
+      "subsection2": {
+        "title": "4.2 Delete Account:",
+        "description": "You can delete your account at any time, which will remove your profile and associated data from our systems."
+      },
+      "subsection3": {
+        "title": "4.3 Unsubscribe:",
+        "description": "You can opt out of receiving promotional communications from us by following the instructions in those communications or through your account settings."
+      }
+    },
+
+    "section5": {
+      "title": "5. Data Security",
+      "description": "We implement various security measures to protect your personal information from unauthorized access, use, or disclosure. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
+    },
+
+    "section6": {
+      "title": "6. Data Retention",
+      "description": "We retain your personal information as long as necessary to achieve the purposes described in this Agreement unless a longer retention period is required or permitted by law."
+    },
+
+    "section7": {
+      "title": "7. Children's Privacy",
+      "description": "Our App is not intended for children under 18 years old. We do not knowingly collect personal information from children under 18. If we become aware that we have inadvertently received personal information from a user under 18, we will delete such information from our records."
+    },
+
+    "section8": {
+      "title": "8. Changes to This Confidentiality Agreement",
+      "description": "We may update this Confidentiality Agreement from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any significant changes by posting the new Confidentiality Agreement on the App and updating the \"Effective Date\" at the top of this Agreement. Your continued use of the App after any changes to this Confidentiality Agreement constitutes your acceptance of the revised Agreement."
+    },
+
+    "section9": {
+      "title": "9. Contact Us",
+      "description": "If you have any questions about this Confidentiality Agreement, please contact us at info@tryrecruiters.com."
+    }
+  },
+
+  "userAgreement": {
+    "title": "User Agreement",
+    "lastUpdated": "December 15, 2025",
+    "introduction": "Welcome to TRYRECRUITERS! This User Agreement (\"Agreement\") governs your use of the TRYRECRUITERS Web application (\"Web application\"). By downloading, installing, or using the Web application, you agree to these terms.",
+
+    "section1": {
+      "title": "1. Introduction",
+      "subsection1": {
+        "title": "1.1 Contract",
+        "description": "By using our Web application, you agree to all these terms. Your use of our Web application is also subject to our Privacy Policy and Cookie Policy, which cover how we collect, use, share, and store your personal information. By clicking \"Sign Up\", \"Create Account\", or any similar reference, you agree to enter a legally binding contract with TRYRECRUITERS. If you do not accept this contract (\"Contract\" or \"User Agreement\"), do not click \"Sign Up\" (or any similar reference) and do not access or use our services. If you wish to terminate this contract, you can do so at any time by closing your account and ceasing to access or use our Web application."
+      },
+      "subsection2": {
+        "title": "1.2 Services",
+        "description": "This Agreement applies to the TRYRECRUITERS Web application and other TRYRECRUITERS-related sites, Web applications, communications, and services that state they are offered under this Agreement (\"Services\"), including data collection for these Services, such as our advertisements and the \"Apply with TRYRECRUITERS\" and \"Share with TRYRECRUITERS\" plugins."
+      },
+      "subsection3": {
+        "title": "1.3 Members and Visitors",
+        "description": "When you register and join TRYRECRUITERS Services, you become a member. If you choose not to register for our Services, you can access certain features as a \"Visitor\"."
+      },
+      "subsection4": {
+        "title": "1.4 Modifications",
+        "description": "We may make changes to the Agreement. We may modify this Agreement, our Privacy Policy, and our Cookie Policy from time to time. If we make significant changes, we will notify you through our Services or by other means to give you the opportunity to review the changes before they take effect. We agree that changes cannot be retroactive. If you object to any changes, you may close your account. Your continued use of our Services after we publish or send a notice about changes to these terms means that you accept the updated terms from their effective date and agree to be bound by them."
+      },
+      "subsection5": {
+        "title": "1.5 Prohibited Conduct",
+        "description": "You agree not to post or share content that:",
+        "items": [
+          "Is obscene, pornographic, violent, or sexually explicit.",
+          "Harasses, intimidates, or promotes hate speech.",
+          "Violates others' privacy, including sharing intimate or private images without consent.",
+          "Contains inappropriate or offensive language or content.",
+          "Is generally illegal."
+        ]
+      }
+    },
+
+    "section2": {
+      "title": "2. Acceptance of Terms & Payment",
+      "subsection1": {
+        "title": "2.1 Service Eligibility",
+        "description": "To use the Services, you must be 18 years or older and agree to one TRYRECRUITERS account in your real name only. Creating accounts with false information violates these terms."
+      },
+      "subsection2": {
+        "title": "2.2 Your Account",
+        "description": "You agree to use a strong password, not transfer your account, and comply with our policies. You are responsible for all account activities. Your account belongs to you unless purchased by another party."
+      },
+      "subsection3": {
+        "title": "2.3 Content and Conduct",
+        "description": "Do not post sexually explicit, harassing, hate speech, privacy-violating, offensive, or illegal content."
+      },
+      "subsection4": {
+        "title": "2.4 Payment",
+        "description": "You agree to honor payment obligations and understand fees/taxes may apply. Non-payment may result in service termination. Subscriptions auto-renew unless cancelled before renewal. Your payment method may be stored for future charges. Taxes are calculated from billing information provided at purchase. Invoices are available in account settings."
+      },
+      "subsection5": {
+        "title": "2.5 Notices and Messages",
+        "description": "We provide notices via the Service or your registered contact information. Keep your contact information current to avoid missing important notices."
+      },
+      "subsection6": {
+        "title": "2.6 Sharing",
+        "description": "Information you share is visible to others. We honor your privacy settings. Job applications are shared only with employers by default. We can remove content without notice."
+      }
+    },
+
+    "section3": {
+      "title": "3. Eligibility",
+      "subsection1": {
+        "title": "3.1 Minimum Age Requirement",
+        "description": "You must be at least 18 years old. You cannot create accounts for others or if you're under 18. False information violates our terms."
+      },
+      "subsection2": {
+        "title": "3.2 Legal Capacity",
+        "description": "You affirm you have legal capacity to enter this agreement and understand its terms."
+      },
+      "subsection3": {
+        "title": "3.3 Compliance with Laws",
+        "description": "You agree to comply with all applicable laws regarding online conduct, content, privacy, data protection, and intellectual property."
+      }
+    },
+
+    "section4": {
+      "title": "4. User Accounts",
+      "subsection1": {
+        "title": "4.1 Registration",
+        "description": "Provide accurate, current, complete information. Maintain updated registration data. False information may result in account suspension or termination."
+      },
+      "subsection2": {
+        "title": "4.2 Account Security",
+        "description": "Keep passwords confidential. Notify us immediately of unauthorized access. Exit your account after each session, especially on shared devices."
+      },
+      "subsection3": {
+        "title": "4.3 Account Termination",
+        "description": "You may terminate your account anytime. We may terminate for violations, inactivity, fraud, or legal requirements. Certain provisions survive termination."
+      }
+    },
+
+    "section5": {
+      "title": "5. Privacy & Data",
+      "subsection1": {
+        "title": "5.1 Data Collection",
+        "description": "We collect and use personal data per our Privacy Policy. Your use constitutes consent to this data handling."
+      },
+      "subsection2": {
+        "title": "5.2 Data Security",
+        "description": "We implement security measures to protect your data. No method is 100% secure; we cannot guarantee absolute security."
+      },
+      "subsection3": {
+        "title": "5.3 Third-Party Services",
+        "description": "Third-party links are not controlled by us. We're not responsible for their privacy practices. Review their policies before sharing information."
+      }
+    },
+
+    "section6": {
+      "title": "6. Content",
+      "subsection1": {
+        "title": "6.1 Ownership",
+        "description": "You retain content ownership but grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, distribute, modify, and display your content."
+      },
+      "subsection2": {
+        "title": "6.2 Prohibited Content",
+        "description": "Do not post sexually explicit, harassing, hate speech, privacy-violating, offensive, or illegal content."
+      },
+      "subsection3": {
+        "title": "6.3 Content Removal",
+        "description": "We may remove violating content and suspend/terminate accounts for repeated violations or legal requirements."
+      },
+      "subsection4": {
+        "title": "6.4 User Responsibility",
+        "description": "You're solely responsible for your content. You agree to indemnify us from claims related to your content."
+      }
+    },
+
+    "section7": {
+      "title": "7. Intellectual Property",
+      "subsection1": {
+        "title": "7.1 Ownership",
+        "description": "All app intellectual property is owned by TRYRECRUITERS or licensors, including texts, graphics, logos, and software."
+      },
+      "subsection2": {
+        "title": "7.2 License",
+        "description": "We grant a limited, non-exclusive, non-transferable license for personal, non-commercial use. No modification, redistribution, or reverse engineering allowed. No automated data scraping."
+      },
+      "subsection3": {
+        "title": "7.3 User Content",
+        "description": "You retain content ownership but grant us a worldwide license to use, reproduce, modify, publish, and display it."
+      },
+      "subsection4": {
+        "title": "7.4 Infringement",
+        "description": "Notify us immediately of infringement. We'll investigate and take appropriate action, including removing content or terminating repeat infringers."
+      },
+      "subsection5": {
+        "title": "7.5-7.7 Additional IP Terms",
+        "description": "We may terminate your license anytime. All rights not granted are reserved. You cannot use our trademarks without permission."
+      }
+    },
+
+    "section8": {
+      "title": "8. Termination",
+      "subsection1": {
+        "title": "8.1 Termination by You",
+        "description": "Contact customer support to request termination. They'll guide you through the process. Your account becomes inaccessible; data is deleted per our Privacy Policy."
+      },
+      "subsection2": {
+        "title": "8.2 Termination by Us",
+        "description": "We may suspend/terminate for agreement violations, inactivity, fraud, legal compliance, or other reasons, with or without notice."
+      },
+      "subsection3": {
+        "title": "8.3 Process",
+        "description": "We'll attempt to notify you. Termination is immediate. Data is handled per our Privacy Policy; some may be retained for legal reasons."
+      },
+      "subsection4": {
+        "title": "8.4 Consequences",
+        "description": "You lose access to all services. Data is deleted or anonymized. Pre-termination obligations remain, including fees owed."
+      },
+      "subsection5": {
+        "title": "8.5 Appeals",
+        "description": "Appeal termination decisions by contacting support. We'll review and respond; we make the final decision on reactivation."
+      },
+      "subsection6": {
+        "title": "8.6 Survival",
+        "description": "IP, liability limitations, indemnification, and dispute resolution survive termination."
+      }
+    },
+
+    "section9": {
+      "title": "9. Disclaimers",
+      "subsection1": {
+        "title": "9.1 No Warranty",
+        "description": "The app is \"as is\" and \"as available.\" We make no warranties about performance, accuracy, non-infringement, or functionality. Content is informational only; always consult professionals."
+      },
+      "subsection2": {
+        "title": "9.2-9.3 Limitation of Liability",
+        "description": "We're not liable for indirect, incidental, special, consequential, or punitive damages from app use, content, third parties, unauthorized access, links, or force majeure. Some jurisdictions limit these exclusions."
+      },
+      "subsection3": {
+        "title": "9.4 Bargaining Basis",
+        "description": "You acknowledge these disclaimers fairly allocate risk and are essential for us to provide the app."
+      }
+    },
+
+    "section10": {
+      "title": "10. Applicable Law & Dispute Resolution",
+      "subsection1": {
+        "title": "10.1-10.2 Law & Jurisdiction",
+        "description": "This Agreement is governed by [Your Country/State] laws. Disputes are resolved in competent courts of [Your Country/State]."
+      },
+      "subsection2": {
+        "title": "10.3 Compliance",
+        "description": "You comply with all applicable local, national, and international laws regarding online conduct, privacy, data protection, and intellectual property."
+      },
+      "subsection3": {
+        "title": "10.4 Dispute Resolution",
+        "description": "Try informal resolution first. If unsuccessful, disputes are resolved by binding arbitration per [Your Country/State] rules. Arbitration is in the plaintiff's city of residence."
+      },
+      "subsection4": {
+        "title": "10.5-10.6 Severability & Waiver",
+        "description": "Invalid provisions are modified to become valid. Failure to enforce a right doesn't waive it unless we agree in writing."
+      }
+    },
+
+    "section11": {
+      "title": "11. Modifications to this Agreement",
+      "subsection1": {
+        "title": "11.1-11.2 Modifications",
+        "description": "We may modify this Agreement anytime. Changes are effective immediately. We notify you of material changes. Review regularly for updates."
+      },
+      "subsection2": {
+        "title": "11.3-11.5 Acceptance & Responsibility",
+        "description": "Continued use after modifications means you accept the revised terms. It's your responsibility to stay informed. Each modification binds you from continued use."
+      },
+      "subsection3": {
+        "title": "11.6 Termination Due to Modifications",
+        "description": "If you don't accept modifications, terminate by ceasing use and deleting your account. Pre-termination rights/obligations remain."
+      }
+    },
+
+    "section12": {
+      "title": "12. Contact Us",
+      "description": "For questions, contact us at info@tryrecruiters.com. By using the app, you acknowledge you've read, understood, and agreed to be bound by this Agreement."
+    }
+  }
+}

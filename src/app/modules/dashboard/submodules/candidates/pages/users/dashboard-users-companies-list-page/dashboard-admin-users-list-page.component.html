@@ -1,0 +1,220 @@
+<div *transloco="let t; read: 'users'" class="flex flex-col w-full">
+    <!-- Header Section -->
+    <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+        <div class="flex w-full justify-between items-center">
+            <div>
+                <h1 class="text-3xl pb-2 font-bold text-primary">
+                    {{ t("list.title") }}
+                </h1>
+                <p class="text-gray-600 text-sm font-normal">
+                    {{ t("list.description") }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-0 lg:mx-0 pb-8">
+        <div class="flex flex-col md:flex-row flex-wrap gap-3 items-end mb-7 w-full justify-between">
+            <div class="flex w-full gap-3 md:max-w-[650px]">
+                <div class="flex flex-col w-full sm:w-1/2">
+                    <label
+                            class="text-sm text-gray-700 mb-2 outline-none flex items-center gap-1"
+                            for="startDate"
+                    >
+                        <i class="fas fa-calendar-alt text-gray-500"></i>
+                        {{ t("form.startDate") }}
+                    </label>
+                    <input
+                            (change)="onSearch()"
+                            [(ngModel)]="startDate"
+                            class="w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                            id="startDate"
+                            name="startDate"
+                            type="date"
+                    />
+                </div>
+
+                <!-- Date de fin -->
+                <div class="flex flex-col w-full sm:w-1/2">
+                    <label
+                            class="text-sm text-gray-700 mb-2 outline-none flex items-center gap-1"
+                            for="endDate"
+                    >
+                        <i class="fas fa-calendar-alt text-gray-500"></i>
+                        {{ t("form.endDate") }}
+                    </label>
+                    <input
+                            (change)="onSearch()"
+                            [(ngModel)]="endDate"
+                            class="w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                            id="endDate"
+                            name="endDate"
+                            type="date"
+                    />
+                </div>
+            </div>
+
+            <!-- Filtres par catégories -->
+            <div class="flex flex-col md:flex-row gap-3 w-full md:w-fit">
+                <!-- Filtre par Rôle -->
+                <div class="w-full md:w-fit">
+                    <label
+                            class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+                            for="userRole"
+                    >
+                        <i class="fas fa-user-tag text-gray-500"></i>
+                        {{ t("form.userRole") }}
+                    </label>
+                    <div class="relative w-full md:max-w-[200px] min-w-[150px] h-[40px]">
+                        <select
+                                (change)="onSearch()"
+                                [(ngModel)]="userRole"
+                                class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                id="userRole"
+                        >
+                            <option value="">{{ t("form.allRoles") }}</option>
+                            <option value="RECRUITER">{{ t("roles.RECRUITER") }}</option>
+                            <option value="CANDIDATE">{{ t("roles.CANDIDATE") }}</option>
+                            <option value="ADMIN">{{ t("roles.ADMIN") }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtre par Statut -->
+                <div class="w-full md:w-fit">
+                    <label
+                            class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+                            for="userStatus"
+                    >
+                        <i class="fas fa-toggle-on text-gray-500"></i>
+                        {{ t("form.userStatus") }}
+                    </label>
+                    <div class="relative w-full md:max-w-[200px] min-w-[150px] h-[40px]">
+                        <select
+                                (change)="onSearch()"
+                                [(ngModel)]="userStatus"
+                                class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                id="userStatus"
+                        >
+                            <option value="">{{ t("form.allStatuses") }}</option>
+                            <option value="active">{{ t("status.active") }}</option>
+                            <option value="inactive">{{ t("status.inactive") }}</option>
+                            <option value="pending">{{ t("status.pending") }}</option>
+                            <option value="suspended">{{ t("status.suspended") }}</option>
+                            <option value="locked">{{ t("status.locked") }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtre par Genre -->
+                <div class="w-full md:w-fit">
+                    <label
+                            class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+                            for="userGender"
+                    >
+                        <i class="fas fa-venus-mars text-gray-500"></i>
+                        {{ t("form.userGender") }}
+                    </label>
+                    <div class="relative w-full md:max-w-[200px] min-w-[150px] h-[40px]">
+                        <select
+                                (change)="onSearch()"
+                                [(ngModel)]="userGender"
+                                class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                id="userGender"
+                        >
+                            <option value="">{{ t("form.allGenders") }}</option>
+                            <option value="MALE">{{ t("gender.MALE") }}</option>
+                            <option value="FEMALE">{{ t("gender.FEMALE") }}</option>
+                            <option value="OTHER">{{ t("gender.OTHER") }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barre de recherche -->
+            <div class="flex flex-col gap-2 w-full md:flex-row md:w-fit">
+                <div class="relative flex-grow">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 py-2">
+                <i class="fas fa-search text-gray-400"></i>
+            </span>
+                    <input
+                            (keyup.enter)="onSearch()"
+                            [(ngModel)]="keyword"
+                            class="h-10 w-full border border-gray-300 outline-none rounded-[5px] pl-10 pr-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                            id="search"
+                            placeholder="{{ t('form.searchPlaceholder') }}"
+                            type="text"
+                    />
+                </div>
+                <button
+                        (click)="onSearch()"
+                        class="bg-[#1D9BED] text-white w-fit h-full lg:w-auto px-8 py-2 rounded-[5px] text-sm shadow transition-all duration-200 flex items-center gap-2 hover:bg-[#1585d1] transition-colors"
+                >
+                    <i class="fas fa-search"></i>
+                    {{ t("form.search") }}
+                </button>
+
+                <!-- Bouton de réinitialisation des filtres -->
+                <button
+                        (click)="onReset()"
+                        class="bg-gray-500 text-white w-fit h-full lg:w-auto px-6 py-2 rounded-[5px] text-sm shadow transition-all duration-200 flex items-center gap-2 hover:bg-gray-600 transition-colors"
+                        title="{{ t('form.resetFilters') }}"
+                >
+                    <i class="fas fa-undo"></i>
+                    {{ t("form.reset") }}
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+            <div class="w-full text-center h-full">
+                <app-loader></app-loader>
+            </div>
+        </div>
+
+        <div *ngIf="!isLoading && hasError" class="w-full">
+            <app-generic-error
+                    *ngIf="hasError"
+                    [message]="errorMessage"
+            ></app-generic-error>
+        </div>
+
+        <div *ngIf="!isLoading && !hasError" class="max-w-full w-full">
+
+            <app-users-datatable
+                    (create)="handleCreate()"
+                    (delete)="handleDelete($event)"
+                    (update)="handleUpdate($event)"
+                    (view)="handleView($event)"
+                    [hasError]="false"
+                    [isLoading]="false"
+                    [items]="items"
+            ></app-users-datatable>
+        </div>
+
+        <div class="flex justify-end mb-4">
+            <app-generic-paginator
+                    (pageChange)="onPageChange($event)"
+                    [currentPage]="page"
+                    [maxVisible]="5"
+                    [totalPages]="totalPages"
+                    [totalPages]="totalPages"
+            ></app-generic-paginator>
+        </div>
+    </div>
+
+    <!-- Error Component -->
+    <app-generic-error
+            *ngIf="hasError"
+            [message]="errorMessage"
+    ></app-generic-error>
+</div>

@@ -1,0 +1,147 @@
+<main
+  class="mx-auto grid min-h-[calc(100vh-80px)] w-full max-w-[1160px] items-center gap-8 px-4 py-8 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-12"
+  *transloco="let t; read: 'auth'"
+>
+  <!-- Left: Hero panel -->
+
+  <section
+    class="hero-gradient relative hidden overflow-hidden rounded-[38px] p-8 text-white shadow-soft lg:block"
+  >
+    <div class="hero-grid absolute inset-0 opacity-70"></div>
+    <div class="relative flex min-h-[520px] flex-col justify-between">
+      <div>
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-blue"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i>
+          {{ t("login.badge") }}
+        </span>
+        <h1
+          class="mt-8 font-display text-6xl font-black leading-none tracking-tight"
+        >
+          {{ t("login.heroTitle") }}
+        </h1>
+        <p class="mt-5 max-w-md text-base font-medium leading-8 text-white/75">
+          {{ t("login.heroDescription") }}
+        </p>
+      </div>
+
+      <div class="grid gap-4">
+        <div
+          class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <div>
+              <p class="font-black">{{ t("login.securityCardTitle") }}</p>
+              <p class="mt-1 text-sm font-medium text-white/65">
+                {{ t("login.securityCardDesc") }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-coral text-white shadow-soft"
+            >
+              <i class="fa-solid fa-bolt"></i>
+            </span>
+            <div>
+              <p class="font-black">{{ t("login.quickCardTitle") }}</p>
+              <p class="mt-1 text-sm font-medium text-white/65">
+                {{ t("login.quickCardDesc") }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right: Login form -->
+  <section
+    class="mx-auto w-full max-w-xl rounded-[34px] border border-line bg-white p-5 shadow-card sm:p-6 md:p-8 lg:max-w-none"
+  >
+    <div class="mb-6 text-center sm:text-left">
+      <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+        {{ t("login.sectionLabel") }}
+      </p>
+      <h2
+        class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+      >
+        {{ t("login.title") }}
+      </h2>
+      <p class="mt-3 text-sm font-medium leading-6 text-slate-500">
+        {{ t("login.sectionDescription") }}
+      </p>
+    </div>
+
+    <!-- Session expired alert -->
+    <div
+      *ngIf="sessionExpiredMessage"
+      class="mb-5 rounded-[26px] border border-yellow-200 bg-yellow-50 p-4"
+    >
+      <div class="flex items-start gap-3">
+        <span
+          class="grid size-10 shrink-0 place-items-center rounded-2xl bg-yellow-500 text-white"
+        >
+          <i class="fa-solid fa-clock"></i>
+        </span>
+        <div>
+          <p class="text-sm font-bold text-yellow-800">
+            {{ sessionExpiredMessage }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login form -->
+    <app-login-form [isLoading]="isLoading" (onSubmit)="onSubmit($event)">
+      <div class="w-full flex justify-end gap-2">
+        <a
+          class="text-[#1D9BED] hover:underline text-sm"
+          href="/auth/forgot-password"
+        >
+          {{ t("login.forgotPassword") }}
+        </a>
+        <span class="text-gray-400">|</span>
+        <a
+          class="text-[#1D9BED] hover:underline text-sm"
+          href="/auth/confirm-account"
+        >
+          {{ t("login.accountNotConfirmed") }}
+        </a>
+      </div>
+    </app-login-form>
+
+    <!-- Error -->
+    <app-generic-error
+      *ngIf="hasError"
+      [message]="errorMessage"
+    ></app-generic-error>
+
+    <!-- Google Sign-In -->
+    <div class="mt-4" id="googleSignInDiv"></div>
+
+    <!-- Links -->
+    <div
+      class="mt-5 flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"
+    >
+      <span class="text-sm font-medium text-slate-500"
+        >{{ t("login.noAccount") }}
+        <a
+          routerLink="/auth/register"
+          class="font-black text-blue hover:text-blue2"
+          >{{ t("login.signUp") }}</a
+        ></span
+      >
+    </div>
+  </section>
+</main>

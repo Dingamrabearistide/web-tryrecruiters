@@ -1,0 +1,338 @@
+<!-- MAIN START -->
+
+<div class="flex flex-col w-full">
+  <!-- Title and Add CV Button always on the same line, responsive button only -->
+  <div
+    class="flex flex-row justify-between items-center text-2xl font-bold text-secondary w-full gap-3"
+  >
+    <div class="flex flex-col">
+      <h1 class="text-2xl font-bold text-primary">Mes documents</h1>
+      <p
+        class="text-gray-500 text-sm font-normal mt-1 max-w-xs md:max-w-md lg:max-w-lg"
+      >
+        Here is an overview of your recent activity and the next steps to take.
+      </p>
+    </div>
+    <button
+      (click)="openCvModal()"
+      class="flex items-center justify-center bg-primary hover:bg-secondary text-white font-bold md:py-2 md:px-4 py-0 px-0 md:rounded w-10 h-10 md:w-fit md:h-fit md:ml-4 transition-all duration-200"
+      aria-label="Ajouter un CV"
+    >
+      <i class="fas fa-plus text-white text-lg"></i>
+      <span class="hidden md:inline text-sm">Ajouter un CV</span>
+    </button>
+  </div>
+
+  <div class="mx-0 lg:mx-0 py-8">
+    <!-- Filters -->
+    <div
+      class="flex flex-col md:flex-row flex-wrap gap-3 items-end mb-7 w-full justify-between"
+    >
+      <div class="flex w-full gap-3 md:max-w-[320px]">
+        <!-- Start date -->
+        <div class="flex flex-col w-full sm:w-1/2 lg:w-[320px]">
+          <label class="text-sm text-gray-700 mb-2 outline-none" for="startDate"
+            >Debut</label
+          >
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="startDate"
+            class="w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700"
+          />
+        </div>
+
+        <!-- End date -->
+        <div class="flex flex-col w-full max-w-[320px]">
+          <label class="text-sm text-gray-700 mb-2" for="endDate">Fin</label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="endDate"
+            class="border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm w-full md:w-auto text-gray-700"
+          />
+        </div>
+      </div>
+
+      <!-- Status select -->
+      <div class="w-full md:w-fit">
+        <div class="relative w-full md:max-w-[252px] min-w-[100px] h-[40px]">
+          <select
+            [(ngModel)]="selectedStatus"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm"
+          >
+            <option value="Tous">Tous</option>
+            <option value="Actif">Actif</option>
+            <option value="Inactif">Inactif</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-grow gap-3 w-full md:w-fit h-[40px]">
+        <div class="relative flex-grow">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 py-2">
+            <i class="fas fa-search text-gray-400"></i>
+          </span>
+          <input
+            id="search"
+            type="text"
+            placeholder="Rechercher ..."
+            [(ngModel)]="searchQuery"
+            class="h-full border border-gray-300 pl-10 pr-4 py-2 w-full rounded-[5px] outline-none"
+          />
+        </div>
+        <button (click)="onSearch()" class="app-primary">
+          <span class="text-White"> Rechercher </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-primary">
+          <tr>
+            <th>Nom</th>
+            <th>CV</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr
+            *ngFor="let document of documents"
+            class="hover:bg-gray-50 transition-colors duration-150"
+          >
+            <td>{{ document.name }}</td>
+            <td class="text-primary underline">
+              <a href="#" (click)="viewDocument(document)">{{
+                document.fileName
+              }}</a>
+            </td>
+            <td>
+              <div class="flex gap-3">
+                <button
+                  (click)="viewDocument(document)"
+                  class="text-gray-500 hover:text-primary transition-colors duration-200 p-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  title="Voir le document"
+                >
+                  <i class="fa fa-eye text-lg"></i>
+                </button>
+                <button
+                  (click)="openDeleteModal(document)"
+                  class="text-gray-500 hover:text-red-600 transition-colors duration-200 p-1 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+                  title="Supprimer"
+                >
+                  <i class="fa fa-trash text-lg"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Empty state -->
+          <tr *ngIf="documents.length === 0">
+            <td colspan="3" class="px-6 py-8 text-center">
+              <div class="flex flex-col items-center">
+                <i class="fa fa-search text-gray-300 text-3xl mb-2"></i>
+                <p class="text-gray-500 font-medium">Aucun document trouvé</p>
+                <p class="text-gray-400 text-sm mt-1">
+                  Essayez de modifier vos critères de recherche
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-10">
+      <nav aria-label="Page navigation example">
+        <ul class="inline-flex items-center -gap-px h-8 text-sm">
+          <li>
+            <button
+              (click)="previousPage()"
+              [disabled]="currentPage === 1"
+              class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50"
+            >
+              <span class="sr-only">Previous</span>
+              <svg
+                class="w-2.5 h-2.5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 1 1 5l4 4"
+                />
+              </svg>
+            </button>
+          </li>
+          <li *ngFor="let page of [1, 2, 3, 4]">
+            <button
+              (click)="goToPage(page)"
+              [ngClass]="{
+                'z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 bg-blue-100 border border-blue-300 hover:bg-blue-100 hover:text-blue-700':
+                  page === currentPage,
+                'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700':
+                  page !== currentPage
+              }"
+            >
+              {{ page }}
+            </button>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+            >
+              ...
+            </a>
+          </li>
+          <li>
+            <button
+              (click)="nextPage()"
+              [disabled]="currentPage === totalPages"
+              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50"
+            >
+              <span class="sr-only">Next</span>
+              <svg
+                class="w-2.5 h-2.5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Add CV Modal -->
+<div
+  *ngIf="showCvModal"
+  class="fixed inset-0 z-[130] flex items-center justify-center bg-black bg-opacity-60"
+  (click)="closeCvModal()"
+>
+  <div
+    class="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-auto p-6 relative"
+    (click)="$event.stopPropagation()"
+  >
+    <h2 class="text-[#1D9BED] font-semibold text-xl mb-6 border-b pb-3">
+      Ajouter un CV
+    </h2>
+
+    <form (ngSubmit)="addCv()" #cvForm="ngForm">
+      <div class="mb-6">
+        <label class="block text-[#1D9BED] font-semibold mb-2" for="cv-name">
+          Intitulé du fichier
+        </label>
+        <input
+          id="cv-name"
+          type="text"
+          placeholder="e.g. Developer Resume"
+          [(ngModel)]="newCvName"
+          name="cvName"
+          required
+          class="w-full border rounded shadow-sm px-4 py-2 outline-none"
+        />
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-[#1D9BED] font-semibold mb-2" for="cv-file">
+          Upload CV (PDF only)
+        </label>
+        <input
+          id="cv-file"
+          type="file"
+          accept="application/pdf"
+          (change)="onFileSelected($event)"
+          required
+          class="w-full border rounded shadow-sm px-4 py-1 text-gray-700 file:bg-[#1D9BED] file:text-white file:border-none file:px-4 file:py-1 file:mr-4 file:rounded file:cursor-pointer"
+        />
+      </div>
+
+      <div class="flex justify-end gap-3">
+        <button
+          type="button"
+          (click)="closeCvModal()"
+          class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          [disabled]="!cvForm.valid || !selectedFile"
+          class="bg-[#1D9BED] text-white px-5 py-2 rounded hover:bg-[#02719a] transition-colors disabled:opacity-50"
+        >
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Delete CV Modal -->
+<div
+  *ngIf="showDeleteModal"
+  class="fixed inset-0 bg-black bg-opacity-60 z-[200] flex items-center justify-center"
+  (click)="closeDeleteModal()"
+>
+  <div
+    class="bg-white w-[420px] rounded-md shadow-lg p-6 gap-4"
+    (click)="$event.stopPropagation()"
+  >
+    <h2 class="text-[#1D9BED] font-semibold text-lg border-b pb-2">
+      Delete Confirmation
+    </h2>
+
+    <p class="text-gray-700 text-sm">
+      Are you sure you want to delete your CV named:
+      <strong>"{{ documentToDelete?.name }}"</strong>?
+    </p>
+
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        (click)="closeDeleteModal()"
+        class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
+      >
+        Cancel
+      </button>
+      <button
+        (click)="confirmDelete()"
+        class="px-4 py-2 text-sm bg-[#FF5173] text-white rounded hover:bg-[#e04c4c]"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

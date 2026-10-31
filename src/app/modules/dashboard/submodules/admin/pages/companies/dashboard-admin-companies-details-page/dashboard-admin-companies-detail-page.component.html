@@ -1,0 +1,130 @@
+<div *transloco="let t; read: 'companies'">
+  <button class="m-2 bg-primary app-primary" (click)="handleBack()">
+    <i class="fas fa-chevron-left mr-1 text-white"></i>
+    {{ t("common.previous") }}
+  </button>
+
+  <div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"
+    ></div>
+  </div>
+
+  <div *ngIf="hasError" class="p-4">
+    <div
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"
+    >
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && !hasError && item" class="space-y-6">
+    <!-- Company Details -->
+    <app-companies-details
+      [item]="item"
+      [jobOffers]="[]"
+    ></app-companies-details>
+
+    <!-- Related Data Display -->
+    <div class="mt-8">
+      <!-- Job Offers Section -->
+      <div class="mb-8">
+        <div class="bg-white rounded-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("jobOffers.title") }}
+            </h3>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="jobOffersLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="!jobOffersLoading && jobOffersHasError" class="w-full">
+            <app-generic-error
+              *ngIf="jobOffersHasError"
+              [message]="jobOffersErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <!-- Data State -->
+          <div *ngIf="!jobOffersLoading && !jobOffersHasError">
+            <div>
+              <app-job-offers-datatable
+                [items]="companyJobOffers"
+                [isLoading]="false"
+                [hasError]="false"
+                (view)="navigateToJobOfferDetail($event)"
+              ></app-job-offers-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="jobOffersTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="jobOffersPagination.page"
+                  [totalPages]="jobOffersTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onJobOffersPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recruiters Section -->
+      <!-- <div class="mb-8">
+        <div class="bg-white rounded-lg ">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              {{ t("recruiters.title") }}
+            </h3>
+          </div>
+
+          <div *ngIf="recruitersLoading" class="w-full">
+            <app-loader></app-loader>
+          </div>
+
+          <div *ngIf="!recruitersLoading && recruitersHasError" class="w-full">
+            <app-generic-error
+              *ngIf="recruitersHasError"
+              [message]="recruitersErrorMessage"
+            ></app-generic-error>
+          </div>
+
+          <div *ngIf="!recruitersLoading && !recruitersHasError">
+            <div *ngIf="companyRecruiters.length > 0; else noRecruiters">
+              <app-users-datatable
+                [items]="companyRecruiters"
+                [isLoading]="false"
+                [hasError]="false"
+                (view)="navigateToUserDetail($event)"
+              ></app-users-datatable>
+
+              <div
+                class="flex justify-end mt-4"
+                *ngIf="recruitersTotalPages > 1"
+              >
+                <app-generic-paginator
+                  [currentPage]="recruitersPagination.page"
+                  [totalPages]="recruitersTotalPages"
+                  [maxVisible]="5"
+                  (pageChange)="onRecruitersPageChange($event)"
+                ></app-generic-paginator>
+              </div>
+            </div>
+
+            <ng-template #noRecruiters>
+              <div class="text-center py-8 text-gray-500">
+                {{ t("recruiters.noData") }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

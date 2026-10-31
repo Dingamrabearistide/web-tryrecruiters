@@ -1,0 +1,95 @@
+<div class="container mx-auto" *transloco="let t; read: 'candidates'">
+  <div class="mb-6">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex flex-col gap-3 justify-between items-start pb-5">
+        <button (click)="handleBack()" class="m-2 bg-primary app-primary">
+          <i class="fas fa-chevron-left mr-1 text-white"></i>
+          {{ t("details.previous") }}
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center justify-between">
+      <div>
+        <!-- <h1 class="text-3xl font-bold text-gray-900 mb-2">
+          {{ getItemLabel(item) }}
+        </h1> -->
+        <!-- <p class="text-gray-600">{{ t("details.title") }}</p> -->
+      </div>
+      <!-- <div class="flex gap-3" *ngIf="!isLoading && !hasError">
+        <button (click)="handleUpdate()" class="app-primary">
+          <i class="fas fa-edit mr-2"></i>
+          {{ t("actions.edit") }}
+        </button>
+        <button (click)="handleDelete()" class="app-danger">
+          <i class="fas fa-trash mr-2"></i>
+          {{ t("actions.delete") }}
+        </button>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div
+    class="grid grid-cols-1 lg:grid-cols-3 gap-6"
+    *ngIf="!isLoading && !hasError"
+  >
+    <!-- Informations personnelles -->
+    <!-- *ngIf="!isLoading && !hasError && candidate" -->
+    <div class="lg:col-span-3">
+      <app-candidates-details2 [item]="item"></app-candidates-details2>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="lg:col-span-3">
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">
+          {{ t("details.systemInfo") }}
+        </h2>
+        <div class="gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              {{ t("fields.createdAt") }}
+            </label>
+            <p class="text-gray-900">
+              {{ formatDate(item.createdAt) }}
+            </p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              {{ t("fields.updatedAt") }}
+            </label>
+            <p class="text-gray-900">
+              {{ formatDate(item.updatedAt) }}
+            </p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              {{ t("fields.status") }}
+            </label>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              [class]="getStatusClasses()"
+            >
+              {{ getStatusLabel() }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- États de chargement et d'erreur -->
+  <div class="bg-white rounded-lg shadow-sm p-6 text-center" *ngIf="isLoading">
+    <div
+      class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"
+    ></div>
+    <p class="text-gray-600">{{ t("candidateDetailsPage.loading") }}</p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-sm p-6 text-center" *ngIf="hasError">
+    <div class="text-red-500 mb-4">
+      <i class="fas fa-exclamation-triangle text-2xl"></i>
+    </div>
+    <p class="text-red-600">{{ errorMessage }}</p>
+  </div>
+</div>

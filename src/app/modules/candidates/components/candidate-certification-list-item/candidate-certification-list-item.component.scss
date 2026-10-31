@@ -1,0 +1,26 @@
+// Styles pour le composant d'item de certification
+.certification-item {
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f9fafb;
+    border-radius: 8px;
+  }
+}
+
+.credential-link {
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+}
+
+.certification-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.certification-item:hover .certification-icon {
+  transform: scale(1.05);
+}

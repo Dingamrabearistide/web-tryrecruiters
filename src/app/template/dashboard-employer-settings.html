@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Settings</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .page-bg {
+        background-image:
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(20, 157, 242, 0.13),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 88% 4%,
+            rgba(255, 81, 72, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .sidebar-gradient {
+        background-image:
+          radial-gradient(
+            circle at 20% 8%,
+            rgba(20, 157, 242, 0.24),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #07152f 0%, #0a1f42 58%, #241449 100%);
+      }
+    </style>
+  </head>
+
+  <body
+    class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+  >
+    <div
+      data-sidebar-overlay
+      class="fixed inset-0 z-40 hidden bg-navy/60 backdrop-blur-sm lg:hidden"
+    ></div>
+
+    <div
+      class="min-h-screen min-w-0 lg:grid lg:grid-cols-[290px_minmax(0,1fr)]"
+    >
+      <!-- Sidebar -->
+      <aside
+        data-sidebar
+        class="sidebar-gradient fixed inset-y-0 left-0 z-50 flex w-[290px] -translate-x-full flex-col border-r border-white/10 text-white shadow-soft transition duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-20 items-center justify-between px-5">
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-people-group text-xl"></i>
+            </span>
+            <span class="leading-none">
+              <span class="block text-lg font-black tracking-tight"
+                >TRYRECRUITERS</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+                >Employer area</span
+              >
+            </span>
+          </a>
+          <button
+            type="button"
+            data-close-sidebar
+            class="grid size-10 place-items-center rounded-2xl bg-white/10 text-white lg:hidden"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-1 overflow-y-auto px-4 pb-5">
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-table-columns w-5"></i> Dashboard</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-user-tie w-5"></i> My Profile</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-building w-5"></i> Companies</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-briefcase w-5"></i> Job Offers</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-bookmark w-5"></i> My Favorites</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-signature w-5"></i> Applications</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-video w-5"></i> My Interviews</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-lines w-5"></i> CV</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-card"
+          >
+            <i class="fa-solid fa-gear w-5"></i> Settings
+          </a>
+        </nav>
+
+        <div class="border-t border-white/10 p-4">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-2xl bg-coral px-4 py-3 text-sm font-black text-white transition hover:bg-red-600"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="min-w-0">
+        <!-- Topbar -->
+        <header
+          class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur-xl"
+        >
+          <div
+            class="mx-auto flex h-20 w-full max-w-[1120px] min-w-0 items-center justify-between gap-3 px-4 sm:px-5 lg:px-6 xl:px-8"
+          >
+            <div class="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                data-open-sidebar
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-navy shadow-sm lg:hidden"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Employer workspace
+                </p>
+                <h1 class="truncate text-xl font-black text-navy md:text-2xl">
+                  Settings
+                </h1>
+              </div>
+            </div>
+
+            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+              <button
+                type="button"
+                class="relative grid size-11 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span
+                  class="absolute right-2 top-2 size-2 rounded-full bg-coral"
+                ></span>
+              </button>
+              <div
+                class="flex items-center gap-3 rounded-2xl border border-line bg-white p-1.5 shadow-sm"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                  alt="Employer"
+                  class="size-9 rounded-xl object-cover"
+                />
+                <div class="hidden pr-2 leading-tight sm:block">
+                  <p class="text-xs font-black text-navy">David Miller</p>
+                  <p class="text-[11px] font-bold text-slate-400">Recruiter</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main
+          class="mx-auto w-full max-w-[1120px] min-w-0 px-4 py-6 sm:px-5 lg:px-6 xl:px-8"
+        >
+          <div
+            class="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start"
+          >
+            <!-- Main settings -->
+            <div class="min-w-0 space-y-6">
+              <!-- Account settings -->
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <div class="mb-6">
+                  <p
+                    class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                  >
+                    Account
+                  </p>
+                  <h2 class="mt-2 text-3xl font-black text-navy">
+                    General settings
+                  </h2>
+                </div>
+
+                <form class="grid gap-5 md:grid-cols-2">
+                  <label class="block">
+                    <span class="text-sm font-black text-navy">Full name</span>
+                    <input
+                      type="text"
+                      value="David Miller"
+                      class="mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-sm font-black text-navy"
+                      >Email address</span
+                    >
+                    <input
+                      type="email"
+                      value="david.miller@example.com"
+                      class="mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-sm font-black text-navy">Language</span>
+                    <select
+                      class="mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10"
+                    >
+                      <option selected>English</option>
+                      <option>French</option>
+                    </select>
+                  </label>
+
+                  <label class="block">
+                    <span class="text-sm font-black text-navy">Timezone</span>
+                    <select
+                      class="mt-2 h-13 w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10"
+                    >
+                      <option selected>Europe/Paris</option>
+                      <option>Africa/Douala</option>
+                      <option>America/New_York</option>
+                    </select>
+                  </label>
+
+                  <div class="md:col-span-2 flex justify-end">
+                    <button
+                      type="button"
+                      class="rounded-2xl bg-blue px-6 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </form>
+              </section>
+
+              <!-- Two-factor authentication -->
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <div class="mb-6">
+                  <p
+                    class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                  >
+                    Security
+                  </p>
+                  <h2 class="mt-2 text-3xl font-black text-navy">
+                    Two-factor authentication
+                  </h2>
+                  <p class="mt-2 text-sm font-medium leading-6 text-slate-500">
+                    Add an extra layer of protection to your recruiter account.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-line p-5">
+                  <div
+                    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div class="flex items-center gap-4">
+                      <span
+                        class="grid size-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600"
+                      >
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                      </span>
+                      <div>
+                        <p class="font-black text-navy">2FA is enabled</p>
+                        <p class="mt-1 text-sm font-medium text-slate-500">
+                          Email verification · Last updated Jan 12, 2026
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      class="w-fit rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                      >Active</span
+                    >
+                  </div>
+                </div>
+
+                <div class="mt-5 rounded-2xl bg-slate-50 p-5">
+                  <div class="flex items-start gap-4">
+                    <span
+                      class="grid size-11 shrink-0 place-items-center rounded-xl bg-skysoft text-blue"
+                    >
+                      <i class="fa-solid fa-envelope"></i>
+                    </span>
+                    <div>
+                      <p class="text-sm font-black text-navy">
+                        Email verification only
+                      </p>
+                      <p
+                        class="mt-1 text-sm font-medium leading-6 text-slate-500"
+                      >
+                        A verification code will be sent to the account email
+                        address when signing in.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end"
+                >
+                  <button
+                    type="button"
+                    class="rounded-2xl border border-line bg-white px-6 py-3 text-sm font-black text-navy transition hover:border-coral hover:text-coral"
+                  >
+                    Disable 2FA
+                  </button>
+                  <button
+                    type="button"
+                    class="rounded-2xl bg-blue px-6 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+                  >
+                    Update 2FA
+                  </button>
+                </div>
+              </section>
+
+              <!-- Billing history -->
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+              >
+                <div
+                  class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+                >
+                  <div>
+                    <p
+                      class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                    >
+                      Billing
+                    </p>
+                    <h2 class="mt-2 text-3xl font-black text-navy">Invoices</h2>
+                  </div>
+                  <button
+                    type="button"
+                    class="inline-flex w-fit items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+                  >
+                    <i class="fa-solid fa-download"></i> Download all
+                  </button>
+                </div>
+
+                <div
+                  class="max-w-full overflow-x-auto rounded-[24px] border border-line"
+                >
+                  <table class="w-full min-w-[620px] text-left">
+                    <thead class="bg-slate-50">
+                      <tr
+                        class="border-b border-line text-xs font-black uppercase tracking-widest text-slate-400"
+                      >
+                        <th class="px-4 py-4">Invoice</th>
+                        <th class="px-4 py-4">Plan</th>
+                        <th class="px-4 py-4">Amount</th>
+                        <th class="px-4 py-4">Date</th>
+                        <th class="px-4 py-4 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-line bg-white">
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4 text-sm font-black text-navy">
+                          INV-2026-001
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Pro Recruiter
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          XAF79.00
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Jan 01, 2026
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="rounded-xl bg-skysoft px-3 py-2 text-xs font-black text-blue hover:bg-blue hover:text-white"
+                          >
+                            Download
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4 text-sm font-black text-navy">
+                          INV-2025-012
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Pro Recruiter
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          XAF79.00
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Dec 01, 2025
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="rounded-xl bg-skysoft px-3 py-2 text-xs font-black text-blue hover:bg-blue hover:text-white"
+                          >
+                            Download
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-skysoft/45">
+                        <td class="px-4 py-4 text-sm font-black text-navy">
+                          INV-2025-011
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          Pro Recruiter
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-600">
+                          XAF79.00
+                        </td>
+                        <td class="px-4 py-4 text-sm font-bold text-slate-500">
+                          Nov 01, 2025
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                          <button
+                            class="rounded-xl bg-skysoft px-3 py-2 text-xs font-black text-blue hover:bg-blue hover:text-white"
+                          >
+                            Download
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+
+            <!-- Subscription sidebar -->
+            <aside class="min-w-0 space-y-6 xl:sticky xl:top-28">
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p
+                      class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                    >
+                      Subscription
+                    </p>
+                    <h2 class="mt-2 text-2xl font-black text-navy">
+                      Pro Recruiter
+                    </h2>
+                  </div>
+                  <span
+                    class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"
+                    >Active</span
+                  >
+                </div>
+
+                <div class="mt-6 rounded-[26px] bg-slate-50 p-5">
+                  <p class="text-4xl font-black text-navy">
+                    XAF79<span class="text-base font-bold text-slate-400"
+                      >/month</span
+                    >
+                  </p>
+                  <p class="mt-2 text-sm font-medium text-slate-500">
+                    Next billing date: Feb 01, 2026
+                  </p>
+                </div>
+
+                <div class="mt-5 space-y-3 text-sm font-bold text-slate-600">
+                  <p>
+                    <i
+                      class="fa-solid fa-circle-check mr-2 text-emerald-500"
+                    ></i
+                    >Unlimited job offers
+                  </p>
+                  <p>
+                    <i
+                      class="fa-solid fa-circle-check mr-2 text-emerald-500"
+                    ></i
+                    >Candidate applications
+                  </p>
+                  <p>
+                    <i
+                      class="fa-solid fa-circle-check mr-2 text-emerald-500"
+                    ></i
+                    >Integrated video calls
+                  </p>
+                  <p>
+                    <i
+                      class="fa-solid fa-circle-check mr-2 text-emerald-500"
+                    ></i
+                    >Company profile
+                  </p>
+                </div>
+
+                <div class="mt-6 grid gap-3">
+                  <button
+                    type="button"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue2"
+                  >
+                    <i class="fa-solid fa-credit-card"></i> Manage subscription
+                  </button>
+                  <button
+                    type="button"
+                    class="inline-flex items-center justify-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-coral hover:text-coral"
+                  >
+                    <i class="fa-solid fa-ban"></i> Cancel subscription
+                  </button>
+                </div>
+              </section>
+
+              <section
+                class="rounded-[30px] border border-line bg-white p-6 shadow-card"
+              >
+                <h2 class="text-xl font-black text-navy">Security</h2>
+                <p class="mt-2 text-sm font-medium leading-6 text-slate-500">
+                  Keep your account secure by updating your password regularly.
+                </p>
+                <button
+                  type="button"
+                  class="mt-5 w-full rounded-2xl border border-line bg-white px-5 py-3 text-sm font-black text-navy hover:border-blue hover:text-blue"
+                >
+                  Change password
+                </button>
+              </section>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarOverlay = document.querySelector("[data-sidebar-overlay]");
+      const openSidebar = document.querySelector("[data-open-sidebar]");
+      const closeSidebar = document.querySelector("[data-close-sidebar]");
+
+      function showSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+
+      function hideSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      }
+
+      openSidebar.addEventListener("click", showSidebar);
+      closeSidebar.addEventListener("click", hideSidebar);
+      sidebarOverlay.addEventListener("click", hideSidebar);
+    </script>
+  </body>
+</html>

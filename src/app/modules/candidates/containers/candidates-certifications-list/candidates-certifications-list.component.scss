@@ -1,0 +1,54 @@
+// Styles pour le composant des certifications
+.certification-item {
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+}
+
+.certification-actions {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.certification-item:hover .certification-actions {
+  opacity: 1;
+}
+
+.add-certification-btn {
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #1d4ed8;
+  }
+}
+
+// Correction du décalage de la sidebar lors de l'ouverture de la modal
+:host ::ng-deep .custom-dialog-container {
+  .mat-dialog-container {
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+// Prévenir le décalage du layout lors de l'ouverture de la modal
+:host ::ng-deep .cdk-global-overlay-wrapper {
+  pointer-events: auto;
+}
+
+// Assurer que le body garde sa largeur lors de l'ouverture de la modal
+:host ::ng-deep body.cdk-global-scrollblock {
+  padding-right: 0 !important;
+  overflow: hidden;
+}
+
+// Style pour éviter le décalage de la sidebar
+:host ::ng-deep .cdk-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}

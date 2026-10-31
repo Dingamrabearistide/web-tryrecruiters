@@ -1,0 +1,96 @@
+<div class="flex justify-center items-center gap-2 text-gray-500" *ngIf="canView || canEdit || canDelete || (isAdmin && (currentStatus === 'PENDING' || currentStatus === 'ACTIVE')) || shouldShowRepublish() || shouldShowSubmit()">
+  <ng-container *ngIf="shouldShowApproveReject()">
+    <i
+      class="fas fa-check-circle text-green-600 cursor-pointer hover:text-green-700 transition-colors"
+      [class.opacity-50]="isProcessing"
+      [class.cursor-not-allowed]="isProcessing"
+      (click)="!isProcessing && onApprove()"
+      title="Approuver"
+    ></i>
+    <i
+      class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-700 transition-colors"
+      [class.opacity-50]="isProcessing"
+      [class.cursor-not-allowed]="isProcessing"
+      (click)="!isProcessing && onReject()"
+      title="Rejeter"
+    ></i>
+  </ng-container>
+
+  <!-- Republish (EXPIRED offers) -->
+  <ng-container *ngIf="shouldShowRepublish()">
+    <i
+      class="fas fa-redo text-blue-600 cursor-pointer hover:text-blue-700 transition-colors"
+      [class.opacity-50]="isProcessing"
+      [class.cursor-not-allowed]="isProcessing"
+      (click)="!isProcessing && onRepublish()"
+      title="Republier"
+    ></i>
+  </ng-container>
+
+  <!-- Submit (DRAFT offers) -->
+  <ng-container *ngIf="shouldShowSubmit()">
+    <i
+      class="fas fa-paper-plane text-primary cursor-pointer hover:opacity-75 transition-colors"
+      [class.opacity-50]="isProcessing"
+      [class.cursor-not-allowed]="isProcessing"
+      (click)="!isProcessing && onSubmit()"
+      title="Soumettre"
+    ></i>
+  </ng-container>
+
+  <!-- Admin Actions (Active: Revoke) -->
+  <ng-container *ngIf="shouldShowRevoke()">
+    <i
+      class="fas fa-ban text-orange-600 cursor-pointer hover:text-orange-700 transition-colors"
+      [class.opacity-50]="isProcessing"
+      [class.cursor-not-allowed]="isProcessing"
+      (click)="!isProcessing && onRevoke()"
+      title="Retirer"
+    ></i>
+  </ng-container>
+
+  <!-- Standard Actions -->
+  <div class="flex justify-center items-center gap-4">
+    <i
+      *ngIf="canView"
+      class="text-primary text-base fas fa-eye cursor-pointer hover:text-blue-700 transition-colors"
+      title="Voir"
+      (click)="onView()"
+    ></i>
+    <i
+      *ngIf="canEdit"
+      class="text-primary text-base fas fa-edit cursor-pointer hover:text-blue-700 transition-colors"
+      title="Modifier"
+      (click)="onEdit()"
+    ></i>
+    <i
+      *ngIf="canDelete"
+      class="text-base fas fa-trash-alt text-red-500 cursor-pointer hover:text-red-700 transition-colors"
+      title="Supprimer"
+      (click)="onDelete()"
+    ></i>
+  </div>
+
+  <div
+    *ngIf="enableRecruiterPlanActions && isRecruiter()"
+    class="flex justify-center items-center gap-3 ml-4"
+  >
+    <button
+      class="btn-illimite px-3 py-1 text-xs rounded border border-primary text-primary hover:bg-primary hover:text-white transition"
+      title="Assigner le plan illimité"
+      (click)="onAssignUnlimited()"
+    >
+      <i class="fas fa-infinity mr-1"></i>
+      Illimité
+    </button>
+
+    <button
+      class="px-3 py-1 text-xs rounded border border-gray-600 text-gray-700 hover:bg-gray-700 hover:text-white transition"
+      title="Désactiver tous les plans"
+      (click)="onDeactivatePlans()"
+    >
+      <i class="fas fa-power-off mr-1"></i>
+      Désactiver
+    </button>
+  </div>
+</div>

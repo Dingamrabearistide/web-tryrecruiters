@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — CV</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .page-bg {
+        background-image:
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(20, 157, 242, 0.13),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 88% 4%,
+            rgba(255, 81, 72, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .sidebar-gradient {
+        background-image:
+          radial-gradient(
+            circle at 20% 8%,
+            rgba(20, 157, 242, 0.24),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #07152f 0%, #0a1f42 58%, #241449 100%);
+      }
+    </style>
+  </head>
+
+  <body class="page-bg min-h-screen text-slate-900 antialiased">
+    <div
+      data-sidebar-overlay
+      class="fixed inset-0 z-40 hidden bg-navy/60 backdrop-blur-sm lg:hidden"
+    ></div>
+
+    <div class="min-h-screen lg:grid lg:grid-cols-[290px_1fr]">
+      <!-- Sidebar -->
+      <aside
+        data-sidebar
+        class="sidebar-gradient fixed inset-y-0 left-0 z-50 flex w-[290px] -translate-x-full flex-col border-r border-white/10 text-white shadow-soft transition duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-20 items-center justify-between px-5">
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-people-group text-xl"></i>
+            </span>
+            <span class="leading-none">
+              <span class="block text-lg font-black tracking-tight"
+                >TRYRECRUITERS</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+                >Employer area</span
+              >
+            </span>
+          </a>
+          <button
+            type="button"
+            data-close-sidebar
+            class="grid size-10 place-items-center rounded-2xl bg-white/10 text-white lg:hidden"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-1 overflow-y-auto px-4 pb-5">
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-table-columns w-5"></i> Dashboard</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-user-tie w-5"></i> My Profile</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-building w-5"></i> Companies</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-briefcase w-5"></i> Job Offers</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-bookmark w-5"></i> My Favorites</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-signature w-5"></i> Applications</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-video w-5"></i> My Interviews</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-card"
+          >
+            <i class="fa-solid fa-file-lines w-5"></i> CV
+            <span
+              class="ml-auto rounded-full bg-blue px-2 py-0.5 text-[10px] font-black text-white"
+              >3</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-gear w-5"></i> Settings</a
+          >
+        </nav>
+
+        <div class="border-t border-white/10 p-4">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-2xl bg-coral px-4 py-3 text-sm font-black text-white transition hover:bg-red-600"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="min-w-0">
+        <!-- Topbar -->
+        <header
+          class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur-xl"
+        >
+          <div
+            class="mx-auto flex h-20 max-w-[1120px] items-center justify-between gap-4 px-5 lg:px-8"
+          >
+            <div class="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                data-open-sidebar
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-navy shadow-sm lg:hidden"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Employer workspace
+                </p>
+                <h1 class="truncate text-xl font-black text-navy md:text-2xl">
+                  CV
+                </h1>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                class="relative grid size-11 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span
+                  class="absolute right-2 top-2 size-2 rounded-full bg-coral"
+                ></span>
+              </button>
+              <div
+                class="flex items-center gap-3 rounded-2xl border border-line bg-white p-1.5 shadow-sm"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                  alt="Employer"
+                  class="size-9 rounded-xl object-cover"
+                />
+                <div class="hidden pr-2 leading-tight sm:block">
+                  <p class="text-xs font-black text-navy">David Miller</p>
+                  <p class="text-[11px] font-bold text-slate-400">Recruiter</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="mx-auto max-w-[1120px] px-5 py-7 lg:px-8">
+          <!-- Upload only -->
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+          >
+            <div
+              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+            >
+              <div>
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Uploaded files
+                </p>
+                <h2
+                  class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+                >
+                  Manage CV files
+                </h2>
+              </div>
+              <span
+                class="inline-flex w-fit items-center gap-2 rounded-full bg-skysoft px-4 py-2 text-xs font-black text-blue"
+              >
+                <i class="fa-solid fa-cloud-arrow-up"></i> Files only
+              </span>
+            </div>
+
+            <label
+              class="flex min-h-[190px] cursor-pointer flex-col items-center justify-center rounded-[28px] border-2 border-dashed border-blue/25 bg-slate-50 p-6 text-center transition hover:border-blue hover:bg-skysoft"
+            >
+              <input
+                data-cv-input
+                type="file"
+                accept=".pdf,.doc,.docx"
+                class="hidden"
+              />
+              <span
+                class="grid size-16 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+              >
+                <i class="fa-solid fa-file-arrow-up text-2xl"></i>
+              </span>
+              <strong
+                class="mt-4 text-base font-black text-navy"
+                data-upload-title
+                >Upload a CV file</strong
+              >
+              <span class="mt-2 text-sm font-semibold text-slate-500"
+                >PDF, DOC or DOCX · Max 5MB</span
+              >
+            </label>
+          </section>
+
+          <!-- CV list -->
+          <section
+            class="mt-6 rounded-[30px] border border-line bg-white p-5 shadow-card md:p-6"
+          >
+            <div
+              class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <h3 class="text-xl font-black text-navy">
+                <span data-cv-count>3</span> uploaded CV files
+              </h3>
+              <label
+                class="flex h-11 w-full items-center gap-3 rounded-2xl border border-line bg-slate-50 px-4 focus-within:border-blue focus-within:bg-white sm:max-w-xs"
+              >
+                <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                <input
+                  data-search-input
+                  type="text"
+                  class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+                  placeholder="Search file"
+                />
+              </label>
+            </div>
+
+            <div class="overflow-x-auto rounded-[24px] border border-line">
+              <table class="w-full min-w-[760px] text-left">
+                <thead class="bg-slate-50">
+                  <tr
+                    class="border-b border-line text-xs font-black uppercase tracking-widest text-slate-400"
+                  >
+                    <th class="px-4 py-4">File</th>
+                    <th class="px-4 py-4">Type</th>
+                    <th class="px-4 py-4">Size</th>
+                    <th class="px-4 py-4">Uploaded</th>
+                    <th class="px-4 py-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody
+                  data-cv-list
+                  class="divide-y divide-line bg-white"
+                ></tbody>
+              </table>
+            </div>
+
+            <div
+              data-empty-state
+              class="hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center"
+            >
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-file-circle-xmark text-xl"></i
+              ></span>
+              <h3 class="mt-4 text-xl font-black text-navy">
+                No CV file found
+              </h3>
+              <p class="mt-2 text-sm font-medium text-slate-500">
+                Upload a CV file or try another search.
+              </p>
+            </div>
+
+            <div data-pagination class="mt-6"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarOverlay = document.querySelector("[data-sidebar-overlay]");
+      const openSidebar = document.querySelector("[data-open-sidebar]");
+      const closeSidebar = document.querySelector("[data-close-sidebar]");
+
+      function showSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+
+      function hideSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      }
+
+      openSidebar.addEventListener("click", showSidebar);
+      closeSidebar.addEventListener("click", hideSidebar);
+      sidebarOverlay.addEventListener("click", hideSidebar);
+
+      const cvFiles = [
+        {
+          id: 1,
+          name: "Jane_Cooper_CV.pdf",
+          type: "PDF",
+          size: "2.4 MB",
+          uploaded: "Today",
+        },
+        {
+          id: 2,
+          name: "Marvin_McKinney_Resume.docx",
+          type: "DOCX",
+          size: "1.1 MB",
+          uploaded: "Jan 22, 2026",
+        },
+        {
+          id: 3,
+          name: "Esther_Howard_CV.pdf",
+          type: "PDF",
+          size: "1.8 MB",
+          uploaded: "Jan 20, 2026",
+        },
+        {
+          id: 4,
+          name: "Guy_Hawkins_CV.pdf",
+          type: "PDF",
+          size: "2.0 MB",
+          uploaded: "Jan 18, 2026",
+        },
+        {
+          id: 5,
+          name: "Jenny_Wilson_Resume.docx",
+          type: "DOCX",
+          size: "950 KB",
+          uploaded: "Jan 16, 2026",
+        },
+      ];
+
+      const state = {
+        search: "",
+        page: 1,
+        pageSize: 3,
+      };
+
+      const cvInput = document.querySelector("[data-cv-input]");
+      const uploadTitle = document.querySelector("[data-upload-title]");
+      const searchInput = document.querySelector("[data-search-input]");
+      const cvList = document.querySelector("[data-cv-list]");
+      const cvCount = document.querySelector("[data-cv-count]");
+      const emptyState = document.querySelector("[data-empty-state]");
+      const pagination = document.querySelector("[data-pagination]");
+
+      function fileIcon(type) {
+        if (type === "PDF")
+          return '<span class="grid size-11 place-items-center rounded-xl bg-red-50 text-coral"><i class="fa-solid fa-file-pdf"></i></span>';
+        return '<span class="grid size-11 place-items-center rounded-xl bg-skysoft text-blue"><i class="fa-solid fa-file-word"></i></span>';
+      }
+
+      function renderPagination(total) {
+        const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
+
+        if (totalPages <= 1) {
+          pagination.innerHTML = "";
+          return;
+        }
+
+        pagination.innerHTML = `
+        <div class="flex flex-col gap-3 rounded-2xl border border-line bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-xs font-bold text-slate-500">Page <strong class="text-navy">${state.page}</strong> of <strong class="text-navy">${totalPages}</strong></p>
+          <div class="flex gap-2">
+            <button type="button" data-page="prev" class="rounded-xl border border-line bg-white px-4 py-2 text-xs font-black text-slate-600 transition hover:border-blue hover:text-blue ${state.page === 1 ? "pointer-events-none opacity-40" : ""}"><i class="fa-solid fa-chevron-left mr-1"></i>Previous</button>
+            <button type="button" data-page="next" class="rounded-xl border border-line bg-white px-4 py-2 text-xs font-black text-slate-600 transition hover:border-blue hover:text-blue ${state.page === totalPages ? "pointer-events-none opacity-40" : ""}">Next<i class="fa-solid fa-chevron-right ml-1"></i></button>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderFiles() {
+        const search = state.search.toLowerCase();
+        const files = cvFiles.filter((file) =>
+          file.name.toLowerCase().includes(search),
+        );
+        const totalPages = Math.max(
+          1,
+          Math.ceil(files.length / state.pageSize),
+        );
+        if (state.page > totalPages) state.page = totalPages;
+
+        const pageItems = files.slice(
+          (state.page - 1) * state.pageSize,
+          state.page * state.pageSize,
+        );
+
+        cvCount.textContent = files.length;
+        cvList.innerHTML = pageItems
+          .map(
+            (file) => `
+        <tr class="transition hover:bg-skysoft/45">
+          <td class="px-4 py-4">
+            <div class="flex items-center gap-3">
+              ${fileIcon(file.type)}
+              <div>
+                <p class="text-sm font-black text-navy">${file.name}</p>
+                <p class="mt-1 text-xs font-bold text-slate-400">Uploaded CV file</p>
+              </div>
+            </div>
+          </td>
+          <td class="px-4 py-4"><span class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-600">${file.type}</span></td>
+          <td class="px-4 py-4 text-sm font-bold text-slate-600">${file.size}</td>
+          <td class="px-4 py-4 text-sm font-bold text-slate-500">${file.uploaded}</td>
+          <td class="px-4 py-4">
+            <div class="flex justify-end gap-2">
+              <button type="button" class="grid size-9 place-items-center rounded-xl bg-skysoft text-blue transition hover:bg-blue hover:text-white" title="Preview"><i class="fa-solid fa-eye"></i></button>
+              <button type="button" class="grid size-9 place-items-center rounded-xl bg-blue text-white transition hover:bg-blue2" title="Download"><i class="fa-solid fa-download"></i></button>
+              <button type="button" data-delete-file="${file.id}" class="grid size-9 place-items-center rounded-xl border border-line bg-white text-slate-500 transition hover:border-coral hover:text-coral" title="Delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      `,
+          )
+          .join("");
+
+        emptyState.classList.toggle("hidden", files.length !== 0);
+        renderPagination(files.length);
+      }
+
+      cvInput.addEventListener("change", () => {
+        const file = cvInput.files[0];
+        if (!file) return;
+
+        const extension = file.name.split(".").pop().toUpperCase();
+        const size = `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
+        cvFiles.unshift({
+          id: Date.now(),
+          name: file.name,
+          type: extension,
+          size,
+          uploaded: "Just now",
+        });
+        state.page = 1;
+        uploadTitle.textContent = file.name;
+        cvInput.value = "";
+        renderFiles();
+      });
+
+      searchInput.addEventListener("input", () => {
+        state.search = searchInput.value.trim();
+        state.page = 1;
+        renderFiles();
+      });
+
+      cvList.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-delete-file]");
+        if (!button) return;
+        const fileIndex = cvFiles.findIndex(
+          (file) => file.id === Number(button.dataset.deleteFile),
+        );
+        if (fileIndex !== -1) cvFiles.splice(fileIndex, 1);
+        renderFiles();
+      });
+
+      pagination.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-page]");
+        if (!button) return;
+
+        const files = cvFiles.filter((file) =>
+          file.name.toLowerCase().includes(state.search.toLowerCase()),
+        );
+        const totalPages = Math.max(
+          1,
+          Math.ceil(files.length / state.pageSize),
+        );
+
+        if (button.dataset.page === "prev")
+          state.page = Math.max(1, state.page - 1);
+        if (button.dataset.page === "next")
+          state.page = Math.min(totalPages, state.page + 1);
+
+        renderFiles();
+      });
+
+      renderFiles();
+    </script>
+  </body>
+</html>

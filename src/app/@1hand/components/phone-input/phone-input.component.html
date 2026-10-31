@@ -1,0 +1,74 @@
+<div class="relative w-full">
+  <div
+    class="flex h-13 w-full items-stretch rounded-2xl border border-slate-300 bg-white outline-none transition focus-within:border-blue focus-within:ring-4 focus-within:ring-blue/10"
+    [class.opacity-60]="disabled"
+  >
+    <!-- Country / dial-code trigger -->
+    <button
+      type="button"
+      (click)="toggle($event)"
+      [disabled]="disabled"
+      class="flex flex-shrink-0 items-center gap-1.5 rounded-l-2xl bg-transparent px-3 text-sm font-semibold text-slate-700 outline-none disabled:cursor-not-allowed"
+    >
+      <span *ngIf="selectedCountry" class="text-lg leading-none">{{ selectedCountry.flag }}</span>
+      <span *ngIf="selectedCountry" class="text-slate-500">+{{ selectedCountry.dialCode }}</span>
+      <i
+        class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200"
+        [class.rotate-180]="isOpen"
+      ></i>
+    </button>
+
+    <div class="w-px flex-shrink-0 bg-line"></div>
+
+    <!-- National number -->
+    <input
+      type="tel"
+      inputmode="tel"
+      [value]="nationalNumber"
+      [disabled]="disabled"
+      [placeholder]="placeholder"
+      (input)="onNumberInput($any($event.target).value)"
+      (blur)="onNumberBlur()"
+      class="min-w-0 flex-1 rounded-r-2xl border-0 bg-transparent px-3 py-3 text-sm font-semibold text-slate-700 outline-none disabled:cursor-not-allowed"
+    />
+  </div>
+
+  <!-- Country dropdown panel -->
+  <div
+    *ngIf="isOpen"
+    class="absolute left-0 top-full z-50 mt-1 w-80 max-w-[90vw] rounded-2xl border border-line bg-white shadow-card overflow-hidden"
+  >
+    <div class="p-2 border-b border-line">
+      <div class="flex items-center gap-2 rounded-xl border border-line bg-slate-50 px-3 py-2">
+        <i class="fa-solid fa-magnifying-glass text-xs text-slate-400 flex-shrink-0"></i>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="onSearch($event)"
+          class="w-full bg-transparent text-sm outline-none text-slate-700"
+          placeholder="Search..."
+          (click)="$event.stopPropagation()"
+          autofocus
+        />
+      </div>
+    </div>
+
+    <ul class="max-h-64 overflow-y-auto py-1">
+      <li
+        *ngFor="let country of filtered"
+        (mousedown)="select(country)"
+        class="flex items-center gap-3 px-3 py-2 text-sm font-semibold cursor-pointer hover:bg-slate-50 transition-colors"
+        [class.bg-blue-50]="selectedCountry?.iso2 === country.iso2"
+        [class.text-blue]="selectedCountry?.iso2 === country.iso2"
+        [class.text-slate-700]="selectedCountry?.iso2 !== country.iso2"
+      >
+        <span class="text-lg leading-none w-6 text-center flex-shrink-0">{{ country.flag }}</span>
+        <span class="flex-1 min-w-0 break-words">{{ country.name }}</span>
+        <span class="flex-shrink-0 text-slate-400">+{{ country.dialCode }}</span>
+      </li>
+      <li *ngIf="filtered.length === 0" class="px-3 py-4 text-sm text-slate-400 text-center">
+        No results
+      </li>
+    </ul>
+  </div>
+</div>

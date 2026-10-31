@@ -1,0 +1,18 @@
+<div *transloco="let t; read: 'applications'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="datatableColumns"
+    [isLoading]="isLoading"
+    [hasError]="hasError"
+    [showCreateButton]="true"
+    emptyIcon="fas fa-file-alt"
+    [emptyTitle]="t('list.noApplications')"
+    [emptySubtitle]="t('list.emptySubtitle')"
+    [createLabel]="t('actions.create')"
+    (create)="handleCreate()"
+    (view)="handleView($event)"
+    (update)="handleUpdate($event)"
+    (delete)="handleDelete($event)"
+    (sort)="handleSort($event)"
+  ></app-generic-datatable>
+</div>

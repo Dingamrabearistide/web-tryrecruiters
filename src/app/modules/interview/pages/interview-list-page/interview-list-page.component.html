@@ -1,0 +1,20 @@
+<div class="container mx-auto px-4 py-6">
+  <!-- Formulaire d'entretien en modal -->
+  <div
+    *ngIf="showForm"
+    class="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50"
+  >
+    <button [routerLink]="['./meetings-create']">Meeting</button>
+    <!-- <div
+      class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+    >
+      <div class="p-6">
+        <app-interview-form></app-interview-form>
+      </div>
+    </div>
+  </div> -->
+
+    <!-- Liste des entretiens -->
+    <app-interview-list></app-interview-list>
+  </div>
+</div>

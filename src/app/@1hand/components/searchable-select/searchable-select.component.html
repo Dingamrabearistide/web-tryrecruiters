@@ -1,0 +1,68 @@
+<div class="relative w-full">
+  <!-- Trigger button -->
+  <button
+    type="button"
+    (click)="toggle($event)"
+    class="appearance-none h-13 w-full flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none transition focus:border-blue focus:ring-4 focus:ring-blue/10 disabled:cursor-not-allowed"
+    [disabled]="disabled"
+    [class.opacity-50]="disabled"
+  >
+    <span class="flex items-center gap-2 flex-1 min-w-0">
+      <ng-container *ngIf="loading; else loaded">
+        <span class="text-slate-400 truncate">{{ loadingLabel }}</span>
+      </ng-container>
+      <ng-template #loaded>
+        <ng-container *ngIf="selected; else noSelection">
+          <span class="truncate">{{ selected }}</span>
+        </ng-container>
+        <ng-template #noSelection>
+          <span class="text-slate-400 truncate">{{ placeholder }}</span>
+        </ng-template>
+      </ng-template>
+    </span>
+    <!-- Chevron always at the right -->
+    <i
+      class="fa-solid fa-chevron-down flex-shrink-0 text-xs text-slate-400 transition-transform duration-200"
+      [class.rotate-180]="isOpen"
+    ></i>
+  </button>
+
+  <!-- Dropdown panel -->
+  <div
+    *ngIf="isOpen"
+    class="absolute left-0 top-full z-50 mt-1 w-full min-w-[200px] rounded-2xl border border-line bg-white shadow-card overflow-hidden"
+  >
+    <!-- Search input -->
+    <div class="p-2 border-b border-line">
+      <div class="flex items-center gap-2 rounded-xl border border-line bg-slate-50 px-3 py-2">
+        <i class="fa-solid fa-magnifying-glass text-xs text-slate-400 flex-shrink-0"></i>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="onSearch($event)"
+          class="w-full bg-transparent text-sm outline-none text-slate-700"
+          placeholder="Search..."
+          (click)="$event.stopPropagation()"
+          autofocus
+        />
+      </div>
+    </div>
+
+    <!-- Options list -->
+    <ul class="max-h-56 overflow-y-auto py-1">
+      <li
+        *ngFor="let option of filtered"
+        (mousedown)="select(option)"
+        class="flex items-center gap-3 px-3 py-2 text-sm font-semibold cursor-pointer hover:bg-slate-50 transition-colors"
+        [class.bg-blue-50]="selected === option"
+        [class.text-blue]="selected === option"
+        [class.text-slate-700]="selected !== option"
+      >
+        <span class="truncate">{{ option }}</span>
+      </li>
+      <li *ngIf="filtered.length === 0" class="px-3 py-4 text-sm text-slate-400 text-center">
+        No results
+      </li>
+    </ul>
+  </div>
+</div>

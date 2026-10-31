@@ -1,0 +1,135 @@
+<!-- Full-page register layout matching auth-register.html template -->
+<div
+  *transloco="let t; read: 'auth'"
+  class="page-bg min-h-screen overflow-x-hidden text-slate-900 antialiased"
+>
+  <!-- Main: two-panel layout -->
+  <main
+    class="mx-auto grid min-h-[calc(100vh-80px)] w-full max-w-[1160px] items-start gap-8 px-4 py-8 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-12"
+  >
+    <!-- Left: Hero panel -->
+    <section
+      class="hero-gradient relative hidden overflow-hidden rounded-[38px] p-8 text-white shadow-soft lg:block"
+    >
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="relative flex min-h-[620px] flex-col justify-between">
+        <div>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-blue"
+          >
+            <i class="fa-solid fa-user-plus"></i>
+            {{ t("register.createAccount") }}
+          </span>
+          <h1
+            class="mt-8 font-display text-6xl font-black leading-none tracking-tight"
+          >
+            {{ t("register.joinTryRecruiters") }}
+          </h1>
+          <p
+            class="mt-5 max-w-md text-base font-medium leading-8 text-white/75"
+          >
+            {{ t("register.joinDescription") }}
+          </p>
+        </div>
+
+        <div class="grid gap-4">
+          <div
+            class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+              >
+                <i class="fa-solid fa-user-tie"></i>
+              </span>
+              <div>
+                <p class="font-black">{{ t("register.candidateAccount") }}</p>
+                <p class="mt-1 text-sm font-medium text-white/65">
+                  {{ t("register.candidateAccountDesc") }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-[26px] border border-white/15 bg-white/10 p-5 backdrop-blur-xl"
+          >
+            <div class="flex items-center gap-4">
+              <span
+                class="grid size-12 place-items-center rounded-2xl bg-coral text-white shadow-soft"
+              >
+                <i class="fa-solid fa-building"></i>
+              </span>
+              <div>
+                <p class="font-black">{{ t("register.employerAccount") }}</p>
+                <p class="mt-1 text-sm font-medium text-white/65">
+                  {{ t("register.employerAccountDesc") }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Register form -->
+    <section
+      class="w-full rounded-[34px] border border-line bg-white p-5 shadow-card sm:p-6 md:p-8"
+    >
+      <div class="mb-6 text-center sm:text-left">
+        <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+          {{ t("register.registration") }}
+        </p>
+        <h2
+          class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl"
+        >
+          {{ t("register.title") }}
+        </h2>
+        <p class="mt-3 text-sm font-medium leading-6 text-slate-500">
+          {{ t("register.chooseAccountType") }}
+        </p>
+      </div>
+
+      <!-- Account type toggle -->
+      <div class="mb-6 grid grid-cols-2 gap-2 rounded-[24px] bg-slate-100 p-2">
+        <button
+          type="button"
+          (click)="selectAccountType(CANDIDATE_ACCOUNT)"
+          [ngClass]="
+            accountType === CANDIDATE_ACCOUNT
+              ? 'flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white shadow-card'
+              : 'flex min-h-12 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-slate-600 transition hover:bg-white hover:text-blue'
+          "
+        >
+          <i class="fa-solid fa-user-tie"></i>
+          {{ t("register.candidate") }}
+        </button>
+        <button
+          type="button"
+          (click)="selectAccountType(RECRUITER_ACCOUNT)"
+          [ngClass]="
+            accountType === RECRUITER_ACCOUNT
+              ? 'flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-blue px-4 py-3 text-sm font-black text-white shadow-card'
+              : 'flex min-h-12 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-slate-600 transition hover:bg-white hover:text-blue'
+          "
+        >
+          <i class="fa-solid fa-building"></i>
+          {{ t("register.employer") }}
+        </button>
+      </div>
+
+      <!-- Register form -->
+      <app-register-form
+        [isLoading]="isLoading"
+        [accountType]="accountType"
+        (onSubmit)="onSubmit($event)"
+        (openTermsEvent)="openPdf()"
+      ></app-register-form>
+
+      <!-- Error -->
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </section>
+  </main>
+</div>

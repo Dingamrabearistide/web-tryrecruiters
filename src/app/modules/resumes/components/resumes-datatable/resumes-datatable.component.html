@@ -1,0 +1,14 @@
+<app-generic-datatable
+  [items]="items"
+  [columns]="datatableColumns"
+  [isLoading]="false"
+  [hasError]="false"
+  [showCreateButton]="true"
+  emptyTitle="Aucun CV trouvé"
+  emptySubtitle="Ajoutez votre premier CV"
+  createLabel="Ajouter un CV"
+  (create)="handleCreate()"
+  (view)="handleView($event)"
+  (update)="handleUpdate($event)"
+  (delete)="handleDelete($event)"
+></app-generic-datatable>

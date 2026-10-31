@@ -1,0 +1,24 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "jobsoffers": "Job Offers",
+    "application": "Applications",
+    "categories": "Categories",
+    "profile": "Profiles",
+    "payement": "Payment",
+    "parametres": "Settings"
+  },
+
+  "employers": {
+    "title": "Employers",
+    "list": "Employers List",
+    "details": "Employer Details",
+    "create": "Create Employer",
+    "edit": "Edit Employer",
+    "delete": "Delete Employer",
+    "search": "Search employers...",
+    "noData": "No employers found",
+    "loading": "Loading employers..."
+  }
+}

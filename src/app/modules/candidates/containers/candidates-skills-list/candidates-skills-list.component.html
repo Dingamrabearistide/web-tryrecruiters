@@ -1,0 +1,125 @@
+<div
+  *transloco="let t; read: 'candidates'"
+  class="bg-white rounded-lg border border-gray-200 p-6 mb-5"
+>
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-xl font-semibold text-primary">
+      {{ t("profilePage.skills.title") || "Skills" }}
+    </h3>
+    <button
+      (click)="addItem()"
+      class="inline-flex items-center justify-center w-9 h-9 font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors"
+    >
+      <i class="fa fa-plus text-sm"></i>
+    </button>
+  </div>
+
+  <ng-container *ngIf="(profile?.skills || []).length > 0; else noSkills">
+    <div class="flex flex-wrap gap-2">
+      <div
+        *ngFor="
+          let item of showAll
+            ? profile?.skills
+            : (profile?.skills || [] | slice: 0 : 6)
+        "
+        class="relative group"
+      >
+        <app-candidate-skill-list-item
+          [item]="item"
+        ></app-candidate-skill-list-item>
+
+        <div
+          class="absolute -top-1.5 -right-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-0.5 z-20"
+        >
+          <span
+            (click)="updateItem(item); $event.stopPropagation()"
+            class="h-5 w-5 rounded-full bg-white shadow-lg border border-gray-300 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary hover:scale-110 transition-all duration-150"
+            [attr.aria-label]="t('common.edit') || 'Modifier'"
+          >
+            <i class="fa fa-pen text-[10px]"></i>
+          </span>
+
+          <div
+            class="h-5 w-5 rounded-full bg-white shadow-lg border border-gray-300 flex items-center justify-center hover:border-red-400 hover:scale-110 transition-all duration-150"
+          >
+            <app-generic-delete-item-button
+              [item]="item"
+              [isXLarge]="false"
+              [service]="service"
+              [moduleName]="moduleName"
+              methodName="deleteInfos"
+              [extractId]="getItemId"
+              [buildPayload]="buildDeletePayload"
+              [extractLabel]="getItemLabel"
+              (onDone)="handleDone()"
+              class="flex items-center justify-center"
+            ></app-generic-delete-item-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="(profile?.skills?.length || 0) > 6" class="mt-4 text-center">
+      <button
+        (click)="toggleShowAll()"
+        class="text-primary font-medium hover:underline"
+      >
+        {{
+          showAll
+            ? t("candidateDetails.showLess") || "Voir moins"
+            : t("candidateDetails.showMore") || "Voir plus"
+        }}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #noSkills>
+    <div class="w-full py-8 px-4 text-center">
+      <div class="flex flex-col items-center gap-3">
+        <div
+          class="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center"
+        >
+          <i class="fa fa-briefcase text-2xl text-primary"></i>
+        </div>
+        <h4 class="text-base font-semibold text-gray-900">
+          {{ t("profilePage.skills.noSkills") || "Aucune compétence" }}
+        </h4>
+        <p class="text-gray-600">
+          {{
+            t("profilePage.skills.addYourFirstSkill") ||
+              "Ajoutez votre première compétence"
+          }}
+        </p>
+        <span
+          (click)="addItem()"
+          class="inline-flex items-center px-4 py-2 font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors mt-2"
+          [attr.aria-label]="t('profilePage.skills.addFirstSkill')"
+        >
+          <i class="fa fa-plus mr-2"></i>
+          <span>{{
+            t("profilePage.skills.addFirstSkill") || "Ajouter une compétence"
+          }}</span>
+        </span>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #form>
+  <div class="w-full max-w-3xl">
+    <app-generic-form
+      [defaultValues]="defaultValues"
+      [fieldConfigurations]="formConfig"
+      [isLoading]="isLoading"
+      [showActionButton]="false"
+      transationNamespace="candidates"
+      (submitForm)="onSubmit($event)"
+    />
+
+    <app-generic-error
+      *ngIf="hasError"
+      [message]="errorMessage"
+      class="mt-4"
+    ></app-generic-error>
+  </div>
+</ng-template>

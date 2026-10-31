@@ -1,0 +1,198 @@
+<header
+  class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+  *transloco="let tCore"
+>
+  <nav
+    class="mx-auto flex h-20 max-w-[1240px] items-center justify-between px-5 lg:px-8"
+  >
+    <!-- Logo: always far left -->
+    <a routerLink="/" class="flex items-center">
+      <img
+        src="/images/logo-text.png"
+        alt="tryrecruiters logo"
+        class="h-16 w-auto"
+      />
+    </a>
+
+    <!-- Desktop pill navigation -->
+    <div
+      class="hidden items-center gap-1 rounded-full bg-slate-100 p-1 text-sm font-bold text-slate-600 lg:flex"
+    >
+      <a
+        routerLink="/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.home") }}
+      </a>
+      <a
+        routerLink="/jobs"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.jobs") }}
+      </a>
+      <!-- Companies: candidates only -->
+      <a
+        *ngIf="isAuth && isCandidate"
+        routerLink="/employers"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.companies") }}
+      </a>
+      <!-- Candidates: recruiters only -->
+      <a
+        *ngIf="isAuth && isRecruiter"
+        routerLink="/candidates"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.candidates") }}
+      </a>
+      <a
+        routerLink="/about"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.about") }}
+      </a>
+      <a
+        routerLink="/contact"
+        routerLinkActive="bg-white text-blue shadow-sm"
+        class="rounded-full px-5 py-2.5 hover:bg-white hover:text-blue"
+      >
+        {{ tCore("navigation.contact") }}
+      </a>
+    </div>
+
+    <!-- Right section: language + auth stay grouped together on the right
+         at every breakpoint, with the mobile menu toggle at the far end —
+         matching the reference layout instead of splitting the hamburger
+         off to the left with an empty right side on mobile. -->
+    <div class="flex items-center gap-3">
+      <!-- Language switcher: visible at every breakpoint -->
+      <div class="relative">
+        <app-language-switcher />
+      </div>
+
+      <!-- Auth buttons: not logged in (desktop only, mobile menu has its own) -->
+      <ng-container *ngIf="!isAuth">
+        <a
+          routerLink="/auth/login"
+          class="hidden rounded-full bg-blue px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue2 sm:inline-flex"
+        >
+          {{ tCore("navigation.login") }}
+        </a>
+        <a
+          routerLink="/auth/register"
+          class="hidden rounded-full border border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue md:inline-flex"
+        >
+          {{ tCore("navigation.register") }}
+        </a>
+      </ng-container>
+
+      <!-- Auth: logged in avatar -->
+      <div *ngIf="isAuth" class="mt-1">
+        <app-avatar-dropdown></app-avatar-dropdown>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen"
+        class="grid size-11 place-items-center rounded-2xl border border-slate-200 bg-white text-navy shadow-sm transition hover:border-blue hover:text-blue lg:hidden"
+      >
+        <i
+          class="fa-solid text-lg"
+          [ngClass]="mobileMenuOpen ? 'fa-xmark' : 'fa-bars'"
+        ></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile navigation -->
+  <div
+    *ngIf="mobileMenuOpen"
+    class="border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden"
+  >
+    <div class="mx-auto max-w-[1240px] space-y-5">
+      <!-- Nav links -->
+      <div class="grid gap-2 text-sm font-extrabold text-slate-700">
+        <a
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.home") }}
+        </a>
+        <a
+          routerLink="/jobs"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.jobs") }}
+        </a>
+        <!-- Companies: candidates only -->
+        <a
+          *ngIf="isAuth && isCandidate"
+          routerLink="/employers"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.companies") }}
+        </a>
+        <!-- Candidates: recruiters only -->
+        <a
+          *ngIf="isAuth && isRecruiter"
+          routerLink="/candidates"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.candidates") }}
+        </a>
+        <a
+          routerLink="/about"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.about") }}
+        </a>
+        <a
+          routerLink="/contact"
+          routerLinkActive="bg-skysoft text-blue"
+          (click)="closeAllMenus()"
+          class="rounded-2xl px-4 py-3 hover:bg-skysoft hover:text-blue"
+        >
+          {{ tCore("navigation.contact") }}
+        </a>
+      </div>
+
+      <!-- Mobile auth buttons: stacked full-width, login above create account -->
+      <div *ngIf="!isAuth" class="grid grid-cols-1 gap-3">
+        <a
+          routerLink="/auth/login"
+          (click)="closeAllMenus()"
+          class="inline-flex items-center justify-center rounded-2xl border border-slate-200 px-5 py-3 text-sm font-extrabold text-slate-700 transition hover:border-blue hover:text-blue"
+        >
+          {{ tCore("navigation.login") }}
+        </a>
+        <a
+          routerLink="/auth/register"
+          (click)="closeAllMenus()"
+          class="inline-flex items-center justify-center rounded-2xl bg-blue px-5 py-3 text-sm font-extrabold text-white transition hover:bg-blue2"
+        >
+          {{ tCore("navigation.register") }}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

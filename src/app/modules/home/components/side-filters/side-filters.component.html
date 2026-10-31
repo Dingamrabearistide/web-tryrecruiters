@@ -1,0 +1,495 @@
+<div *transloco="let t" class="w-full space-y-4">
+  <!-- Filter Block -->
+  <div
+    class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
+  >
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary to-blue-600 px-6 py-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-semibold text-white flex items-center">
+          <i class="fas fa-filter mr-2"></i>
+          {{ t("filters.title") }}
+        </h3>
+        <button
+          (click)="resetFilters()"
+          class="text-sm text-white hover:text-blue-100 font-medium bg-white/20 px-3 py-1 rounded-full transition-all duration-200 hover:bg-white/30"
+        >
+          <i class="fas fa-undo mr-1"></i>
+          {{ t("filters.reset") }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Filters Content -->
+    <div class="p-6 space-y-6">
+      <!-- Type de contrat -->
+      <div class="mb-6">
+        <button
+          (click)="showContract = !showContract"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-briefcase mr-2 text-primary"></i>
+            {{ t("filters.contractType") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showContract ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showContract" class="space-y-3 pl-6">
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-fulltime"
+              [checked]="isContractTypeSelected(ContractType.FULL_TIME)"
+              (change)="toggleContractType(ContractType.FULL_TIME)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-fulltime"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.FULL_TIME") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-parttime"
+              [checked]="isContractTypeSelected(ContractType.PART_TIME)"
+              (change)="toggleContractType(ContractType.PART_TIME)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-parttime"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.PART_TIME") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-temporary"
+              [checked]="isContractTypeSelected(ContractType.TEMPORARY)"
+              (change)="toggleContractType(ContractType.TEMPORARY)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-temporary"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.TEMPORARY") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-freelance"
+              [checked]="isContractTypeSelected(ContractType.FREELANCE)"
+              (change)="toggleContractType(ContractType.FREELANCE)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-freelance"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.FREELANCE") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-internship"
+              [checked]="isContractTypeSelected(ContractType.INTERNSHIP)"
+              (change)="toggleContractType(ContractType.INTERNSHIP)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-internship"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.INTERNSHIP") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="contract-contract"
+              [checked]="isContractTypeSelected(ContractType.CONTRACT)"
+              (change)="toggleContractType(ContractType.CONTRACT)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="contract-contract"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.contractTypes.CONTRACT") }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type d'emploi -->
+      <div class="mb-6">
+        <button
+          (click)="showJobType = !showJobType"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+            {{ t("filters.jobType") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showJobType ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showJobType" class="space-y-3 pl-6">
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="jobtype-onsite"
+              [checked]="isJobTypeSelected(JobType.ONSITE)"
+              (change)="toggleJobType(JobType.ONSITE)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="jobtype-onsite"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobTypes.ONSITE") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="jobtype-remote"
+              [checked]="isJobTypeSelected(JobType.REMOTE)"
+              (change)="toggleJobType(JobType.REMOTE)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="jobtype-remote"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobTypes.REMOTE") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="jobtype-hybrid"
+              [checked]="isJobTypeSelected(JobType.HYBRID)"
+              (change)="toggleJobType(JobType.HYBRID)"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+            />
+            <label
+              for="jobtype-hybrid"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobTypes.HYBRID") }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Niveau d'éducation -->
+      <div class="mb-6">
+        <button
+          (click)="showEducation = !showEducation"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-graduation-cap mr-2 text-primary"></i>
+            {{ t("filters.educationLevel") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showEducation ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showEducation" class="space-y-2 pl-6">
+          <select
+            [(ngModel)]="selectedEducationLevel"
+            (change)="onFilterChange()"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+          >
+            <option value="">
+              {{ t("filters.selectEducationLevel") }}
+            </option>
+            <option [value]="EducationLevel.HIGH_SCHOOL">
+              {{ t("filters.educationLevels.HIGH_SCHOOL") }}
+            </option>
+            <option [value]="EducationLevel.INTERMEDIATE">
+              {{ t("filters.educationLevels.INTERMEDIATE") }}
+            </option>
+            <option [value]="EducationLevel.GRADUATION">
+              {{ t("filters.educationLevels.GRADUATION") }}
+            </option>
+            <option [value]="EducationLevel.BACHELOR_DEGREE">
+              {{ t("filters.educationLevels.BACHELOR_DEGREE") }}
+            </option>
+            <option [value]="EducationLevel.MASTER_DEGREE">
+              {{ t("filters.educationLevels.MASTER_DEGREE") }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Niveau d'emploi -->
+      <div class="mb-6">
+        <button
+          (click)="showJobLevel = !showJobLevel"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-chart-line mr-2 text-primary"></i>
+            {{ t("filters.jobLevel") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showJobLevel ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showJobLevel" class="space-y-3 pl-6">
+          <div class="flex items-center">
+            <input
+              type="radio"
+              id="joblevel-all"
+              name="jobLevel"
+              value=""
+              [(ngModel)]="selectedJobLevel"
+              (change)="onFilterChange()"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+            />
+            <label
+              for="joblevel-all"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.selectJobLevel") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="radio"
+              id="joblevel-entry"
+              name="jobLevel"
+              [value]="JobLevel.ENTRY_LEVEL"
+              [(ngModel)]="selectedJobLevel"
+              (change)="onFilterChange()"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+            />
+            <label
+              for="joblevel-entry"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobLevels.ENTRY_LEVEL") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="radio"
+              id="joblevel-mid"
+              name="jobLevel"
+              [value]="JobLevel.MID_LEVEL"
+              [(ngModel)]="selectedJobLevel"
+              (change)="onFilterChange()"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+            />
+            <label
+              for="joblevel-mid"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobLevels.MID_LEVEL") }}
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input
+              type="radio"
+              id="joblevel-expert"
+              name="jobLevel"
+              [value]="JobLevel.EXPERT_LEVEL"
+              [(ngModel)]="selectedJobLevel"
+              (change)="onFilterChange()"
+              class="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+            />
+            <label
+              for="joblevel-expert"
+              class="ml-3 text-sm text-gray-700 cursor-pointer"
+            >
+              {{ t("filters.jobLevels.EXPERT_LEVEL") }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salaire -->
+      <div class="mb-6">
+        <button
+          (click)="showSalary = !showSalary"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-money-bill mr-2 text-primary"></i>
+            {{ t("filters.salary") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showSalary ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showSalary" class="space-y-3 pl-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.minSalary")
+            }}</label>
+            <input
+              type="number"
+              [(ngModel)]="minSalary"
+              (change)="onFilterChange()"
+              (keydown)="blockInvalidNumberKeys($event)"
+              placeholder="0"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.maxSalary")
+            }}</label>
+            <input
+              type="number"
+              [(ngModel)]="maxSalary"
+              (change)="onFilterChange()"
+              (keydown)="blockInvalidNumberKeys($event)"
+              placeholder="100000"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Expérience -->
+      <div class="mb-6">
+        <button
+          (click)="showExperience = !showExperience"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-clock mr-2 text-primary"></i>
+            {{ t("filters.experience") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showExperience ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showExperience" class="space-y-3 pl-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.minExperience")
+            }}</label>
+            <input
+              type="number"
+              [(ngModel)]="minExperience"
+              (change)="onFilterChange()"
+              (keydown)="blockInvalidNumberKeys($event)"
+              placeholder="0"
+              min="0"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.maxExperience")
+            }}</label>
+            <input
+              type="number"
+              [(ngModel)]="maxExperience"
+              (change)="onFilterChange()"
+              (keydown)="blockInvalidNumberKeys($event)"
+              placeholder="20"
+              min="0"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Type d'entreprise -->
+      <div class="mb-6">
+        <button
+          (click)="showCompany = !showCompany"
+          class="flex items-center justify-between w-full text-left font-medium text-gray-900 mb-3 hover:text-primary transition-colors duration-200"
+        >
+          <span class="flex items-center">
+            <i class="fas fa-building mr-2 text-primary"></i>
+            {{ t("filters.company") }}
+          </span>
+          <i
+            class="fas transition-transform duration-200"
+            [ngClass]="showCompany ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </button>
+        <div *ngIf="showCompany" class="space-y-3 pl-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.organizationType")
+            }}</label>
+            <select
+              [(ngModel)]="selectedOrganizationType"
+              (change)="onFilterChange()"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            >
+              <option value="">
+                {{ t("filters.selectOrganizationType") }}
+              </option>
+              <option [value]="OrganizationType.PRIVATE">
+                {{ t("filters.organizationTypes.PRIVATE") }}
+              </option>
+              <option [value]="OrganizationType.PUBLIC">
+                {{ t("filters.organizationTypes.PUBLIC") }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{
+              t("filters.companySize")
+            }}</label>
+            <select
+              [(ngModel)]="selectedCompanySize"
+              (change)="onFilterChange()"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200"
+            >
+              <option value="">
+                {{ t("filters.selectCompanySize") }}
+              </option>
+              <option [value]="CompanySize.ONE_TO_TEN">
+                {{ t("filters.companySizes.ONE_TO_TEN") }}
+              </option>
+              <option [value]="CompanySize.ELEVEN_TO_FIFTY">
+                {{ t("filters.companySizes.ELEVEN_TO_FIFTY") }}
+              </option>
+              <option [value]="CompanySize.FIFTYONE_TO_ONEHUNDRED">
+                {{ t("filters.companySizes.FIFTYONE_TO_ONEHUNDRED") }}
+              </option>
+              <option [value]="CompanySize.ONEHUNDRED_TO_THREEHUNDRED">
+                {{ t("filters.companySizes.ONEHUNDRED_TO_THREEHUNDRED") }}
+              </option>
+              <option [value]="CompanySize.THREEHUNDRED_TO_FIVEHUNDRED">
+                {{ t("filters.companySizes.THREEHUNDRED_TO_FIVEHUNDRED") }}
+              </option>
+              <option [value]="CompanySize.FIVEHUNDRED_TO_ONEK">
+                {{ t("filters.companySizes.FIVEHUNDRED_TO_ONEK") }}
+              </option>
+              <option [value]="CompanySize.OVER_ONEK">
+                {{ t("filters.companySizes.OVER_ONEK") }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

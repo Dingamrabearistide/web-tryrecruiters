@@ -1,0 +1,260 @@
+<div class="flex flex-col w-full">
+  <div
+    class="flex flex-col justify-between items-start text-2xl font-bold text-secondary"
+  >
+    <div class="relative"></div>
+    <div *transloco="let t; read: 'candidates'" class="">
+      <h1 class="text-2xl font-bold text-primary">
+        {{ t("profilePage.title") || "Mon profil" }}
+      </h1>
+      <p class="text-gray-500 text-sm font-normal">
+        {{
+          t("profilePage.summary") ||
+            "Here is an overview of your recent activity and the next steps to take."
+        }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="app-container-inner w-full my-10 mx-auto lg:flex-row gap-6 text-sm text-gray-700"
+  >
+    <div class="w-full md:w-3/4 inline-block align-top pr-8">
+      <div class="bg-white border rounded-lg shadow-sm p-6 mb-6">
+        <div
+          class="flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        >
+          <div class="relative">
+            <img
+              [src]="profile.personalInfo.profile"
+              alt="Profile Photo"
+              class="w-24 h-24 rounded-full object-cover"
+            />
+            <span
+              class="absolute bottom-0 right-0 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-blue-600"
+            >
+              <i class="fa fa-camera"></i>
+            </span>
+          </div>
+          <div class="flex-grow text-center sm:text-left">
+            <div class="flex justify-between items-start">
+              <div>
+                <h2 class="text-2xl text-gray-500 font-bold">
+                  {{ profile.personalInfo.name }}
+                </h2>
+                <p class="text-gray-500 text-md">
+                  {{ profile.personalInfo.title }}
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                  <i class="fa fa-map-marker-alt mr-2"></i
+                  >{{ profile.personalInfo.address }}
+                </p>
+              </div>
+              <button (click)="editPersonalInfo()" class="p-2">
+                <i class="fa fa-pencil-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg shadow-sm p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-gray-500 text-xl font-bold">
+            {{ t("profilePage.experiences.title") || "Work Experience" }}
+          </h3>
+          <button (click)="addExperience()" class="app-primary">
+            <i class="fa fa-plus-circle"></i>
+            {{ t("profilePage.experiences.addExperience") || "Add Experience" }}
+          </button>
+        </div>
+        <div
+          *ngFor="
+            let exp of profile.experiences | sortByDate : 'startDate' : 'desc'
+          "
+          class="border-t py-4"
+        >
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="text-gray-500 font-bold text-lg">{{ exp.title }}</h4>
+              <p class="text-gray-500 font-semibold">
+                {{ exp.company }} - {{ exp.location }}
+              </p>
+              <p class="text-gray-500 text-sm">{{ exp.period }}</p>
+              <p class="mt-2 text-gray-500">{{ exp.description }}</p>
+            </div>
+            <div class="flex gap-3">
+              <span (click)="editExperience(exp)" class=""
+                ><i class="fa fa-pencil-alt"></i
+              ></span>
+              <span (click)="deleteExperience(exp)" class=""
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg shadow-sm p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-gray-500 text-xl font-bold">
+            {{ t("profilePage.educations.title") || "Education" }}
+          </h3>
+          <button (click)="addEducation()" class="app-primary">
+            <i class="fa fa-plus-circle"></i>
+            {{ t("profilePage.educations.addEducation") || "Add Education" }}
+          </button>
+        </div>
+        <div *ngFor="let edu of profile.education" class="border-t py-4">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="text-gray-500 font-bold text-lg">{{ edu.degree }}</h4>
+              <p class="text-gray-500 font-semibold">
+                {{ edu.school }} - {{ edu.location }}
+              </p>
+              <p class="text-gray-500 text-sm">{{ edu.period }}</p>
+            </div>
+            <div class="flex gap-3">
+              <span (click)="editEducation(edu)" class=""
+                ><i class="fa fa-pencil-alt"></i
+              ></span>
+              <span (click)="deleteEducation(edu)" class=""
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg shadow-sm p-6 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl text-gray-500 font-bold">
+            {{ t("profilePage.certifications.title") || "Certifications" }}
+          </h3>
+          <span (click)="addCertification()" class="app-primary">
+            <i class="fa fa-plus-circle"></i>
+            {{
+              t("profilePage.certifications.addCertification") ||
+                "Add Certification"
+            }}</span
+          >
+        </div>
+        <div *ngFor="let cert of profile.certifications" class="border-t py-4">
+          <div class="flex text-gray-500 justify-between items-start">
+            <div>
+              <h4 class="font-bold text-gray-500 text-lg">{{ cert.name }}</h4>
+              <p class="text-gray-500 font-semibold">
+                Issued by {{ cert.issuer }}
+              </p>
+              <p class="text-gray-500 text-sm">Date: {{ cert.date }}</p>
+            </div>
+            <div class="flex gap-3">
+              <span (click)="editCertification(cert)" class=""
+                ><i class="fa fa-pencil-alt"></i
+              ></span>
+              <span (click)="deleteCertification(cert)" class=""
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full md:w-1/4 inline-block align-top">
+      <div class="bg-white border rounded-lg shadow-sm p-5 gap-4 mb-6">
+        <h3 class="font-bold text-gray-500 text-xl">
+          {{
+            t("candidateDetails.contactInformation") || "Contact Information"
+          }}
+        </h3>
+        <div class="gap-3">
+          <div class="flex items-center gap-3">
+            <i class="fa fa-envelope text-blue-500 w-4 text-center"></i
+            ><a
+              href="mailto:{{ profile.personalInfo.email }}"
+              class="hover:underline"
+              >{{ profile.personalInfo.email }}</a
+            >
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa fa-phone text-blue-500 w-4 text-center"></i
+            ><span>{{ profile.personalInfo.phone }}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa fa-globe text-blue-500 w-4 text-center"></i
+            ><a
+              href="{{ profile.personalInfo.website }}"
+              target="_blank"
+              class="hover:underline"
+              >{{ profile.personalInfo.website }}</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg shadow-sm p-5 gap-4 mb-6">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold text-gray-500 text-xl">
+            {{ t("profilePage.skills.title") || "Skills" }}
+          </h3>
+          <button
+            (click)="addSkill()"
+            class="text-blue-500 hover:text-blue-700 text-2xl"
+          >
+            <i class="fa fa-plus-circle"></i>
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <div
+            *ngFor="let skill of profile.skills"
+            class="flex items-center gap-2 bg-gray-100 px-1 py-1"
+          >
+            <span>{{ skill.name }}</span>
+            <div class="flex items-center gap-2">
+              <span (click)="editSkill(skill)" class="text-xs"
+                ><i class="fa fa-pencil-alt"></i
+              ></span>
+              <span (click)="deleteSkill(skill)" class="text-xs"
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg shadow-sm p-5 gap-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold text-gray-500 text-xl">
+            {{ t("profilePage.languages.title") || "Languages" }}
+          </h3>
+          <button
+            (click)="addLanguage()"
+            class="text-blue-500 hover:text-blue-700 text-2xl"
+          >
+            <i class="fa fa-plus-circle"></i>
+          </button>
+        </div>
+        <div class="gap-2">
+          <div
+            *ngFor="let lang of profile.languages"
+            class="flex justify-between items-center"
+          >
+            <span
+              >{{ lang.name }}
+              <span class="text-gray-500">({{ lang.level }})</span></span
+            >
+            <div class="flex items-center gap-2">
+              <span (click)="editLanguage(lang)" class="text-xs"
+                ><i class="fa fa-pencil-alt"></i
+              ></span>
+              <span (click)="deleteLanguage(lang)" class="text-xs"
+                ><i class="fa fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

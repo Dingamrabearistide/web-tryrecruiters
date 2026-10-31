@@ -1,0 +1,9 @@
+<div class="w-full" *transloco="let t; read: 'permissions'">
+  <app-generic-form
+    [defaultValues]="item"
+    [isLoading]="isLoading"
+    [fieldConfigurations]="genericFormConfig"
+    transationNamespace="permissions"
+  ></app-generic-form>
+  <!-- (submitForm)="handleSubmit($event)" -->
+</div>

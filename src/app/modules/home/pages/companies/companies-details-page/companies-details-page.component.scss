@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.hero-gradient {
+  background-image:
+    radial-gradient(
+      circle at 16% 18%,
+      rgba(20, 157, 242, 0.28),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 86% 12%,
+      rgba(255, 81, 72, 0.18),
+      transparent 24%
+    ),
+    linear-gradient(135deg, #07152f 0%, #0a1f42 54%, #241449 100%);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(
+    circle at center,
+    black 48%,
+    transparent 82%
+  );
+}
+
+/* Force single-column layout in the accordion job detail panel */
+.accordion-job-detail {
+  ::ng-deep job-offers-detail > div > .grid.lg\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  ::ng-deep job-offers-detail > div > .grid.lg\:grid-cols-1 {
+    grid-template-columns: 1fr !important;
+  }
+}

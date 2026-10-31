@@ -1,0 +1,16 @@
+{
+  "test": "Bonjour",
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "companies": "Entreprises",
+    "jobsoffers": "Offres d'emploi",
+    "applications": "Mes Candidatures",
+    "categories": "Catégories",
+    "profile": "Mon Profils",
+    "payements": "Paiements",
+    "parametres": "Paramètres",
+    "favorites": "Mes Favoris",
+    "interviews": "Mes entretiens",
+    "resumes": "CV"
+  }
+}

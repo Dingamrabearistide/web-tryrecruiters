@@ -1,0 +1,50 @@
+<div *transloco="let t; read: 'companies'" class="">
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("details.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+      <!-- <button (click)="handleBack()" class="m-2 bg-primary app-primary">
+        <i class="fas fa-chevron-left mr-1 text-white"></i>
+        {{ t("common.back") }}
+      </button> -->
+
+      <p class="text-[14px] font-bold text-white">
+        {{ t("details.title") }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="app-container-inner w-full mb-10 mx-auto gap-6 bg-white min-h-screen text-sm text-gray-700"
+  >
+    <div *transloco="let tCore" class="lg:col-span-12">
+      <app-loader *ngIf="isLoading"></app-loader>
+
+      <div *ngIf="!isLoading && hasError" class="w-full">
+        <app-generic-error
+          *ngIf="hasError"
+          [message]="errorMessage"
+        ></app-generic-error>
+      </div>
+
+      <div *ngIf="!isLoading && !hasError">
+        <app-companies-details
+          [item]="item"
+          [jobOffers]="jobOffers"
+        ></app-companies-details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+
+  <!-- MAIN END -->
+</div>
+
+<router-outlet></router-outlet>

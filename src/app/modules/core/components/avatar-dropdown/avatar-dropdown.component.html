@@ -1,0 +1,364 @@
+<div *transloco="let t" class="relative inline-block dropdown-wrapper">
+  <!-- Avatar Button -->
+  <div
+    (click)="toggleDropdown()"
+    class="cursor-pointer flex items-center justify-end"
+    id="avatarToggle"
+  >
+    <div
+      class="w-10 md:w-12 h-10 md:h-12 bg-[#1D9BED] rounded-[50%] sm:object-cover"
+    >
+      <div class="w-full h-full flex justify-center items-center">
+        <span class="uppercase text-white font-semibold text-md md:text-xl">{{
+          usernameInitial
+        }}</span>
+      </div>
+    </div>
+    <div
+      class="hidden md:block ml-2 flex flex-col items-start leading-[1rem] text-sm md:text-md"
+    >
+      <div class="font-semibold capitalize">{{ fullName }}</div>
+      <div class="text-sm text-gray-500 uppercase text-xs">{{ userRole }}</div>
+    </div>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <div
+    *ngIf="isOpen"
+    class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl z-50 ring-1 ring-gray-200"
+  >
+    <!-- Menu Items -->
+    <div class="py-2">
+      <!-- Home -->
+      <a
+        *ngIf="!isRecruiter"
+        (click)="goHome()"
+        class="flex items-center gap-3 px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 transition cursor-pointer"
+      >
+        <i class="fas fa-home w-4 text-gray-600"></i>
+        {{ t("navigation.home") }}
+      </a>
+
+      <!-- Separator -->
+      <div class="border-t border-gray-200 my-1"></div>
+
+      <!-- Dashboard -->
+
+      <div
+        class="md:hidden flex flex-col gap-1 px-4 pb-2 text-sm text-gray-800 hover:bg-gray-50 transition cursor-pointer"
+      >
+        <span class="font-semibold capitalize">{{ fullName }}</span>
+        <span class="text-sm text-gray-500 uppercase text-xs">{{
+          userRole
+        }}</span>
+        <hr />
+      </div>
+
+      <a
+        (click)="goDashboard()"
+        class="flex items-center gap-3 px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 transition cursor-pointer"
+      >
+        <i class="fas fa-tachometer-alt w-4 text-gray-600"></i>
+        {{ dashboardLabel }}
+      </a>
+
+      <!-- Admin Panel (only for admins) -->
+      <!-- <a
+        *ngIf="isAdmin"
+        (click)="goAdminPanel()"
+        class="flex items-center gap-3 px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 transition cursor-pointer"
+      >
+        <i class="fas fa-cogs w-4 text-gray-600"></i>
+        {{ t("general.avatarDropdown.adminPanel") }}
+      </a> -->
+
+      <!-- Settings -->
+      <!-- <div
+        (click)="settings()"
+        class="cursor-pointer flex items-center gap-3 px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 transition"
+      >
+        <i class="fas fa-cog w-4 text-gray-600"></i>
+        {{ t("general.avatarDropdown.settings") }}
+      </div> -->
+
+      <!-- Account -->
+      <!-- <div
+        (click)="account()"
+        class="cursor-pointer flex items-center gap-3 px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 transition"
+      >
+        <i class="fas fa-user w-4 text-gray-600"></i>
+        {{ t("general.avatarDropdown.account") }}
+      </div> -->
+
+      <!-- Separator -->
+      <div class="border-t border-gray-200 my-2"></div>
+
+      <!-- Logout -->
+      <div
+        (click)="logout()"
+        class="cursor-pointer flex items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition"
+      >
+        <i class="fas fa-sign-out-alt w-4 text-red-600"></i>
+        {{ t("general.avatarDropdown.logout") }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #preferencesModal>
+  <div *transloco="let t" class="flex items-center justify-center z-50">
+    <div class="bg-white flex overflow-hidden">
+      <!-- Sidebar -->
+      <div class="w-80 bg-gray-50 border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <div
+          class="flex items-center justify-between p-6 border-b border-gray-200"
+        >
+          <h2 class="text-xl font-semibold text-gray-800">
+            {{ t("preferences.title") }}
+          </h2>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 p-4 gap-1 overflow-auto">
+          <div
+            (click)="selectMenuItem(item.id)"
+            *ngFor="let item of menuItems"
+            [class.bg-blue-50]="selectedMenuItem === item.id"
+            [class.border-blue-600]="selectedMenuItem === item.id"
+            [class.border-l-4]="selectedMenuItem === item.id"
+            [class.text-blue-500]="selectedMenuItem === item.id"
+            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer transition"
+          >
+            <i [class]="item.icon" class="w-4 text-current"></i>
+            <span>{{ t(item.label) }}</span>
+          </div>
+        </nav>
+        Notificat
+      </div>
+
+      <!-- Content Area -->
+      <div class="flex-1 flex flex-col">
+        <!-- Notifications Section -->
+        <div
+          *ngIf="selectedMenuItem === 'notifications'"
+          class="flex-1 p-6 overflow-y-auto"
+        >
+          <div class="max-w-2xl">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-lg font-semibold text-gray-800">
+                {{ t("preferences.notifications.title") }}
+              </h3>
+            </div>
+
+            <!-- Notification Options -->
+            <div class="gap-6">
+              <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-3">
+                  {{ t("preferences.notifications.notifyMeAbout") }}
+                </h4>
+                <div class="gap-3">
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input
+                      [(ngModel)]="notificationSettings.notifyAbout"
+                      class="text-blue-600"
+                      name="notifyAbout"
+                      type="radio"
+                      value="all"
+                    />
+                    <span class="text-sm texSt-gray-700">{{
+                      t("preferences.notifications.allNewMessages")
+                    }}</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input
+                      [(ngModel)]="notificationSettings.notifyAbout"
+                      class="text-blue-600"
+                      name="notifyAbout"
+                      type="radio"
+                      value="mentions"
+                    />
+                    <span class="text-sm text-gray-700">{{
+                      t("preferences.notifications.directMessages")
+                    }}</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input
+                      [(ngModel)]="notificationSettings.notifyAbout"
+                      class="text-blue-600"
+                      name="notifyAbout"
+                      type="radio"
+                      value="nothing"
+                    />
+                    <span class="text-sm text-gray-700">{{
+                      t("preferences.notifications.nothing")
+                    }}</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input
+                    [(ngModel)]="notificationSettings.useDifferentMobile"
+                    class="text-blue-600 rounded"
+                    type="checkbox"
+                  />
+                  <span class="text-sm text-gray-700">{{
+                    t("preferences.notifications.differentMobileSettings")
+                  }}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div *ngIf="selectedMenuItem === 'navigation'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.navigation.title") }}
+            </h3>
+            <!-- Navigation content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.navigation.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Home Section -->
+        <div *ngIf="selectedMenuItem === 'home'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.home.title") }}
+            </h3>
+            <!-- Home content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.home.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Appearance Section -->
+        <div *ngIf="selectedMenuItem === 'appearance'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.appearance.title") }}
+            </h3>
+            <!-- Appearance content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.appearance.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Language & Region Section -->
+        <div *ngIf="selectedMenuItem === 'language'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.language.title") }}
+            </h3>
+            <!-- Language content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.language.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Accessibility Section -->
+        <div *ngIf="selectedMenuItem === 'accessibility'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.accessibility.title") }}
+            </h3>
+            <!-- Accessibility content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.accessibility.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Mark as Read Section -->
+        <div *ngIf="selectedMenuItem === 'markAsRead'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.markAsRead.title") }}
+            </h3>
+            <!-- Mark as read content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.markAsRead.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Audio and Video Section -->
+        <div *ngIf="selectedMenuItem === 'audioVideo'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.audioVideo.title") }}
+            </h3>
+            <!-- Audio/Video content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.audioVideo.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Salesforce Section -->
+        <div *ngIf="selectedMenuItem === 'salesforce'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.salesforce.title") }}
+            </h3>
+            <!-- Salesforce content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.salesforce.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Connected Accounts Section -->
+        <div
+          *ngIf="selectedMenuItem === 'connectedAccounts'"
+          class="flex-1 p-6"
+        >
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.connectedAccounts.title") }}
+            </h3>
+            <!-- Connected accounts content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.connectedAccounts.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Privacy and Visibility Section -->
+        <div *ngIf="selectedMenuItem === 'privacy'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.privacy.title") }}
+            </h3>
+            <!-- Privacy content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.privacy.content") }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Advanced Section -->
+        <div *ngIf="selectedMenuItem === 'advanced'" class="flex-1 p-6">
+          <div class="max-w-2xl">
+            <h3 class="text-lg font-semibold text-gray-800 mb-6">
+              {{ t("preferences.advanced.title") }}
+            </h3>
+            <!-- Advanced content here -->
+            <p class="text-gray-600 overflow-y-auto">
+              {{ t("preferences.advanced.content") }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

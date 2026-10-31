@@ -1,0 +1,268 @@
+<div class="flex flex-col w-full" *transloco="let t; read: 'joboffers'">
+  <!-- Header Section -->
+  <div class="flex flex-col gap-3 justify-between items-start mb-6 pb-5">
+    <div class="flex w-full justify-between items-center">
+      <div>
+        <h1 class="text-3xl pb-2 font-bold text-primary">
+          {{ t("list.title") }}
+        </h1>
+        <p class="text-gray-600 text-sm font-normal">
+          {{ t("list.description") }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-0 lg:mx-0 pb-8">
+    <!-- Filters Section -->
+    <div
+      class="flex flex-col md:flex-row flex-wrap gap-3 items-end mb-7 w-full"
+    >
+      <div class="flex w-full gap-3 md:max-w-[320px] md:mr-4">
+        <!-- Start date -->
+        <div class="flex flex-col w-full sm:w-1/2 lg:w-[320px]">
+          <label
+            class="text-sm text-gray-700 mb-2 outline-none flex items-center gap-1"
+            for="startDate"
+          >
+            <i class="fas fa-calendar-alt text-gray-500"></i>
+            {{ t("form.startDate") }}
+          </label>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="startDate"
+            (change)="onSearch()"
+            class="w-full border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          />
+        </div>
+
+        <!-- End date -->
+        <div class="flex flex-col w-full max-w-[320px]">
+          <label
+            class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+            for="endDate"
+          >
+            <i class="fas fa-calendar-check text-gray-500"></i>
+            {{ t("form.endDate") }}
+          </label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="endDate"
+            (change)="onSearch()"
+            class="border border-gray-300 outline-none rounded-[5px] px-4 py-2 shadow-sm text-sm w-full md:w-auto text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          />
+        </div>
+      </div>
+
+      <!-- Contract Type -->
+      <div class="w-full md:w-fit">
+        <label
+          class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+          for="contractType"
+        >
+          <i class="fas fa-briefcase text-gray-500"></i>
+          {{ t("form.contractType") }}
+        </label>
+        <div class="relative w-full md:max-w-[200px] min-w-[160px] h-[40px]">
+          <select
+            id="contractType"
+            [(ngModel)]="contractType"
+            (change)="onSearch()"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          >
+            <option value="">{{ t("form.allTypes") }}</option>
+            <option value="FULL_TIME">{{ t("contractType.FULL_TIME") }}</option>
+            <option value="PART_TIME">{{ t("contractType.PART_TIME") }}</option>
+            <option value="TEMPORARY">{{ t("contractType.TEMPORARY") }}</option>
+            <option value="FREELANCE">{{ t("contractType.FREELANCE") }}</option>
+            <option value="INTERNSHIP">{{ t("contractType.INTERNSHIP") }}</option>
+            <option value="CONTRACT">{{ t("contractType.CONTRACT") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Type -->
+      <div class="w-full md:w-fit">
+        <label
+          class="text-sm text-gray-700 mb-2 flex items-center gap-1"
+          for="jobType"
+        >
+          <i class="fas fa-laptop-house text-gray-500"></i>
+          {{ t("form.jobType") }}
+        </label>
+        <div class="relative w-full md:max-w-[200px] min-w-[160px] h-[40px]">
+          <select
+            id="jobType"
+            [(ngModel)]="jobType"
+            (change)="onSearch()"
+            class="appearance-none w-full h-full bg-white border border-gray-300 outline-none rounded px-4 py-2 pr-8 text-sm shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          >
+            <option value="">{{ t("form.allTypes") }}</option>
+            <option value="FULL_TIME">{{ t("jobType.FULL_TIME") }}</option>
+            <option value="PART_TIME">{{ t("jobType.PART_TIME") }}</option>
+            <option value="REMOTE">{{ t("jobType.REMOTE") }}</option>
+            <option value="ONSITE">{{ t("jobType.ONSITE") }}</option>
+            <option value="HYBRID">{{ t("jobType.HYBRID") }}</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-actions-wrap">
+        <div class="relative flex-grow">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 py-2">
+            <i class="fas fa-search text-gray-400"></i>
+          </span>
+          <input
+            id="search"
+            type="text"
+            placeholder="{{ t('form.searchPlaceholder') }}"
+            [(ngModel)]="keyword"
+            (keyup.enter)="onSearch()"
+            class="h-10 w-full border border-gray-300 outline-none rounded-[5px] pl-10 pr-4 py-2 shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+          />
+        </div>
+        <div class="filter-actions-buttons">
+          <button (click)="onSearch()" class="btn-filter-search">
+            <i class="fas fa-search"></i>
+            {{ t("form.search") }}
+          </button>
+          <button (click)="onReset()" class="btn-filter-reset">
+            <i class="fas fa-times"></i>
+            {{ t("form.reset") }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+
+    <!-- <app-job-offers-list
+      [items]="items"
+      [isLoading]="isLoading"
+      [hasError]="hasError"
+      (view)="handleView($event)"
+      (edit)="handleEdit($event)"
+      (delete)="handleDelete($event)"
+      (create)="handleCreate()"
+    ></app-job-offers-list> -->
+    <!-- Pagination -->
+
+    <div class="mb-6 border-b border-gray-200">
+      <nav class="flex space-x-8" aria-label="Tabs">
+        <div
+          (click)="setActiveTab('pending')"
+          [class.border-blue-500]="activeTab === 'pending'"
+          [class.text-blue-500]="activeTab === 'pending'"
+          [class.text-gray-500]="activeTab !== 'pending'"
+          class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+        >
+          <i class="fas fa-clock mr-2"></i>
+          {{ t("tabs.pending") }}
+          <span
+            class="ml-2 bg-yellow-500 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >
+            {{ getPendingCount() }}
+          </span>
+        </div>
+
+        <div
+          (click)="setActiveTab('active')"
+          [class.border-blue-500]="activeTab === 'active'"
+          [class.text-blue-500]="activeTab === 'active'"
+          [class.text-gray-500]="activeTab !== 'active'"
+          class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+        >
+          <i class="fas fa-check-circle mr-2"></i>
+          {{ t("tabs.active") }}
+          <span
+            class="bg-green-400 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >
+            {{ getActiveCount() }}
+          </span>
+        </div>
+
+        <div
+          (click)="setActiveTab('inactive')"
+          [class.border-blue-500]="activeTab === 'inactive'"
+          [class.text-blue-500]="activeTab === 'inactive'"
+          [class.text-gray-500]="activeTab !== 'inactive'"
+          class="cursor-pointer py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 hover:text-blue-500"
+        >
+          <i class="fas fa-times-circle mr-2"></i>
+          {{ t("tabs.inactive") }}
+          <span
+            class="bg-red-400 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >
+            {{ getInactiveCount() }}
+          </span>
+        </div>
+      </nav>
+    </div>
+    <div *ngIf="isLoading" class="grid grid-rows-[1fr] h-[400px]">
+      <div class="w-full text-center h-full">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && hasError" class="w-full">
+      <app-generic-error
+        *ngIf="hasError"
+        [message]="errorMessage"
+      ></app-generic-error>
+    </div>
+
+    <div *ngIf="!isLoading && !hasError" class="max-w-full w-full">
+      <!-- <app-generic-datatable
+        [items]="items"
+        [columns]="datatableColumns"
+        [isLoading]="isLoading"
+        [hasError]="hasError"
+        (view)="handleView($event)"
+        (update)="handleUpdate($event)"
+        (delete)="handleDelete($event)"
+        (create)="handleCreate()"
+      >
+      </app-generic-datatable> -->
+
+      <app-job-offers-datatable
+        [items]="getFilteredItems(currentStatus)"
+        [isLoading]="false"
+        [hasError]="false"
+        [currentStatus]="currentStatus"
+        [processingJobIds]="processingJobIds"
+        (create)="handleCreate()"
+        (view)="handleView($event)"
+        (update)="handleUpdate($event)"
+        (delete)="handleDelete($event)"
+        (approve)="handleApprove($event)"
+        (reject)="handleReject($event)"
+        (revoke)="handleRevoke($event)"
+      ></app-job-offers-datatable>
+    </div>
+
+    <div class="flex justify-end mb-4">
+      <app-generic-paginator
+        [currentPage]="page"
+        [totalPages]="getCurrentTabTotalPages()"
+        [maxVisible]="5"
+        (pageChange)="onPageChange($event)"
+      ></app-generic-paginator>
+    </div>
+  </div>
+
+  <!-- Error Component -->
+  <app-generic-error
+    *ngIf="hasError"
+    [message]="errorMessage"
+  ></app-generic-error>
+</div>

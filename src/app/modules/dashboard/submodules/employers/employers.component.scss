@@ -1,0 +1,26 @@
+/* Minimal styles for Voir plus dropdown */
+.voir-plus-btn {
+  cursor: pointer;
+}
+.voir-plus-menu {
+  min-width: 14rem;
+}
+.relative:hover > .voir-plus-menu,
+.relative:focus-within > .voir-plus-menu {
+  display: block;
+}
+
+/* Interviews cards small adjustments */
+.interview-card {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.interview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Utility overrides if needed */
+.voir-plus-menu a {
+  text-decoration: none;
+  color: inherit;
+}

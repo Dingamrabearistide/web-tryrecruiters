@@ -1,0 +1,130 @@
+{
+  "test": "Bonjour",
+  "dashboard": {
+    "admin": {
+      "title": "Tableau de Bord Administrateur",
+      "welcome": "Bienvenue, Administrateur!",
+      "summary": "Voici un aperçu des métriques clés et des options de gestion de votre plateforme.",
+      "metrics": {
+        "totalUsers": "Utilisateurs Totaux",
+        "activeUsers": "Utilisateurs Actifs",
+        "totalCompanies": "Entreprises Totales",
+        "totalJobOffers": "Offres d'Emploi Totales",
+        "pendingApplications": "Candidatures en Attente",
+        "upcomingInterviews": "Entretiens à Venir",
+        "newUsersThisMonth": "Nouveaux Utilisateurs Ce Mois",
+        "totalApplications": "Candidatures Totales",
+        "newCompaniesThisMonth": "Nouvelles Entreprises Ce Mois",
+        "newJobOffersThisMonth": "Nouvelles Offres Ce Mois"
+      },
+      "sections": {
+        "userManagement": "Gestion des Utilisateurs",
+        "companyManagement": "Gestion des Entreprises",
+        "jobOfferManagement": "Gestion des Offres d'Emploi"
+      },
+      "actions": {
+        "viewAllUsers": "Voir Tous les Utilisateurs",
+        "managePermissions": "Gérer les Permissions",
+        "viewAllCompanies": "Voir Toutes les Entreprises",
+        "viewJobOffers": "Voir les Offres d'Emploi"
+      },
+      "descriptions": {
+        "manageUsers": "Gérer les comptes et profils des utilisateurs",
+        "managePermissions": "Contrôler les rôles et permissions des utilisateurs",
+        "manageCompanies": "Afficher et gérer les profils des entreprises",
+        "manageJobOffers": "Approuver, éditer et gérer les annonces d'emploi"
+      },
+      "quickActions": {
+        "title": "Actions Rapides",
+        "viewUsers": "Voir Tous les Utilisateurs",
+        "viewCompanies": "Voir Toutes les Entreprises",
+        "viewJobOffers": "Voir les Offres d'Emploi",
+        "viewApplications": "Voir les Candidatures",
+        "viewInterviews": "Voir les Entretiens",
+        "managePermissions": "Gérer les Permissions"
+      },
+      "systemInfo": "Informations Système",
+      "info": {
+        "platformVersion": "Version de la Plateforme",
+        "lastUpdated": "Dernière Mise à Jour",
+        "systemStatus": "État du Système",
+        "online": "En Ligne"
+      },
+      "detailed": {
+        "seeMore": "Voir Plus de Statistiques",
+        "seeLess": "Masquer les Statistiques",
+        "title": "Statistiques Détaillées",
+        "comparisonTable": "Tableau Comparatif",
+        "metric": "Métrique",
+        "value": "Valeur",
+        "source": "Source",
+        "totalUsersFromList": "Utilisateurs Totaux (liste)",
+        "activeUsers": "Utilisateurs Actifs",
+        "allCompanies": "Toutes les Entreprises",
+        "pendingCompanies": "Entreprises en Attente",
+        "allJobOffers": "Toutes les Offres d'Emploi",
+        "pendingJobOffers": "Offres en Attente",
+        "pendingApplications": "Candidatures en Attente",
+        "newUsersThisMonth": "Nouveaux Utilisateurs Ce Mois",
+        "newCompaniesThisMonth": "Nouvelles Entreprises Ce Mois",
+        "newJobOffersThisMonth": "Nouvelles Offres Ce Mois"
+      },
+      "analysis": {
+        "title": "Analyse & Tendances",
+        "usersAnalysis": "Analyse Utilisateurs",
+        "companiesAnalysis": "Analyse Entreprises",
+        "jobOffersAnalysis": "Analyse Offres d'Emploi",
+        "activeRate": "Taux d'activité",
+        "pendingRate": "Taux en attente",
+        "newThisMonth": "Nouveaux ce mois"
+      },
+      "chart": {
+        "title": "Graphique des Statistiques",
+        "filterAll": "Tout",
+        "filterUsers": "Utilisateurs",
+        "filterCompanies": "Entreprises",
+        "filterJobOffers": "Offres d'Emploi",
+        "filterMonthly": "Ce Mois",
+        "donutTitle": "Répartition de la Plateforme",
+        "donutUsers": "Utilisateurs",
+        "donutCompanies": "Entreprises",
+        "donutJobOffers": "Offres d'Emploi",
+        "donutApplications": "Candidatures",
+        "donutTotalLabel": "Total",
+        "horizontalTitle": "Comparaison Quantitative"
+      },
+      "insights": {
+        "title": "Analyse Qualitative",
+        "highActivity": "Taux d'activité élevé",
+        "highActivityDesc": "Plus de 70% des utilisateurs inscrits sont actifs. La plateforme bénéficie d'un bon engagement.",
+        "moderateActivity": "Taux d'activité modéré",
+        "moderateActivityDesc": "Entre 40% et 70% des utilisateurs sont actifs. Des actions d'engagement pourraient améliorer ce taux.",
+        "lowActivity": "Taux d'activité faible",
+        "lowActivityDesc": "Moins de 40% des utilisateurs sont actifs. Il est recommandé de mettre en place des campagnes de réengagement.",
+        "pendingCompanies": "Entreprises en attente",
+        "pendingCompaniesDesc": "Des entreprises attendent une validation. Traitez-les rapidement pour maintenir la qualité du service.",
+        "pendingJobOffers": "Offres à valider",
+        "pendingJobOffersDesc": "Des offres d'emploi sont en attente de modération. Leur validation rapide améliore l'expérience candidat.",
+        "growth": "Croissance mensuelle",
+        "growthDesc": "De nouveaux utilisateurs se sont inscrits ce mois-ci. Signe positif pour la croissance de la plateforme.",
+        "overview": "Vue d'ensemble",
+        "overviewDesc": "Ce tableau de bord agrège les données de plusieurs endpoints pour offrir une vision complète de l'état de la plateforme."
+      }
+    }
+  },
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "companies": "Entreprises",
+    "jobsoffers": "Offres d'emploi",
+    "applications": "Candidatures",
+    "categories": "Catégories",
+    "profile": "Mon Profils",
+    "candidates": "Utlisateurs",
+    "payements": "Paiements",
+    "parametres": "Paramètres",
+    "favorites": "Mes Favoris",
+    "interviews": "Interviews",
+    "users": "Utilisateurs",
+    "permissions": "Permissions"
+  }
+}

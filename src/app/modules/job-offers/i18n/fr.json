@@ -1,0 +1,420 @@
+{
+  "joboffers": {
+    "contractType": {
+      "FULL_TIME": "Temps plein",
+      "PART_TIME": "Temps partiel",
+      "TEMPORARY": "Temporaire",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Stage",
+      "CONTRACT": "Contrat"
+    },
+    "contractTypes": {
+      "FULL_TIME": "Temps plein",
+      "PART_TIME": "Temps partiel",
+      "TEMPORARY": "Temporaire",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Stage",
+      "CONTRACT": "Contrat"
+    },
+    "jobType": {
+      "FULL_TIME": "Temps plein",
+      "PART_TIME": "Temps partiel",
+      "REMOTE": "Télétravail",
+      "ONSITE": "Sur site",
+      "HYBRID": "Hybride"
+    },
+    "jobLevel": {
+      "JUNIOR": "Junior",
+      "MID": "Mi-carrière",
+      "SENIOR": "Senior",
+      "LEAD": "Lead",
+      "ENTRY_LEVEL": "Niveau d'entrée",
+      "MID_LEVEL": "Niveau intermédiaire",
+      "EXPERT_LEVEL": "Niveau expert"
+    },
+    "educationLevel": {
+      "HIGH_SCHOOL": "Baccalauréat",
+      "INTERMEDIATE": "Intermédiaire",
+      "GRADUATION": "Diplôme",
+      "BACHELOR_DEGREE": "Licence",
+      "MASTER_DEGREE": "Master"
+    },
+    "columns": {
+      "jobLevel": "Niveau du Poste"
+    },
+    "jobDetails": {
+      "jobLevel": "Niveau du Poste"
+    }
+  },
+  "item": {
+    "details": "Détails"
+  },
+  "test": "Bonjour le monde !",
+  "add_to_favorites": "Ajouter aux favoris",
+  "verified": "Vérifié",
+  "unknown_company": "Entreprise inconnue",
+  "not_specified": "Non spécifié",
+  "unknown_education": "Niveau d'éducation inconnu",
+  "undefined_level": "Niveau indéfini",
+  "experience": "{{count}} année{{count > 1 ? 's' : ''}} d'expérience",
+  "salary": "{{amount}}",
+  "published_on": "Publié le {{date}}",
+  "expires_on": "Expire le {{date}}",
+  "created_on": "Créé le {{date}}",
+  "applications_received": "{{count}} candidatures reçues",
+  "apply_now": "Postuler maintenant",
+  "createTitle": "Créer une offre d'emploi",
+  "saveDraft": "Enregistrer en brouillon",
+  "submitDraft": "Soumettre pour publication",
+  "submitDraftConfirm": "Soumettre cette offre pour modération ? Elle consommera un crédit de votre forfait.",
+  "submitDraftSuccess": "Offre soumise pour modération.",
+  "submitDraftError": "Échec de la soumission. Veuillez réessayer.",
+  "favorite": {
+    "list": {
+      "title": "Offres d'emploi favorite",
+      "description": "Gérez et consultez toutes vos offres d'emploi favorite en un seul endroit.",
+      "noCompanies": "Aucune offre d'emploi trouvée.",
+      "startCreating": "Commencez par mettre votre première offre d'emploi en favoris"
+    }
+  },
+  "expired": {
+    "title": "Cette offre a expiré.",
+    "message": "Les candidatures ne sont plus acceptées pour ce poste."
+  },
+  "republish": {
+    "title": "Republier l'offre",
+    "message": "Vous allez republier \"{{title}}\". L'offre repassera en statut ACTIVE.",
+    "expiresAtLabel": "Nouvelle date d'expiration (optionnel)",
+    "expiresAtHint": "Laisser vide pour prolonger de 30 jours à partir d'aujourd'hui.",
+    "confirm": "Republier",
+    "errorTitle": "Echec de la republication"
+  },
+  "apply": {
+    "message": "Message de motivation",
+    "messagePlaceholder": "Expliquez pourquoi vous êtes intéressé par ce poste et ce que vous pouvez apporter à l'entreprise...",
+    "resume": "CV",
+    "submit": "Envoyer ma candidature"
+  },
+  "jobDetails": {
+    "title": "Détail de l'emploi",
+    "home": "Accueil",
+    "jobList": "Liste des emplois",
+    "jobDetail": "Détail de l'emploi",
+    "apply": "Postuler",
+    "applyNow": "Postuler maintenant",
+    "expiresOn": "Expire le :",
+    "description": "Description",
+    "jobLevel": "Niveau du poste",
+    "notes": "Notes",
+    "tags": "Étiquettes",
+    "jobOverview": "Aperçu du poste",
+    "publishedOn": "Publié le :",
+    "salary": "Salaire :",
+    "educationLevel": "Niveau d'éducation :",
+    "location": "Localisation :",
+    "jobType": "Type d'emploi :",
+    "experience": "Expérience :",
+    "company": "Entreprise :",
+    "companyOverview": "Aperçu de l'entreprise",
+    "sector": "Secteur",
+    "size": "Taille",
+    "organization": "Organisation",
+    "foundedIn": "Fondée en",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address": "Adresse",
+    "website": "Site web",
+    "moreOffers": "Plus d'offres",
+    "addToFavorites": "Ajouter aux favoris",
+    "addToFavoritesConfirm": "Êtes-vous sûr de vouloir ajouter \"{{title}}\" à vos favoris ?",
+    "removeFromFavorites": "Retirer des favoris",
+    "removeFromFavoritesConfirm": "Êtes-vous sûr de vouloir retirer \"{{title}}\" de vos favoris ?",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "applyFor": "Postuler pour {{title}}",
+    "applyFormDescription": "Veuillez remplir le formulaire ci-dessous pour postuler à cette offre d'emploi.",
+    "applicationFormPlaceholder": "Formulaire de candidature à implémenter ici",
+    "sendApplication": "Envoyer la candidature"
+  },
+  "create": {
+    "success": {
+      "title": "Offre d'emploi créée avec succès",
+      "message": "L'offre d'emploi \"{{name}}\" a été créée avec succès."
+    }
+  },
+  "delete": {
+    "success": {
+      "title": "Suppression réussie",
+      "message": "L'offre d'emploi « {{name}} » a été supprimée avec succès."
+    },
+    "error": {
+      "title": "Échec de la suppression",
+      "message": "Une erreur s'est produite lors de la suppression de l'offre d'emploi \"{{name}}\". Veuillez réessayer plus tard."
+    }
+  },
+  "form": {
+    "isPublished": "Publié",
+    "expiresAt": "Expire Le",
+    "educationLevel": "Niveau d'éducation",
+    "experienceYears": "Année d'experience",
+    "jobOffer": "Offre d'emploi",
+    "search": "Rechercher",
+    "reset": "Réinitialiser",
+    "createJob": "Créer une offre d'emploi",
+    "updateJob": "Mettre à jour l'offre d'emploi",
+    "searchPlaceholder": "Titre, mots-clés...",
+    "title": "Titre du poste",
+    "description": "Description du poste",
+    "requirements": "Exigences",
+    "location": "Localisation",
+    "country": "Pays",
+    "region": "Région",
+    "city": "Ville",
+    "contractType": "Type de contrat",
+    "jobType": "Type d'emploi",
+    "jobLevel": "Niveau du poste",
+    "salary": "Salaire",
+    "salaryCurrency": "Devise",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "tags": "Étiquettes",
+    "selectContractType": "Sélectionnez le type de contrat",
+    "selectJobType": "Sélectionnez le type d'emploi",
+    "selectJobLevel": "Sélectionnez le niveau du poste",
+    "loading": "Chargement...",
+    "submit": "Soumettre",
+    "addTag": "Ajouter une étiquette",
+    "allTypes": "Tous les types",
+    "allCompanies": "Toutes les entreprises",
+    "company": "Entreprise",
+    "selectCompany": "Sélectionner l'entreprise",
+    "categoryId": "Catégorie",
+    "createdAt": "Date de création",
+    "expiredAt": "Date d'expiration",
+    "tagPatternError": "Les étiquettes ne peuvent contenir que des lettres, des chiffres, des tirets, des traits de soulignement et des espaces.",
+    "tagMinLengthError": "L'étiquette doit contenir au moins 2 caractères.",
+    "tagMaxLengthError": "L'étiquette ne peut pas dépasser 20 caractères.",
+    "removeTag": "Supprimer l'étiquette",
+    "options": {
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "errors": {
+      "fields": {
+        "title": {
+          "required": "Le titre est obligatoire.",
+          "minlength": "Le titre est trop court.",
+          "maxlength": "Le titre est trop long."
+        },
+        "description": {
+          "required": "La description est obligatoire.",
+          "minlength": "La description est trop courte."
+        },
+        "location": {
+          "required": "La localisation est obligatoire.",
+          "maxlength": "La localisation est trop longue."
+        },
+        "country": {
+          "required": "Le pays est obligatoire."
+        },
+        "city": {
+          "required": "La ville est obligatoire."
+        },
+        "contractType": {
+          "required": "Le type de contrat est obligatoire."
+        },
+        "jobType": {
+          "required": "Le type d'emploi est obligatoire."
+        },
+        "salary": {
+          "required": "Le salaire est obligatoire.",
+          "min": "Le salaire doit être d'au moins 0."
+        },
+        "salaryCurrency": {
+          "required": "La devise est obligatoire lorsqu'un salaire est renseigné."
+        },
+        "experienceYears": {
+          "required": "L'expérience est obligatoire.",
+          "min": "L'expérience doit être un nombre positif.",
+          "max": "L'expérience ne peut pas dépasser 50 ans."
+        },
+        "educationLevel": {
+          "required": "Le niveau d'éducation est obligatoire."
+        },
+        "jobLevel": {
+          "required": "Le niveau du poste est obligatoire."
+        },
+        "expiresAt": {
+          "required": "La date d'expiration est obligatoire."
+        },
+        "isPublished": {
+          "required": "Veuillez spécifier si l'emploi est publié."
+        },
+        "company": {
+          "required": "Veuillez sélectionner une entreprise."
+        }
+      }
+    }
+  },
+  "data": {
+    "industries": {
+      "TECHNOLOGIES": "Technologies",
+      "FINANCE": "Finance",
+      "HEALTH": "Santé",
+      "EDUCATION": "Éducation",
+      "COMMERCE": "Commerce",
+      "SERVICES": "Services",
+      "MANUFACTURING": "Fabrication",
+      "OTHER": "Autre"
+    },
+    "companySizes": {
+      "1_10_EMPLOYEES": "1-10 employés",
+      "11_50_EMPLOYEES": "11-50 employés",
+      "51_200_EMPLOYEES": "51-200 employés",
+      "201_500_EMPLOYEES": "201-500 employés",
+      "501_1000_EMPLOYEES": "501-1000 employés",
+      "1000_PLUS_EMPLOYEES": "1000+ employés"
+    },
+    "organizationTypes": {
+      "STARTUP": "Startup",
+      "SME": "PME",
+      "LARGE_ENTERPRISE": "Grande entreprise",
+      "NGO": "ONG",
+      "GOVERNMENT": "Gouvernement",
+      "OTHER": "Autre"
+    }
+  },
+  "contractType": {
+    "FULL_TIME": "Temps plein",
+    "PART_TIME": "Temps partiel",
+    "TEMPORARY": "Temporaire",
+    "FREELANCE": "Freelance",
+    "INTERNSHIP": "Stage",
+    "CONTRACT": "Contrat"
+  },
+  "jobType": {
+    "FULL_TIME": "Temps plein",
+    "PART_TIME": "Temps partiel",
+    "REMOTE": "Télétravail",
+    "ONSITE": "Sur site",
+    "HYBRID": "Hybride"
+  },
+  "jobLevel": {
+    "JUNIOR": "Junior",
+    "MID": "Intermédiaire",
+    "SENIOR": "Senior",
+    "LEAD": "Responsable",
+    "ENTRY_LEVEL": "Niveau débutant",
+    "MID_LEVEL": "Niveau intermédiaire",
+    "EXPERT_LEVEL": "Niveau expert"
+  },
+  "educationLevel": {
+    "HIGH_SCHOOL": "Lycée",
+    "INTERMEDIATE": "Niveau intermédiaire",
+    "GRADUATION": "Diplôme obtenu",
+    "BACHELOR_DEGREE": "Licence",
+    "MASTER_DEGREE": "Master"
+  },
+  "columns": {
+    "title": "Titre du poste",
+    "location": "Localisation",
+    "contractType": "Type de contrat",
+    "jobType": "Type d'emploi",
+    "salary": "Salaire",
+    "experience": "Expérience",
+    "educationLevel": "Niveau d'éducation",
+    "jobLevel": "Niveau du poste",
+    "publishedAt": "Publié le",
+    "expiresAt": "Expire le",
+    "status": "Statut",
+    "createdAt": "Date de création",
+    "expiredAt": "Date d'expiration",
+    "actions": "Actions"
+  },
+  "status": {
+    "ACTIVE": "Actif",
+    "INACTIVE": "Inactif",
+    "PENDING": "En attente",
+    "EXPIRED": "Expiré",
+    "DRAFT": "Brouillon"
+  },
+  "list": {
+    "title": "Offres d'emploi",
+    "description": "Gérez et consultez toutes vos offres d'emploi en un seul endroit.",
+    "noCompanies": "Aucune offre d'emploi trouvée.",
+    "startCreating": "Commencez par créer votre première offre d'emploi",
+    "createJob": "Créer une offre d'emploi",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "contractType": "Type de contrat",
+    "allTypes": "Tous les types",
+    "noData": "Aucune offre d'emploi disponible.",
+    "searchButton": "Rechercher",
+    "noJobsFound": "Aucun emploi trouvé",
+    "createFirstJob": "Commencez par créer votre premier emploi",
+    "deleteConfirmTitle": "Supprimer l'offre d'emploi",
+    "deleteConfirmMessage": "Voulez-vous vraiment supprimer cette offre d'emploi ?",
+    "deleteConfirmButton": "Supprimer",
+    "deleteCancelButton": "Annuler",
+    "back": "précédent",
+    "noJobIdFound": "Aucun ID d'emploi trouvé dans l'URL.",
+    "jobDetailsNotFound": "Détails de l'emploi introuvables.",
+    "errorLoadingJobDetails": "Erreur lors du chargement des détails de l'emploi.",
+    "confirmDeleteJob": "Êtes-vous sûr de vouloir supprimer cette offre d'emploi ?",
+    "errorDeletingJob": "Erreur lors de la suppression de l'offre d'emploi.",
+    "createPageTitle": "Créer une offre d'emploi",
+    "genericError": "Une erreur inattendue s'est produite."
+  },
+  "dialog": {
+    "operationSuccess": "L'opération a été effectuée avec succès",
+    "noDescriptionAvailable": "Aucune description disponible.",
+    "location": "Localisation",
+    "contractType": "Type de contrat",
+    "jobType": "Type d'emploi",
+    "jobLevel": "Niveau du poste",
+    "salary": "Salaire",
+    "close": "Fermer",
+    "success": "Succès",
+    "no_description": "Aucune description disponible.",
+    "industry": "Secteur",
+    "type": "Type",
+    "email": "Email",
+    "phone": "Téléphone",
+    "website": "Site web"
+  },
+  "details": {
+    "title": "Détail de l'emploi",
+    "noCompanyInfo": "Aucune information sur l'entreprise disponible.",
+    "expire": "Date d'expiration",
+    "noExpireDate": "Date d'expiration non disponible",
+    "organizationType": "Type d'organisation",
+    "companySize": "Taille de l'entreprise",
+    "phone": "Numéro de téléphone",
+    "email": "Adresse email",
+    "website": "Site web",
+    "more": "En savoir plus",
+    "posted": "Date de publication",
+    "expireIn": "Date d'expiration",
+    "salary": "Salaire",
+    "education": "Niveau d'éducation",
+    "location": "Localisation",
+    "jobType": "Type d'emploi",
+    "experience": "Expérience requise"
+  },
+  "banner": {
+    "jobs": "Détails de l'emploi",
+    "subtitle": "Trouvez l'opportunité parfaite pour votre carrière"
+  },
+  "company": {
+    "name": "Nom de l'entreprise"
+  },
+  "job": {
+    "title": "Titre du poste",
+    "description": "Description du poste",
+    "responsibilities": [
+      "Responsabilité 1",
+      "Responsabilité 2",
+      "Responsabilité 3"
+    ]
+  }
+}

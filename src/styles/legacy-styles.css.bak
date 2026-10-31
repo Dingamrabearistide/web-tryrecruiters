@@ -1,0 +1,423 @@
+/* Legacy TryRecruiters styles (pre-redesign).
+   Plain CSS version — all Tailwind @apply directives resolved.
+   Imported via styleUrls in components that haven't been redesigned. */
+
+@keyframes detailsIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    max-height: 900px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input:focus,
+select:focus {
+  outline: none !important;
+  /* border: none !important; */
+}
+
+.navbar-width {
+  width: calc(100% - 250px);
+}
+
+.sidebar-active-menu {
+  background-color: #bde5ff;
+  border-left: 3px solid #1d9bed;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-width {
+    width: 100vw;
+  }
+
+  /* .sidebar-responsive {
+    top: 80px;
+  } */
+}
+
+#search {
+  padding-left: 2.5rem;
+}
+
+.iti {
+  width: 100% !important;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.cdk-global-scrollblock {
+  position: initial !important;
+  overflow: hidden !important;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, sans-serif;
+  color: #4b5563; /* text-gray-600 */
+}
+
+/***
+GENERIC STYLES
+****/
+
+/* --- GLOBAL STYLES POUR LES BOUTONS ET FORMULAIRES --- */
+
+@layer base {
+  .app-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .app-container-inner {
+    max-width: 1800px;
+  }
+
+  button {
+    min-width: 70px;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.125rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: #d1d5db;
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  button.app-primary {
+    background-color: #1d9bed;
+    color: white;
+    padding: 0.375rem 1rem;
+  }
+
+  /* button.app-primary:hover {
+  background-color: #1d9bed;
+} */
+
+  button.app-danger {
+    background-color: #f87171;
+    color: #fff;
+  }
+
+  button.app-danger:hover {
+    background-color: #dc2626;
+  }
+
+  button:disabled {
+    color: #171717;
+    background-color: #e4e4e4;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .alert-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-style: italic;
+  }
+
+  /**
+GENERIC FORM
+**/
+  select {
+    height: fit-content !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="file"],
+  select,
+  textarea {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    outline: none;
+    border-color: #ccc;
+    color: #374151;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  @media (min-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="file"],
+    select,
+    textarea {
+      width: auto;
+    }
+  }
+
+  input::placeholder {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline-width: 2px;
+    outline-color: #33a5f1;
+    box-shadow: 0 0 0 2px #1d9bed;
+    border-color: #1d9bed;
+  }
+
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+
+  /* textarea {
+  resize: vertical;
+  min-height: 100px;
+} */
+
+  /***
+DATATABLE
+**/
+
+  thead th {
+    /* datatable header */
+  }
+}
+
+.app-primary {
+  background-color: #1d9bed;
+  color: white;
+  /* padding: 0.375rem 1rem; */
+  border-radius: 0.25rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.app-success {
+  background-color: #55ca63;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.bg-primary {
+  background-color: #1d9bed;
+}
+
+.text-primary {
+  color: #1d9bed;
+}
+
+.app-primary:hover {
+  background-color: #1d9bed;
+}
+
+.text-btn {
+  color: white;
+}
+
+.icon-btn {
+  color: white;
+}
+
+.text-white-flex {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Bouton avec icône - style universel */
+.btn-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f01f10;
+  color: #f01f10;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #b9b9b9;
+  color: #b9b9b9;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-profile:hover {
+  background-color: #dbeafe;
+}
+
+/* Style pour le texte à l'intérieur */
+.btn-profile .btn-text {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Style pour l'icône */
+.btn-profile .btn-icon {
+  color: white;
+  font-size: 0.875rem;
+}
+
+table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+table thead tr {
+  background-color: #1d9bed;
+}
+
+table th {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+table td {
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.fa-pencil,
+.fa-pencil-alt,
+.fa-eye-alt {
+  color: #1d9bed;
+}
+
+.fa-trash,
+.fa-trash-alt {
+  color: #f01f10;
+}
+
+.app-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  background-color: #f9fafb;
+  color: #6b7280;
+  box-shadow: inset 0 0 0 1px #f3f4f6;
+}
+
+.app-badge--primary {
+  /* bleu */
+  background-color: #dbeafe;
+  color: #2563eb;
+  box-shadow: inset 0 0 0 1px #bfdbfe;
+}
+
+.app-badge--success {
+  /* vert */
+  background-color: #f0fdf4;
+  color: #22c55e;
+  box-shadow: inset 0 0 0 1px #dcfce7;
+}
+
+.app-badge--danger {
+  /* rouge */
+  background-color: #fef2f2;
+  color: #ef4444;
+  box-shadow: inset 0 0 0 1px #fee2e2;
+}
+
+.iti__tel-input {
+  width: 100%;
+}

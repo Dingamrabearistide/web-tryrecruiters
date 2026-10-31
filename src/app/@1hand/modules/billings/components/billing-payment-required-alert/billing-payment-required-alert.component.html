@@ -1,0 +1,24 @@
+<section
+  class="billing-payment-alert"
+  role="alert"
+  aria-live="polite"
+  [attr.data-reason]="reason"
+>
+  <div class="billing-payment-alert__icon" aria-hidden="true">
+    <i class="fas fa-triangle-exclamation"></i>
+  </div>
+
+  <div class="billing-payment-alert__content">
+    <h2 class="billing-payment-alert__title">{{ title }}</h2>
+    <p class="billing-payment-alert__message">{{ message }}</p>
+  </div>
+
+  <button
+    type="button"
+    class="billing-payment-alert__action"
+    [disabled]="loading"
+    (click)="action.emit()"
+  >
+    {{ actionLabel }}
+  </button>
+</section>

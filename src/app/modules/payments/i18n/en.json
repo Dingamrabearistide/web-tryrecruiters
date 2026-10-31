@@ -1,0 +1,26 @@
+{
+  "pricing": {
+    "title": "Choose Your Recruitment Plan",
+    "subtitle": "Post your job offers and recruit the best talents",
+    "mainTitle": "Choose Your Plan",
+    "bestValue": "Best Value",
+    "featured": "Popular",
+    "free": "Free",
+    "processing": "Processing...",
+    "includes": "What's Included",
+    "success": "Success!",
+    "error": "Error",
+    "activatingPlan": "Activating Your Plan",
+    "currentPlan": "Current Plan",
+    "howItWorks": "How does it work?",
+    "paymentFooter": "We accept payments by mobile money, credit cards, debit cards, national or international bank transfers, and PayPal.",
+    "paymentMethods": "We accept payments by mobile money, credit cards, debit cards, national or international bank transfers, and PayPal."
+  },
+  "errors": {
+    "notAuthenticated": "You must be logged in to subscribe to a plan",
+    "subscriptionFailed": "An error occurred while creating your subscription. Please try again."
+  },
+  "success": {
+    "subscriptionCreated": "Your subscription has been created successfully!"
+  }
+}

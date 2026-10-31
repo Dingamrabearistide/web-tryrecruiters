@@ -1,0 +1,2326 @@
+{
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "loading": "Loading",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "reset": "Reset",
+    "yes": "Yes",
+    "no": "No",
+    "noData": "No data",
+    "showMore": "Show more",
+    "previous": "Previous",
+    "or": "or",
+    "actions": "Actions",
+    "status": "Status",
+    "name": "Name",
+    "title": "Title",
+    "email": "Email",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "role": "Role",
+    "company": "Company",
+    "active": "Active",
+    "all": "All",
+    "confirmed": "Confirmed",
+    "notConfirmed": "Not confirmed",
+    "published": "Published",
+    "draft": "Draft",
+    "deleted": "Deleted",
+    "bytes": "bytes"
+  },
+  "noItems": "No data",
+  "options": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "general": {
+    "genericError": "An error occurred. Please try again.",
+    "view": "View",
+    "edit": "Edit",
+    "actions": "Actions",
+    "seeMore": "See more",
+    "show_more": "Show more",
+    "show_less": "Show less",
+    "loading": "Loading",
+    "delete": "Delete",
+    "upload": "Upload file",
+    "cancel": "cancel",
+    "ok": "Ok",
+    "close": "Close",
+    "confirm": "Confirm",
+    "save": "Save",
+    "back": "previous",
+    "notSpecified": "Not Specified",
+    "paginator": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "profile": {
+      "experience": {
+        "addTitle": "Add Experience",
+        "editTitle": "Edit Experience"
+      },
+      "education": {
+        "addTitle": "Add Education",
+        "editTitle": "Edit Education"
+      },
+      "certification": {
+        "addTitle": "Add Certification",
+        "editTitle": "Edit Certification"
+      },
+      "skill": {
+        "addTitle": "Add Skill",
+        "editTitle": "Edit Skill"
+      },
+      "language": {
+        "addTitle": "Add Language",
+        "editTitle": "Edit Language"
+      },
+      "form": {
+        "title": {
+          "label": "Title"
+        },
+        "company": {
+          "label": "Company"
+        },
+        "period": {
+          "label": "Period",
+          "placeholder": "e.g., 2020 - Present"
+        },
+        "location": {
+          "label": "Location"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "degree": {
+          "label": "Degree / Field of Study"
+        },
+        "school": {
+          "label": "School / University"
+        },
+        "certName": {
+          "label": "Certification Name"
+        },
+        "issuer": {
+          "label": "Issuing Organization"
+        },
+        "date": {
+          "label": "Date",
+          "placeholder": "e.g., June 2022"
+        },
+        "skillName": {
+          "label": "Skill Name"
+        },
+        "languageName": {
+          "label": "Language"
+        },
+        "level": {
+          "label": "Proficiency Level"
+        }
+      },
+      "create": {
+        "success": {
+          "title": "Item Created",
+          "message": "The new {type} has been added successfully."
+        },
+        "error": {
+          "title": "Creation Failed"
+        }
+      },
+      "update": {
+        "success": {
+          "title": "Item Updated",
+          "message": "The {type} has been updated successfully."
+        },
+        "error": {
+          "title": "Update Failed"
+        }
+      },
+      "delete": {
+        "confirm": {
+          "title": "Confirm Deletion",
+          "message": "Are you sure you want to permanently delete this item? This action cannot be undone."
+        },
+        "success": {
+          "title": "Item Deleted",
+          "message": "The selected {type} has been deleted."
+        },
+        "error": {
+          "title": "Deletion Failed"
+        }
+      },
+      "errors": {
+        "load": "There was a problem loading the profile. Please try again later.",
+        "save": "Could not save the item. Please check the form for errors and try again.",
+        "delete": "Could not delete the item. Please try again."
+      }
+    },
+    "roles": {
+      "CANDIDATE": "Candidate",
+      "RECRUITER": "Employer",
+      "PLATFORM_ADMIN": "Administrator",
+      "SUPER_ADMIN": "Super Administrator"
+    },
+    "avatarDropdown": {
+      "dashboard": "Dashboard",
+      "candidateSpace": "Candidate Space",
+      "recruiterSpace": "Recruiter Space",
+      "adminPanel": "Admin Panel",
+      "account": "My account",
+      "settings": "My settings",
+      "logout": "Log out"
+    }
+  },
+  "enums": {
+    "boolean": {
+      "true": "Yes",
+      "false": "No",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "gender": {
+      "MALE": "Male",
+      "FEMALE": "Female"
+    }
+  },
+  "auth": {
+    "genericError": "An error occurred. Please try again.",
+    "sessionExpiredMessage": "Your session has expired. Please log in again for security reasons."
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "jobsoffers": "Job Offers",
+    "application": "Applications",
+    "applications": "Applications",
+    "categories": "Categories",
+    "profile": "Profiles",
+    "interviews": "Interviews",
+    "payement": "Payment",
+    "payements": "Payments",
+    "mySubscription": "My subscription",
+    "subscriptionPlans": "Subscription plans",
+    "parametres": "Settings"
+  },
+  "profilePage": {
+    "certifications": {
+      "title": "Certifications",
+      "addCertification": "Add Certification",
+      "noCertifications": "No certifications added",
+      "dialog": {
+        "add": {
+          "title": "Add Certification"
+        },
+        "edit": {
+          "title": "Edit Certification"
+        }
+      }
+    }
+  },
+  "profile": {
+    "form": {
+      "certificationName": {
+        "label": "Certification Name",
+        "placeholder": "e.g., AWS Certified Solutions Architect"
+      },
+      "fileTypeLabel": "Type",
+      "fileSizeLabel": "Size",
+      "issuer": {
+        "label": "Issuing Organization",
+        "placeholder": "e.g., Amazon Web Services"
+      },
+      "certificationDate": {
+        "label": "Issue Date",
+        "placeholder": "Select date"
+      },
+      "expiryDate": {
+        "label": "Expiration Date",
+        "placeholder": "Select date (optional)"
+      },
+      "credentialId": {
+        "label": "Credential ID",
+        "placeholder": "e.g., AWS-SAA-C03-123456"
+      },
+      "credentialUrl": {
+        "label": "Verification URL",
+        "placeholder": "e.g., https://aws.amazon.com/verification/123456"
+      }
+    },
+    "errors": {
+      "certificationName": {
+        "required": "Certification name is required",
+        "maxlength120": "Name cannot exceed 120 characters"
+      },
+      "issuer": {
+        "required": "Issuing organization is required",
+        "maxlength120": "Issuing organization cannot exceed 120 characters"
+      },
+      "certificationDate": {
+        "required": "Issue date is required",
+        "iso8601": "Invalid date format"
+      },
+      "expiryDate": {
+        "iso8601": "Invalid date format"
+      },
+      "credentialId": {
+        "maxlength50": "Credential ID cannot exceed 50 characters"
+      }
+    }
+  },
+  "candidates": {
+    "create": {
+      "success": {
+        "title": "Certification Added",
+        "message": "The certification {name} has been added successfully"
+      }
+    },
+    "hero": {
+      "badge": "Candidate directory",
+      "title": "Find qualified candidates faster.",
+      "subtitle": "Browse verified profiles, review skills, compare experience and connect with candidates who are ready for their next role.",
+      "activeCandidates": "Active candidates",
+      "openToWork": "Open to work",
+      "verifiedProfiles": "Verified profiles"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name, role, skill or keyword",
+      "allRoles": "All roles",
+      "allLocations": "All locations",
+      "allAvailability": "All availability",
+      "reset": "Reset"
+    },
+    "results": {
+      "talentPool": "Talent pool",
+      "candidatesFound": "candidates found"
+    },
+    "sort": {
+      "match": "Sort by match",
+      "experience": "Sort by experience",
+      "recent": "Recently active",
+      "name": "Sort by name"
+    },
+    "empty": {
+      "title": "No candidates found",
+      "description": "Try adjusting your filters or searching with broader keywords.",
+      "reset": "Reset filters"
+    },
+    "card": {
+      "verified": "Verified",
+      "yearsExp": "yrs exp.",
+      "viewProfile": "View profile",
+      "profile": "Profile"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "time": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "daysAgo": "days ago",
+      "monthsAgo": "months ago"
+    }
+  },
+  "candidateDetails": {
+    "addBio": "No biography added",
+    "addResume": "No resume uploaded",
+    "notSpecified": "Not specified",
+    "noBiography": "No biography",
+    "noResume": "No resume",
+    "noSkills": "No skills",
+    "addSkills": "No skills added",
+    "noTools": "No tools",
+    "addTools": "No tools added",
+    "noLanguages": "No languages",
+    "addLanguages": "No languages added",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert",
+    "professional": "Professional",
+    "native": "Native",
+    "backToCandidates": "Back to candidates",
+    "verifiedProfile": "Verified profile",
+    "openNow": "Open now",
+    "yearsExp": "Years exp.",
+    "skillsCount": "Skills",
+    "languagesCount": "Languages",
+    "message": "Message",
+    "save": "Save",
+    "candidateSummary": "Candidate summary",
+    "overviewTitle": "Professional overview",
+    "experienceLabel": "Experience",
+    "educationLabel": "Education",
+    "diplomas": "diplomas",
+    "skillsLabel": "Skills",
+    "technicalSkills": "skills",
+    "overview": "Overview",
+    "experience": "Experience",
+    "portfolio": "Portfolio",
+    "workExperience": "Work experience",
+    "professionalTimeline": "Professional timeline",
+    "present": "Present",
+    "skillsExpertise": "Skills & expertise",
+    "technicalStrengths": "Skills",
+    "resumeAndDocuments": "Resume & documents",
+    "download": "Download",
+    "messageCandidate": "Message candidate",
+    "inviteInterview": "Invite to interview",
+    "downloadCV": "Download CV",
+    "profileInformation": "Profile information",
+    "contact": "Contact",
+    "topSkills": "Top skills",
+    "verified": "Verified",
+    "activeRecently": "Active recently",
+    "skills": "Skills",
+    "languages": "Languages",
+    "education": "Education",
+    "noExperience": "No work experience listed",
+    "tools": "Tools",
+    "pdf": "PDF",
+    "scheduleCall": "Schedule a call",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "email": "Email",
+    "meetLink": "Meeting link"
+  },
+  "formErrors": {
+    "dateEquals": "Date should not be equals",
+    "fields": {
+      "login": {
+        "required": "Email is required.",
+        "email": "Please enter a valid email address.",
+        "maxlength": "Email cannot exceed {{length}} characters."
+      },
+      "email": {
+        "required": "Email is required.",
+        "email": "Please enter a valid email address.",
+        "maxlength": "Email cannot exceed {{length}} characters."
+      },
+      "code": {
+        "required": "Verification code is required.",
+        "minlength": "The code must be at least {{length}} digits.",
+        "maxlength": "The code cannot exceed {{length}} digits.",
+        "pattern": "The code must contain only digits."
+      },
+      "phone": {
+        "required": "Phone number is required.",
+        "validatePhoneNumber": "Invalid phone number format."
+      },
+      "password": {
+        "required": "Password is required.",
+        "minlength": "Password must be at least {{length}} characters.",
+        "maxlength": "Password cannot exceed {{length}} characters.",
+        "pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+      },
+      "passwordConfirmation": {
+        "required": "Password confirmation is required.",
+        "mismatch": "Passwords do not match."
+      },
+      "acceptTerms": {
+        "required": "You must accept the terms and conditions."
+      },
+      "firstName": {
+        "required": "First name is required.",
+        "maxlength": "First name cannot exceed {{length}} characters.",
+        "pattern": "First name contains invalid characters."
+      },
+      "lastName": {
+        "required": "Last name is required.",
+        "maxlength": "Last name cannot exceed {{length}} characters.",
+        "pattern": "Last name contains invalid characters."
+      },
+      "country": {
+        "required": "Country is required.",
+        "maxlength": "Country name cannot exceed {{length}} characters."
+      },
+      "city": {
+        "required": "City is required.",
+        "maxlength": "City name cannot exceed {{length}} characters.",
+        "pattern": "City name contains invalid characters."
+      }
+    },
+    "required": "This field is required.",
+    "email": "Please enter a valid email address.",
+    "minlength": "Minimum length is {{min}} characters.",
+    "maxlength": "Maximum length is {{max}} characters.",
+    "pattern": "Invalid format.",
+    "invalid": "Invalid field.",
+    "invalidValue": "Invalid value."
+  },
+  "preferences": {
+    "title": "Preferences",
+    "menu": {
+      "notifications": "Notifications",
+      "navigation": "Navigation",
+      "home": "Home",
+      "appearance": "Appearance",
+      "messages": "Messages and media",
+      "language": "Language and region",
+      "accessibility": "Accessibility",
+      "markAsRead": "Mark as read",
+      "audioVideo": "Audio and video",
+      "salesforce": "Salesforce",
+      "connectedAccounts": "Connected accounts",
+      "privacy": "Privacy and visibility",
+      "advanced": "Advanced"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "about": "About notifications",
+      "notifyMeAbout": "Notify me about...",
+      "allNewMessages": "All new messages",
+      "directMessages": "Direct messages, mentions and keywords",
+      "nothing": "Nothing",
+      "differentMobileSettings": "Use different settings for my mobile devices",
+      "huddleStarts": "Notify me when a huddle starts in one of my channels",
+      "threadReplies": "Notify me of replies to threads I'm following",
+      "myKeywords": "My keywords",
+      "keywordsBadge": "Show a badge",
+      "keywordsDescription": "in my channel list when someone uses one of my keywords:",
+      "keywordsPlaceholder": "Enter your keywords here...",
+      "keywordsHelp": "Use commas to separate each keyword. Keywords are not case sensitive."
+    },
+    "navigation": {
+      "title": "Navigation",
+      "content": "Configure your navigation preferences here."
+    },
+    "home": {
+      "title": "Home",
+      "content": "Configure your home page here."
+    },
+    "appearance": {
+      "title": "Appearance",
+      "content": "Customize the application appearance here."
+    },
+    "messages": {
+      "title": "Messages and media",
+      "content": "Manage your messages and media preferences here."
+    },
+    "language": {
+      "title": "Language and region",
+      "content": "Configure your language and region here."
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "content": "Configure your accessibility options here."
+    },
+    "markAsRead": {
+      "title": "Mark as read",
+      "content": "Manage your reading preferences here."
+    },
+    "audioVideo": {
+      "title": "Audio and video",
+      "content": "Configure your audio and video preferences here."
+    },
+    "salesforce": {
+      "title": "Salesforce",
+      "content": "Manage your Salesforce integration here."
+    },
+    "connectedAccounts": {
+      "title": "Connected accounts",
+      "content": "Manage your connected accounts here."
+    },
+    "privacy": {
+      "title": "Privacy and visibility",
+      "content": "Configure your privacy settings here."
+    },
+    "advanced": {
+      "title": "Advanced",
+      "content": "Advanced options and technical settings."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account and security preferences",
+    "tabs": {
+      "profile": "Profile",
+      "password": "Password",
+      "twoFactor": "Two-Factor Authentication",
+      "account": "Account Settings",
+      "danger": "Danger Zone"
+    },
+    "profile": {
+      "title": "Profile Information",
+      "description": "Update your personal and contact information",
+      "photo": "Profile Photo",
+      "changePhoto": "Change Photo",
+      "basicInfo": "Basic Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phoneNumber": "Phone Number",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "country": "Country",
+      "city": "City",
+      "region": "Region",
+      "errors": {
+        "expiryDate": {
+          "required": "Date is required",
+          "mustBeFuture": "Expiration date must be in the future",
+          "mustBeAfterIssueDate": "Expiration date must be after the issue date",
+          "iso8601": "Invalid date format"
+        }
+      },
+      "genderOptions": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "profession": "Profession",
+      "placeOfBirth": "Place of birth",
+      "nationality": "Nationality",
+      "placeOfBirthPlaceholder": "e.g., Douala",
+      "professionPlaceholder": "e.g., Software Engineer"
+    },
+    "password": {
+      "title": "Change Password",
+      "description": "Ensure your account is using a long, random password to stay secure",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password"
+    },
+    "twoFactor": {
+      "title": "Two-Factor Authentication",
+      "description": "Add an additional layer of security to your account",
+      "enabled": "Enable Two-Factor Authentication",
+      "method": "Notification Method",
+      "methodOptions": {
+        "email": "Email",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "account": {
+      "title": "Account Settings",
+      "description": "Manage your notification and communication preferences",
+      "emailNotifications": "Email Notifications",
+      "smsNotifications": "SMS Notifications",
+      "marketingEmails": "Marketing Emails"
+    },
+    "danger": {
+      "title": "Danger Zone",
+      "description": "Irreversible actions that will permanently affect your account"
+    },
+    "closeAccount": {
+      "title": "Close Account",
+      "description": "Once you delete your account, there is no going back. Please be certain.",
+      "button": "Close Account",
+      "confirmTitle": "Confirm Account Closure",
+      "confirmMessage": "Are you sure you want to permanently close your account? This action cannot be undone.",
+      "confirm": "Yes, close account",
+      "warning": {
+        "title": "Warning: This action is irreversible",
+        "point1": "All your data will be permanently deleted",
+        "point2": "You will lose access to all your projects and applications",
+        "point3": "This action cannot be undone"
+      }
+    },
+    "messages": {
+      "profileUpdated": "Profile updated successfully",
+      "profileUpdateError": "Error updating profile",
+      "passwordChanged": "Password changed successfully",
+      "passwordChangeError": "Error changing password",
+      "passwordMismatch": "Passwords do not match",
+      "twoFactorUpdated": "2FA settings updated successfully",
+      "twoFactorUpdateError": "Error updating 2FA settings",
+      "accountSettingsUpdated": "Account settings updated successfully",
+      "accountSettingsUpdateError": "Error updating account settings",
+      "accountClosed": "Account closed successfully",
+      "accountCloseError": "Error closing account",
+      "photoUpdated": "Profile photo updated successfully",
+      "photoUpdateError": "Error updating photo. Please try again."
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Invalid email address",
+      "maxLength": "This field cannot exceed {{max}} characters",
+      "minLength": "This field must contain at least {{min}} characters",
+      "pattern": "Invalid format",
+      "invalidValue": "Invalid value"
+    }
+  },
+  "users": {
+    "common": {
+      "previous": "Previous"
+    },
+    "errors": {
+      "noUserIdInUrl": "No user ID found in the URL.",
+      "userNotFound": "User details not found.",
+      "loadingError": "Error loading user details."
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this user?",
+      "error": "Error deleting user."
+    },
+    "emailVerified": "Email verified",
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    },
+    "details": {
+      "personalInfo": "Personal Information",
+      "accountInfo": "Account Information",
+      "statusOverview": "Status Overview",
+      "companyInfo": "Company Information",
+      "notes": "Notes"
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "address": "Address",
+      "createdAt": "Created At",
+      "lastLogin": "Last Login",
+      "emailConfirmed": "Email Confirmed",
+      "failedAttempts": "Failed Attempts",
+      "status": "Status",
+      "role": "Role",
+      "verified": "Verified",
+      "companyName": "Company Name",
+      "catchPhrase": "Slogan",
+      "business": "Business"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "confirmed": "Confirmed",
+      "notConfirmed": "Not Confirmed",
+      "verified": "Verified",
+      "pending": "Pending"
+    }
+  },
+  "companies": {
+    "title": "Companies",
+    "noData": "No companies found",
+    "errors": {
+      "loadingError": "Error loading companies"
+    },
+    "form": {
+      "errors": {
+        "fields": {
+          "website": {
+            "required": "Website is required",
+            "pattern": "Please enter a valid website URL (starts with http or https)"
+          }
+        },
+        "minLength": "Minimum length is {{min}} characters",
+        "maxLength": "Maximum length is {{max}} characters"
+      }
+    },
+    "hero": {
+      "badge": "Company directory",
+      "title": "Explore companies hiring now.",
+      "subtitle": "Discover trusted employers, review their open roles, and follow the companies that match your career goals.",
+      "registeredCompanies": "Registered companies",
+      "activeRecruiters": "Active recruiters",
+      "openPositions": "Open positions"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by company, keyword or description",
+      "allIndustries": "All industries",
+      "allLocations": "All locations",
+      "allSizes": "All sizes",
+      "search": "Search",
+      "reset": "Reset"
+    },
+    "results": {
+      "employers": "Employers",
+      "companiesFound": "companies found"
+    },
+    "sort": {
+      "jobs": "Sort by open jobs",
+      "rating": "Sort by rating",
+      "name": "Sort by name"
+    },
+    "empty": {
+      "title": "No companies found",
+      "description": "Try adjusting your filters or searching with broader keywords.",
+      "reset": "Reset filters"
+    },
+    "card": {
+      "jobs": "jobs",
+      "openJobs": "open jobs",
+      "employees": "employees",
+      "details": "Details",
+      "viewCompany": "View company"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "jobOffers": {
+    "title": "Job Offers",
+    "noData": "No job offers found",
+    "errors": {
+      "loadingError": "Error loading job offers"
+    }
+  },
+  "interviews": {
+    "title": "Interviews",
+    "noData": "No interviews found",
+    "errors": {
+      "type": {
+        "required": "Interview type is required"
+      },
+      "scheduledAt": {
+        "required": "Date and time are required"
+      },
+      "durationMin": {
+        "required": "Duration is required"
+      },
+      "timezone": {
+        "required": "Timezone is required"
+      },
+      "meetUrl": {
+        "required": "Google Meet link is required",
+        "invalid": "Please enter a valid Google Meet link"
+      }
+    },
+    "details": {
+      "back": "Back",
+      "title": "Interview Details",
+      "description": "View detailed information about this interview",
+      "informationTitle": "Interview Information",
+      "jobOfferTitle": "Job Offer",
+      "applicationTitle": "Associated Application",
+      "candidateFallback": "Candidate",
+      "jobOffer": {
+        "titleLabel": "Job Title",
+        "descriptionLabel": "Description",
+        "locationLabel": "Location",
+        "contractTypeLabel": "Contract Type",
+        "jobTypeLabel": "Job Type",
+        "salaryLabel": "Salary",
+        "experienceLabel": "Experience",
+        "yearsLabel": "years",
+        "educationLevelLabel": "Education Level"
+      },
+      "candidatePhoto": "Candidate photo",
+      "companyLogo": "Company logo",
+      "application": {
+        "idLabel": "Application ID",
+        "statusLabel": "Status",
+        "submittedAtLabel": "Submitted On",
+        "messageLabel": "Cover Letter"
+      },
+      "actions": {
+        "joinInterview": "Join Interview"
+      }
+    },
+    "list": {
+      "columns": {
+        "scheduledAt": "Scheduled At",
+        "duration": "Duration",
+        "meetUrl": "Meeting Link",
+        "candidate": "Candidate",
+        "company": "Company",
+        "actions": "Actions"
+      }
+    },
+    "scheduleInterview": "Schedule Interview",
+    "interviewAlreadyScheduled": "An interview has already been scheduled for this application",
+    "fillFormToSchedule": "Fill out the form below to schedule an interview",
+    "candidate": "Candidate",
+    "importantNote": "Important Note",
+    "candidateWillReceiveEmail": "The candidate will receive a confirmation email with all interview details.",
+    "scheduleButton": "Schedule Interview",
+    "form": {
+      "type": {
+        "label": "Interview Type",
+        "options": {
+          "googleMeet": "Google Meet",
+          "dailyVideoCall": "Integrated Video Call"
+        }
+      },
+      "scheduledAt": {
+        "label": "Date and Time",
+        "placeholder": "Select date and time"
+      },
+      "durationMin": {
+        "label": "Duration",
+        "options": {
+          "15min": "15 minutes",
+          "30min": "30 minutes",
+          "45min": "45 minutes",
+          "1h": "1 hour",
+          "1h30": "1 hour 30",
+          "2h": "2 hours"
+        }
+      },
+      "timezone": {
+        "label": "Timezone",
+        "options": {
+          "africaDakar": "Africa/Dakar (GMT+0)",
+          "africaAbidjan": "Africa/Abidjan (GMT+0)",
+          "africaDouala": "Africa/Douala (GMT+1)",
+          "africaCasablanca": "Africa/Casablanca (GMT+1)",
+          "europeParis": "Europe/Paris (GMT+1)",
+          "europeLondon": "Europe/London (GMT+0)",
+          "americaNewYork": "America/New York (GMT-5)",
+          "americaLosAngeles": "America/Los Angeles (GMT-8)",
+          "asiaTokyo": "Asia/Tokyo (GMT+9)",
+          "asiaDubai": "Asia/Dubai (GMT+4)",
+          "utc": "UTC (GMT+0)"
+        }
+      },
+      "meetUrl": {
+        "label": "Google Meet Link",
+        "placeholder": "https://meet.google.com/xxx-xxxx-xxx",
+        "helpText": "Required only if you select 'Google Meet' as interview type"
+      },
+      "notes": {
+        "label": "Notes / Message for Candidate",
+        "placeholder": "Add additional information..."
+      }
+    },
+    "notification": {
+      "interviewInvitation": {
+        "subject": "Interview Invitation for {{jobTitle}}",
+        "body": "Hello {{firstName}} {{lastName}},\n\nWe are pleased to invite you to an interview for the position of {{jobTitle}}.\n\nPlease find the interview details enclosed.\n\nBest regards"
+      }
+    },
+    "create": {
+      "success": {
+        "title": "Interview Scheduled",
+        "message": "The interview has been successfully scheduled. The candidate will receive a confirmation email."
+      },
+      "error": {
+        "title": "Error",
+        "message": "An error occurred while scheduling the interview"
+      }
+    }
+  },
+  "applications": {
+    "title": "Applications",
+    "noData": "No applications found",
+    "errors": {
+      "loadingError": "Error loading applications",
+      "noJobOfferId": "Job offer ID is missing",
+      "loadJobOfferFailed": "Failed to load job offer"
+    },
+    "guest": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneRequired": "Phone number is required"
+    },
+    "form": {
+      "resume": "Resume",
+      "resumeMedia": "Upload Resume",
+      "selectResume": "Select a resume",
+      "uploadNewResume": "Upload new resume",
+      "message": "Cover letter",
+      "messagePlaceholder": "Explain why you are the ideal candidate for this position...",
+      "jobOffer": "Job offer",
+      "selectJobOffer": "Select a job offer",
+      "candidate": "Candidate",
+      "selectCandidate": "Select a candidate",
+      "status": "Status",
+      "selectStatus": "Select a status",
+      "noResumeAvailable": "No resume available to apply",
+      "uploadResumeFirst": "You must first upload a resume to be able to apply for this job offer.",
+      "manageResumes": "Manage my resumes",
+      "apply": "Apply",
+      "errors": {
+        "required": "This field is required",
+        "maxlength2000": "The message cannot exceed 2000 characters",
+        "fields": {
+          "resumeId": {
+            "required": "Please select a resume"
+          },
+          "message": {
+            "maxlength": "Message cannot exceed {{length}} characters"
+          },
+          "jobOfferId": {
+            "required": "Job offer is required"
+          }
+        }
+      }
+    },
+    "apply": {
+      "title": "Apply for Position",
+      "loading": "Loading job offer...",
+      "errorTitle": "Error Loading Job Offer",
+      "backToOffers": "Back to Job Offers",
+      "applyingFor": "Applying for",
+      "showMore": "Show more details",
+      "showLess": "Show less details",
+      "formTitle": "Application Form",
+      "formDescription": "Complete the form below to apply for this position",
+      "tipsTitle": "Application Tips",
+      "tip1": "Customize your cover letter for each application",
+      "tip2": "Highlight relevant skills and experiences",
+      "tip3": "Proofread your application before submitting",
+      "tip4": "Be professional and concise in your message",
+      "secureApplication": "Secure application",
+      "secureDescription": "Your data is protected and shared only with this employer.",
+      "salary": "Salary",
+      "experience": "Experience",
+      "posted": "Posted",
+      "step1": "Step 1",
+      "step2": "Step 2",
+      "step3": "Step 3",
+      "stepProfile": "Profile",
+      "stepCV": "CV upload",
+      "stepMotivation": "Motivation",
+      "progressStatus": "Application status",
+      "completeProfile": "Complete your profile",
+      "progress": "Progress",
+      "progressProfile": "Personal information",
+      "progressCV": "CV uploaded",
+      "progressMotivation": "Motivation letter",
+      "progressConsent": "Consent confirmed",
+      "talentPool": "Talent pool",
+      "getDiscovered": "Get discovered faster",
+      "talentPoolDescription": "Create a candidate profile so verified recruiters can contact you for similar opportunities.",
+      "createProfile": "Create profile"
+    },
+    "guestSuccess": {
+      "title": "Application Submitted Successfully",
+      "message": "Your application has been sent. A confirmation email has been sent to {email}.",
+      "backToJobs": "Back to Job Offers"
+    },
+    "loginRequired": {
+      "title": "Login Required",
+      "message": "You must be logged in to apply for this job offer."
+    },
+    "success": {
+      "title": "Application Sent",
+      "message": "Your application has been successfully submitted. The recruiter will review it shortly.",
+      "viewApplications": "View My Applications",
+      "backToJobs": "Back to Job Offers"
+    },
+    "error": {
+      "title": "Error"
+    },
+    "create": {
+      "success": {
+        "title": "Application sent",
+        "message": "Your application for {{name}} has been sent successfully"
+      }
+    },
+    "status": {
+      "PENDING": "Pending",
+      "REVIEWED": "Reviewed",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected",
+      "WITHDRAWN": "Withdrawn"
+    },
+    "candidateProfile": "Candidate Profile",
+    "contactInfo": "Contact Information",
+    "documents": "Documents",
+    "downloadResume": "Download Resume",
+    "contactCandidate": "Contact Candidate",
+    "candidate": "Candidate",
+    "applicationDetails": "Application Details",
+    "applicationId": "Application ID",
+    "submittedAt": "Submitted on",
+    "actions": "Actions",
+    "coverLetter": "Cover Letter",
+    "noCoverLetter": "No cover letter provided",
+    "timeline": "Timeline",
+    "applicationSubmitted": "Application submitted",
+    "candidateAppliedForPosition": "The candidate applied for this position",
+    "jobOfferDetails": "Job Offer Details",
+    "jobDescription": "Job Description",
+    "requiredSkills": "Required Skills",
+    "experienceLevel": "Experience Level",
+    "category": "Category",
+    "resume": "Resume",
+    "uploadedOn": "Uploaded on",
+    "quickActions": "Quick Actions",
+    "acceptApplication": "Accept Application",
+    "rejectApplication": "Reject Application",
+    "recruiterActions": "Recruiter Actions",
+    "login_to_apply": "Login to Apply",
+    "alreadyApplied": {
+      "title": "You have already applied",
+      "message": "You have already submitted an application for this job offer.",
+      "viewApplications": "View my applications",
+      "backToJobs": "Back to job offers"
+    }
+  },
+  "recruiters": {
+    "title": "Recruiters",
+    "noData": "No recruiters found",
+    "errors": {
+      "loadingError": "Error loading recruiters"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "companies": "Companies",
+    "candidates": "Candidates",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "mainNavigation": "Main navigation",
+    "closeMainMenu": "Close main menu",
+    "openMainMenu": "Open main menu",
+    "searchJob": "Search for a job",
+    "jobPlaceholder": "Job title, keywords, company...",
+    "notifications": {
+      "newApplication": "New application received",
+      "newApplicationMessage": "A candidate applied for the Frontend Developer position",
+      "minutesAgo": "{{minutes}} minutes ago",
+      "profileUpdated": "Profile updated",
+      "profileUpdatedMessage": "Your profile has been successfully updated",
+      "yesterday": "Yesterday",
+      "supportMessage": "Support message",
+      "supportMessageContent": "Your support ticket has received a response",
+      "daysAgo": "{{days}} days ago"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Find a job that",
+      "titleLine2": "truly fits you.",
+      "subtitle": "Explore thousands of opportunities, filter by role, location and skills, then apply in just a few clicks with trusted recruiters.",
+      "badge": "Faster hiring, better-matched applications",
+      "popular": "Popular:",
+      "popularWebDeveloper": "Web Developer",
+      "popularCybersecurity": "Cybersecurity",
+      "popularData": "Data",
+      "matchingScore": "Matching score",
+      "opportunities": "Opportunities for you"
+    },
+    "search": {
+      "jobPlaceholder": "Job title, keywords, company…",
+      "locationPlaceholder": "City, region, postal code…",
+      "searchButton": "Search",
+      "suggestions": "Suggestions:"
+    },
+    "noOffers": {
+      "title": "No job offers found",
+      "description": "Try adjusting your search filters or check back later for new opportunities",
+      "resetButton": "Reset Filters"
+    },
+    "noCompanies": {
+      "title": "No companies listed yet",
+      "description": "Companies will appear here once they register on the platform. Check back soon!",
+      "browseAll": "Browse all"
+    },
+    "sections": {
+      "recentJobsLabel": "Recent jobs",
+      "latestOpportunities": "Latest opportunities",
+      "inDemandLabel": "In-demand roles",
+      "mostRequested": "The most requested talent",
+      "process": "Process",
+      "howItWorks": "How TryRecruiters works",
+      "explore": "Explore",
+      "popularCategories": "Popular categories",
+      "employers": "Employers",
+      "topCompanies": "Top companies",
+      "clientReviews": "Client reviews",
+      "testimonials": "What our users say",
+      "inDemand": "Most in-demand service providers",
+      "recentJobs": "Recent job offers"
+    },
+    "quickActions": {
+      "profileTitle": "Make your profile more visible",
+      "profileDescription": "Create a clear candidate profile, receive personalized recommendations and apply faster.",
+      "profileLink": "Create my profile",
+      "cvTitle": "Optimized online CV",
+      "cvDescription": "Upload your CV and let the platform highlight your most relevant skills.",
+      "cvLink": "Upload my CV",
+      "recruitersTitle": "Verified recruiters",
+      "recruitersDescription": "Discover active companies, their open roles and the details you need before applying.",
+      "recruitersLink": "Explore companies"
+    },
+    "categories": {
+      "viewAll": "View all",
+      "openPositions": "open positions",
+      "list": {
+        "design": "Design",
+        "programming": "Programming",
+        "digitalMarketing": "Digital Marketing",
+        "video": "Video",
+        "animation": "Animation"
+      }
+    },
+    "jobs": {
+      "viewAll": "View all",
+      "title": "Search jobs"
+    },
+    "companies": {
+      "viewAll": "View all"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "cta": {
+      "becomeCandidate": "Become a candidate",
+      "becomeEmployer": "Become an employer",
+      "candidateDescription": "Create your professional profile and access thousands of job opportunities tailored to your skills and aspirations.",
+      "employerDescription": "Post your job offers and find the best talent to grow your business with our recruitment platform.",
+      "registerNow": "Register now",
+      "title": "Ready to find your next job?",
+      "subtitle": "Join TryRecruiters and enjoy a faster, more modern and more personalized job search experience.",
+      "button": "Get started now"
+    },
+    "cards": {
+      "candidate": {
+        "title": "Become a Candidate",
+        "description": "Create your professional profile and access thousands of job opportunities."
+      },
+      "employer": {
+        "title": "Become an Employer",
+        "description": "Post your job offers and find the best talent."
+      }
+    },
+    "stats": {
+      "liveJobs": "Available jobs",
+      "companies": "Companies",
+      "candidates": "Candidates"
+    },
+    "about": {
+      "badge": "About us",
+      "title": "Connecting talent with the right opportunities",
+      "subtitle": "TryRecruiters helps candidates find the role that fits them and recruiters find the right profiles, faster and with confidence.",
+      "missionLabel": "Our mission",
+      "missionTitle": "Making recruitment simpler and more human",
+      "missionText1": "We believe good recruitment relies on clarity and trust: precise job offers, verified profiles, and transparent tracking at every step.",
+      "missionText2": "Our team builds tools that save time for candidates and recruiters alike, without ever compromising on the quality of the matches made.",
+      "valuesLabel": "Our values",
+      "valuesTitle": "What guides our work every day",
+      "values": {
+        "speed": {
+          "title": "Speed",
+          "description": "Applications and hiring handled quickly, without unnecessary steps."
+        },
+        "trust": {
+          "title": "Trust",
+          "description": "Verified recruiters and protected data at every step of the process."
+        },
+        "simplicity": {
+          "title": "Simplicity",
+          "description": "A clear platform, designed to be used without friction or complexity."
+        },
+        "support": {
+          "title": "Support",
+          "description": "A team available to answer your questions and guide you along the way."
+        }
+      },
+      "ctaTitle": "Ready to join TryRecruiters?",
+      "ctaSubtitle": "Create your account for free and get started today, whether you're looking for a job or for talent.",
+      "ctaButton": "Create an account"
+    },
+    "footer": {
+      "description": "A modern platform connecting qualified candidates with active recruiters.",
+      "callNow": "Call now:",
+      "address": "6391 Elgin St. Celina, Delaware 10299, New York, United States of America",
+      "quickLinks": "Quick links",
+      "about": "About",
+      "contact": "Contact",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "candidate": "Candidates",
+      "browseJobs": "Find a job",
+      "browseEmployers": "Browse employers",
+      "candidateDashboard": "Candidate dashboard",
+      "savedJobs": "Saved jobs",
+      "employers": "Companies",
+      "postJob": "Post a job",
+      "findCandidate": "Find a candidate",
+      "employersDashboard": "Employers dashboard",
+      "applications": "Applications",
+      "support": "Support",
+      "faqs": "FAQs",
+      "privacyPolicy": "Privacy policy",
+      "terms": "Terms of use",
+      "copyright": "© 2024 TryRecruiters - Job platform. All rights reserved"
+    },
+    "steps": {
+      "createAccount": "Create an account",
+      "createAccountDesc": "Sign up for free in just a few minutes.",
+      "uploadCV": "Upload your CV",
+      "uploadCVDesc": "Add your CV and highlight your key skills.",
+      "findJob": "Find the right job",
+      "findJobDesc": "Browse roles that match your profile and goals.",
+      "applyJob": "Apply in one click",
+      "applyJobDesc": "Send your application quickly and confidently."
+    },
+    "testimonials": {
+      "title": "Client testimonials"
+    },
+    "viewAll": "View All",
+    "registerNow": "Register Now",
+    "inDemand": {
+      "webMobileDeveloper": "Web & Mobile Developer",
+      "webMobileProjects": "42,000+ available profiles",
+      "cybersecurityConsultant": "Cybersecurity Consultant",
+      "cybersecurityOpportunities": "18,500+ active opportunities",
+      "digitalMarketingExpert": "Digital Marketing Expert",
+      "digitalMarketingContracts": "25,000+ Open Contracts",
+      "networkSystemsTechnician": "Network & Systems Technician",
+      "networkSystemsOffers": "16,800+ open jobs",
+      "smartAssistant": "Assistant",
+      "smartMatching": "Smart matching",
+      "smartMatchingDescription": "More accurate recommendations based on your goals, skills and location.",
+      "verifiedRecruiter": "Verified recruiter",
+      "verifiedRecruiterDescription": "Qualified companies, up-to-date job posts and simplified application tracking."
+    },
+    "popularCategories": {
+      "graphicsDesign": "Graphics & Design",
+      "codeProgramming": "Code & Programming",
+      "digitalMarketing": "Digital Marketing",
+      "videoAnimation": "Video & Animation",
+      "musicAudio": "Music & Audio",
+      "accountFinance": "Accounting & Finance",
+      "healthCare": "Health & Care",
+      "dataScience": "Data & Science"
+    },
+    "testimonialData": {
+      "robertFox": {
+        "name": "Robert Fox",
+        "role": "UI/UX Designer",
+        "quote": "A clear, fast and much smoother interface for tracking my applications."
+      },
+      "bessieCooper": {
+        "name": "Bessie Cooper",
+        "role": "Creative Director",
+        "quote": "The matching system helps me receive roles that are genuinely relevant to my profile."
+      },
+      "johnDoe": {
+        "name": "Jenny Smith",
+        "role": "HR Manager",
+        "quote": "For recruiters, posting a job is easier and the applications are better qualified."
+      }
+    },
+    "contact": {
+      "badge": "Get in touch",
+      "title": "Let's talk about your project",
+      "subtitle": "A question, a suggestion, or need help? Our team gets back to you fast.",
+      "info": {
+        "emailLabel": "Email us",
+        "addressLabel": "Our address",
+        "hoursLabel": "Business hours",
+        "hoursValue": "Mon - Fri: 9:00 AM - 6:00 PM",
+        "followUs": "Follow us"
+      },
+      "formTitle": "Send us a message",
+      "formSubtitle": "Fill in the form below and your email client will open with your message ready to send.",
+      "form": {
+        "name": "Full name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "What is this about?",
+        "message": "Message",
+        "messagePlaceholder": "How can we help?",
+        "mailtoHint": "Clicking \"Send\" opens your default email client with this message pre-filled.",
+        "submit": "Send message",
+        "errors": {
+          "nameRequired": "Name is required",
+          "emailRequired": "A valid email is required",
+          "subjectRequired": "Subject is required",
+          "messageRequired": "Message is required"
+        }
+      },
+      "faq": {
+        "title": "FAQ",
+        "subtitle": "Frequently Asked Questions",
+        "description": "Find quick answers to the most common questions about our services and processes",
+        "q1": "How can I create an account?",
+        "a1": "To create an account, click on the \"Register\" button at the top of the page. Choose your account type (Candidate or Recruiter) and fill out the form with your information. You will receive a confirmation email to activate your account.",
+        "q2": "What are the response times?",
+        "a2": "Our team is committed to responding to all requests within 24 to 48 business hours. For urgent questions, please do not hesitate to contact us by phone.",
+        "q3": "How to post a job offer?",
+        "a3": "After creating a recruiter account, log in to your space and click on \"Post a job\". Fill in the job details, define your criteria and publish. Your offer will be visible immediately after validation.",
+        "q4": "Are the services free?",
+        "a4": "Registration and consultation of offers are completely free for candidates. For recruiters, we offer several packages adapted to your needs. Contact us for more details on our rates.",
+        "q5": "How to modify my profile information?",
+        "a5": "Log in to your account and access your personal space. Click on \"My profile\" then on \"Edit\". You can update your personal information, your CV, and your preferences at any time.",
+        "q6": "What to do if I forgot my password?",
+        "a6": "On the login page, click on \"Forgot password?\". Enter your email address and you will receive a link to reset your password. The link is valid for 24 hours.",
+        "notFound": "Can't find your answer?",
+        "contactUs": "Our team is here to help you. Feel free to contact us.",
+        "contactButton": "Contact Us"
+      }
+    },
+    "faqs": {
+      "title": "FAQs",
+      "breadcrumbHome": "Home /",
+      "whoWeAre": "Who we are",
+      "weCareTitle": "We care about<br />your question",
+      "weCareDescription": "Want to chat? We'd love to hear from you! Get in touch with our Customer Success Team to inquire about speaking events, advertising rates, or just say hello.",
+      "subscribe": "Subscribe",
+      "q1": "How can I create an account?",
+      "a1": "To create an account, click on the \"Register\" button at the top of the page. Choose your account type (Candidate or Recruiter) and fill out the form with your information. You will receive a confirmation email to activate your account.",
+      "q2": "What are the response times?",
+      "a2": "Our team is committed to responding to all requests within 24 to 48 business hours. For urgent questions, please do not hesitate to contact us by phone.",
+      "q3": "How to post a job offer?",
+      "a3": "After creating a recruiter account, log in to your space and click on \"Post a job\". Fill in the job details, define your criteria and publish. Your offer will be visible immediately after validation.",
+      "q4": "Are the services free?",
+      "a4": "Registration and consultation of offers are completely free for candidates. For recruiters, we offer several packages adapted to your needs. Contact us for more details on our rates.",
+      "q5": "How to modify my profile information?",
+      "a5": "Log in to your account and access your personal space. Click on \"My profile\" then on \"Edit\". You can update your personal information, your CV, and your preferences at any time.",
+      "q6": "What to do if I forgot my password?",
+      "a6": "On the login page, click on \"Forgot password?\". Enter your email address and you will receive a link to reset your password. The link is valid for 24 hours.",
+      "notFound": "Can't find your answer?",
+      "contactUs": "Our team is here to help you. Feel free to contact us.",
+      "contactButton": "Contact Us"
+    },
+    "howItWorks": {
+      "title": "How TryRecruiters<br /><span class=\"text-primary\">Works</span>",
+      "subtitle": "Discover how our platform simplifies the recruitment process in just a few steps",
+      "candidatesTitle": "Find your ideal job in 5 simple steps",
+      "step1": {
+        "number": "01",
+        "title": "Create your account",
+        "description": "Sign up for free in seconds with your email or social networks. No credit card required.",
+        "feature1Title": "Quick registration",
+        "feature1Desc": "Create your account in less than 2 minutes",
+        "feature2Title": "100% free",
+        "feature2Desc": "No hidden fees, everything is free for candidates"
+      },
+      "step2": {
+        "number": "02",
+        "title": "Complete your profile",
+        "description": "Upload your CV and fill in your skills. Our intelligent system analyzes your profile to suggest the best opportunities.",
+        "feature1Title": "Automatic import",
+        "feature1Desc": "Upload your CV and we fill in your profile",
+        "feature2Title": "Skills tests",
+        "feature2Desc": "Validate your skills and increase your visibility"
+      },
+      "step3": {
+        "number": "03",
+        "title": "Search and apply",
+        "description": "Browse thousands of job offers and apply with one click. Receive personalized recommendations based on your profile.",
+        "feature1Title": "Smart filters",
+        "feature1Desc": "Find exactly what you're looking for",
+        "feature2Title": "Quick application",
+        "feature2Desc": "Apply in 1 click with your profile"
+      },
+      "step4": {
+        "number": "04",
+        "title": "Smart matches",
+        "description": "Our algorithm analyzes your profile and connects you with companies that match your expectations and skills.",
+        "feature1Title": "Compatibility score",
+        "feature1Desc": "See your match rate with each offer",
+        "feature2Title": "Personalized alerts",
+        "feature2Desc": "Receive new offers that match you"
+      },
+      "step5": {
+        "number": "05",
+        "title": "Communicate and succeed",
+        "description": "Exchange directly with recruiters via our integrated messaging. Schedule your interviews and track the progress of your applications.",
+        "feature1Title": "Real-time chat",
+        "feature1Desc": "Communicate instantly with recruiters",
+        "feature2Title": "Application tracking",
+        "feature2Desc": "Manage all your applications in one place"
+      },
+      "cta": {
+        "title": "Ready to get started?",
+        "description": "Join TryRecruiters today and transform your recruitment process.",
+        "button": "Create your free account"
+      }
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "description": "Add your privacy policy content here."
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "description": "Add your terms and conditions content here."
+    },
+    "candidates": {
+      "findCandidates": "Find candidates",
+      "breadcrumbHome": "Home /",
+      "breadcrumbCandidates": "Find candidates"
+    },
+    "jobOffers": {
+      "findPerfectJob": "Find the perfect job among our selected offers",
+      "pageXofY": "Page {{page}} of {{total}}",
+      "noOffersMatch": "No job offers match your search criteria.",
+      "resetFilters": "Reset filters",
+      "gridView": "Grid view",
+      "listView": "List view"
+    },
+    "errors": {
+      "onlyCandidateCanAddFavorites": "Only candidates can add job offers to favorites",
+      "noIdProvided": "No ID provided in route parameters."
+    },
+    "favorites": {
+      "addToFavorites": "Do you want to add this offer to favorites?",
+      "removeFromFavorites": "Do you want to remove this offer from favorites?"
+    }
+  },
+  "filters": {
+    "title": "Filters",
+    "reset": "Reset",
+    "category": "Category",
+    "private": "Private",
+    "public": "Public",
+    "selectCategory": "Select a category",
+    "postedDate": "Posted date",
+    "selectPostedDate": "Select a period",
+    "experienceLevel": "Experience level",
+    "selectExperienceLevel": "Select a level",
+    "location": "Location",
+    "selectLocation": "Select a location",
+    "contractType": "Contract type",
+    "selectContractType": "Select a contract type",
+    "jobType": "Job type",
+    "selectJobType": "Select a job type",
+    "educationLevel": "Education level",
+    "selectEducationLevel": "Select an education level",
+    "jobLevel": "Job level",
+    "selectJobLevel": "Select a job level",
+    "salary": "Salary",
+    "minSalary": "Minimum salary",
+    "maxSalary": "Maximum salary",
+    "experience": "Experience",
+    "minExperience": "Minimum experience (years)",
+    "maxExperience": "Maximum experience (years)",
+    "company": "Company",
+    "organizationType": "Organization type",
+    "selectOrganizationType": "Select an organization type",
+    "companySize": "Company size",
+    "selectCompanySize": "Select a company size",
+    "dateOptions": {
+      "anytime": "Anytime",
+      "pastMonth": "Past month",
+      "pastWeek": "Past week",
+      "past24h": "Past 24 hours"
+    },
+    "experienceOptions": {
+      "entry": "Entry level",
+      "mid": "Mid level",
+      "senior": "Senior level"
+    },
+    "sortOptions": {
+      "latest": "Latest",
+      "oldest": "Oldest",
+      "salaryHigh": "Salary high to low",
+      "salaryLow": "Salary low to high"
+    },
+    "contractTypes": {
+      "FULL_TIME": "Full time",
+      "PART_TIME": "Part time",
+      "TEMPORARY": "Temporary",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Internship",
+      "CONTRACT": "Contract"
+    },
+    "jobTypes": {
+      "ONSITE": "On-site",
+      "REMOTE": "Remote",
+      "HYBRID": "Hybrid"
+    },
+    "educationLevels": {
+      "HIGH_SCHOOL": "High school",
+      "INTERMEDIATE": "Intermediate",
+      "GRADUATION": "Bachelor's degree",
+      "BACHELOR_DEGREE": "Bachelor's degree",
+      "MASTER_DEGREE": "Master's degree"
+    },
+    "jobLevels": {
+      "ENTRY_LEVEL": "Entry level",
+      "MID_LEVEL": "Mid level",
+      "EXPERT_LEVEL": "Expert level"
+    },
+    "organizationTypes": {
+      "PRIVATE": "Private",
+      "PUBLIC": "Public"
+    },
+    "companySizes": {
+      "ONE_TO_TEN": "1-10 employees",
+      "ELEVEN_TO_FIFTY": "11-50 employees",
+      "FIFTYONE_TO_ONEHUNDRED": "51-100 employees",
+      "ONEHUNDRED_TO_THREEHUNDRED": "100-300 employees",
+      "THREEHUNDRED_TO_FIVEHUNDRED": "300-500 employees",
+      "FIVEHUNDRED_TO_ONEK": "500-1000 employees",
+      "OVER_ONEK": "Over 1000 employees"
+    }
+  },
+  "joboffers": {
+    "updateTitle": "Update Job Offer",
+    "applied": "Applied",
+    "candidateOnly": "Only candidates can apply",
+    "apply_now": "Apply now",
+    "item": {
+      "details": "View details"
+    },
+    "verified": "Verified",
+    "unknown_company": "Unknown company",
+    "not_specified": "Not specified",
+    "unknown_education": "Unknown education level",
+    "undefined_level": "Undefined level",
+    "experience": "{{count}} year(s) of experience",
+    "salary": "{{amount}} FCFA",
+    "published_on": "Published on {{date}}",
+    "expires_on": "Expires on {{date}}",
+    "created_on": "Created on",
+    "applications_received": "{{count}} application(s)",
+    "add_to_favorites": "Add to favorites",
+    "login_to_apply": "Login to apply",
+    "columns": {
+      "title": "Job Title",
+      "location": "Location",
+      "contractType": "Contract Type",
+      "jobType": "Work Mode",
+      "salary": "Salary",
+      "experience": "Experience",
+      "educationLevel": "Education Level",
+      "jobLevel": "Job Level",
+      "publishedAt": "Publication Date",
+      "expiresAt": "Expires On",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "contractTypes": {
+      "FULL_TIME": "Full Time",
+      "PART_TIME": "Part Time",
+      "TEMPORARY": "Temporary",
+      "FREELANCE": "Freelance",
+      "INTERNSHIP": "Internship",
+      "CONTRACT": "Contract"
+    },
+    "jobTypes": {
+      "ONSITE": "On Site",
+      "REMOTE": "Remote",
+      "HYBRID": "Hybrid"
+    },
+    "educationLevels": {
+      "HIGH_SCHOOL": "High School",
+      "INTERMEDIATE": "Intermediate",
+      "GRADUATION": "Bachelor",
+      "BACHELOR_DEGREE": "Bachelor Degree",
+      "MASTER_DEGREE": "Master Degree"
+    },
+    "jobLevels": {
+      "ENTRY_LEVEL": "Entry Level",
+      "MID_LEVEL": "Mid Level",
+      "EXPERT_LEVEL": "Expert"
+    },
+    "tabs": {
+      "pending": "Pending",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "INACTIVE": "Inactive"
+    },
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "revoke": "Revoke"
+    },
+    "approve": {
+      "title": "Approve Job Offer",
+      "message": "Do you want to approve the job offer \"{{name}}\"? It will be visible to all users.",
+      "success": "Job offer \"{{name}}\" has been approved successfully",
+      "error": "Error approving job offer"
+    },
+    "reject": {
+      "title": "Reject Job Offer",
+      "message": "Do you want to reject the job offer \"{{name}}\"? The recruiter will be notified.",
+      "success": "Job offer \"{{name}}\" has been rejected",
+      "error": "Error rejecting job offer"
+    },
+    "revoke": {
+      "title": "Revoke Job Offer",
+      "message": "Do you want to revoke the job offer \"{{name}}\"? It will no longer be visible to users.",
+      "success": "Job offer \"{{name}}\" has been revoked",
+      "error": "Error revoking job offer"
+    },
+    "jobDetails": {
+      "title": "Job Details",
+      "home": "Home",
+      "jobList": "Job Offers",
+      "jobDetail": "Job Detail",
+      "apply": "Apply",
+      "applyNow": "Apply now",
+      "applyFor": "Apply for {{title}}",
+      "addToFavorites": "Add to favorites",
+      "addToFavoritesConfirm": "Do you want to add {{title}} to your favorites?",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "accessDeniedTitle": "Access Denied",
+      "onlyCandidatesCanFavorite": "Only candidates can add job offers to favourites. Please log in as a candidate.",
+      "applyFormDescription": "Complete the form below to apply for this job offer.",
+      "applicationFormPlaceholder": "Application form to be implemented",
+      "moreOffers": "Similar offers",
+      "description": "Description",
+      "jobLevel": "Job level",
+      "notes": "Notes",
+      "tags": "Keywords",
+      "jobOverview": "Job overview",
+      "publishedOn": "Published on",
+      "expiresOn": "Expires on",
+      "salary": "Salary",
+      "educationLevel": "Education level",
+      "location": "Location",
+      "jobType": "Job type",
+      "experience": "Experience",
+      "years": "years",
+      "company": "Company",
+      "companyOverview": "Company overview",
+      "sector": "Sector",
+      "size": "Size",
+      "organization": "Organization",
+      "foundedIn": "Founded in",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "website": "Website"
+    },
+    "no_date_for_published": "No date for published",
+    "no_date_for_created": "No date for created",
+    "not_mentioned": "Not mentioned"
+  },
+  "itemPage": {
+    "applications": {
+      "dialog": {
+        "add": {
+          "title": "Apply for this offer"
+        },
+        "edit": {
+          "title": "Edit application"
+        }
+      }
+    }
+  },
+  "warningBanner": {
+    "message": "⚠️ WARNING: All our services are 100% FREE! Any money request from a recruiter is a SCAM. Please report any suspicious behavior immediately."
+  },
+  "dashboard": {
+    "candidates": {
+      "title": "Dashboard",
+      "welcome": "Welcome, {{name}}",
+      "summary": "Here is a summary of your account activity and statistics.",
+      "metrics": {
+        "sentApplications": "Applications sent",
+        "pendingApplications": "Pending",
+        "acceptedApplications": "Accepted",
+        "upcomingInterviews": "Upcoming interviews"
+      },
+      "recommendedOffers": "Recommended offers",
+      "noOffers": "No offers available",
+      "sponsored": "Sponsored",
+      "viewOffer": "View offer",
+      "recentApplicationsTitle": "My recent applications",
+      "noRecentApplications": "No recent applications",
+      "viewAllApplications": "View all my applications",
+      "table": {
+        "view": "View"
+      },
+      "statistics": "Statistics",
+      "statisticsPlaceholder": "Applications over time chart (placeholder)",
+      "quickActions": "Quick actions",
+      "createResumes": "Create a new resume",
+      "seeFavorites": "See favorites",
+      "manageMyProfile": "Manage my profile",
+      "notifications": {
+        "title": "Notifications",
+        "youHaveNewApplications": "You have <strong>{{count}}</strong> new applications for \"{{job}}\".",
+        "offerExpired": "Your offer \"{{title}}\" has expired today.",
+        "time": {
+          "15minutes": "15 minutes ago",
+          "1hour": "1 hour ago"
+        },
+        "viewAll": "View all notifications"
+      },
+      "platformAnnouncements": "Platform announcements",
+      "announcements": {
+        "boostOffersTitle": "New! Boost your offers",
+        "boostOffersBody": "A new 'Sponsored' option is available to increase your visibility.",
+        "maintenanceTitle": "Scheduled maintenance",
+        "maintenanceBody": "Maintenance is scheduled on Oct 25 from 2:00 to 3:00 AM.",
+        "time": {
+          "2days": "2 days ago",
+          "4days": "4 days ago"
+        }
+      },
+      "subscription": {
+        "title": "Subscription",
+        "plan": {
+          "professional": "Professional",
+          "popular": "Popular",
+          "description": "Unlimited access to candidates & advanced tools"
+        },
+        "price": "12,900 Fcfa",
+        "period": "/month",
+        "renewal": "Renewal",
+        "renewalDate": "15 May 2025",
+        "offersViewed": "Offers viewed",
+        "features": {
+          "offersUnlimited": "Unlimited access to published offers",
+          "premiumOffers": "Access to premium offers",
+          "prioritySupport": "Priority support",
+          "personalizedAssistance": "Personalized assistance from an expert"
+        },
+        "actions": {
+          "managePlan": "Manage my plan",
+          "cancelSubscription": "Cancel subscription",
+          "invoices": "View invoices & history"
+        },
+        "help": {
+          "needHelp": "Need help choosing a plan?",
+          "contactSupport": "Contact our support"
+        }
+      },
+      "errors": {
+        "candidateInfoNotAvailable": "Candidate information not available",
+        "loadingDashboard": "Error loading dashboard",
+        "loadingData": "Error loading data"
+      },
+      "applicationStatus": {
+        "pending": "Pending",
+        "inReview": "In review",
+        "accepted": "Accepted",
+        "rejected": "Rejected"
+      },
+      "interviewStatus": {
+        "scheduled": "Scheduled",
+        "rescheduled": "Rescheduled",
+        "completed": "Completed",
+        "canceled": "Canceled"
+      },
+      "jobType": {
+        "onsite": "On-site",
+        "remote": "Remote",
+        "hybrid": "Hybrid",
+        "fullTime": "Full time",
+        "partTime": "Part time"
+      },
+      "time": {
+        "fewMinutesAgo": "A few minutes ago",
+        "hoursAgo": "{{hours}} hour(s) ago",
+        "yesterday": "Yesterday"
+      }
+    },
+    "employers": {
+      "title": "Employer Dashboard",
+      "welcome": "Welcome, {{name}}",
+      "summary": "Here is a summary of your recruitment activities and statistics.",
+      "metrics": {
+        "totalOffers": "Published offers",
+        "activeOffers": "Active offers",
+        "totalApplications": "Applications received",
+        "upcomingInterviews": "Upcoming interviews"
+      },
+      "recentOffers": "My recent offers",
+      "noRecentOffers": "No recent offers",
+      "sponsored": "Sponsored",
+      "candidates": "Candidates",
+      "views": "Views",
+      "manageOffer": "Manage offer",
+      "upcomingInterviews": "Upcoming interviews",
+      "noUpcomingInterviews": "No upcoming interviews",
+      "remote": "Remote",
+      "candidate": "Candidate",
+      "recentApplicationsTitle": "Recent applications",
+      "noRecentApplications": "No recent applications",
+      "table": {
+        "job": "Job",
+        "applications": "Applications",
+        "status": "Status",
+        "action": "Action"
+      },
+      "quickActions": "Quick actions",
+      "createJobOffer": "Create a new job offer",
+      "viewAllApplications": "View all applications",
+      "manageMyOffers": "Manage my offers",
+      "errors": {
+        "recruiterInfoNotAvailable": "Recruiter information not available",
+        "loadingDashboard": "Error loading dashboard",
+        "loadingData": "Error loading data"
+      },
+      "jobType": {
+        "onsite": "On-site",
+        "remote": "Remote",
+        "hybrid": "Hybrid",
+        "fullTime": "Full time",
+        "partTime": "Part time"
+      },
+      "interviewStatus": {
+        "scheduled": "Scheduled",
+        "rescheduled": "Rescheduled",
+        "completed": "Completed",
+        "canceled": "Canceled"
+      },
+      "status": {
+        "active": "Active",
+        "pending": "Pending",
+        "expired": "Expired"
+      }
+    },
+    "title": "Dashboard",
+    "welcome": "Welcome, {{name}}",
+    "summary": "Here is a summary of your account activity and statistics.",
+    "latestPosts": "Latest posts",
+    "noRecentPosts": "No recent posts",
+    "sponsored": "Sponsored",
+    "manageOffer": "Manage offer",
+    "upcomingInterviews": "Upcoming interviews",
+    "noUpcomingInterviews": "No upcoming interviews",
+    "candidate": "Candidate",
+    "recentApplicationsTitle": "Recent applications",
+    "noRecentApplications": "No recent applications",
+    "table": {
+      "job": "Job",
+      "applications": "Applications",
+      "status": "Status",
+      "action": "Action"
+    },
+    "viewAllOffers": "View all offers",
+    "viewAllApplications": "View all applications",
+    "statistics": "Statistics",
+    "statisticsPlaceholder": "Applications over time chart (placeholder)",
+    "quickActions": "Quick actions",
+    "publishNewOffer": "Publish a new offer",
+    "viewAllCandidates": "View all candidates",
+    "manageMyProfile": "Manage my profile",
+    "notifications": {
+      "title": "Notifications",
+      "viewAll": "View all notifications",
+      "youHaveNewApplications": "You have <strong>{{count}}</strong> new applications for \"{{job}}\".",
+      "offerExpired": "Your offer \"{{title}}\" has expired today."
+    },
+    "platformAnnouncements": "Platform announcements",
+    "announcements": {
+      "boostOffersTitle": "New! Boost your offers",
+      "boostOffersBody": "A new 'Sponsored' option is available to increase your visibility.",
+      "maintenanceTitle": "Scheduled maintenance",
+      "maintenanceBody": "Maintenance is scheduled on Oct 25 from 2:00 to 3:00 AM."
+    },
+    "subscription": {
+      "title": "Subscription",
+      "plan": {
+        "professional": "Professional",
+        "popular": "Popular",
+        "description": "Unlimited access to candidates & advanced tools"
+      },
+      "price": "12,900 Fcfa",
+      "period": "/month",
+      "renewal": "Renewal",
+      "renewalDate": "15 May 2025",
+      "offersViewed": "Offers viewed",
+      "features": {
+        "offersUnlimited": "Unlimited access to published offers",
+        "premiumOffers": "Access to premium offers",
+        "prioritySupport": "Priority support",
+        "personalizedAssistance": "Personalized assistance from an expert"
+      },
+      "actions": {
+        "managePlan": "Manage my plan",
+        "cancelSubscription": "Cancel subscription",
+        "invoices": "View invoices & history"
+      },
+      "help": {
+        "needHelp": "Need help choosing a plan?",
+        "contactSupport": "Contact our support"
+      }
+    }
+  },
+  "videoCall": {
+    "callInProgress": "Video call in progress",
+    "shareLink": "Share meeting link",
+    "share": "Share",
+    "leaveCall": "Leave call",
+    "leave": "Leave",
+    "meetingRoom": "Meeting Room",
+    "joinMeeting": "Join meeting",
+    "yourName": "Your name",
+    "enterYourName": "Enter your name",
+    "cancel": "Cancel",
+    "connecting": "Connecting",
+    "join": "Join",
+    "turnOffCamera": "Turn off camera",
+    "turnOnCamera": "Turn on camera",
+    "mute": "Mute microphone",
+    "unmute": "Unmute microphone",
+    "stopSharing": "Stop sharing",
+    "shareScreen": "Share screen",
+    "linkCopied": "Link copied to clipboard!",
+    "errorCopyingLink": "Error copying link",
+    "enterName": "Please enter your name",
+    "meetingsManager": {
+      "title": "Video Meetings Management",
+      "subtitle": "Create and manage your Daily.co meetings for interviews",
+      "createButton": "Create new meeting",
+      "creating": "Creating...",
+      "loading": "Loading meetings...",
+      "noMeetings": "No meetings",
+      "noMeetingsDesc": "Create your first video meeting to get started",
+      "createdOn": "Created on",
+      "meetingLink": "Meeting link",
+      "copyLink": "Copy link",
+      "join": "Join",
+      "delete": "Delete",
+      "private": "Private",
+      "public": "Public",
+      "maxParticipants": "Max",
+      "screenShare": "Screen sharing",
+      "noScreenShare": "No sharing",
+      "chatActive": "Chat active",
+      "noChat": "No chat",
+      "meetingCreated": "Meeting created successfully!",
+      "meetingDeleted": "Meeting deleted successfully",
+      "errorLoading": "Error loading meetings",
+      "errorCreating": "Error creating meeting",
+      "errorDeleting": "Error deleting meeting",
+      "confirmDelete": "Are you sure you want to delete this meeting?"
+    }
+  },
+  "subscriptions": {
+    "list": {
+      "title": "Plans & subscriptions",
+      "description": "Choose or upgrade your plan to publish job offers and manage applications."
+    },
+    "loadingSubscription": "Loading your subscription...",
+    "creditsRemaining": "credits remaining",
+    "plan": "Plan",
+    "activeOffers": "Active offers",
+    "applications": "Applications",
+    "companies": "Companies",
+    "interviews": "Interviews",
+    "unlimited": "Unlimited",
+    "remaining": "{{count}} active offer(s) remaining",
+    "offersRemaining": "offer(s) remaining",
+    "viewPlans": "View/upgrade plans",
+    "choosePlan": "Choose a plan",
+    "companiesLimitReached": "Companies limit reached ({{current}}/{{max}})",
+    "interviewsLimitReached": "Interviews limit reached ({{current}}/{{max}})",
+    "interviewsRemaining": "interview(s) remaining",
+    "limitReachedTitle": "Limit reached",
+    "hideBanner": "Hide this notification",
+    "noActiveSubscription": "No active subscription. Subscribe to publish job offers.",
+    "noSubscriptionForApplications": "No active subscription. Subscribe to access applications.",
+    "limitReached": "Active offers limit reached ({{current}}/{{max}})",
+    "applicationsLimitReached": "Applications limit reached ({{current}}/{{max}}). Upgrade your plan.",
+    "loadError": "Unable to load your subscription. Some actions may be limited.",
+    "recruiterNotFound": "Recruiter ID not found.",
+    "processing": "Processing...",
+    "planNotFound": "Plan not found",
+    "activationSuccess": "Subscription \"{{planName}}\" activated successfully!",
+    "activationError": "Error creating subscription",
+    "back": "Back",
+    "backToPlans": "Back to plans",
+    "planLabels": {
+      "basicFree": "Basic Free Plan",
+      "premium": "Premium Plan",
+      "enterpriseUnlimited": "Enterprise Unlimited Plan"
+    },
+    "pricing": {
+      "mainTitle": "Post your job offers and recruit!",
+      "bestValue": "Best value for money",
+      "free": "Free",
+      "currentPlan": "Current plan",
+      "howItWorks": "How does it work?",
+      "paymentFooter": "We accept payments by mobile money, credit cards, debit cards, national or international bank transfer, PayPal."
+    },
+    "payment": {
+      "finalizeTitle": "Finalize your subscription",
+      "title": "Payment",
+      "summary": "Summary",
+      "loading": "Loading information...",
+      "errorTitle": "An error occurred",
+      "includes": "What's included:",
+      "days": "days",
+      "permanent": "Permanent",
+      "unlimitedActiveOffers": "Unlimited job offers",
+      "activeOffers": "active job offers",
+      "cvDatabaseAccess": "Access to CV database",
+      "dataExport": "Data export",
+      "analytics": "Advanced analytics",
+      "prioritySupport": "Priority support",
+      "freePlan": "Free plan",
+      "freePlanActivating": "This plan is free. Activating...",
+      "paypalSecure": "100% secure payment via PayPal. You will be redirected to PayPal to complete the payment."
+    },
+    "companiesRemaining": "company/companies remaining"
+  },
+  "list": {
+    "columns": {
+      "candidate": "Candidate",
+      "jobOffer": "Job Offer",
+      "scheduledAt": "Scheduled At",
+      "duration": "Duration",
+      "status": "Status",
+      "meetUrl": "Meeting Link",
+      "actions": "Actions"
+    },
+    "actions": {
+      "join": "Join",
+      "cancel": "Cancel"
+    },
+    "searchPlaceholder": "Search interviews",
+    "noData": "No interviews found",
+    "emptySubtitle": "No interviews to display"
+  },
+  "status": {
+    "SCHEDULED": "Scheduled",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled"
+  },
+  "form": {
+    "allStatuses": "All Statuses",
+    "fileSizeLabel": "Maximal size file accepted",
+    "fileTypeLabel": "File type accepted"
+  },
+  "errors": {
+    "createInterview": "Failed to create interview"
+  },
+  "permissions": {
+    "resources": {
+      "USERS": "Users",
+      "ROLES": "Roles",
+      "PERMISSIONS": "Permissions",
+      "COMPANIES": "Companies",
+      "JOB_OFFERS": "Job Offers",
+      "APPLICATIONS": "Applications",
+      "INTERVIEWS": "Interviews",
+      "CANDIDATES": "Candidates",
+      "RESUME": "Resumes",
+      "DASHBOARD": "Dashboard",
+      "RECRUITERS": "Recruiters",
+      "JOB_CATEGORIES": "Job Categories",
+      "PLATFORM_SETTINGS": "Platform Settings",
+      "REPORTS": "Reports",
+      "LOGS": "Logs",
+      "FILES": "Files"
+    },
+    "actions": {
+      "CREATE": "Create",
+      "READ": "Read",
+      "UPDATE": "Update",
+      "DELETE": "Delete",
+      "LIST": "List",
+      "MANAGE": "Manage",
+      "PUBLISH": "Publish",
+      "APPROVE": "Approve",
+      "create": "Create Permission",
+      "update": "Update",
+      "edit": "Edit",
+      "back": "Back",
+      "cancel": "Cancel"
+    },
+    "list": {
+      "title": "Permissions",
+      "description": "Manage permissions and access controls"
+    },
+    "create": {
+      "title": "Create Permission",
+      "description": "Define a new permission for platform resources"
+    },
+    "update": {
+      "title": "Edit Permission",
+      "description": "Modify the permission settings"
+    },
+    "details": {
+      "title": "Permission Details",
+      "description": "View permission configuration"
+    },
+    "form": {
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "resource": "Resource",
+      "allResources": "All Resources",
+      "action": "Action",
+      "allActions": "All Actions",
+      "search": "Search",
+      "searchPlaceholder": "Search permissions...",
+      "resetFilters": "Reset Filters",
+      "reset": "Reset"
+    }
+  },
+  "jobs": {
+    "hero": {
+      "badge": "Curated job board",
+      "title": "Jobs",
+      "subtitle": "Handpicked jobs to help you take the next step in your career. Search by keywords, filter quickly and discover roles that fit your profile.",
+      "matchPrompt": "Want better matches?",
+      "seeMatches": "See your matches"
+    },
+    "searchJobs": "Search jobs",
+    "exploreCompanies": "Explore companies",
+    "savedJobs": "Saved jobs",
+    "recommended": "Recommended jobs",
+    "keywordPlaceholder": "Keywords, job title, company or skill",
+    "searchButton": "Search",
+    "rolesCount": "roles",
+    "shareSearch": "Share search",
+    "clearFilters": "Clear filters",
+    "filters": {
+      "categories": "Categories",
+      "locations": "Locations",
+      "jobTypes": "Job types",
+      "experience": "Experience",
+      "postedDate": "Posted date",
+      "workModes": "Work modes",
+      "salaryRanges": "Salary ranges",
+      "companies": "Companies",
+      "skills": "Skills / tags"
+    },
+    "empty": {
+      "title": "No jobs found",
+      "description": "Try removing a filter or searching with broader keywords.",
+      "reset": "Reset filters"
+    },
+    "card": {
+      "keyResponsibilities": "Key responsibilities",
+      "requirements": "Requirements",
+      "jobOverview": "Job overview",
+      "yearsExp": "years experience",
+      "posted": "Posted",
+      "applyNow": "Apply now",
+      "saveJob": "Save job",
+      "viewJobDetails": "View job details",
+      "hideDetails": "Hide job details",
+      "alreadyApplied": "Already applied"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago",
+      "weeksAgo": "{{count}}w ago",
+      "monthsAgo": "{{count}}mo ago"
+    },
+    "enums": {
+      "contractType": {
+        "FULL_TIME": "Full-time",
+        "PART_TIME": "Part-time",
+        "TEMPORARY": "Temporary",
+        "FREELANCE": "Freelance",
+        "INTERNSHIP": "Internship",
+        "CONTRACT": "Contract"
+      },
+      "jobType": {
+        "ONSITE": "On-site",
+        "REMOTE": "Remote",
+        "HYBRID": "Hybrid"
+      },
+      "jobLevel": {
+        "ENTRY_LEVEL": "Entry level",
+        "MID_LEVEL": "Mid level",
+        "EXPERT_LEVEL": "Senior level"
+      }
+    }
+  },
+  "companyDetails": {
+    "hero": {
+      "backToCompanies": "Back to companies",
+      "verified": "Verified employer",
+      "openJobs": "Open jobs",
+      "rating": "Rating",
+      "employees": "Employees",
+      "follow": "Follow",
+      "share": "Share"
+    },
+    "tabs": {
+      "overview": {
+        "title": "Overview",
+        "label": "About the company"
+      },
+      "jobs": {
+        "title": "Open jobs",
+        "label": "Open roles"
+      },
+      "culture": {
+        "title": "Culture",
+        "label": "Culture & benefits"
+      },
+      "reviews": {
+        "title": "Reviews",
+        "label": "Employee reviews"
+      }
+    },
+    "overview": {
+      "aiProduct": "AI-first product",
+      "aiProductDesc": "Modern machine learning workflows for fraud and risk teams.",
+      "securityFocused": "Security focused",
+      "securityFocusedDesc": "Privacy, compliance and reliability are built into every workflow.",
+      "collaborativeTeams": "Collaborative teams",
+      "collaborativeTeamsDesc": "Product, data and engineering teams work closely with customers."
+    },
+    "jobs": {
+      "jobsAt": "jobs at",
+      "browse": "Browse current opportunities from this company.",
+      "viewAll": "View all jobs",
+      "viewDetails": "View job details",
+      "hideDetails": "Hide details",
+      "noJobs": "No open positions",
+      "noJobsDesc": "This company doesn't have any open positions right now. Check back later."
+    },
+    "culture": {
+      "title": "A focused, flexible and ambitious team.",
+      "remote": "Remote-friendly",
+      "remoteDesc": "Flexible work options across product and engineering roles.",
+      "growth": "Growth budget",
+      "growthDesc": "Learning support for courses, conferences and certifications.",
+      "health": "Health support",
+      "healthDesc": "Wellbeing programs and health coverage depending on location.",
+      "ownership": "Clear ownership",
+      "ownershipDesc": "Small teams, direct communication and strong product ownership."
+    },
+    "reviews": {
+      "title": "What people say",
+      "review1Text": "Great technical challenges and a lot of ownership. The team is focused and collaborative.",
+      "review1Role": "Data Scientist",
+      "review2Text": "Strong product culture, good flexibility and meaningful customer problems.",
+      "review2Role": "Product Manager"
+    },
+    "sidebar": {
+      "companyInfo": "Company information",
+      "employees": "employees",
+      "foundedIn": "Founded in",
+      "recruiterContact": "Recruiter contact",
+      "talentAcquisition": "Talent Acquisition",
+      "contactRecruiter": "Contact recruiter",
+      "requestInterview": "Request interview",
+      "popularTags": "Popular tags",
+      "hiring": "Hiring"
+    },
+    "follow": {
+      "title": "Follow company",
+      "confirm": "Do you want to follow {{name}}?",
+      "cancel": "Cancel",
+      "confirmBtn": "Confirm"
+    },
+    "time": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "daysAgo": "days ago",
+      "lastMonth": "Last month",
+      "monthsAgo": "months ago"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+<div *transloco="let t; read: 'auth'">
+  <!-- Header -->
+  <div class="mb-8 text-center sm:text-left">
+    <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+      {{ t("sendCode.sectionLabel") || "Vérification" }}
+    </p>
+    <h2 class="mt-2 font-display text-4xl font-black leading-none text-navy md:text-5xl">
+      {{ t(titleKey || "sendCode.title") }}
+    </h2>
+    <p class="mt-3 text-sm font-medium leading-6 text-slate-500">
+      {{ t("sendCode.instruction") }}
+    </p>
+  </div>
+
+  <!-- Channel options -->
+  <div class="flex flex-col gap-4">
+    <!-- Email -->
+    <button
+      (click)="selectMethod(EMAIL_CHANNEL)"
+      [disabled]="isLoading"
+      class="group flex items-center gap-4 w-full py-4 px-5 rounded-2xl border-2 transition-all"
+      [ngClass]="selectedMethod === EMAIL_CHANNEL
+        ? 'border-blue bg-blue/5 shadow-glow'
+        : 'border-line bg-white hover:border-blue hover:bg-blue/5'"
+    >
+      <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-blue/10 text-blue group-hover:bg-blue group-hover:text-white transition-all"
+        [ngClass]="selectedMethod === EMAIL_CHANNEL ? 'bg-blue text-white' : ''">
+        <i class="fas fa-envelope text-lg"></i>
+      </span>
+      <div class="flex-1 text-left">
+        <p class="font-black text-navy">{{ t("sendCode.sendViaEmail") }}</p>
+        <p class="text-xs font-medium text-slate-400 mt-0.5">{{ t("sendCode.emailDesc") || "Recevez le code dans votre boîte mail" }}</p>
+      </div>
+      <ng-container *ngIf="isLoading && selectedMethod === EMAIL_CHANNEL">
+        <app-loader [showText]="false"></app-loader>
+      </ng-container>
+      <i *ngIf="!isLoading || selectedMethod !== EMAIL_CHANNEL" class="fa-solid fa-chevron-right text-slate-300 group-hover:text-blue transition-colors"></i>
+    </button>
+
+    <!-- WhatsApp -->
+    <button
+      (click)="selectMethod(WHATSAPP_CHANNEL)"
+      [disabled]="isLoading"
+      class="group flex items-center gap-4 w-full py-4 px-5 rounded-2xl border-2 transition-all"
+      [ngClass]="selectedMethod === WHATSAPP_CHANNEL
+        ? 'border-green-500 bg-green-50 shadow-sm'
+        : 'border-line bg-white hover:border-green-500 hover:bg-green-50'"
+    >
+      <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-green-100 text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all"
+        [ngClass]="selectedMethod === WHATSAPP_CHANNEL ? 'bg-green-500 text-white' : ''">
+        <i class="fab fa-whatsapp text-xl"></i>
+      </span>
+      <div class="flex-1 text-left">
+        <p class="font-black text-navy">{{ t("sendCode.sendViaWhatsapp") }}</p>
+        <p class="text-xs font-medium text-slate-400 mt-0.5">{{ t("sendCode.whatsappDesc") || "Recevez le code via WhatsApp" }}</p>
+      </div>
+      <ng-container *ngIf="isLoading && selectedMethod === WHATSAPP_CHANNEL">
+        <app-loader [showText]="false"></app-loader>
+      </ng-container>
+      <i *ngIf="!isLoading || selectedMethod !== WHATSAPP_CHANNEL" class="fa-solid fa-chevron-right text-slate-300 group-hover:text-green-500 transition-colors"></i>
+    </button>
+
+    <!-- SMS -->
+    <button
+      (click)="selectMethod(SMS_CHANNEL)"
+      [disabled]="isLoading"
+      class="group flex items-center gap-4 w-full py-4 px-5 rounded-2xl border-2 transition-all"
+      [ngClass]="selectedMethod === SMS_CHANNEL
+        ? 'border-blue bg-blue/5 shadow-sm'
+        : 'border-line bg-white hover:border-blue hover:bg-blue/5'"
+    >
+      <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-blue/10 text-blue group-hover:bg-blue group-hover:text-white transition-all"
+        [ngClass]="selectedMethod === SMS_CHANNEL ? 'bg-blue text-white' : ''">
+        <i class="fas fa-comment-sms text-lg"></i>
+      </span>
+      <div class="flex-1 text-left">
+        <p class="font-black text-navy">{{ t("sendCode.sendViaSms") }}</p>
+        <p class="text-xs font-medium text-slate-400 mt-0.5">{{ t("sendCode.smsDesc") || "Recevez le code par SMS" }}</p>
+      </div>
+      <ng-container *ngIf="isLoading && selectedMethod === SMS_CHANNEL">
+        <app-loader [showText]="false"></app-loader>
+      </ng-container>
+      <i *ngIf="!isLoading || selectedMethod !== SMS_CHANNEL" class="fa-solid fa-chevron-right text-slate-300 group-hover:text-blue transition-colors"></i>
+    </button>
+  </div>
+
+  <app-generic-error
+    *ngIf="hasError && !isLoading"
+    [message]="errorMessage"
+    class="mt-4"
+  ></app-generic-error>
+</div>

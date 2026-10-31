@@ -1,0 +1,12 @@
+<div *transloco="let t; read: 'billings'">
+  <app-generic-datatable
+    [items]="items"
+    [columns]="columns"
+    [isLoading]="isLoading"
+    [hasError]="hasError"
+    emptyIcon="fas fa-credit-card"
+    [emptyTitle]="t('paymentsList.emptyTitle')"
+    [emptySubtitle]="t('paymentsList.emptySubtitle')"
+    (update)="statusChange.emit($event)"
+  ></app-generic-datatable>
+</div>

@@ -1,0 +1,964 @@
+<ng-template #profileModalTemplate *transloco="let t; read: 'applications'">
+  <div class="space-y-6">
+    <div
+      class="text-center pb-6 border-b border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-50 -mx-6 -mt-6 px-6 pt-6 mb-6"
+    >
+      <div
+        class="w-24 h-24 rounded-full flex items-center justify-center text-3xl font-semibold mx-auto mb-4 shadow-lg overflow-hidden"
+      >
+        <img
+          *ngIf="getCandidatePhotoUrl(); else initials"
+          [src]="getCandidatePhotoUrl()"
+          [alt]="item?.candidate?.firstName + ' ' + item?.candidate?.lastName"
+          class="w-full h-full object-cover"
+        />
+        <ng-template #initials>
+          {{
+            (item?.candidate?.firstName?.charAt(0) || "?") +
+              (item?.candidate?.lastName?.charAt(0) || "?")
+          }}
+        </ng-template>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900">
+        {{ item?.candidate?.firstName || "N/A" }}
+        {{ item?.candidate?.lastName || "N/A" }}
+      </h2>
+      <p class="text-gray-600 mt-2">
+        {{ item?.candidate?.profession || t("profile.professionNotSpecified") }}
+      </p>
+      <div class="flex justify-center gap-4 mt-4 text-sm text-gray-600">
+        <span>
+          <i class="fas fa-map-marker-alt mr-1"></i
+          >{{ item?.candidate?.city || t("profile.cityNotSpecified") }}
+        </span>
+        <span>
+          <i class="fas fa-phone mr-1"></i
+          >{{ item?.candidate?.phoneNumber || t("profile.phoneNotSpecified") }}
+        </span>
+      </div>
+      <div class="mt-2 text-sm text-gray-600">
+        <i class="fas fa-envelope mr-1"></i>{{ item?.candidate?.email }}
+      </div>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-user-circle mr-2 text-primary"></i
+        >{{ t("profile.personalInfo") }}
+      </h3>
+      <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg">
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.gender") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{ item?.candidate?.gender || t("profile.genderNotSpecified") }}
+          </p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.birthDate") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{
+              item?.candidate?.birthDate
+                ? (item?.candidate?.birthDate | date: "dd/MM/yyyy")
+                : t("profile.birthDateNotSpecified")
+            }}
+          </p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.placeOfBirth") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{
+              item?.candidate?.placeOfBirth ||
+                t("profile.placeOfBirthNotSpecified")
+            }}
+          </p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.nationality") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{
+              item?.candidate?.nationality ||
+                t("profile.nationalityNotSpecified")
+            }}
+          </p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.region") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{ item?.candidate?.region || t("profile.regionNotSpecified") }}
+          </p>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 uppercase">
+            {{ t("profile.memberSince") }}
+          </p>
+          <p class="text-sm font-medium text-gray-900">
+            {{ item?.candidate?.createdAt | date: "dd/MM/yyyy" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+        <i class="fas fa-quote-left mr-2 text-primary"></i
+        >{{ t("profile.about") }}
+      </h3>
+      <p class="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-lg">
+        {{ item?.candidate?.bio || t("profile.noBio") }}
+      </p>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-briefcase mr-2 text-primary"></i
+        >{{ t("profile.professionalExperience") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.experiences?.length; else noExperience"
+        class="space-y-4"
+      >
+        <div
+          *ngFor="let exp of item?.candidate?.experiences"
+          class="border-l-4 border-primary pl-4 bg-gray-50 p-4 rounded-r-lg"
+        >
+          <h4 class="font-semibold text-gray-900">{{ exp?.title }}</h4>
+          <p class="text-sm text-gray-600 flex items-center mt-1">
+            <i class="fas fa-building mr-2"></i>{{ exp?.company }}
+          </p>
+          <p class="text-xs text-gray-500 mt-1 flex items-center">
+            <i class="fas fa-calendar mr-2"></i>
+            {{ exp?.startDate | date: "MMM yyyy" }} -
+            {{
+              exp?.endDate
+                ? (exp?.endDate | date: "MMM yyyy")
+                : t("profile.currently")
+            }}
+          </p>
+          <p
+            *ngIf="exp?.location"
+            class="text-xs text-gray-500 mt-1 flex items-center"
+          >
+            <i class="fas fa-map-marker-alt mr-2"></i>{{ exp?.location }}
+          </p>
+          <p class="text-sm text-gray-700 mt-2">{{ exp?.description }}</p>
+        </div>
+      </div>
+      <ng-template #noExperience>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-briefcase text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noExperience") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-graduation-cap mr-2 text-primary"></i
+        >{{ t("profile.education") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.educations?.length; else noEducation"
+        class="space-y-4"
+      >
+        <div
+          *ngFor="let edu of item?.candidate?.educations"
+          class="border-l-4 border-blue-500 pl-4 bg-blue-50 p-4 rounded-r-lg"
+        >
+          <h4 class="font-semibold text-gray-900">{{ edu?.degree }}</h4>
+          <p class="text-sm text-gray-600 flex items-center mt-1">
+            <i class="fas fa-university mr-2"></i>{{ edu?.schoolName }}
+          </p>
+          <p class="text-xs text-gray-500 mt-1 flex items-center">
+            <i class="fas fa-calendar mr-2"></i>
+            {{ edu?.startDate | date: "yyyy" }} -
+            {{ edu?.endDate | date: "yyyy" }}
+          </p>
+          <p class="text-sm text-gray-700 mt-2">
+            <span class="font-medium">{{ t("profile.field") }}:</span>
+            {{ edu?.fieldOfStudy }}
+          </p>
+          <p *ngIf="edu?.description" class="text-sm text-gray-700 mt-2">
+            {{ edu?.description }}
+          </p>
+        </div>
+      </div>
+      <ng-template #noEducation>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-graduation-cap text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noEducation") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-code mr-2 text-primary"></i>{{ t("profile.skills") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.skills?.length; else noSkills"
+        class="flex flex-wrap gap-2"
+      >
+        <span
+          *ngFor="let skill of item?.candidate?.skills"
+          class="inline-flex items-center px-3 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium shadow-sm"
+        >
+          <i class="fas fa-check-circle mr-2"></i>
+          {{ skill?.name }}
+          <span
+            class="ml-2 px-2 py-0.5 text-xs bg-blue-200 text-blue-900 rounded-full"
+            >{{ skill?.level }}</span
+          >
+        </span>
+      </div>
+      <ng-template #noSkills>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-code text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noSkills") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-tools mr-2 text-primary"></i>{{ t("profile.tools") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.tools?.length; else noTools"
+        class="flex flex-wrap gap-2"
+      >
+        <span
+          *ngFor="let tool of item?.candidate?.tools"
+          class="inline-flex items-center px-3 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium shadow-sm"
+        >
+          <i class="fas fa-wrench mr-2"></i>
+          {{ tool?.name }}
+          <span
+            class="ml-2 px-2 py-0.5 text-xs bg-green-200 text-green-900 rounded-full"
+            >{{ tool?.level }}</span
+          >
+        </span>
+      </div>
+      <ng-template #noTools>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-tools text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noTools") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-language mr-2 text-primary"></i
+        >{{ t("profile.languages") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.languages?.length; else noLanguages"
+        class="flex flex-wrap gap-2"
+      >
+        <span
+          *ngFor="let lang of item?.candidate?.languages"
+          class="inline-flex items-center px-3 py-2 rounded-full bg-purple-100 text-purple-800 text-sm font-medium shadow-sm"
+        >
+          <i class="fas fa-globe mr-2"></i>
+          {{ lang?.language }}
+          <span
+            class="ml-2 px-2 py-0.5 text-xs bg-purple-200 text-purple-900 rounded-full"
+            >{{ lang?.level }}</span
+          >
+        </span>
+      </div>
+      <ng-template #noLanguages>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-language text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noLanguages") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="px-3">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-certificate mr-2 text-primary"></i
+        >{{ t("profile.certifications") }}
+      </h3>
+      <div
+        *ngIf="item?.candidate?.certifications?.length; else noCertifications"
+        class="space-y-3"
+      >
+        <div
+          *ngFor="let cert of item?.candidate?.certifications"
+          class="border border-yellow-200 bg-yellow-50 p-4 rounded-lg"
+        >
+          <h4 class="font-semibold text-gray-900">{{ cert?.name }}</h4>
+          <p class="text-sm text-gray-600 mt-1">
+            {{ cert?.issuer || t("profile.organizationNotSpecified") }}
+          </p>
+          <p *ngIf="cert?.issueDate" class="text-xs text-gray-500 mt-1">
+            {{ t("profile.obtainedOn") }}
+            {{ cert?.issueDate | date: "dd/MM/yyyy" }}
+          </p>
+        </div>
+      </div>
+      <ng-template #noCertifications>
+        <div class="text-center py-8 bg-gray-50 rounded-lg">
+          <i class="fas fa-certificate text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noCertifications") }}</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div
+      class="px-6 border-t border-gray-200 pt-6 bg-gradient-to-br from-gray-50 to-blue-50 -mx-6 px-6 pb-6"
+    >
+      <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <i class="fas fa-file-download mr-2 text-primary"></i
+        >{{ t("profile.curriculum") }}
+      </h3>
+      <div *ngIf="hasResume(); else noResume">
+        <div
+          class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-200"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-file-pdf text-red-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">
+                {{ item?.resume?.name }}
+              </p>
+              <p class="text-xs text-gray-500">
+                {{ item?.resume?.resumeFile?.originalName }}
+              </p>
+              <p class="text-xs text-gray-400 mt-1">
+                {{ t("profile.addedOn") }}
+                {{
+                  item?.resume?.createdAt
+                    | date: "dd/MM/yyyy à HH:mm"
+                }}
+              </p>
+            </div>
+          </div>
+          <button
+            class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition-colors shadow-sm flex items-center gap-2"
+            (click)="onDownloadResume()"
+          >
+            <i class="fas fa-eye"></i>
+            <span>{{ t("viewResume") }}</span>
+          </button>
+        </div>
+      </div>
+      <ng-template #noResume>
+        <div
+          class="text-center py-8 bg-white rounded-lg border-2 border-dashed border-gray-300"
+        >
+          <i class="fas fa-file-pdf text-gray-300 text-4xl mb-2"></i>
+          <p class="text-gray-500">{{ t("profile.noResume") }}</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
+
+<ng-container *ngIf="item">
+  <div *transloco="let t; read: 'applications'" class="min-h-screen py-4">
+    <div class="">
+      <!-- Header compact -->
+      <div class="bg-white rounded-lg border border-gray-200 mb-5">
+        <div class="px-4 sm:px-6 py-4 sm:py-5">
+          <div
+            class="hidden lg:flex items-center justify-between gap-4 flex-wrap"
+          >
+            <!-- Info principale -->
+            <div *ngIf="!isCandidate" class="flex items-center gap-4 flex-shrink-0 min-w-0 flex-1">
+              <div
+                class="w-14 h-14 rounded-lg flex items-center justify-center text-base font-semibold overflow-hidden flex-shrink-0"
+              >
+                <img
+                  *ngIf="getCandidatePhotoUrl(); else initials2"
+                  [src]="getCandidatePhotoUrl()"
+                  [alt]="
+                    item.candidate.firstName + ' ' + item.candidate.lastName
+                  "
+                  class="w-full h-full object-cover"
+                />
+                <ng-template #initials2>
+                  {{
+                    (item.candidate.firstName?.charAt(0) || "") +
+                      (item.candidate.lastName?.charAt(0) || "")
+                  }}
+                </ng-template>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h1 class="text-xl font-semibold text-gray-900 truncate">
+                  {{ item.candidate.firstName }}
+                  {{ item.candidate.lastName }}
+                </h1>
+                <p class="text-sm text-gray-600 mt-1 truncate">
+                  {{ item.jobOffer.title }} ·
+                  {{ item.candidate.profession || t("candidate") }}
+                </p>
+                <p class="text-sm text-gray-500 truncate">
+                  {{ item.jobOffer.company.name }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Job title when candidate is viewing their own application -->
+            <div *ngIf="isCandidate" class="flex-1 min-w-0">
+              <h1 class="text-xl font-semibold text-gray-900 truncate">
+                {{ item.jobOffer.title }}
+              </h1>
+              <p class="text-sm text-gray-500 mt-1 truncate">
+                {{ item.jobOffer.company.name }}
+              </p>
+            </div>
+
+            <!-- Status et actions -->
+            <div class="flex items-center gap-3 flex-shrink-0">
+              <div class="flex flex-col items-end gap-1">
+                <span class="text-bold text-gray-800 whitespace-nowrap"
+                  >#{{ item.publicId }}</span
+                >
+                <span class="text-xs text-gray-500 whitespace-nowrap">{{
+                  item.submittedAt | date: "dd/MM/yyyy"
+                }}</span>
+              </div>
+
+              <div class="h-10 w-px bg-gray-200"></div>
+
+              <span
+                class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium text-white whitespace-nowrap"
+                [ngClass]="{
+                  'bg-slate-400': item.status === 'PENDING',
+                  'bg-blue-500': item.status === 'REVIEWED',
+                  'bg-emerald-600': item.status === 'ACCEPTED',
+                  'bg-red-500': item.status === 'REJECTED',
+                  'bg-gray-500': item.status === 'CANCELED'
+                }"
+              >
+                <i
+                  class="mr-1.5 fas text-xs"
+                  [ngClass]="{
+                    'fa-hourglass-half': item.status === 'PENDING',
+                    'fa-eye': item.status === 'REVIEWED',
+                    'fa-check-circle': item.status === 'ACCEPTED',
+                    'fa-times-circle': item.status === 'REJECTED',
+                    'fa-ban': item.status === 'CANCELED'
+                  }"
+                ></i>
+                {{ t("status." + item.status) }}
+              </span>
+
+              <button
+                *ngIf="hasResume()"
+                class="app-primary whitespace-nowrap text-sm px-3 py-1.5"
+                (click)="onDownloadResume()"
+              >
+                <i class="fas fa-eye text-xs mr-1.5"></i>
+                CV
+              </button>
+
+              <div *ngIf="recruiterId" class="flex-shrink-0">
+                <app-interview-schedule-modal
+                  [item]="item"
+                  [disabled]="!canScheduleInterview"
+                  [blockReason]="scheduleInterviewBlockedReason"
+                  (onDone)="loadInterviews()"
+                ></app-interview-schedule-modal>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:hidden space-y-4">
+            <div *ngIf="!isCandidate" class="flex items-start gap-3">
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center text-sm sm:text-base font-semibold overflow-hidden flex-shrink-0"
+              >
+                <img
+                  *ngIf="getCandidatePhotoUrl()"
+                  [src]="getCandidatePhotoUrl()"
+                  [alt]="
+                    item.candidate.firstName + ' ' + item.candidate.lastName
+                  "
+                  class="w-full h-full object-cover"
+                />
+                <span *ngIf="!getCandidatePhotoUrl()" class="text-sm font-semibold text-gray-600">
+                  {{ (item.candidate.firstName?.charAt(0) || "") + (item.candidate.lastName?.charAt(0) || "") }}
+                </span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <h1 class="text-lg sm:text-xl font-semibold text-gray-900">
+                  {{ item.candidate.firstName }}
+                  {{ item.candidate.lastName }}
+                </h1>
+                <p class="text-sm text-gray-600 mt-1">
+                  {{ item.jobOffer.title }}
+                </p>
+                <p class="text-xs text-gray-500 mt-1">
+                  {{ item.candidate.profession || t("candidate") }}
+                </p>
+              </div>
+            </div>
+
+            <div *ngIf="isCandidate" class="min-w-0">
+              <h1 class="text-lg sm:text-xl font-semibold text-gray-900">{{ item.jobOffer.title }}</h1>
+              <p class="text-sm text-gray-500 mt-1">{{ item.jobOffer.company.name }}</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+              <span
+                class="inline-flex items-center px-2.5 py-1 bg-gray-100 text-gray-700 rounded-md whitespace-nowrap"
+              >
+                <i class="fas fa-hashtag mr-1"></i>{{ item.publicId }}
+              </span>
+              <span
+                class="inline-flex items-center px-2.5 py-1 bg-gray-100 text-gray-700 rounded-md whitespace-nowrap"
+              >
+                <i class="fas fa-calendar mr-1"></i
+                >{{ item.submittedAt | date: "dd/MM/yyyy" }}
+              </span>
+              <span
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-white whitespace-nowrap"
+                [ngClass]="{
+                  'bg-slate-400': item.status === 'PENDING',
+                  'bg-blue-500': item.status === 'REVIEWED',
+                  'bg-emerald-600': item.status === 'ACCEPTED',
+                  'bg-red-500': item.status === 'REJECTED',
+                  'bg-gray-500': item.status === 'CANCELED'
+                }"
+              >
+                <i
+                  class="mr-1.5 fas text-xs"
+                  [ngClass]="{
+                    'fa-hourglass-half': item.status === 'PENDING',
+                    'fa-eye': item.status === 'REVIEWED',
+                    'fa-check-circle': item.status === 'ACCEPTED',
+                    'fa-times-circle': item.status === 'REJECTED',
+                    'fa-ban': item.status === 'CANCELED'
+                  }"
+                ></i>
+                {{ t("status." + item.status) }}
+              </span>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <button
+                *ngIf="hasResume()"
+                class="app-primary text-sm px-3 py-1.5 whitespace-nowrap"
+                (click)="onDownloadResume()"
+              >
+                <i class="fas fa-eye text-xs mr-1.5"></i>
+                CV
+              </button>
+
+              <div *ngIf="recruiterId" class="flex-shrink-0">
+                <app-interview-schedule-modal
+                  [item]="item"
+                  [disabled]="!canScheduleInterview"
+                  [blockReason]="scheduleInterviewBlockedReason"
+                  (onDone)="loadInterviews()"
+                ></app-interview-schedule-modal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenu principal en 2 colonnes -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-3 space-y-5">
+          <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 class="text-xl font-semibold text-primary mb-4">
+              {{ t("coverLetter") }}
+            </h3>
+            <div class="prose prose-sm max-w-none">
+              <p
+                class="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words"
+              >
+                {{ item.message || t("noCoverLetter") }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Détails de l'offre -->
+          <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="text-xl font-semibold text-primary">
+                {{ t("jobOfferDetails") }}
+              </h3>
+              <span class="text-sm text-gray-500">{{
+                item.jobOffer.company.name || "Entreprise"
+              }}</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <h4 class="text-lg font-medium text-gray-900 mb-3">
+                  {{ item.jobOffer.title }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-700"
+                  >
+                    <i class="fas fa-map-marker-alt text-xs mr-1.5"></i>
+                    {{ item.jobOffer.location || "Non spécifié" }}
+                  </span>
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-700"
+                  >
+                    <i class="fas fa-clock text-xs mr-1.5"></i>
+                    {{ item.jobOffer.contractType || "CDI" }}
+                  </span>
+                  <span
+                    *ngIf="item.jobOffer.salary"
+                    class="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-700"
+                  >
+                    <i class="fa-solid fa-money-bill text-xs mr-1.5"></i>
+                    {{ formatSalaryAmount(item.jobOffer.salary) }}<ng-container *ngIf="item.jobOffer.salaryCurrency"> {{ item.jobOffer.salaryCurrency }}</ng-container>
+                  </span>
+                </div>
+              </div>
+
+              <div
+                *ngIf="item.jobOffer.description"
+                class="border-t bg-gray-50 border-gray-100 pt-4"
+              >
+                <div class="px-4">
+                  <app-read-more
+                    [text]="item.jobOffer.description"
+                    [maxLength]="300"
+                  ></app-read-more>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline et historique -->
+          <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 class="text-xl font-semibold text-primary mb-4">
+              {{ t("timeline") }}
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-2.5 h-2.5 bg-primary rounded-full mt-1.5"></div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-gray-900">
+                    {{ t("applicationSubmitted") }}
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    {{ item.submittedAt | date: "dd/MM/yyyy 'à' HH:mm" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interviews liés à cette candidature -->
+          <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <h3
+              class="text-xl font-semibold text-primary mb-4 flex items-center"
+            >
+              <i class="fas fa-video mr-2"></i>{{ t("details.interviews") }}
+            </h3>
+
+            <div *ngIf="interviews?.length; else noInterviews">
+              <div class="space-y-3">
+                <div
+                  *ngFor="let iv of interviews"
+                  class="border border-blue-200 bg-blue-50 p-4 rounded-lg hover:shadow-md transition-shadow"
+                >
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-2">
+                        <span
+                          [ngClass]="
+                            'inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800'
+                          "
+                        >
+                          {{ iv.status || t("interview") }}
+                        </span>
+                        <span class="text-sm text-gray-600">
+                          <i class="fas fa-calendar mr-1"></i>
+                          {{ iv.scheduledAt | date: "dd/MM/yyyy" }}
+                        </span>
+                        <span class="text-sm text-gray-600">
+                          <i class="fas fa-clock mr-1"></i>
+                          {{ iv.scheduledAt | date: "HH:mm" }}
+                        </span>
+                      </div>
+                      <p *ngIf="iv.notes" class="text-sm text-gray-700 mt-2">
+                        <i class="fas fa-sticky-note mr-1 text-primary"></i
+                        >{{ iv.notes }}
+                      </p>
+                    </div>
+                    <a
+                      *ngIf="iv.meetUrl"
+                      [href]="iv.meetUrl"
+                      target="_blank"
+                      class="flex-shrink-0 ml-3 px-3 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition-colors flex items-center gap-1"
+                    >
+                      <i class="fas fa-video text-sm"></i>
+                      <span class="text-sm font-medium">{{
+                        t("details.joinMeeting")
+                      }}</span>
+                    </a>
+                  </div>
+                  <a
+                    class="text-primary hover:text-opacity-80 text-sm flex items-center gap-2 mt-3 inline-flex"
+                    [routerLink]="['./../../interviews', iv.id]"
+                    title="{{ t('common.view') }}"
+                  >
+                    <i class="fas fa-eye text-xs"></i>
+                    <span>{{ t("common.view") }}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <ng-template #noInterviews>
+              <div
+                class="text-center py-8 bg-gray-50 rounded-lg border border-dashed border-gray-300"
+              >
+                <i class="fas fa-video text-gray-300 text-3xl mb-2"></i>
+                <p class="text-sm text-gray-500">{{ t("noInterviews") }}</p>
+                <p class="text-xs text-gray-400 mt-1">
+                  {{ t("scheduleInterviewToGetStarted") }}
+                </p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Colonne latérale (1/3) -->
+        <div class="space-y-5">
+          <!-- Profil candidat -->
+          <div
+            *ngIf="!isCandidate"
+            class="bg-white rounded-lg border border-gray-200 p-6"
+          >
+            <h3 class="text-xl font-semibold text-primary mb-4">
+              {{ t("candidateProfile") }}
+            </h3>
+
+            <div class="text-center mb-5 pb-5 border-b border-gray-100">
+              <div
+                class="w-20 h-20 rounded-lg flex items-center justify-center text-gray-500 text-xl font-semibold mx-auto mb-3 overflow-hidden"
+              >
+                <img
+                  *ngIf="getCandidatePhotoUrl(); else initials3"
+                  [src]="getCandidatePhotoUrl()"
+                  [alt]="
+                    item.candidate.firstName + ' ' + item.candidate.lastName
+                  "
+                  class="w-full h-full object-cover"
+                />
+                <ng-template #initials3>
+                  {{
+                    (item.candidate.firstName?.charAt(0) || "") +
+                      (item.candidate.lastName?.charAt(0) || "")
+                  }}
+                </ng-template>
+              </div>
+              <div
+                class="text-center text-sm mb-1 pb-1 border-b border-gray-100 leading-relaxed text-primary cursor-pointer inline-flex items-center gap-1"
+                (click)="onSeeMoreProfile()"
+              >
+                {{ t("profile.viewProfile") }}
+                <i class="fas fa-eye text-gray-400 w-4"></i>
+              </div>
+              <h4 class="font-medium text-gray-900 text-base">
+                {{ item.candidate.firstName }}
+                {{ item.candidate.lastName }}
+              </h4>
+              <p class="text-sm text-gray-600 mt-1">
+                {{ item.candidate.role || t("candidate") }}
+
+                {{ item.candidate.city ? " - " + item.candidate.city : "" }}
+                {{
+                  item.candidate.experiences?.length
+                    ? " - " +
+                      item.candidate.experiences!.length +
+                      " " +
+                      t("yearsOfExperience")
+                    : ""
+                }}
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm font-medium text-gray-500 block mb-2">{{
+                  t("contactInfo")
+                }}</label>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-envelope text-gray-400 w-4"></i>
+                    <span class="truncate">{{ item.candidate.email }}</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-phone text-gray-400 w-4"></i>
+                    <span class="truncate">{{
+                      item.candidate.phoneNumber || t("notProvided")
+                    }}</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-location text-gray-400 w-4"></i>
+                    <span class="truncate">{{
+                      item.candidate.city
+                        ? item.candidate.city +
+                          (item.candidate.region
+                            ? " - " + item.candidate.region
+                            : "")
+                        : item.candidate.region
+                          ? item.candidate.region
+                          : t("notProvided")
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="hasResume()" class="pt-4 border-t border-gray-100">
+                <label class="text-sm font-medium text-gray-500 block mb-2">{{
+                  t("documents")
+                }}</label>
+                <div
+                  class="flex items-center gap-3 p-3 bg-gray-50 rounded border border-gray-200"
+                >
+                  <i class="fas fa-file-pdf text-red-500 text-lg"></i>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">
+                      {{ item.resume?.name }}
+                    </p>
+                    <p class="text-xs text-gray-500">
+                      {{
+                        item.resume?.createdAt
+                          | date: "dd/MM/yyyy"
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-gray-100 space-y-2">
+                <button
+                  *ngIf="hasResume()"
+                  class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-md"
+                  (click)="onDownloadResume()"
+                >
+                  <i class="fas fa-eye text-sm mr-2"></i>
+                  {{ t("viewResume") }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Détails application -->
+          <!-- <div class="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 class="text-xl font-semibold text-primary mb-4">
+              {{ t("applicationDetails") }}
+            </h3>
+
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm font-medium text-gray-500 block mb-1">{{
+                  t("applicationId")
+                }}</label>
+                <p class="text-sm text-gray-900 font-mono">
+                  #{{ item?.publicId }}
+                </p>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-gray-500 block mb-1">{{
+                  t("submittedAt")
+                }}</label>
+                <p class="text-sm text-gray-900">
+                  {{ item.submittedAt | date: "dd/MM/yyyy 'à' HH:mm" }}
+                </p>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-gray-500 block mb-1">{{
+                  t("fields.status")
+                }}</label>
+                <span
+                  class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-primary text-white whitespace-nowrap"
+                >
+                  <i
+                    class="mr-1.5 fas text-xs"
+                    [ngClass]="{
+                      'fa-hourglass-half': item.status === 'PENDING',
+                      'fa-check-circle': item.status === 'ACTIVE',
+                      'fa-times-circle': item.status === 'INACTIVE',
+                    }"
+                  ></i>
+                  {{ item.status }}
+                </span>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Actions recruteur -->
+          <div
+            *ngIf="recruiterId && canRecruiterActOnApplication"
+            class="bg-white rounded-lg border border-gray-200 p-6"
+          >
+            <h3 class="text-base font-semibold text-gray-900 mb-4">
+              {{ t("actions.title") }}
+            </h3>
+            <div class="space-y-2">
+              <button
+                *ngIf="item.status === 'PENDING'"
+                class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-colors"
+                (click)="onMarkReviewed()"
+              >
+                <i class="fas fa-eye text-sm mr-2"></i>
+                {{ t("actions.review") }}
+              </button>
+
+              <button
+                class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-md"
+                (click)="onAcceptApplication()"
+              >
+                <i class="fas fa-check text-sm mr-2"></i>
+                {{ t("actions.accept") }}
+              </button>
+
+              <button
+                class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors"
+                (click)="onRejectApplication()"
+              >
+                <i class="fas fa-times text-sm mr-2"></i>
+                {{ t("actions.reject") }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Retrait par le candidat -->
+          <div
+            *ngIf="isCandidate && canCandidateWithdraw"
+            class="bg-white rounded-lg border border-gray-200 p-6"
+          >
+            <button
+              class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors"
+              (click)="onWithdrawApplication()"
+            >
+              <i class="fas fa-ban text-sm mr-2"></i>
+              {{ t("actions.withdraw") }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

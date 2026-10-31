@@ -1,0 +1,247 @@
+<div
+  *transloco="let t; read: 'billings'"
+  class="min-h-full bg-gray-50 py-8 px-4"
+>
+  <app-dashboard-header
+    [title]="t('title')"
+    [description]="t('description')"
+    [backText]="'common.back'"
+    backLink="../"
+  ></app-dashboard-header>
+
+  <div
+    *ngIf="isLoading"
+    class="flex justify-center items-center h-64"
+  >
+    <app-loader></app-loader>
+  </div>
+
+  <div *ngIf="!isLoading && hasError">
+    <app-generic-error
+      [message]="errorMessage"
+    ></app-generic-error>
+
+    <div class="text-center mt-5">
+      <button
+        type="button"
+        class="app-primary"
+        (click)="loadPage()"
+      >
+        {{ t("retry") }}
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!isLoading && !hasError"
+    class="flex-1"
+  >
+    <section class="mx-auto">
+      <div
+        *ngIf="plans.length"
+        class="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
+      >
+        <article
+          *ngFor="
+            let plan of plans;
+            trackBy: trackPlanById
+          "
+          class="package-card cursor-pointer bg-white rounded-3xl border-2 p-6 md:p-7 hover:shadow-soft transition relative overflow-hidden"
+          [ngClass]="{
+            'border-primary shadow-soft':
+              isPlanSelected(plan),
+            'border-gray-100':
+              !isPlanSelected(plan),
+            'pointer-events-none opacity-70':
+              subscribingPlanId !== null
+          }"
+          (click)="selectPlan(plan)"
+        >
+          <div
+            *ngIf="isCurrentPlan(plan)"
+            class="absolute top-0 right-0 px-4 py-1 bg-primary text-white text-xs font-semibold rounded-bl-xl"
+          >
+            {{ t("currentPlan") }}
+          </div>
+
+          <div class="flex items-start justify-between">
+            <div
+              class="w-14 h-14 rounded-2xl flex items-center justify-center"
+              [ngClass]="getPlanIconContainerClass(plan)"
+            >
+              <i
+                class="fa-solid text-2xl"
+                [ngClass]="getPlanIcon(plan)"
+              ></i>
+            </div>
+
+            <div
+              class="text-primary text-2xl"
+              [class.hidden]="!isPlanSelected(plan)"
+            >
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
+
+          <h4 class="text-2xl font-bold mt-6">
+            {{ t('plans.' + plan.code + '.name') || plan.name }}
+          </h4>
+
+          <p class="text-gray-500 mt-2 min-h-[48px]">
+            {{ t('plans.' + plan.code + '.description') || plan.description || t('defaultDescription') }}
+          </p>
+
+          <div class="mt-6">
+            <span class="text-5xl font-extrabold">
+              {{ plan.price | number: "1.0-2" }}
+            </span>
+
+            <span class="text-gray-500 font-medium">
+              {{ plan.currency | uppercase }}
+            </span>
+          </div>
+
+          <p class="text-sm text-gray-400 mt-1">
+            {{
+              plan.isFree
+                ? t("freePlan")
+                : t("oneTimePayment")
+            }}
+          </p>
+
+          <div class="my-6 border-t border-gray-100"></div>
+
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-check text-primary"></i>
+
+              {{
+                t("verificationRequests", {
+                  count: getPlanCredits(plan)
+                })
+              }}
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <div
+        *ngIf="selectedPlan as plan"
+        class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-soft p-6 md:p-8"
+      >
+        <div
+          class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"
+        >
+          <div>
+            <p class="text-sm text-gray-500">
+              {{ t("selectedPackage") }}
+            </p>
+
+            <div class="flex items-center gap-3 mt-2">
+              <div
+                class="w-12 h-12 rounded-2xl flex items-center justify-center"
+                [ngClass]="getPlanIconContainerClass(plan)"
+              >
+                <i
+                  class="fa-solid"
+                  [ngClass]="getPlanIcon(plan)"
+                ></i>
+              </div>
+
+              <div>
+                <h4 class="text-2xl font-bold">
+                  {{ t('plans.' + plan.code + '.name') || plan.name }}
+                </h4>
+
+                <p class="text-gray-500">
+                  {{
+                    t("verificationRequests", {
+                      count: getPlanCredits(plan)
+                    })
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+            <div class="sm:text-right">
+              <p class="text-sm text-gray-500">
+                {{ t("totalToPay") }}
+              </p>
+
+              <p class="text-4xl font-extrabold">
+                {{ plan.price | number: "1.0-2" }}
+
+                <span class="text-base font-medium text-gray-500">
+                  {{ plan.currency | uppercase }}
+                </span>
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="min-w-[170px] app-primary disabled:opacity-60 disabled:cursor-not-allowed"
+              [disabled]="
+                subscribingPlanId !== null ||
+                isCurrentPlan(plan)
+              "
+              (click)="startActivation()"
+            >
+              <ng-container
+                *ngIf="subscribingPlanId === null"
+              >
+                {{
+                  isCurrentPlan(plan)
+                    ? t("currentPlan")
+                    : plan.isFree
+                      ? t("activate")
+                      : t("pay")
+                }}
+              </ng-container>
+
+              <ng-container
+                *ngIf="subscribingPlanId !== null"
+              >
+                <i class="fa-solid fa-spinner fa-spin mr-2"></i>
+                {{ t("processing") }}
+              </ng-container>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="currentPlan"
+        class="mt-5 text-right"
+      >
+        <button
+          type="button"
+          class="text-primary font-medium"
+          (click)="goToCurrentPlan()"
+        >
+          {{ t("viewCurrentPlan") }}
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div
+    *ngIf="
+      !isLoading &&
+      !hasError &&
+      plans.length === 0
+    "
+    class="bg-white rounded-lg p-12 text-center mt-8"
+  >
+    <i class="fas fa-credit-card text-gray-300 text-6xl mb-4"></i>
+
+    <h3 class="text-xl font-semibold text-gray-700 mb-2">
+      {{ t("emptyTitle") }}
+    </h3>
+
+    <p class="text-gray-500">
+      {{ t("emptySubtitle") }}
+    </p>
+  </div>
+</div>

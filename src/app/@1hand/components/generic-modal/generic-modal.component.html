@@ -1,0 +1,48 @@
+<h2
+  *ngIf="data.title"
+  class="dialog-container text-lg font-semibold"
+  mat-dialog-title
+>
+  {{ data.title }}
+</h2>
+
+<mat-dialog-content
+  [ngClass]="{ '!text-red-500': isErrorType }"
+  class="py-4 !px-6 !max-h-[65vh] overflow-y-auto"
+>
+  <div *ngIf="data.content">{{ data.content }}</div>
+  <div *ngIf="data.html" [innerHTML]="data.html"></div>
+  <ng-container *ngIf="data.template">
+    <div>
+      <ng-container *ngTemplateOutlet="data.template"></ng-container>
+    </div>
+  </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="data.actions?.length" align="end">
+  <div class="flex justify-end gap-2 pt-4">
+    <button
+      (click)="close(action.id)"
+      *ngFor="let action of data.actions"
+      [disabled]="isLoading || action.disabled"
+      [attr.aria-disabled]="isLoading || action.disabled"
+      [ngClass]="
+        action.disabled || isLoading
+          ? 'bg-gray-200 hover:bg-gray-200 text-gray-500 cursor-not-allowed'
+          : getButtonClass(action.color)
+      "
+      class="px-4 py-2 font-medium rounded-md shadow-sm transition"
+    >
+      <ng-container *ngIf="action.isLoading; else labelTpl">
+        <div class="flex items-center justify-center w-5 h-5 mx-auto">
+          <div
+            class="animate-spin rounded-full h-5 w-5 border-2 border-transparent border-t-primary"
+          ></div>
+        </div>
+      </ng-container>
+      <ng-template #labelTpl>
+        <span>{{ action.label }}</span>
+      </ng-template>
+    </button>
+  </div>
+</mat-dialog-actions>

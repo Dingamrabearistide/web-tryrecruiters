@@ -1,0 +1,26 @@
+{
+  "pricing": {
+    "title": "Choisissez votre plan de recrutement",
+    "subtitle": "Publiez vos annonces d'emploi et recrutez les meilleurs talents",
+    "mainTitle": "Choisissez votre plan",
+    "bestValue": "Meilleur rapport qualité/prix",
+    "featured": "Populaire",
+    "free": "Gratuit",
+    "processing": "Traitement en cours...",
+    "includes": "Ce qui est inclus",
+    "success": "Succès!",
+    "error": "Erreur",
+    "activatingPlan": "Activation de votre plan",
+    "currentPlan": "Plan actuel",
+    "howItWorks": "Comment ça marche ?",
+    "paymentFooter": "Nous acceptons les paiements par mobile money, cartes de crédit, cartes de débit, virement bancaire national ou international, et PayPal.",
+    "paymentMethods": "Nous acceptons les paiements par mobile money, cartes de crédit, cartes de débit, virement bancaire national ou international, et PayPal."
+  },
+  "errors": {
+    "notAuthenticated": "Vous devez être connecté pour souscrire à un plan",
+    "subscriptionFailed": "Une erreur est survenue lors de la création de votre abonnement. Veuillez réessayer."
+  },
+  "success": {
+    "subscriptionCreated": "Votre abonnement a été créé avec succès!"
+  }
+}

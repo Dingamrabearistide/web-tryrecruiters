@@ -1,0 +1,136 @@
+.stats-cards-container {
+  margin-bottom: 2rem;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    color: #2d3748;
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.125rem;
+  }
+
+  &__description {
+    font-size: 0.75rem;
+    color: #718096;
+    line-height: 1.2;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
+  // Color variants
+  &--primary {
+    .stats-card__icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+  }
+
+  &--success {
+    .stats-card__icon {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+  }
+
+  &--warning {
+    .stats-card__icon {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+  }
+
+  &--info {
+    .stats-card__icon {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+  }
+
+  &--danger {
+    .stats-card__icon {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .stats-card {
+    padding: 1rem;
+
+    &__content {
+      gap: 0.75rem;
+    }
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.25rem;
+    }
+
+    &__value {
+      font-size: 1.5rem;
+    }
+
+    &__title {
+      font-size: 0.8rem;
+    }
+
+    &__description {
+      font-size: 0.7rem;
+    }
+  }
+}

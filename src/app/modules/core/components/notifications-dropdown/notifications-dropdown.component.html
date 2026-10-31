@@ -1,0 +1,91 @@
+<div class="cursor-pointer relative inline-block dropdown-wrapper mt-2">
+  <!-- Bell Icon Button -->
+  <span
+    (click)="toggleDropdown()"
+    type="button"
+    class="relative translate-x-2 p-2 text-gray-400"
+    [attr.aria-label]="
+      'View notifications (' + unreadNotificationsCount + ' unread)'
+    "
+    (click)="toggleNotificationMenu()"
+    [attr.aria-expanded]="notificationMenuOpen"
+    id="notificationButton"
+  >
+    <i class="fas fa-bell text-xl"></i>
+    <span
+      *ngIf="unreadNotificationsCount > 0"
+      class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium"
+    >
+      {{ unreadNotificationsCount }}
+    </span>
+  </span>
+
+  <!-- <div
+    *ngIf="isOpen"
+    id="notificationMenu"
+    class="w-full md:w-80 absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl z-50 ring-1 ring-gray-200"
+    role="menu"
+    [attr.aria-labelledby]="'notificationButton'"
+  >
+    <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+      <h3 class="text-lg font-semibold text-gray-900">Notifications</h3>
+      <span
+        *ngIf="unreadNotificationsCount > 0"
+        (click)="markAllNotificationsAsRead()"
+        class="text-sm text-primary hover:text-blue-700 font-medium transition-colors duration-200 cursor-pointer"
+      >
+        Mark all as read
+      </span>
+    </div>
+
+    <div class="max-h-96 overflow-y-auto">
+      <div class="py-2" *ngIf="notifications.length > 0; else noNotifications">
+        <div
+          *ngFor="let notification of notifications"
+          (click)="markNotificationAsRead(notification)"
+          class="w-full text-left px-4 py-3 hover:bg-extralight/50 transition-colors duration-150 border-l-4 border-gray-500 cursor-pointer"
+          role="menuitem"
+        >
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mt-1">
+              <i [class]="getNotificationIcon(notification.type)"></i>
+            </div>
+            <div class="ml-3 flex-1">
+              <p
+                class="text-sm font-medium text-gray-900"
+                [class.font-bold]="!notification.read"
+              >
+                {{ notification.title }}
+              </p>
+              <p class="text-xs text-gray-600 mt-1">
+                {{ notification.message }}
+              </p>
+              <p class="text-xs text-gray-500 mt-1">
+                {{ notification.time }}
+              </p>
+            </div>
+            <div *ngIf="!notification.read" class="flex-shrink-0 ml-2">
+              <div class="h-2 w-2 bg-blue-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noNotifications>
+        <div class="px-4 py-8 text-center text-gray-500">
+          <i class="fas fa-bell-slash text-3xl mb-2"></i>
+          <p>No notifications</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="p-4 border-t border-gray-200">
+      <a
+        routerLink="/notifications"
+        (click)="closeAllMenus()"
+        class="text-sm text-primary hover:text-blue-700 font-medium transition-colors duration-200"
+      >
+        View all notifications
+      </a>
+    </div>
+  </div> -->
+</div>

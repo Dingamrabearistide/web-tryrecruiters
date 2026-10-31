@@ -1,0 +1,33 @@
+<div
+  [ngClass]="
+    displayMode === 'list'
+      ? 'flex flex-col gap-4'
+      : 'grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '
+  "
+>
+  <!-- <app-job-card[job]="job" [displayMode]="displayMode"></app-job-card> -->
+
+  <ng-container *ngFor="let item of items">
+    <ng-container *ngIf="displayMode === 'list'; else gridMode">
+      <app-job-offers-item-list
+        [item]="item"
+        [canPostulate]="isRecruiter"
+        [attr.isInFavorite]="getFavorite(item)"
+        [userResumes]="userResumes"
+        (onView)="onView($event)"
+        (onAddToFavorite)="onAddToFavorite($event)"
+      ></app-job-offers-item-list>
+    </ng-container>
+
+    <ng-template #gridMode>
+      <app-job-offers-item-grid
+        [item]="item"
+        [canPostulate]="isRecruiter"
+        [attr.isInFavorite]="getFavorite(item)"
+        [userResumes]="userResumes"
+        (onView)="onView($event)"
+        (onAddToFavorite)="onAddToFavorite($event)"
+      ></app-job-offers-item-grid>
+    </ng-template>
+  </ng-container>
+</div>

@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryRecruiters — Companies</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#07152f",
+              ink: "#241449",
+              blue: "#149df2",
+              blue2: "#0b79d0",
+              skysoft: "#eaf6ff",
+              coral: "#ff5148",
+              mist: "#f4f7fa",
+              line: "#e5edf5",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+              display: ["Roboto Condensed", "Inter", "ui-sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(7, 21, 47, .10)",
+              card: "0 10px 30px rgba(15, 23, 42, .08)",
+              glow: "0 18px 60px rgba(20, 157, 242, .25)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .dashboard-bg {
+        background-image:
+          radial-gradient(
+            circle at 12% 8%,
+            rgba(20, 157, 242, 0.12),
+            transparent 24%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+      }
+      .sidebar-gradient {
+        background-image:
+          radial-gradient(
+            circle at 20% 8%,
+            rgba(20, 157, 242, 0.24),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #07152f 0%, #0a1f42 58%, #241449 100%);
+      }
+    </style>
+  </head>
+
+  <body class="dashboard-bg min-h-screen text-slate-900 antialiased">
+    <div
+      data-sidebar-overlay
+      class="fixed inset-0 z-40 hidden bg-navy/60 backdrop-blur-sm lg:hidden"
+    ></div>
+
+    <div class="min-h-screen lg:grid lg:grid-cols-[290px_1fr]">
+      <!-- Sidebar -->
+      <aside
+        data-sidebar
+        class="sidebar-gradient fixed inset-y-0 left-0 z-50 flex w-[290px] -translate-x-full flex-col border-r border-white/10 text-white shadow-soft transition duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0"
+      >
+        <div class="flex h-20 items-center justify-between px-5">
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="grid size-12 place-items-center rounded-2xl bg-blue text-white shadow-glow"
+            >
+              <i class="fa-solid fa-people-group text-xl"></i>
+            </span>
+            <span class="leading-none">
+              <span class="block text-lg font-black tracking-tight"
+                >TRYRECRUITERS</span
+              >
+              <span
+                class="block text-[10px] font-bold uppercase tracking-[.22em] text-blue"
+                >Employer area</span
+              >
+            </span>
+          </a>
+          <button
+            type="button"
+            data-close-sidebar
+            class="grid size-10 place-items-center rounded-2xl bg-white/10 text-white lg:hidden"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="px-5">
+          <div class="rounded-[24px] border border-white/10 bg-white/10 p-4">
+            <div class="flex items-center gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                alt="David Miller"
+                class="size-11 rounded-2xl object-cover ring-2 ring-white/20"
+              />
+              <div class="min-w-0">
+                <p class="truncate text-sm font-black">David Miller</p>
+                <p class="text-xs font-semibold text-white/55">Recruiter</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="mt-6 flex-1 space-y-1 overflow-y-auto px-4 pb-5">
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-table-columns w-5"></i> Dashboard</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-user-tie w-5"></i> My Profile</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-black text-blue shadow-card"
+            ><i class="fa-solid fa-building w-5"></i> Companies</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-briefcase w-5"></i> Job Offers</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-bookmark w-5"></i> My Favorites</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-signature w-5"></i> My Applications</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-video w-5"></i> My Interviews</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-file-lines w-5"></i> CV</a
+          >
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-white/70 transition hover:bg-white/10 hover:text-white"
+            ><i class="fa-solid fa-gear w-5"></i> Settings</a
+          >
+        </nav>
+
+        <div class="border-t border-white/10 p-4">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-2xl bg-coral px-4 py-3 text-sm font-black text-white transition hover:bg-red-600"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main area -->
+      <div class="min-w-0">
+        <!-- Topbar -->
+        <header
+          class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur-xl"
+        >
+          <div
+            class="mx-auto flex h-20 max-w-[1180px] items-center justify-between gap-4 px-5 lg:px-8"
+          >
+            <div class="flex min-w-0 items-center gap-3">
+              <button
+                type="button"
+                data-open-sidebar
+                class="grid size-11 shrink-0 place-items-center rounded-2xl border border-line bg-white text-navy shadow-sm lg:hidden"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Employer workspace
+                </p>
+                <h1 class="truncate text-xl font-black text-navy md:text-2xl">
+                  Companies
+                </h1>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                class="relative grid size-11 place-items-center rounded-2xl border border-line bg-white text-slate-600 shadow-sm transition hover:border-blue hover:text-blue"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span
+                  class="absolute right-2 top-2 size-2 rounded-full bg-coral"
+                ></span>
+              </button>
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                alt="Employer"
+                class="size-11 rounded-2xl object-cover shadow-sm"
+              />
+            </div>
+          </div>
+        </header>
+
+        <main class="mx-auto max-w-[1180px] px-5 py-7 lg:px-8">
+          <!-- Page header -->
+          <section
+            class="rounded-[30px] border border-line bg-white p-6 shadow-card md:p-8"
+          >
+            <div
+              class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <p
+                  class="text-sm font-black uppercase tracking-[.18em] text-blue"
+                >
+                  Company management
+                </p>
+                <h2
+                  class="mt-2 font-display text-5xl font-black leading-none tracking-tight text-navy"
+                >
+                  Companies
+                </h2>
+                <p
+                  class="mt-3 max-w-2xl text-sm font-medium leading-6 text-slate-500"
+                >
+                  Manage the companies linked to your recruiter account.
+                </p>
+              </div>
+              <button
+                type="button"
+                data-open-company-modal
+                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue px-5 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+              >
+                <i class="fa-solid fa-plus"></i> Add company
+              </button>
+            </div>
+          </section>
+
+          <!-- Stats -->
+          <section class="mt-6 grid gap-4 sm:grid-cols-3">
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-building"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">3</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Companies</p>
+            </article>
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-600"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">2</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Verified</p>
+            </article>
+            <article
+              class="rounded-[26px] border border-line bg-white p-5 shadow-card"
+            >
+              <span
+                class="grid size-11 place-items-center rounded-2xl bg-red-50 text-coral"
+                ><i class="fa-solid fa-briefcase"></i
+              ></span>
+              <p class="mt-4 text-3xl font-black text-navy">20</p>
+              <p class="mt-1 text-sm font-bold text-slate-500">Total jobs</p>
+            </article>
+          </section>
+
+          <!-- Search + list -->
+          <section
+            class="mt-6 rounded-[30px] border border-line bg-white p-5 shadow-card md:p-6"
+          >
+            <div
+              class="mb-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
+            >
+              <label
+                class="flex min-h-12 w-full items-center gap-3 rounded-2xl border border-line bg-slate-50 px-4 focus-within:border-blue focus-within:bg-white md:max-w-md"
+              >
+                <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                <input
+                  data-search-input
+                  type="text"
+                  class="w-full bg-transparent text-sm font-semibold text-slate-700 outline-none placeholder:text-slate-400"
+                  placeholder="Search company"
+                />
+              </label>
+
+              <select
+                data-status-filter
+                class="h-12 rounded-2xl border border-line bg-white px-4 text-sm font-bold text-slate-700 outline-none focus:border-blue"
+              >
+                <option value="all">All statuses</option>
+                <option value="Verified">Verified</option>
+                <option value="Pending">Pending</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </div>
+
+            <div data-companies-list class="space-y-3"></div>
+
+            <div
+              data-empty-state
+              class="hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center"
+            >
+              <span
+                class="mx-auto grid size-14 place-items-center rounded-2xl bg-skysoft text-blue"
+                ><i class="fa-solid fa-building-circle-exclamation text-xl"></i
+              ></span>
+              <h3 class="mt-4 text-xl font-black text-navy">
+                No company found
+              </h3>
+              <p class="mt-2 text-sm font-medium text-slate-500">
+                Try a different search or status.
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add company modal -->
+    <div
+      data-company-modal
+      class="fixed inset-0 z-[70] hidden items-center justify-center bg-navy/60 p-5 backdrop-blur-sm"
+    >
+      <div class="w-full max-w-lg rounded-[30px] bg-white p-6 shadow-soft">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.18em] text-blue">
+              New company
+            </p>
+            <h2 class="mt-2 text-2xl font-black text-navy">Add company</h2>
+          </div>
+          <button
+            type="button"
+            data-close-company-modal
+            class="grid size-10 place-items-center rounded-2xl bg-slate-100 text-slate-500 hover:text-coral"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form class="mt-6 grid gap-4">
+          <label>
+            <span class="text-sm font-black text-navy">Company name</span>
+            <input
+              type="text"
+              placeholder="Company name"
+              class="mt-2 h-13 w-full rounded-2xl border border-line px-4 py-3 text-sm font-semibold outline-none focus:border-blue focus:ring-4 focus:ring-blue/10"
+            />
+          </label>
+          <label>
+            <span class="text-sm font-black text-navy">Industry</span>
+            <select
+              class="mt-2 h-13 w-full rounded-2xl border border-line px-4 py-3 text-sm font-semibold outline-none focus:border-blue focus:ring-4 focus:ring-blue/10"
+            >
+              <option>Technology</option>
+              <option>Finance</option>
+              <option>Cybersecurity</option>
+              <option>Healthcare</option>
+            </select>
+          </label>
+          <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+            <button
+              type="button"
+              data-cancel-company-modal
+              class="rounded-2xl border border-line bg-white px-6 py-3 text-sm font-black text-navy transition hover:border-blue hover:text-blue"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="rounded-2xl bg-blue px-6 py-3 text-sm font-black text-white shadow-glow transition hover:bg-blue2"
+            >
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarOverlay = document.querySelector("[data-sidebar-overlay]");
+      const openSidebar = document.querySelector("[data-open-sidebar]");
+      const closeSidebar = document.querySelector("[data-close-sidebar]");
+
+      function showSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay.classList.remove("hidden");
+      }
+
+      function hideSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        sidebarOverlay.classList.add("hidden");
+      }
+
+      openSidebar.addEventListener("click", showSidebar);
+      closeSidebar.addEventListener("click", hideSidebar);
+      sidebarOverlay.addEventListener("click", hideSidebar);
+
+      const companies = [
+        {
+          name: "NexarTrust Analytics",
+          industry: "Finance",
+          location: "Paris, France",
+          status: "Verified",
+          jobs: 14,
+          logo: "NT",
+          color: "from-violet-600 to-ink",
+        },
+        {
+          name: "SecureOps Cloud",
+          industry: "Cybersecurity",
+          location: "Remote",
+          status: "Pending",
+          jobs: 6,
+          logo: "SO",
+          color: "from-cyan-600 to-blue",
+        },
+        {
+          name: "TalentFlow Labs",
+          industry: "Technology",
+          location: "London, UK",
+          status: "Draft",
+          jobs: 0,
+          logo: "TF",
+          color: "from-teal-600 to-emerald-600",
+        },
+      ];
+
+      const state = { search: "", status: "all" };
+      const searchInput = document.querySelector("[data-search-input]");
+      const statusFilter = document.querySelector("[data-status-filter]");
+      const companiesList = document.querySelector("[data-companies-list]");
+      const emptyState = document.querySelector("[data-empty-state]");
+
+      function statusBadge(status) {
+        if (status === "Verified")
+          return '<span class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-600"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>';
+        if (status === "Pending")
+          return '<span class="rounded-full bg-yellow-50 px-3 py-1.5 text-xs font-black text-yellow-700"><i class="fa-solid fa-clock mr-1"></i>Pending</span>';
+        return '<span class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-600"><i class="fa-solid fa-pen mr-1"></i>Draft</span>';
+      }
+
+      function renderCompanies() {
+        const filtered = companies.filter((company) => {
+          const text =
+            `${company.name} ${company.industry} ${company.location}`.toLowerCase();
+          const searchMatch =
+            !state.search || text.includes(state.search.toLowerCase());
+          const statusMatch =
+            state.status === "all" || company.status === state.status;
+          return searchMatch && statusMatch;
+        });
+
+        companiesList.innerHTML = filtered
+          .map(
+            (company) => `
+        <article class="rounded-[24px] border border-line bg-white p-4 transition hover:border-blue hover:shadow-card">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-center gap-4">
+              <span class="grid size-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${company.color} text-sm font-black text-white">${company.logo}</span>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-black text-navy">${company.name}</h3>
+                  ${statusBadge(company.status)}
+                </div>
+                <p class="mt-1 text-sm font-bold text-slate-500">${company.industry} · ${company.location}</p>
+                <p class="mt-2 text-xs font-black text-blue"><i class="fa-solid fa-briefcase mr-1"></i>${company.jobs} open jobs</p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button type="button" class="rounded-2xl bg-skysoft px-4 py-2.5 text-sm font-black text-blue hover:bg-blue hover:text-white"><i class="fa-solid fa-eye mr-2"></i>View</button>
+              <button type="button" class="rounded-2xl bg-blue px-4 py-2.5 text-sm font-black text-white hover:bg-blue2"><i class="fa-solid fa-pen mr-2"></i>Edit</button>
+            </div>
+          </div>
+        </article>
+      `,
+          )
+          .join("");
+
+        emptyState.classList.toggle("hidden", filtered.length !== 0);
+      }
+
+      function syncFilters() {
+        state.search = searchInput.value.trim();
+        state.status = statusFilter.value;
+        renderCompanies();
+      }
+
+      searchInput.addEventListener("input", syncFilters);
+      statusFilter.addEventListener("change", syncFilters);
+
+      const modal = document.querySelector("[data-company-modal]");
+      const openModal = document.querySelector("[data-open-company-modal]");
+      const closeModalButtons = document.querySelectorAll(
+        "[data-close-company-modal], [data-cancel-company-modal]",
+      );
+
+      openModal.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+
+      closeModalButtons.forEach((button) =>
+        button.addEventListener("click", () => {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }),
+      );
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      });
+
+      renderCompanies();
+    </script>
+  </body>
+</html>

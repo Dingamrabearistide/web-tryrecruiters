@@ -1,0 +1,25 @@
+<div class="stats-cards-container">
+  <div class="row g-3">
+    <div class="col-md-6 col-lg-3" *ngFor="let card of statsCards">
+      <div class="stats-card" [ngClass]="'stats-card--' + card.color">
+        <div class="stats-card__content">
+          <div class="stats-card__icon">
+            <i [class]="'fas fa-' + card.icon"></i>
+          </div>
+          <div class="stats-card__info">
+            <div class="stats-card__value">
+              {{ card.value }}{{ card.suffix || "" }}
+            </div>
+            <div class="stats-card__title">{{ card.title }}</div>
+            <div class="stats-card__description">{{ card.description }}</div>
+          </div>
+        </div>
+        <div class="stats-card__loading" *ngIf="loading">
+          <div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">Chargement...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

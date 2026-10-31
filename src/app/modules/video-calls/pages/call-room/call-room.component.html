@@ -1,0 +1,264 @@
+<div
+  class="tr-call-page"
+  [class.tr-call-page--meeting]="
+    !needsUserName && !isLoading && !error && callOptions
+  "
+>
+  <div
+    *ngIf="showToast"
+    class="tr-toast"
+    [ngClass]="{
+      'tr-toast--success': toastType === 'success',
+      'tr-toast--error': toastType === 'error',
+    }"
+  >
+    <i
+      class="fas"
+      [ngClass]="{
+        'fa-check-circle': toastType === 'success',
+        'fa-exclamation-circle': toastType === 'error',
+      }"
+    ></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+
+  <header class="tr-prejoin-header" *ngIf="needsUserName || isLoading || error">
+    <nav class="tr-navbar">
+      <button
+        type="button"
+        class="tr-brand"
+        (click)="goBack()"
+        aria-label="TryRecruiters"
+      >
+        <span class="tr-brand__icon"><i class="fas fa-people-group"></i></span>
+        <span class="tr-brand__copy">
+          <span>TRYRECRUITERS</span>
+          <small>Talent platform</small>
+        </span>
+      </button>
+
+      <div class="tr-nav-actions">
+        <app-language-switcher />
+        <button
+          type="button"
+          class="tr-pill tr-pill--ghost"
+          (click)="shareLink()"
+          *ngIf="roomUrl"
+        >
+          <i class="fas fa-share-alt"></i>
+          <span>{{ "videoCall.share" | transloco }}</span>
+        </button>
+        <button
+          type="button"
+          class="tr-pill tr-pill--primary"
+          (click)="goBack()"
+        >
+          <i class="fas fa-arrow-left"></i>
+          <span>{{ "videoCall.back" | transloco }}</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <ng-container *ngIf="needsUserName && !isLoading">
+    <main class="tr-prejoin" *transloco="let t; read: 'videoCall'">
+      <section class="tr-prejoin__preview">
+        <div class="tr-eyebrow"><span></span>{{ t("videoInterviewRoom") }}</div>
+
+        <h1>{{ t("readyToJoin") }}</h1>
+        <p>
+          {{ t("checkNameBeforeJoining") }} <strong>{{ roomName }}</strong
+          >.
+        </p>
+
+        <div class="tr-video-preview">
+          <div class="tr-secure-badge">
+            <i class="fas fa-lock"></i>
+            {{ t("secureDailyRoom") }}
+          </div>
+
+          <div class="tr-avatar-preview">
+            <span><i class="fas fa-user"></i></span>
+            <strong>{{ guestName.trim() || t("guest") }}</strong>
+            <small>{{ t("cameraOff") }}</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="tr-join-card">
+        <span class="tr-join-card__icon"><i class="fas fa-video"></i></span>
+        <h2>{{ t("joinMeeting") }}</h2>
+        <p>{{ roomName }}</p>
+
+        <div *ngIf="error" class="tr-inline-alert">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>{{ error }}</span>
+        </div>
+
+        <label class="tr-field" for="guestName">
+          <span>{{ t("yourName") }}</span>
+          <input
+            type="text"
+            id="guestName"
+            [(ngModel)]="guestName"
+            (keyup.enter)="joinAsGuest()"
+            [placeholder]="t('enterYourName')"
+            [disabled]="isJoining"
+            autofocus
+          />
+        </label>
+
+        <div class="tr-card-actions">
+          <button
+            class="tr-button tr-button--secondary"
+            type="button"
+            (click)="goBack()"
+            [disabled]="isJoining"
+          >
+            <i class="fas fa-arrow-left"></i>
+            {{ t("cancel") }}
+          </button>
+          <button
+            type="button"
+            (click)="joinAsGuest()"
+            class="tr-button tr-button--primary"
+            [disabled]="isJoining || !guestName.trim()"
+          >
+            <i
+              class="fas"
+              [ngClass]="
+                isJoining ? 'fa-circle-notch fa-spin' : 'fa-right-to-bracket'
+              "
+            ></i>
+            {{ isJoining ? t("connecting") : t("join") }}
+          </button>
+        </div>
+      </section>
+    </main>
+  </ng-container>
+
+  <ng-container *ngIf="isLoading && !needsUserName">
+    <main class="tr-state-screen" *transloco="let t; read: 'videoCall'">
+      <div class="tr-loader"></div>
+      <p>{{ t("connecting") }}...</p>
+    </main>
+  </ng-container>
+
+  <main class="tr-state-screen" *ngIf="error && !isLoading && !needsUserName">
+    <div class="tr-error-card">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h2>{{ "videoCall.unableToJoin" | transloco }}</h2>
+      <p>{{ error }}</p>
+      <button
+        type="button"
+        class="tr-button tr-button--primary"
+        (click)="goBack()"
+      >
+        {{ "videoCall.backToMeetings" | transloco }}
+      </button>
+    </div>
+  </main>
+
+  <ng-container *ngIf="!isLoading && !error && !needsUserName && callOptions">
+    <section class="tr-meeting" *transloco="let t; read: 'videoCall'">
+      <header class="tr-meeting__topbar">
+        <div class="tr-meeting-title">
+          <span><i class="fas fa-people-group"></i></span>
+          <div>
+            <strong>{{ roomName }}</strong>
+            <small>{{ t("callInProgress") }}</small>
+          </div>
+        </div>
+
+        <div class="tr-meeting__top-actions">
+          <app-language-switcher />
+
+          <button type="button" class="tr-chip" (click)="shareLink()">
+            <i class="fas fa-share-alt"></i>
+            {{ t("share") }}
+          </button>
+          <button type="button" class="tr-chip tr-chip--secure">
+            <i class="fas fa-shield-halved"></i>
+            {{ t("secure") }}
+          </button>
+        </div>
+      </header>
+
+      <main class="tr-meeting__content">
+        <app-video-call #videoCall [callOptions]="callOptions"></app-video-call>
+      </main>
+
+      <footer class="tr-controls-bar">
+        <div class="tr-controls-bar__room">{{ roomName }}</div>
+
+        <div class="tr-controls">
+          <button
+            type="button"
+            class="tr-control"
+            [class.tr-control--danger]="videoCall && !videoCall.isMicOn"
+            (click)="toggleMicrophone()"
+            [title]="t('muteMicrophone')"
+          >
+            <i
+              class="fas"
+              [ngClass]="
+                videoCall?.isMicOn ? 'fa-microphone' : 'fa-microphone-slash'
+              "
+            ></i>
+          </button>
+
+          <button
+            type="button"
+            class="tr-control"
+            [class.tr-control--danger]="videoCall && !videoCall.isCameraOn"
+            (click)="toggleCamera()"
+            [title]="t('turnCameraOn')"
+          >
+            <i
+              class="fas"
+              [ngClass]="videoCall?.isCameraOn ? 'fa-video' : 'fa-video-slash'"
+            ></i>
+          </button>
+
+          <button
+            type="button"
+            class="tr-control"
+            [class.tr-control--active]="videoCall?.isScreenSharing"
+            (click)="toggleScreenShare()"
+            [title]="t('presentNow')"
+          >
+            <i class="fas fa-desktop"></i>
+          </button>
+
+          <button
+            type="button"
+            class="tr-control tr-control--leave"
+            (click)="leaveCall()"
+            [title]="t('leaveCall')"
+          >
+            <i class="fas fa-phone-slash"></i>
+          </button>
+        </div>
+
+        <div class="tr-controls-bar__right">
+          <button
+            type="button"
+            class="tr-mini-control"
+            [title]="t('people')"
+            (click)="videoCall.openSidePanel('people')"
+          >
+            <i class="fas fa-users"></i>
+          </button>
+          <button
+            type="button"
+            class="tr-mini-control"
+            [title]="t('messages')"
+            (click)="videoCall.openSidePanel('chat')"
+          >
+            <i class="fas fa-message"></i>
+          </button>
+        </div>
+      </footer>
+    </section>
+  </ng-container>
+</div>

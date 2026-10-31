@@ -1,0 +1,72 @@
+{
+  "list": {
+    "title": "Mes CV",
+    "description": "Gérez tous vos CV et documents"
+  },
+  "form": {
+    "createTitle": "Nouveau CV",
+    "resume": "Nouveau CV",
+    "name": "Nom du CV",
+    "namePlaceholder": "Ex: CV Développeur Frontend",
+    "file": "Fichier PDF",
+    "isDefault": "Définir comme CV par défaut",
+    "upload": "Télécharger un CV",
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher par nom de CV...",
+    "isDefaultLabel": "Par défaut",
+    "allValues": "Tous",
+    "createdAfter": "Créé après",
+    "createdBefore": "Créé avant",
+    "reset": "Réinitialiser",
+    "back": "Retour",
+    "download": "Télécharger",
+    "preview": "Aperçu",
+    "setAsDefault": "Définir par défaut",
+    "removeDefault": "Retirer par défaut"
+  },
+  "status": {
+    "default": "Par défaut",
+    "notDefault": "Standard"
+  },
+  "actions": {
+    "create": "Ajouter un CV",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "view": "Voir",
+    "download": "Télécharger"
+  },
+  "delete": {
+    "title": "Supprimer le CV",
+    "message": "Êtes-vous sûr de vouloir supprimer le CV \"{{name}}\" ?",
+    "messageDefault": "\"{{name}}\" est votre CV par défaut. Si vous le supprimez, aucun CV ne sera défini comme par défaut — pensez à en choisir un autre après suppression. Continuer ?",
+    "warning": "Cette action est irréversible."
+  },
+  "messages": {
+    "uploadSuccess": "CV téléchargé avec succès",
+    "updateSuccess": "CV mis à jour avec succès",
+    "deleteSuccess": "CV supprimé avec succès",
+    "setDefaultSuccess": "CV défini comme par défaut",
+    "maxFilesReached": "Vous avez atteint le nombre maximum de CV (5)",
+    "invalidFileType": "Seuls les fichiers PDF sont acceptés",
+    "fileTooLarge": "Le fichier ne doit pas dépasser 5 MB",
+    "nameRequired": "Le nom du CV est obligatoire",
+    "fileRequired": "Veuillez sélectionner un fichier PDF"
+  },
+  "empty": {
+    "title": "Aucun CV trouvé",
+    "subtitle": "Ajoutez votre premier CV pour commencer à postuler",
+    "action": "Ajouter un CV"
+  },
+  "validation": {
+    "name": {
+      "required": "Le nom du CV est obligatoire",
+      "minLength": "Le nom doit contenir au moins 3 caractères",
+      "maxLength": "Le nom ne peut pas dépasser 100 caractères"
+    },
+    "file": {
+      "required": "Veuillez sélectionner un fichier",
+      "invalidType": "Seuls les fichiers PDF sont acceptés",
+      "tooLarge": "Le fichier ne doit pas dépasser 5 MB"
+    }
+  }
+}

@@ -1,0 +1,222 @@
+<div
+  class="bg-white border border-gray-200 p-4 rounded-xl w-full flex flex-col hover:border-blue-300 transition duration-300 h-full relative overflow-hidden"
+  *transloco="let t; read: 'joboffers'"
+>
+  <!-- Applied Badge -->
+  <div
+    *ngIf="hasApplied"
+    class="absolute top-0 left-0 text-white px-3 py-1.5 rounded-br-xl rounded-tl-xl font-semibold text-xs flex items-center gap-1.5 shadow-md z-10"
+    [style.background]="
+      'linear-gradient(90deg, #ff5173 0%, #f06363 50%, #ff5173 100%)'
+    "
+  >
+    <i class="fa fa-check-circle text-xs"></i>
+    <span>{{ t("applied") || "Applied" }}</span>
+  </div>
+
+  <div class="flex justify-between items-start mb-3">
+    <div
+      class="w-12 h-12 sm:w-14 sm:h-14 rounded-md border border-gray-300 flex-shrink-0 overflow-hidden"
+    >
+      <img
+        *ngIf="getFullPhotoUrl(item.company.logoFile?.url) && !logoError"
+        [src]="getFullPhotoUrl(item.company.logoFile?.url)"
+        alt="Logo"
+        class="w-full h-full object-contain"
+        (error)="logoError = true"
+      />
+      <div
+        *ngIf="!getFullPhotoUrl(item.company.logoFile?.url) || logoError"
+        class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 text-blue-700 font-bold text-sm sm:text-base select-none"
+      >
+        {{ getCompanyInitials(item.company.name) }}
+      </div>
+    </div>
+    <span
+      *ngIf="isAuthenticated && isCandidate"
+      (click)="onAddToFavorite(item)"
+      class="cursor-pointer text-gray-400 hover:text-yellow-500 transition flex-shrink-0"
+      [title]="t('add_to_favorites')"
+    >
+      <i
+        class="fa fa-bookmark flex items-center justify-center px-2.5 py-1.5 rounded-md transition text-sm"
+        [ngClass]="{
+          'fa-solid text-[#1D9BED] bg-blue-100 border border-blue-500':
+            isInFavorite,
+          'fa-regular text-gray-400 bg-gray-100 border border-gray-200':
+            !isInFavorite,
+        }"
+        aria-label="Ajouter aux favoris"
+      ></i>
+    </span>
+  </div>
+
+  <div class="flex-grow flex flex-col gap-3 mb-3">
+    <div class="space-y-1">
+      <h3
+        class="text-base font-semibold text-gray-900 leading-snug line-clamp-2"
+      >
+        {{ item.title }}
+        <i
+          class="fa fa-check-circle text-green-500 text-xs"
+          [title]="t('verified')"
+        ></i>
+      </h3>
+      <p
+        class="text-xs text-black bg-yellow-200 w-fit px-3 py-0.5 rounded-full truncate max-w-full"
+      >
+        {{ item.company.name || t("unknown_company") }}
+      </p>
+    </div>
+
+    <div class="flex-1 min-h-0">
+      <p
+        [innerHTML]="item.description"
+        class="text-gray-700 line-clamp-2 text-sm"
+      ></p>
+    </div>
+
+    <div class="text-xs text-gray-600 space-y-2">
+      <div class="flex flex-wrap gap-x-3 gap-y-1.5">
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-map-marker-alt text-[#1D9BED]"></i>
+          <span class="truncate">{{
+            item.location || t("not_specified")
+          }}</span>
+        </span>
+
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-file-contract text-[#1D9BED]"></i>
+          {{ t("contractTypes." + item.contractType) }}
+        </span>
+
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-globe text-[#1D9BED]"></i>
+          {{
+            item.jobType ? t("jobTypes." + item.jobType) : t("not_specified")
+          }}
+        </span>
+
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-user-graduate text-[#1D9BED]"></i>
+          {{
+            item.educationLevel
+              ? t("educationLevels." + item.educationLevel)
+              : t("unknown_education")
+          }}
+        </span>
+
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-layer-group text-[#1D9BED]"></i>
+          {{
+            item.jobLevel
+              ? t("joboffers.jobLevel." + item.jobLevel)
+              : t("undefined_level")
+          }}
+        </span>
+
+        <span
+          *ngIf="item.experienceYears"
+          class="flex items-center gap-1 whitespace-nowrap"
+        >
+          <i class="fa fa-briefcase text-[#1D9BED]"></i>
+          {{
+            t("experience", {
+              count: item.experienceYears || 0,
+            })
+          }}
+        </span>
+
+        <span
+          *ngIf="item.salary"
+          class="flex items-center gap-1 whitespace-nowrap"
+        >
+          <i class="fa fa-money-bill text-[#1D9BED]"></i>
+          {{ t("salary", { amount: formatSalaryAmount(item.salary) }) }}
+          <ng-container *ngIf="item.salaryCurrency">{{ item.salaryCurrency }}</ng-container>
+        </span>
+      </div>
+
+      <div class="flex flex-wrap gap-x-3 gap-y-1.5">
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-calendar-plus text-[#1D9BED]"></i>
+          <span class="text-green-600 truncate">
+            {{
+              item.publishedAt
+                ? (item.publishedAt | date: "dd/MM/yyyy")
+                : t("no_date_for_published")
+            }}
+          </span>
+        </span>
+
+        <span class="flex items-center gap-1 whitespace-nowrap">
+          <i class="fa fa-calendar-times text-[#1D9BED]"></i>
+          <span class="text-red-400 truncate">
+            {{
+              item.expiresAt
+                ? (item.expiresAt | date: "dd/MM/yyyy":"UTC")
+                : t("not_mentioned")
+            }}
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div
+      class="flex flex-wrap gap-1.5 text-xs"
+      *ngIf="item.tags && item.tags.length > 0"
+    >
+      <ng-container *ngFor="let tag of item.tags | slice: 0 : 3">
+        <span
+          class="bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full font-medium truncate"
+        >
+          #{{ tag.tag.name }}
+        </span>
+      </ng-container>
+      <span *ngIf="item.tags.length > 3" class="text-gray-400">
+        +{{ item.tags.length - 3 }}
+      </span>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-2 pt-3 border-t border-gray-100">
+    <button
+      *ngIf="(!isAuthenticated || isCandidate) && hasApplied"
+      disabled
+      class="app-primary w-full py-2 text-sm font-semibold rounded-md bg-gray-300 text-gray-500 shadow-sm cursor-not-allowed opacity-60"
+      [title]="t('applied')"
+    >
+      <i class="fa fa-check-circle mr-2"></i>
+      {{ t("applied") }}
+    </button>
+
+    <button
+      *ngIf="(!isAuthenticated || isCandidate) && !hasApplied"
+      [routerLink]="['/apply', item.id]"
+      class="app-primary w-full py-2 text-sm font-semibold rounded-md bg-[#1D9BED] hover:bg-[#1679bb] text-white shadow-sm transition"
+    >
+      <i class="fa fa-paper-plane mr-2"></i>
+      {{ t("apply_now") }}
+    </button>
+
+    <button
+      (click)="onView(item)"
+      class="app-primary w-full py-2 text-sm font-semibold rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 shadow-sm transition"
+    >
+      <i class="fa fa-eye mr-2"></i>
+      {{ t("item.details") }}
+    </button>
+  </div>
+
+  <!-- Modal d'application cachée -->
+  <ng-container *ngIf="canPostulate && isAuthenticated && isCandidate">
+    <app-applications-button
+      #applicationButton
+      [jobOfferId]="item.id"
+      [resumes]="userResumes"
+      (onDone)="onApplicationSubmitted($event)"
+      style="display: none"
+    ></app-applications-button>
+  </ng-container>
+</div>

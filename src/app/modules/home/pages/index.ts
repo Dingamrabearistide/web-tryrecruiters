@@ -1,0 +1,14 @@
+export { HomePageComponent } from "./home-page/home-page.component";
+export { AboutPageComponent } from "./about-page/about-page.component";
+export { ContactPageComponent } from "./contact-page/contact-page.component";
+export { JobOffersListPageComponent } from "./job-offers/job-offers-list-page/job-offers-list-page.component";
+export { JobOffersDetailsPageComponent } from "./job-offers/job-offers-details-page/job-offers-details-page.component";
+export { CompaniesListPageComponent } from "./companies/companies-list-page/companies-list-page.component";
+export { CompaniesDetailsPageComponent } from "./companies/companies-details-page/companies-details-page.component";
+export { CandidatesListPageComponent } from "./candidates/candidates-list-page/candidates-list-page.component";
+export { CandidatesDetailsPageComponent } from "./candidates/candidates-details-page/candidates-details-page.component";
+export { FaqsPageComponent } from "./faqs/faqs-page.component";
+export { PrivacyPolicyPageComponent } from "./privacy-policy/privacy-policy-page.component";
+export { TermsPageComponent } from "./terms/terms-page.component";
+export { HowItWorksPageComponent } from "./how-it-works/how-it-works-page.component";
+export { ApplyPageComponent } from "./apply-page/apply-page.component";

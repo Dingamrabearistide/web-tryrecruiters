@@ -1,0 +1,19 @@
+docker rm -f tryrecruiters-web-static
+docker build -f Dockerfile.static -t tryrecruiters-web-static .
+docker run -d -p 8802:80 --name tryrecruiters-web-static tryrecruiters-web-static
+
+
+docker exec -it tryrecruiters-web-static sh
+ls -la /usr/share/nginx/html
+
+
+pnpm i ngx-intl-tel-input i18n-iso-countries i18n-iso-countries/langs/en.json google-libphonenumber
+
+
+              // "@angular/material/prebuilt-themes/azure-blue.css",
+
+
+openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes
+
+
+npm install ngx-intl-tel-input@17.0.0 ngx-bootstrap@20.0.2 intl-tel-input@19.2.3

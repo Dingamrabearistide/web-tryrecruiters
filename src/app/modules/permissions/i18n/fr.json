@@ -1,0 +1,63 @@
+{
+  "list": {
+    "title": "Permissions",
+    "description": "Gérer les permissions et les contrôles d'accès"
+  },
+  "create": {
+    "title": "Créer une permission",
+    "description": "Définir une nouvelle permission pour les ressources de la plateforme"
+  },
+  "update": {
+    "title": "Modifier la permission",
+    "description": "Modifier les paramètres de la permission"
+  },
+  "details": {
+    "title": "Détails de la permission",
+    "description": "Voir la configuration de la permission"
+  },
+  "form": {
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "resource": "Ressource",
+    "allResources": "Toutes les ressources",
+    "action": "Action",
+    "allActions": "Toutes les actions",
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher des permissions...",
+    "resetFilters": "Réinitialiser les filtres",
+    "reset": "Réinitialiser"
+  },
+  "resources": {
+    "USERS": "Utilisateurs",
+    "ROLES": "Rôles",
+    "PERMISSIONS": "Permissions",
+    "COMPANIES": "Entreprises",
+    "JOB_OFFERS": "Offres d'emploi",
+    "APPLICATIONS": "Candidatures",
+    "INTERVIEWS": "Entretiens",
+    "CANDIDATES": "Candidats",
+    "RESUME": "CV",
+    "DASHBOARD": "Tableau de bord",
+    "RECRUITERS": "Recruteurs",
+    "JOB_CATEGORIES": "Catégories d'emploi",
+    "PLATFORM_SETTINGS": "Paramètres de la plateforme",
+    "REPORTS": "Rapports",
+    "LOGS": "Journaux",
+    "FILES": "Fichiers"
+  },
+  "actions": {
+    "CREATE": "Créer",
+    "READ": "Lire",
+    "UPDATE": "Modifier",
+    "DELETE": "Supprimer",
+    "LIST": "Lister",
+    "MANAGE": "Gérer",
+    "PUBLISH": "Publier",
+    "APPROVE": "Approuver",
+    "create": "Créer une permission",
+    "update": "Mettre à jour",
+    "edit": "Modifier",
+    "back": "Retour",
+    "cancel": "Annuler"
+  }
+}

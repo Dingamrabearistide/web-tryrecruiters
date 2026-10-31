@@ -1,0 +1,333 @@
+<div class="container mx-auto">
+  <!-- Section 1: Informations du compte -->
+  <section class="my-5 py-10 px-10">
+    <div class="w-full rounded-md shadow-md p-5 bg-white">
+      <div class="w-full border-b border-b-gray-300 mb-10">
+        <span class="text-2xl font-bold text-primary pb-3">
+          Informations du compte
+        </span>
+      </div>
+      <div class="flex gap-10">
+        <div class="w-full">
+          <form [formGroup]="accountForm" (ngSubmit)="onUpdateAccount()">
+            <div class="flex flex-col p-4 gap-5">
+              <div>
+                <label
+                  class="block text-sm text-gray-700 font-bold mb-2"
+                  for="name"
+                >
+                  Nom
+                </label>
+                <input
+                  class="text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  [class.border-red-500]="
+                    accountControls['name'].invalid &&
+                    accountControls['name'].touched
+                  "
+                  id="name"
+                  type="text"
+                  placeholder="Nom"
+                  formControlName="name"
+                />
+                <div
+                  *ngIf="
+                    accountControls['name'].invalid &&
+                    accountControls['name'].touched
+                  "
+                  class="text-red-500 text-xs mt-1"
+                >
+                  <span *ngIf="accountControls['name'].errors?.['required']"
+                    >Le nom est requis</span
+                  >
+                  <span *ngIf="accountControls['name'].errors?.['minlength']"
+                    >Le nom doit contenir au moins 2 caractères</span
+                  >
+                </div>
+              </div>
+              <div>
+                <label
+                  class="block text-sm text-gray-700 font-bold mb-2"
+                  for="email"
+                >
+                  Email
+                </label>
+                <input
+                  class="text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  [class.border-red-500]="
+                    accountControls['email'].invalid &&
+                    accountControls['email'].touched
+                  "
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <div
+                  *ngIf="
+                    accountControls['email'].invalid &&
+                    accountControls['email'].touched
+                  "
+                  class="text-red-500 text-xs mt-1"
+                >
+                  <span *ngIf="accountControls['email'].errors?.['required']"
+                    >L'email est requis</span
+                  >
+                  <span *ngIf="accountControls['email'].errors?.['email']"
+                    >Format d'email invalide</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex gap-3 justify-end px-4 py-3 rounded-lg text-right sm:px-6"
+            >
+              <button
+                type="submit"
+                [disabled]="accountForm.invalid"
+                class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-sm font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Mettre à jour
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Préférences -->
+  <section class="my-5 py-10 px-10">
+    <div class="w-full rounded-md shadow-md p-5 bg-white">
+      <div class="w-full border-b border-b-gray-300 mb-10">
+        <span class="w-full text-2xl font-bold text-primary pb-3">
+          Préférences
+        </span>
+      </div>
+      <div class="flex gap-10">
+        <div class="w-full">
+          <form [formGroup]="preferencesForm" (ngSubmit)="onSavePreferences()">
+            <div>
+              <div class="flex flex-col gap-5">
+                <div class="inline-flex items-center">
+                  <label class="flex items-center cursor-pointer relative">
+                    <input
+                      type="checkbox"
+                      class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 bg-white checked:bg-primary checked:border-primary"
+                      formControlName="receiveMonthlyInvoices"
+                      id="receiveMonthlyInvoices"
+                    />
+                    <span
+                      class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-[3px] transform -translate-y-1/2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        stroke-width="1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span class="ml-2 text-sm text-gray-700">
+                      Recevoir les factures mensuelles
+                    </span>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <label class="flex items-center cursor-pointer relative">
+                    <input
+                      type="checkbox"
+                      class="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 bg-white checked:bg-primary checked:border-primary"
+                      formControlName="receiveApplicationsByEmail"
+                      id="receiveApplicationsByEmail"
+                    />
+                    <span
+                      class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-[3px] transform -translate-y-1/2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        stroke-width="1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span class="ml-2 text-sm text-gray-700">
+                      Recevoir les candidatures par email
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex gap-3 justify-end px-4 py-3 rounded-lg text-right sm:px-6"
+            >
+              <button
+                type="submit"
+                class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-sm font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                Enregistrer les préférences
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Sécurité & Compte -->
+  <section class="my-5 py-10 px-10">
+    <div class="w-full rounded-md shadow-md p-5 bg-white">
+      <div class="w-full border-b border-b-gray-300 mb-10">
+        <span class="text-2xl font-bold text-primary pb-3">
+          Sécurité & Compte
+        </span>
+      </div>
+      <div class="flex flex-col gap-5">
+        <form [formGroup]="securityForm" (ngSubmit)="onChangePassword()">
+          <div class="flex flex-col p-4 gap-5">
+            <div>
+              <label
+                class="block text-sm text-gray-700 font-bold mb-2"
+                for="currentPassword"
+              >
+                Mot de passe actuel
+              </label>
+              <input
+                class="text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                [class.border-red-500]="
+                  securityControls['currentPassword'].invalid &&
+                  securityControls['currentPassword'].touched
+                "
+                id="currentPassword"
+                type="password"
+                placeholder="Mot de passe actuel"
+                formControlName="currentPassword"
+              />
+              <div
+                *ngIf="
+                  securityControls['currentPassword'].invalid &&
+                  securityControls['currentPassword'].touched
+                "
+                class="text-red-500 text-xs mt-1"
+              >
+                <span
+                  *ngIf="securityControls['currentPassword'].errors?.['required']"
+                  >Le mot de passe actuel est requis</span
+                >
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-sm text-gray-700 font-bold mb-2"
+                for="newPassword"
+              >
+                Nouveau mot de passe
+              </label>
+              <input
+                class="text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                [class.border-red-500]="
+                  securityControls['newPassword'].invalid &&
+                  securityControls['newPassword'].touched
+                "
+                id="newPassword"
+                type="password"
+                placeholder="Nouveau mot de passe"
+                formControlName="newPassword"
+              />
+              <div
+                *ngIf="
+                  securityControls['newPassword'].invalid &&
+                  securityControls['newPassword'].touched
+                "
+                class="text-red-500 text-xs mt-1"
+              >
+                <span
+                  *ngIf="securityControls['newPassword'].errors?.['required']"
+                  >Le nouveau mot de passe est requis</span
+                >
+                <span
+                  *ngIf="securityControls['newPassword'].errors?.['minlength']"
+                  >Le mot de passe doit contenir au moins 8 caractères</span
+                >
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-sm text-gray-700 font-bold mb-2"
+                for="confirmPassword"
+              >
+                Confirmer le nouveau mot de passe
+              </label>
+              <input
+                class="text-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                [class.border-red-500]="
+                  securityControls['confirmPassword'].invalid &&
+                  securityControls['confirmPassword'].touched
+                "
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirmer le nouveau mot de passe"
+                formControlName="confirmPassword"
+              />
+              <div
+                *ngIf="
+                  securityControls['confirmPassword'].invalid &&
+                  securityControls['confirmPassword'].touched
+                "
+                class="text-red-500 text-xs mt-1"
+              >
+                <span
+                  *ngIf="securityControls['confirmPassword'].errors?.['required']"
+                  >La confirmation est requise</span
+                >
+                <span
+                  *ngIf="securityControls['confirmPassword'].errors?.['passwordMismatch']"
+                  >Les mots de passe ne correspondent pas</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex gap-3 justify-end px-4 py-3 rounded-lg text-right sm:px-6"
+          >
+            <button
+              type="submit"
+              [disabled]="securityForm.invalid"
+              class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-sm font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Changer
+            </button>
+          </div>
+        </form>
+
+        <!-- Actions supplémentaires -->
+        <button
+          (click)="onDeleteAccount()"
+          class="text-red-500 hover:text-red-700 text-left self-start"
+        >
+          Supprimer mon compte
+        </button>
+        <button
+          (click)="onLogout()"
+          class="text-primary hover:text-secondary text-left self-start"
+        >
+          Se déconnecter
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

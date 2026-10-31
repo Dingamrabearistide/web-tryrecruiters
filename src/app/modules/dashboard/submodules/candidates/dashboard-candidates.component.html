@@ -1,0 +1,196 @@
+<div *transloco="let t">
+  <div class="flex flex-col w-full">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-3xl pb-2 font-bold text-primary">
+        {{ t("dashboard.candidates.title") }}
+      </h1>
+      <div class="gap-3 justify-start items-center pb-5">
+        <span class="text-lg font-medium text-primary">{{
+          t("dashboard.candidates.welcome", { name: candidateName })
+        }}</span>
+        <div class="text-md text-gray-600 font-normal mt-1">
+          {{ t("dashboard.candidates.summary") }}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center py-10 text-gray-500">
+      {{ t("general.loading") }}
+    </div>
+
+    <div
+      *ngIf="error && !loading"
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-5"
+    >
+      {{ error }}
+    </div>
+
+    <div
+      *ngIf="!loading && !error"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-6"
+    >
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#1d9bed24] p-5 shadow-sm"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.totalApplications
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.candidates.metrics.sentApplications")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-paper-plane fa-2x text-primary"></i>
+        </div>
+      </div>
+
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FFF0E5] p-5 shadow-sm"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.pendingApplications
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.candidates.metrics.pendingApplications")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-clock fa-2x text-[#FFA500]"></i>
+        </div>
+      </div>
+
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FCEFFD] p-5 shadow-sm"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.acceptedApplications
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.candidates.metrics.acceptedApplications")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-check-circle fa-2x text-[#E333F0]"></i>
+        </div>
+      </div>
+
+      <div
+        class="flex gap-5 justify-between rounded-lg bg-[#FFEBEB] p-5 shadow-sm"
+      >
+        <div class="flex flex-col text-secondary">
+          <span class="text-2xl font-semibold">{{
+            stats.upcomingInterviews
+          }}</span>
+          <span class="text-xs">{{
+            t("dashboard.candidates.metrics.upcomingInterviews")
+          }}</span>
+        </div>
+        <div
+          class="flex justify-center items-center bg-white w-16 h-16 rounded-full"
+        >
+          <i class="fa-solid fa-video fa-2x text-[#FF4D4D]"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-10">
+      <div class="lg:col-span-2 flex flex-col gap-10">
+        <div>
+          <div class="flex justify-between pb-4 border-b border-gray-200 mb-4">
+            <h2 class="text-xl text-primary font-bold text-gray-800">
+              {{ t("dashboard.candidates.recommendedOffers") }}
+            </h2>
+
+            <!-- <button [routerLink]="'./job-offers/list'" class="app-primary">
+              Voir plus
+            </button> -->
+
+            <button [routerLink]="'../../../jobs'" class="app-primary">
+              Voir plus <i class="fas fa-chevron-right ml-1"></i>
+            </button>
+          </div>
+
+          <app-loader *ngIf="loading" />
+
+          <div
+            *ngIf="!loading && featuredOffers.length === 0"
+            class="text-center py-10 text-gray-500"
+          >
+            {{ t("dashboard.candidates.noOffers") }}
+          </div>
+          <div
+            *ngIf="!loading && featuredOffers.length > 0"
+            class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            <div *ngFor="let offer of featuredOffers">
+              <app-job-offers-item-grid
+                [item]="offer"
+                (onView)="handleViewJobOffer($event)"
+                (onAddToFavorite)="addToFavorites($event)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-10">
+        <div>
+          <h2
+            class="text-xl font-bold text-primary pb-4 border-b border-gray-200 mb-4"
+          >
+            {{ t("dashboard.candidates.quickActions") }}
+          </h2>
+          <div
+            class="bg-white rounded-lg shadow-md p-5 flex flex-col gap-3 border border-gray-200"
+          >
+            <a
+              [routerLink]="['./resumes/list']"
+              class="w-full text-center bg-primary text-white py-3 px-4 rounded-lg hover:bg-primary transition-colors font-medium"
+            >
+              <i class="fa fa-plus mr-2"></i
+              >{{ t("dashboard.candidates.createResumes") }}
+            </a>
+            <a
+              [routerLink]="['./favorites/list']"
+              class="w-full text-center bg-gray-100 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+            >
+              <i class="fa-solid fa-star mr-2"></i
+              >{{ t("dashboard.candidates.seeFavorites") }}
+            </a>
+            <a
+              [routerLink]="['./profile/account']"
+              class="w-full text-center bg-gray-100 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+            >
+              <i class="fa-solid fa-user-pen mr-2"></i
+              >{{ t("dashboard.candidates.manageMyProfile") }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2
+        class="text-xl font-bold text-primary pb-4 border-b border-gray-200 mb-4"
+      >
+        {{ t("dashboard.candidates.recentApplicationsTitle") }}
+      </h2>
+
+      <app-applications-datatable
+        [items]="recentApplications"
+        [isLoading]="false"
+        [hasError]="false"
+        (view)="handleViewApplication($event)"
+      ></app-applications-datatable>
+    </div>
+  </div>
+</div>
