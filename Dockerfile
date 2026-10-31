@@ -7,7 +7,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Copie des fichiers nécessaires
 COPY pnpm-lock.yaml package.json ./
-RUN echo "onlyBuiltDependencies=false" > .npmrc
+RUN printf "onlyBuiltDependencies=false\ndangerouslyAllowAllBuilds=true\nstrictDepBuilds=false\n" > .npmrc
 RUN pnpm install
 
 # Copie du code source
