@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t dingamrabearistide/web-tryrecruiters:latest -f Dockerfile .'
+                sh 'docker build --no-cache -t dingamrabearistide/web-tryrecruiters:latest -f Dockerfile .'
             }
         }
         stage('Push to DockerHub') {
