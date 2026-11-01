@@ -5,7 +5,7 @@ RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
 COPY pnpm-lock.yaml package.json ./
 RUN pnpm install
 COPY . .
-RUN pnpm run build -- --configuration=production
+RUN npx ng build --configuration=production
 FROM nginx:alpine
 COPY --from=builder /app/dist/web-tryrecruiters/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
