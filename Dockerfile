@@ -8,13 +8,14 @@ COPY . .
 RUN npx ng build --configuration=production
 
 FROM nginx:alpine
-# Copie peu importe le nom exact du dossier dist
+# On copie le dist et on trouve automatiquement le bon dossier browser
 COPY --from=builder /app/dist /tmp/dist
-RUN ls -R /tmp/dist && \
-    if [ -d /tmp/dist/tryrecruiters-web/browser ]; then cp -r /tmp/dist/tryrecruiters-web/browser/* /usr/share/nginx/html/; \
-    elif [ -d /tmp/dist/tryrecruiters-web ]; then cp -r /tmp/dist/tryrecruiters-web/* /usr/share/nginx/html/; \
-    else cp -r /tmp/dist/*/browser/* /usr/share/nginx/html/ 2>/dev/null || cp -r /tmp/dist/*/* /usr/share/nginx/html/; fi && \
-    ls -la /usr/share/nginx/html/
+RUN rm -rf /usr/share/nginx/html/* && \
+    ls -R /tmp/dist && \
+    BROWSER_DIR=$(find /tmp/dist -type d -name browser | head -n 1) && \
+    if [ -n "$BROWSER_DIR" ]; then cp -r $BROWSER_DIR/* /usr/share/nginx/html/; else cp -r /tmp/dist/*/* /usr/share/nginx/html/; fi && \
+    ls -lh /usr/share/nginx/html/
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
